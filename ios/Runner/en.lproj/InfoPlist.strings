@@ -1,0 +1,2 @@
+NSCameraUsageDescription = "In order to take a picture of a receipt, this app requires permissions for camera access";
+NSPhotoLibraryUsageDescription = "In order to add a picture of a receipt from your photo library, this app requires permissions to your photo library.";
