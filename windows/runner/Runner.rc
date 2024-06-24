@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "TPPB2" "\0"
+            VALUE "CompanyName", "The Purple Piggy Bank" "\0"
             VALUE "FileDescription", "A new Flutter project." "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "TPPB2" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2024 TPPB2. All rights reserved." "\0"
-            VALUE "OriginalFilename", "tppb2.exe" "\0"
-            VALUE "ProductName", "TPPB2" "\0"
+            VALUE "InternalName", "The Purple Piggy Bank" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2024 The Purple Piggy Bank. All rights reserved." "\0"
+            VALUE "OriginalFilename", "the_purple_piggy_bank.exe" "\0"
+            VALUE "ProductName", "The Purple Piggy Bank" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

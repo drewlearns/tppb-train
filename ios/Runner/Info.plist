@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>TPPB2</string>
+	<string>The Purple Piggy Bank</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleLocalizations</key>
@@ -47,7 +47,7 @@
         <key>CFBundleTypeRole</key>
         <string>Editor</string>
         <key>CFBundleURLName</key>
-        <string>tppb2</string>
+        <string>the_purple_piggy_bank</string>
         <key>CFBundleURLSchemes</key>
         <array>
         <string>com.thepurplepiggybank.app</string>

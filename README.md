@@ -1,4 +1,4 @@
-# TPPB2
+# The Purple Piggy Bank
 
 A new Flutter project.
 

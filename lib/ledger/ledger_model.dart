@@ -4,12 +4,13 @@ import '/flutter_flow/form_field_controller.dart';
 import 'dart:async';
 import 'ledger_widget.dart' show LedgerWidget;
 import 'package:flutter/material.dart';
-import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 class LedgerModel extends FlutterFlowModel<LedgerWidget> {
   ///  Local state fields for this page.
 
   bool onClickEntry = false;
+
+  bool filterClicked = false;
 
   ///  State fields for stateful widgets in this page.
 
@@ -17,10 +18,21 @@ class LedgerModel extends FlutterFlowModel<LedgerWidget> {
   // State field(s) for HouseholdDropDown widget.
   String? householdDropDownValue;
   FormFieldController<String>? householdDropDownValueController;
-  // State field(s) for ListView widget.
-
-  PagingController<ApiPagingParams, dynamic>? listViewPagingController;
-  Function(ApiPagingParams nextPageMarker)? listViewApiCall;
+  // State field(s) for ThisMonthUpToToday widget.
+  bool? thisMonthUpToTodayValue;
+  // State field(s) for ThisMonthFull widget.
+  bool? thisMonthFullValue;
+  // State field(s) for ClearedTransactionsOnly widget.
+  bool? clearedTransactionsOnlyValue;
+  // State field(s) for MonthDropDown widget.
+  int? monthDropDownValue;
+  FormFieldController<int>? monthDropDownValueController;
+  // State field(s) for YearDropDown widget.
+  int? yearDropDownValue;
+  FormFieldController<int>? yearDropDownValueController;
+  Completer<ApiCallResponse>? apiRequestCompleter;
+  // Stores action output result for [Backend Call - API (editLedgerEntryAsCleared)] action in IconButton widget.
+  ApiCallResponse? editLedgerEntryAsClearedOutput;
 
   @override
   void initState(BuildContext context) {}
@@ -28,54 +40,10 @@ class LedgerModel extends FlutterFlowModel<LedgerWidget> {
   @override
   void dispose() {
     unfocusNode.dispose();
-    listViewPagingController?.dispose();
   }
 
   /// Additional helper methods.
-  PagingController<ApiPagingParams, dynamic> setListViewController(
-    Function(ApiPagingParams) apiCall,
-  ) {
-    listViewApiCall = apiCall;
-    return listViewPagingController ??= _createListViewController(apiCall);
-  }
-
-  PagingController<ApiPagingParams, dynamic> _createListViewController(
-    Function(ApiPagingParams) query,
-  ) {
-    final controller = PagingController<ApiPagingParams, dynamic>(
-      firstPageKey: ApiPagingParams(
-        nextPageNumber: 0,
-        numItems: 0,
-        lastResponse: null,
-      ),
-    );
-    return controller..addPageRequestListener(listViewGetLedgerPage);
-  }
-
-  void listViewGetLedgerPage(ApiPagingParams nextPageMarker) =>
-      listViewApiCall!(nextPageMarker).then((listViewGetLedgerResponse) {
-        final pageItems = (TppbGroup.getLedgerCall
-                    .data(
-                      listViewGetLedgerResponse.jsonBody,
-                    )!
-                    .map((e) => e)
-                    .toList() ??
-                [])
-            .toList();
-        final newNumItems = nextPageMarker.numItems + pageItems.length;
-        listViewPagingController?.appendPage(
-          pageItems,
-          (pageItems.isNotEmpty)
-              ? ApiPagingParams(
-                  nextPageNumber: nextPageMarker.nextPageNumber + 1,
-                  numItems: newNumItems,
-                  lastResponse: listViewGetLedgerResponse,
-                )
-              : null,
-        );
-      });
-
-  Future waitForOnePageForListView({
+  Future waitForApiRequestCompleted({
     double minWait = 0,
     double maxWait = double.infinity,
   }) async {
@@ -83,8 +51,7 @@ class LedgerModel extends FlutterFlowModel<LedgerWidget> {
     while (true) {
       await Future.delayed(const Duration(milliseconds: 50));
       final timeElapsed = stopwatch.elapsedMilliseconds;
-      final requestComplete =
-          (listViewPagingController?.nextPageKey?.nextPageNumber ?? 0) > 0;
+      final requestComplete = apiRequestCompleter?.isCompleted ?? false;
       if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
         break;
       }

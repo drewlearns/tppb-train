@@ -5,8 +5,8 @@ import '../base_auth_user_provider.dart';
 
 export '../base_auth_user_provider.dart';
 
-class Tppb2FirebaseUser extends BaseAuthUser {
-  Tppb2FirebaseUser(this.user);
+class ThePurplePiggyBankFirebaseUser extends BaseAuthUser {
+  ThePurplePiggyBankFirebaseUser(this.user);
   User? user;
   @override
   bool get loggedIn => user != null;
@@ -54,17 +54,19 @@ class Tppb2FirebaseUser extends BaseAuthUser {
 
   static BaseAuthUser fromUserCredential(UserCredential userCredential) =>
       fromFirebaseUser(userCredential.user);
-  static BaseAuthUser fromFirebaseUser(User? user) => Tppb2FirebaseUser(user);
+  static BaseAuthUser fromFirebaseUser(User? user) =>
+      ThePurplePiggyBankFirebaseUser(user);
 }
 
-Stream<BaseAuthUser> tppb2FirebaseUserStream() => FirebaseAuth.instance
+Stream<BaseAuthUser> thePurplePiggyBankFirebaseUserStream() =>
+    FirebaseAuth.instance
         .authStateChanges()
         .debounce((user) => user == null && !loggedIn
             ? TimerStream(true, const Duration(seconds: 1))
             : Stream.value(user))
         .map<BaseAuthUser>(
       (user) {
-        currentUser = Tppb2FirebaseUser(user);
+        currentUser = ThePurplePiggyBankFirebaseUser(user);
         return currentUser!;
       },
     );

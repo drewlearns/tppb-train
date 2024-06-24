@@ -91,7 +91,7 @@ class _MoreWidgetState extends State<MoreWidget> {
                 flexibleSpace: FlexibleSpaceBar(
                   title: Text(
                     FFLocalizations.of(context).getText(
-                      '7h8gopcv' /* More */,
+                      'akcgco24' /* More */,
                     ),
                     style: FlutterFlowTheme.of(context).headlineLarge.override(
                           fontFamily: 'Noto Sans JP',

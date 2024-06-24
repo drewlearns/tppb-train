@@ -96,6 +96,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'Ledger',
           path: '/ledger',
+          requireAuth: true,
           builder: (context, params) => params.isEmpty
               ? const NavBarPage(initialPage: 'Ledger')
               : const LedgerWidget(),
@@ -103,12 +104,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'Bills',
           path: '/bills',
+          requireAuth: true,
           builder: (context, params) =>
               params.isEmpty ? const NavBarPage(initialPage: 'Bills') : const BillsWidget(),
         ),
         FFRoute(
           name: 'Incomes',
           path: '/incomes',
+          requireAuth: true,
           builder: (context, params) => params.isEmpty
               ? const NavBarPage(initialPage: 'Incomes')
               : const IncomesWidget(),
@@ -116,12 +119,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'More',
           path: '/More',
+          requireAuth: true,
           builder: (context, params) =>
               params.isEmpty ? const NavBarPage(initialPage: 'More') : const MoreWidget(),
         ),
         FFRoute(
           name: 'Threshold',
           path: '/threshold',
+          requireAuth: true,
           builder: (context, params) => params.isEmpty
               ? const NavBarPage(initialPage: 'Threshold')
               : const ThresholdWidget(),
@@ -130,7 +135,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'SalesPage',
           path: '/purchase',
           requireAuth: true,
-          builder: (context, params) => const SalesPageWidget(),
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'SalesPage')
+              : const SalesPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

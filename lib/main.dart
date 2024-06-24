@@ -55,7 +55,7 @@ class _MyAppState extends State<MyApp> {
 
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
-    userStream = tppb2FirebaseUserStream()
+    userStream = thePurplePiggyBankFirebaseUserStream()
       ..listen((user) {
         _appStateNotifier.update(user);
       });
@@ -78,7 +78,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'TPPB2',
+      title: 'The Purple Piggy Bank',
       localizationsDelegates: const [
         FFLocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,
@@ -201,6 +201,7 @@ class _NavBarPageState extends State<NavBarPage> {
       'Ledger': const LedgerWidget(),
       'Incomes': const IncomesWidget(),
       'More': const MoreWidget(),
+      'SalesPage': const SalesPageWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -270,6 +271,16 @@ class _NavBarPageState extends State<NavBarPage> {
             ),
             label: FFLocalizations.of(context).getText(
               '6mrnu68q' /* More */,
+            ),
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: const Icon(
+              Icons.home_outlined,
+              size: 24.0,
+            ),
+            label: FFLocalizations.of(context).getText(
+              'qe8s722x' /* Home */,
             ),
             tooltip: '',
           )

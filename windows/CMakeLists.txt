@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
-project(tppb2 LANGUAGES CXX)
+project(the_purple_piggy_bank LANGUAGES CXX)
 
-set(BINARY_NAME "tppb2")
+set(BINARY_NAME "the_purple_piggy_bank")
 
 cmake_policy(SET CMP0063 NEW)
 

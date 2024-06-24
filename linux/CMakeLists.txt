@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 project(runner LANGUAGES CXX)
 
-set(BINARY_NAME "TPPB2")
+set(BINARY_NAME "The Purple Piggy Bank")
 set(APPLICATION_ID "com.thepurplepiggybank.app")
 
 cmake_policy(SET CMP0063 NEW)

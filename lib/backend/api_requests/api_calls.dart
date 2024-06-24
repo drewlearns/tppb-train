@@ -22,6 +22,8 @@ class TppbGroup {
   static AddUserCall addUserCall = AddUserCall();
   static GetLedgerCall getLedgerCall = GetLedgerCall();
   static GetHouseholdCall getHouseholdCall = GetHouseholdCall();
+  static EditLedgerEntryAsClearedCall editLedgerEntryAsClearedCall =
+      EditLedgerEntryAsClearedCall();
 }
 
 class AddUserCall {
@@ -89,12 +91,11 @@ class AddUserCall {
 class GetLedgerCall {
   Future<ApiCallResponse> call({
     String? householdId = '',
-    int? pageNumber,
     int? month,
     int? year,
     bool? showCurrentMonthOnly,
     bool? showClearedOnly,
-    bool? showCurrentMonthUpToToday = true,
+    bool? showCurrentMonthUpToToday = false,
     String? authenticationToken = '',
   }) async {
     final baseUrl = TppbGroup.getBaseUrl(
@@ -105,7 +106,6 @@ class GetLedgerCall {
 {
   "authToken": "$authenticationToken",
   "householdId": "$householdId",
-  "pageNumber": $pageNumber,
   "filters": {
     "month": $month,
     "year": $year,
@@ -138,107 +138,227 @@ class GetLedgerCall {
         r'''$.data''',
         true,
       ) as List?;
-  String? ledgerId(dynamic response) => castToType<String>(getJsonField(
+  List<String>? ledgerId(dynamic response) => (getJsonField(
         response,
         r'''$.data[:].ledgerId''',
-      ));
-  String? householdId(dynamic response) => castToType<String>(getJsonField(
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? householdId(dynamic response) => (getJsonField(
         response,
         r'''$.data[:].householdId''',
-      ));
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   bool? success(dynamic response) => castToType<bool>(getJsonField(
         response,
         r'''$.success''',
       ));
-  String? paymentSourceId(dynamic response) => castToType<String>(getJsonField(
+  List<String>? paymentSourceId(dynamic response) => (getJsonField(
         response,
         r'''$.data[:].paymentSourceId''',
-      ));
-  double? amount(dynamic response) => castToType<double>(getJsonField(
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<double>? amount(dynamic response) => (getJsonField(
         response,
         r'''$.data[:].amount''',
-      ));
-  String? transactionType(dynamic response) => castToType<String>(getJsonField(
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<double>(x))
+          .withoutNulls
+          .toList();
+  List<String>? transactionType(dynamic response) => (getJsonField(
         response,
         r'''$.data[:].transactionType''',
-      ));
-  String? transactionDate(dynamic response) => castToType<String>(getJsonField(
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? transactionDate(dynamic response) => (getJsonField(
         response,
         r'''$.data[:].transactionDate''',
-      ));
-  String? category(dynamic response) => castToType<String>(getJsonField(
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? category(dynamic response) => (getJsonField(
         response,
         r'''$.data[:].category''',
-      ));
-  String? description(dynamic response) => castToType<String>(getJsonField(
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? description(dynamic response) => (getJsonField(
         response,
         r'''$.data[:].description''',
-      ));
-  bool? status(dynamic response) => castToType<bool>(getJsonField(
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<bool>? status(dynamic response) => (getJsonField(
         response,
         r'''$.data[:].status''',
-      ));
-  String? createdAt(dynamic response) => castToType<String>(getJsonField(
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
+  List<String>? createdAt(dynamic response) => (getJsonField(
         response,
         r'''$.data[:].createdAt''',
-      ));
-  String? updatedAt(dynamic response) => castToType<String>(getJsonField(
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? updatedAt(dynamic response) => (getJsonField(
         response,
         r'''$.data[:].updatedAt''',
-      ));
-  double? runningTotal(dynamic response) => castToType<double>(getJsonField(
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<double>? runningTotal(dynamic response) => (getJsonField(
         response,
         r'''$.data[:].runningTotal''',
-      ));
-  bool? isInitial(dynamic response) => castToType<bool>(getJsonField(
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<double>(x))
+          .withoutNulls
+          .toList();
+  List<bool>? isInitial(dynamic response) => (getJsonField(
         response,
         r'''$.data[:].isInitial''',
-      ));
-  String? transactionId(dynamic response) => castToType<String>(getJsonField(
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
+  List<String>? transactionId(dynamic response) => (getJsonField(
         response,
         r'''$.data[:].transactions[:].transactionId''',
-      ));
-  int? month(dynamic response) => castToType<int>(getJsonField(
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<int>? month(dynamic response) => (getJsonField(
         response,
         r'''$.data[:].month''',
-      ));
-  int? year(dynamic response) => castToType<int>(getJsonField(
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  List<int>? year(dynamic response) => (getJsonField(
         response,
         r'''$.data[:].year''',
-      ));
-  int? dayOfMonth(dynamic response) => castToType<int>(getJsonField(
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  List<int>? dayOfMonth(dynamic response) => (getJsonField(
         response,
         r'''$.data[:].dayOfMonth''',
-      ));
-  String? type(dynamic response) => castToType<String>(getJsonField(
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  List<String>? type(dynamic response) => (getJsonField(
         response,
         r'''$.data[:].type''',
-      ));
-  int? totalItems(dynamic response) => castToType<int>(getJsonField(
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<int>? totalItems(dynamic response) => (getJsonField(
         response,
         r'''$.pagination.totalItems''',
-      ));
-  int? currentPage(dynamic response) => castToType<int>(getJsonField(
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  List<int>? currentPage(dynamic response) => (getJsonField(
         response,
         r'''$.pagination.currentPage''',
-      ));
-  int? pageSize(dynamic response) => castToType<int>(getJsonField(
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  List<int>? pageSize(dynamic response) => (getJsonField(
         response,
         r'''$.pagination.pageSize''',
-      ));
-  int? totalPages(dynamic response) => castToType<int>(getJsonField(
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  List<int>? totalPages(dynamic response) => (getJsonField(
         response,
         r'''$.pagination.totalPages''',
-      ));
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
   List? billId(dynamic response) => getJsonField(
         response,
         r'''$.data[:].bill.billId''',
         true,
       ) as List?;
-  dynamic incomeId(dynamic response) => getJsonField(
+  List? incomeId(dynamic response) => getJsonField(
         response,
         r'''$.data[:].income.incomeId''',
-      );
+        true,
+      ) as List?;
+  List<String>? paymentSourceName(dynamic response) => (getJsonField(
+        response,
+        r'''$.data[:].paymentSource.sourceName''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
 }
 
 class GetHouseholdCall {
@@ -290,6 +410,45 @@ class GetHouseholdCall {
           .map((x) => castToType<String>(x))
           .withoutNulls
           .toList();
+}
+
+class EditLedgerEntryAsClearedCall {
+  Future<ApiCallResponse> call({
+    String? ledgerId = '',
+    String? authenticationToken = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "authToken": "$authenticationToken",
+  "ledgerId": "$ledgerId"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'editLedgerEntryAsCleared',
+      apiUrl: '$baseUrl/editLedgerEntryAsCleared',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  dynamic message(dynamic response) => getJsonField(
+        response,
+        r'''$.message''',
+      );
 }
 
 /// End TPPB Group Code
