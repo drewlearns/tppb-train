@@ -248,6 +248,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'incomeId',
               ParamType.String,
             ),
+            type: params.getParam(
+              'type',
+              ParamType.String,
+            ),
           ),
         ),
         FFRoute(

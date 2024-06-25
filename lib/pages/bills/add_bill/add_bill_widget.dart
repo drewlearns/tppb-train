@@ -1256,7 +1256,7 @@ class _AddBillWidgetState extends State<AddBillWidget> {
                                                 hintText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  '37kvvvt0' /* Shared with household */,
+                                                  '6lqf7m2e' /* Shared with household */,
                                                 ),
                                                 hintStyle:
                                                     FlutterFlowTheme.of(context)

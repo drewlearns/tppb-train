@@ -67,7 +67,7 @@ class _ViewAllBillsWidgetState extends State<ViewAllBillsWidget> {
                 flexibleSpace: FlexibleSpaceBar(
                   title: Text(
                     FFLocalizations.of(context).getText(
-                      '4p7q13u7' /* All Bills */,
+                      'jo1bk6zp' /* All Bills */,
                     ),
                     style: FlutterFlowTheme.of(context).headlineLarge.override(
                           fontFamily: 'Noto Sans JP',

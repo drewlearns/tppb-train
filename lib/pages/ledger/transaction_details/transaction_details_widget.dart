@@ -16,12 +16,14 @@ class TransactionDetailsWidget extends StatefulWidget {
     this.billId,
     this.transactionId,
     this.incomeId,
+    required this.type,
   });
 
   final String? ledgerId;
   final String? billId;
   final String? transactionId;
   final String? incomeId;
+  final String? type;
 
   @override
   State<TransactionDetailsWidget> createState() =>
@@ -152,7 +154,7 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                         children: [
                                           Text(
                                             FFLocalizations.of(context).getText(
-                                              '92pfylgt' /* Amount:  */,
+                                              'nvyg6dlc' /* Amount:  */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .labelLarge
@@ -219,7 +221,7 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                         children: [
                                           Text(
                                             FFLocalizations.of(context).getText(
-                                              'iz3cagb1' /* Date:  */,
+                                              'kdijiniz' /* Date:  */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .labelLarge
@@ -256,7 +258,7 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                         children: [
                                           Text(
                                             FFLocalizations.of(context).getText(
-                                              'c6awowhq' /* Category:  */,
+                                              'zv2jqgi3' /* Category:  */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .labelLarge
@@ -293,7 +295,7 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                         children: [
                                           Text(
                                             FFLocalizations.of(context).getText(
-                                              'a0u5lgib' /* Created At:  */,
+                                              'zx9vdqbz' /* Created At:  */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .labelLarge
@@ -330,7 +332,7 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                         children: [
                                           Text(
                                             FFLocalizations.of(context).getText(
-                                              'cm2c34tn' /* Updated At:   */,
+                                              'dry9pbcy' /* Updated At:   */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .labelLarge
@@ -367,7 +369,7 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                         children: [
                                           Text(
                                             FFLocalizations.of(context).getText(
-                                              '6pjwdjji' /* Running Total:  */,
+                                              'u0s67mcn' /* Running Total:  */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .labelLarge
@@ -410,7 +412,7 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                         children: [
                                           Text(
                                             FFLocalizations.of(context).getText(
-                                              'd8hgw56z' /* Tags:  */,
+                                              'xcluxzwh' /* Tags:  */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .labelLarge
@@ -446,7 +448,7 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                         children: [
                                           Text(
                                             FFLocalizations.of(context).getText(
-                                              'h4w5kiej' /* Household Name:  */,
+                                              'aafc6vie' /* Household Name:  */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .labelLarge
@@ -483,7 +485,7 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                         children: [
                                           Text(
                                             FFLocalizations.of(context).getText(
-                                              '9ar9wpxk' /* Wallet Name */,
+                                              '67r3wu2q' /* Wallet Name */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .labelLarge
@@ -520,7 +522,7 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                         children: [
                                           Text(
                                             FFLocalizations.of(context).getText(
-                                              '2wrkg6dt' /* Wallet Type */,
+                                              'spqxdlzo' /* Wallet Type */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .labelLarge
@@ -557,7 +559,7 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                         children: [
                                           Text(
                                             FFLocalizations.of(context).getText(
-                                              'ki3sboa3' /* Wallet Description */,
+                                              '3fgw941d' /* Wallet Description */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .labelLarge
@@ -594,7 +596,7 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                         children: [
                                           Text(
                                             FFLocalizations.of(context).getText(
-                                              'dr4fcaum' /* Status: */,
+                                              'bm1nz2z4' /* Status: */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .labelLarge

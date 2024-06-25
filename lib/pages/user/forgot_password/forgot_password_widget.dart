@@ -115,7 +115,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                 decoration: InputDecoration(
                                   labelText:
                                       FFLocalizations.of(context).getText(
-                                    '3q7m3qyz' /* Email Address* */,
+                                    'e55bo3lf' /* Email Address* */,
                                   ),
                                   labelStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
@@ -124,7 +124,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                         letterSpacing: 0.0,
                                       ),
                                   hintText: FFLocalizations.of(context).getText(
-                                    'ney5wdz5' /* Please Provide.... */,
+                                    'ayq1foub' /* Please Provide.... */,
                                   ),
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
@@ -212,7 +212,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                               );
                             },
                             text: FFLocalizations.of(context).getText(
-                              '6sf2qx9i' /* Continue */,
+                              '669ir6ox' /* Continue */,
                             ),
                             options: FFButtonOptions(
                               width: 360.0,

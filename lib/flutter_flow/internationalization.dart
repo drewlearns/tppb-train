@@ -293,7 +293,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    '2658y48h': {
+    'm4o2is6k': {
       'en': 'Forgot Password',
       'es': '',
       'fr': '',
@@ -875,7 +875,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'd2jfvhvx': {
+    '5i6gmt1b': {
       'en': 'View All Bills',
       'es': '',
       'fr': '',
@@ -1826,7 +1826,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    '37kvvvt0': {
+    '6lqf7m2e': {
       'en': 'Shared with household',
       'es': '',
       'fr': '',
@@ -2339,7 +2339,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // TransactionDetails
   {
-    '92pfylgt': {
+    'nvyg6dlc': {
       'en': 'Amount: ',
       'es': '',
       'fr': '',
@@ -2348,7 +2348,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'iz3cagb1': {
+    'kdijiniz': {
       'en': 'Date: ',
       'es': '',
       'fr': '',
@@ -2357,7 +2357,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'c6awowhq': {
+    'zv2jqgi3': {
       'en': 'Category: ',
       'es': '',
       'fr': '',
@@ -2366,7 +2366,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'a0u5lgib': {
+    'zx9vdqbz': {
       'en': 'Created At: ',
       'es': '',
       'fr': '',
@@ -2375,7 +2375,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'cm2c34tn': {
+    'dry9pbcy': {
       'en': 'Updated At:  ',
       'es': '',
       'fr': '',
@@ -2384,7 +2384,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    '6pjwdjji': {
+    'u0s67mcn': {
       'en': 'Running Total: ',
       'es': '',
       'fr': '',
@@ -2393,7 +2393,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'd8hgw56z': {
+    'xcluxzwh': {
       'en': 'Tags: ',
       'es': '',
       'fr': '',
@@ -2402,7 +2402,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'h4w5kiej': {
+    'aafc6vie': {
       'en': 'Household Name: ',
       'es': '',
       'fr': '',
@@ -2411,7 +2411,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    '9ar9wpxk': {
+    '67r3wu2q': {
       'en': 'Wallet Name',
       'es': '',
       'fr': '',
@@ -2420,7 +2420,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    '2wrkg6dt': {
+    'spqxdlzo': {
       'en': 'Wallet Type',
       'es': '',
       'fr': '',
@@ -2429,7 +2429,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'ki3sboa3': {
+    '3fgw941d': {
       'en': 'Wallet Description',
       'es': '',
       'fr': '',
@@ -2438,7 +2438,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'dr4fcaum': {
+    'bm1nz2z4': {
       'en': 'Status:',
       'es': '',
       'fr': '',
@@ -2657,7 +2657,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // forgotPassword
   {
-    '3q7m3qyz': {
+    'e55bo3lf': {
       'en': 'Email Address*',
       'es': '',
       'fr': '',
@@ -2666,7 +2666,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'ney5wdz5': {
+    'ayq1foub': {
       'en': 'Please Provide....',
       'es': '',
       'fr': '',
@@ -2675,7 +2675,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    '6sf2qx9i': {
+    '669ir6ox': {
       'en': 'Continue',
       'es': '',
       'fr': '',
@@ -2789,7 +2789,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ViewAllBills
   {
-    '4p7q13u7': {
+    'jo1bk6zp': {
       'en': 'All Bills',
       'es': '',
       'fr': '',

@@ -244,7 +244,7 @@ class _BillsWidgetState extends State<BillsWidget>
                                   print('Button pressed ...');
                                 },
                                 text: FFLocalizations.of(context).getText(
-                                  'd2jfvhvx' /* View All Bills */,
+                                  '5i6gmt1b' /* View All Bills */,
                                 ),
                                 options: FFButtonOptions(
                                   height: 40.0,
@@ -434,6 +434,12 @@ class _BillsWidgetState extends State<BillsWidget>
                                                                       dueBillsListViewGetBillsResponse
                                                                           .jsonBody,
                                                                     )?[duelistIndex],
+                                                                    ParamType
+                                                                        .String,
+                                                                  ),
+                                                                  'type':
+                                                                      serializeParam(
+                                                                    'bill',
                                                                     ParamType
                                                                         .String,
                                                                   ),
@@ -731,14 +737,9 @@ class _BillsWidgetState extends State<BillsWidget>
                                                                     ParamType
                                                                         .String,
                                                                   ),
-                                                                  'billId':
+                                                                  'type':
                                                                       serializeParam(
-                                                                    TppbGroup
-                                                                        .getBillsCall
-                                                                        .billId(
-                                                                      pastDueBillsGetBillsResponse
-                                                                          .jsonBody,
-                                                                    )?[pastDueListIndex],
+                                                                    'bill',
                                                                     ParamType
                                                                         .String,
                                                                   ),
@@ -1046,6 +1047,12 @@ class _BillsWidgetState extends State<BillsWidget>
                                                                   dueBillsListViewGetBillsResponse
                                                                       .jsonBody,
                                                                 )?[paidbillsIndex],
+                                                                ParamType
+                                                                    .String,
+                                                              ),
+                                                              'type':
+                                                                  serializeParam(
+                                                                'bill',
                                                                 ParamType
                                                                     .String,
                                                               ),
@@ -1362,6 +1369,11 @@ class _BillsWidgetState extends State<BillsWidget>
                                                                 dueBillsListViewGetBillsResponse
                                                                     .jsonBody,
                                                               )?[futureDueBillsIndex],
+                                                              ParamType.String,
+                                                            ),
+                                                            'type':
+                                                                serializeParam(
+                                                              'bill',
                                                               ParamType.String,
                                                             ),
                                                           }.withoutNulls,

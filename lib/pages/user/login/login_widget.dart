@@ -1618,7 +1618,7 @@ Sign In below t... */
                                             },
                                             text: FFLocalizations.of(context)
                                                 .getText(
-                                              '2658y48h' /* Forgot Password */,
+                                              'm4o2is6k' /* Forgot Password */,
                                             ),
                                             options: FFButtonOptions(
                                               height: 40.0,
