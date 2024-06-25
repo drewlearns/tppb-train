@@ -98,68 +98,66 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         brightness: Brightness.light,
         scrollbarTheme: ScrollbarThemeData(
-          thumbVisibility: MaterialStateProperty.all(true),
-          trackVisibility: MaterialStateProperty.all(true),
+          thumbVisibility: WidgetStateProperty.all(true),
+          trackVisibility: WidgetStateProperty.all(true),
           interactive: true,
-          thickness: MaterialStateProperty.all(4.0),
+          thickness: WidgetStateProperty.all(4.0),
           radius: const Radius.circular(12.0),
-          trackColor: MaterialStateProperty.resolveWith((states) {
-            if (states.contains(MaterialState.hovered)) {
+          trackColor: WidgetStateProperty.resolveWith((states) {
+            if (states.contains(WidgetState.hovered)) {
               return const Color(0xffe0e3e7);
             }
             return const Color(0xffe0e3e7);
           }),
-          trackBorderColor: MaterialStateProperty.resolveWith((states) {
-            if (states.contains(MaterialState.hovered)) {
+          trackBorderColor: WidgetStateProperty.resolveWith((states) {
+            if (states.contains(WidgetState.hovered)) {
               return const Color(0xffe0e3e7);
             }
             return const Color(0xffe0e3e7);
           }),
-          thumbColor: MaterialStateProperty.resolveWith((states) {
-            if (states.contains(MaterialState.dragged)) {
+          thumbColor: WidgetStateProperty.resolveWith((states) {
+            if (states.contains(WidgetState.dragged)) {
               return const Color(0xffa06ee1);
             }
-            if (states.contains(MaterialState.hovered)) {
-              return const Color(0xff5801b9);
+            if (states.contains(WidgetState.hovered)) {
+              return const Color(0xff680ad4);
             }
-            return const Color(0xff5801b9);
+            return const Color(0xff680ad4);
           }),
           minThumbLength: 10.0,
         ),
-        useMaterial3: false,
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
         scrollbarTheme: ScrollbarThemeData(
-          thumbVisibility: MaterialStateProperty.all(true),
-          trackVisibility: MaterialStateProperty.all(true),
+          thumbVisibility: WidgetStateProperty.all(true),
+          trackVisibility: WidgetStateProperty.all(true),
           interactive: true,
-          thickness: MaterialStateProperty.all(4.0),
+          thickness: WidgetStateProperty.all(4.0),
           radius: const Radius.circular(12.0),
-          trackColor: MaterialStateProperty.resolveWith((states) {
-            if (states.contains(MaterialState.hovered)) {
+          trackColor: WidgetStateProperty.resolveWith((states) {
+            if (states.contains(WidgetState.hovered)) {
               return const Color(0xff262d34);
             }
             return const Color(0xff262d34);
           }),
-          trackBorderColor: MaterialStateProperty.resolveWith((states) {
-            if (states.contains(MaterialState.hovered)) {
+          trackBorderColor: WidgetStateProperty.resolveWith((states) {
+            if (states.contains(WidgetState.hovered)) {
               return const Color(0xff262d34);
             }
             return const Color(0xff262d34);
           }),
-          thumbColor: MaterialStateProperty.resolveWith((states) {
-            if (states.contains(MaterialState.dragged)) {
+          thumbColor: WidgetStateProperty.resolveWith((states) {
+            if (states.contains(WidgetState.dragged)) {
               return const Color(0xff7329c6);
             }
-            if (states.contains(MaterialState.hovered)) {
-              return const Color(0xff7128f0);
+            if (states.contains(WidgetState.hovered)) {
+              return const Color(0xff680ad4);
             }
-            return const Color(0xff7128f0);
+            return const Color(0xff680ad4);
           }),
           minThumbLength: 10.0,
         ),
-        useMaterial3: false,
       ),
       themeMode: _themeMode,
       routerConfig: _router,
@@ -201,7 +199,6 @@ class _NavBarPageState extends State<NavBarPage> {
       'Ledger': const LedgerWidget(),
       'Incomes': const IncomesWidget(),
       'More': const MoreWidget(),
-      'SalesPage': const SalesPageWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -271,16 +268,6 @@ class _NavBarPageState extends State<NavBarPage> {
             ),
             label: FFLocalizations.of(context).getText(
               '6mrnu68q' /* More */,
-            ),
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: const Icon(
-              Icons.home_outlined,
-              size: 24.0,
-            ),
-            label: FFLocalizations.of(context).getText(
-              'qe8s722x' /* Home */,
             ),
             tooltip: '',
           )
