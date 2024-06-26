@@ -16,14 +16,12 @@ class TransactionDetailsWidget extends StatefulWidget {
     this.billId,
     this.transactionId,
     this.incomeId,
-    required this.type,
   });
 
   final String? ledgerId;
   final String? billId;
   final String? transactionId;
   final String? incomeId;
-  final String? type;
 
   @override
   State<TransactionDetailsWidget> createState() =>
@@ -203,9 +201,7 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                                       ? FlutterFlowTheme.of(
                                                               context)
                                                           .error
-                                                      : FlutterFlowTheme.of(
-                                                              context)
-                                                          .tertiary,
+                                                      : const Color(0xFF072D12),
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
                                                 ),

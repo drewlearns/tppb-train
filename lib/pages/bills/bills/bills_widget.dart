@@ -437,12 +437,6 @@ class _BillsWidgetState extends State<BillsWidget>
                                                                     ParamType
                                                                         .String,
                                                                   ),
-                                                                  'type':
-                                                                      serializeParam(
-                                                                    'bill',
-                                                                    ParamType
-                                                                        .String,
-                                                                  ),
                                                                   'billId':
                                                                       serializeParam(
                                                                     TppbGroup
@@ -737,9 +731,14 @@ class _BillsWidgetState extends State<BillsWidget>
                                                                     ParamType
                                                                         .String,
                                                                   ),
-                                                                  'type':
+                                                                  'billId':
                                                                       serializeParam(
-                                                                    'bill',
+                                                                    TppbGroup
+                                                                        .getBillsCall
+                                                                        .billId(
+                                                                      pastDueBillsGetBillsResponse
+                                                                          .jsonBody,
+                                                                    )?[pastDueListIndex],
                                                                     ParamType
                                                                         .String,
                                                                   ),
@@ -1047,12 +1046,6 @@ class _BillsWidgetState extends State<BillsWidget>
                                                                   dueBillsListViewGetBillsResponse
                                                                       .jsonBody,
                                                                 )?[paidbillsIndex],
-                                                                ParamType
-                                                                    .String,
-                                                              ),
-                                                              'type':
-                                                                  serializeParam(
-                                                                'bill',
                                                                 ParamType
                                                                     .String,
                                                               ),
@@ -1369,11 +1362,6 @@ class _BillsWidgetState extends State<BillsWidget>
                                                                 dueBillsListViewGetBillsResponse
                                                                     .jsonBody,
                                                               )?[futureDueBillsIndex],
-                                                              ParamType.String,
-                                                            ),
-                                                            'type':
-                                                                serializeParam(
-                                                              'bill',
                                                               ParamType.String,
                                                             ),
                                                           }.withoutNulls,

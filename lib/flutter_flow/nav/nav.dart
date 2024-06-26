@@ -79,14 +79,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) => _RouteErrorBuilder(
         state: state,
-        child: appStateNotifier.loggedIn ? const NavBarPage() : const LoginWidget(),
+        child: RootPageContext.wrap(
+          appStateNotifier.loggedIn ? const NavBarPage() : const LoginWidget(),
+          errorRoute: state.uri.toString(),
+        ),
       ),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? const NavBarPage() : const LoginWidget(),
+          builder: (context, _) => RootPageContext.wrap(
+            appStateNotifier.loggedIn ? const NavBarPage() : const LoginWidget(),
+          ),
         ),
         FFRoute(
           name: 'Login',
@@ -246,10 +250,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             ),
             incomeId: params.getParam(
               'incomeId',
-              ParamType.String,
-            ),
-            type: params.getParam(
-              'type',
               ParamType.String,
             ),
           ),

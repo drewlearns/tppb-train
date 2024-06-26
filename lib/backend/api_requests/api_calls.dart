@@ -31,6 +31,8 @@ class TppbGroup {
   static AddIncomeCall addIncomeCall = AddIncomeCall();
   static GetBillsCall getBillsCall = GetBillsCall();
   static GetLedgerEntryCall getLedgerEntryCall = GetLedgerEntryCall();
+  static GetSafeToSpendCall getSafeToSpendCall = GetSafeToSpendCall();
+  static GetTotalSpentCall getTotalSpentCall = GetTotalSpentCall();
 }
 
 class AddUserCall {
@@ -171,10 +173,6 @@ class GetLedgerCall {
           .map((x) => castToType<String>(x))
           .withoutNulls
           .toList();
-  bool? success(dynamic response) => castToType<bool>(getJsonField(
-        response,
-        r'''$.success''',
-      ));
   List<String>? paymentSourceId(dynamic response) => (getJsonField(
         response,
         r'''$.data[:].paymentSourceId''',
@@ -274,22 +272,40 @@ class GetLedgerCall {
           .map((x) => castToType<bool>(x))
           .withoutNulls
           .toList();
-  List<String>? transactionId(dynamic response) => (getJsonField(
+  List<String>? paymentSourceName(dynamic response) => (getJsonField(
         response,
-        r'''$.data[:].transactions[:].transactionId''',
+        r'''$.data[:].paymentSource.sourceName''',
         true,
       ) as List?)
           ?.withoutNulls
           .map((x) => castToType<String>(x))
           .withoutNulls
           .toList();
-  List<int>? month(dynamic response) => (getJsonField(
+  List<String>? billId(dynamic response) => (getJsonField(
         response,
-        r'''$.data[:].month''',
+        r'''$.data[:].billId''',
         true,
       ) as List?)
           ?.withoutNulls
-          .map((x) => castToType<int>(x))
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? incomeId(dynamic response) => (getJsonField(
+        response,
+        r'''$.data[:].incomeId''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? tags(dynamic response) => (getJsonField(
+        response,
+        r'''$.data[:].tags''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
           .withoutNulls
           .toList();
   List<int>? year(dynamic response) => (getJsonField(
@@ -301,73 +317,27 @@ class GetLedgerCall {
           .map((x) => castToType<int>(x))
           .withoutNulls
           .toList();
-  List<int>? dayOfMonth(dynamic response) => (getJsonField(
+  List<String>? month(dynamic response) => (getJsonField(
         response,
-        r'''$.data[:].dayOfMonth''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<int>(x))
-          .withoutNulls
-          .toList();
-  List<String>? type(dynamic response) => (getJsonField(
-        response,
-        r'''$.data[:].type''',
+        r'''$.data[:].month''',
         true,
       ) as List?)
           ?.withoutNulls
           .map((x) => castToType<String>(x))
           .withoutNulls
           .toList();
-  List<int>? totalItems(dynamic response) => (getJsonField(
+  List<String>? transactionId(dynamic response) => (getJsonField(
         response,
-        r'''$.pagination.totalItems''',
+        r'''$.data[:].transactionId''',
         true,
       ) as List?)
           ?.withoutNulls
-          .map((x) => castToType<int>(x))
+          .map((x) => castToType<String>(x))
           .withoutNulls
           .toList();
-  List<int>? currentPage(dynamic response) => (getJsonField(
+  List<String>? type(dynamic response) => (getJsonField(
         response,
-        r'''$.pagination.currentPage''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<int>(x))
-          .withoutNulls
-          .toList();
-  List<int>? pageSize(dynamic response) => (getJsonField(
-        response,
-        r'''$.pagination.pageSize''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<int>(x))
-          .withoutNulls
-          .toList();
-  List<int>? totalPages(dynamic response) => (getJsonField(
-        response,
-        r'''$.pagination.totalPages''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<int>(x))
-          .withoutNulls
-          .toList();
-  List? billId(dynamic response) => getJsonField(
-        response,
-        r'''$.data[:].bill.billId''',
-        true,
-      ) as List?;
-  List? incomeId(dynamic response) => getJsonField(
-        response,
-        r'''$.data[:].income.incomeId''',
-        true,
-      ) as List?;
-  List<String>? paymentSourceName(dynamic response) => (getJsonField(
-        response,
-        r'''$.data[:].paymentSource.sourceName''',
+        r'''$.data[:].type''',
         true,
       ) as List?)
           ?.withoutNulls
@@ -936,6 +906,94 @@ class GetLedgerEntryCall {
       castToType<String>(getJsonField(
         response,
         r'''$.paymentSource.description''',
+      ));
+}
+
+class GetSafeToSpendCall {
+  Future<ApiCallResponse> call({
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "authToken": "$authenticationToken",
+  "householdId": "$householdIdGlobal"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'getSafeToSpend',
+      apiUrl: '$baseUrl/getSafeToSpend',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  double? safeToSpend(dynamic response) => castToType<double>(getJsonField(
+        response,
+        r'''$.safeToSpend''',
+      ));
+  String? nextPayday(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.nextPayday''',
+      ));
+}
+
+class GetTotalSpentCall {
+  Future<ApiCallResponse> call({
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "authToken": "$authenticationToken",
+  "householdId": "$householdIdGlobal"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'getTotalSpent',
+      apiUrl: '$baseUrl/getTotalSpent',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  double? totalSpent(dynamic response) => castToType<double>(getJsonField(
+        response,
+        r'''$.totalSpent''',
       ));
 }
 
