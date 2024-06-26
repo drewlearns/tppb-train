@@ -114,6 +114,12 @@ class _LedgerWidgetState extends State<LedgerWidget>
                       size: 24.0,
                     ),
                     onPressed: () async {
+                      setState(() {
+                        _model.householdDropDownValueController?.reset();
+                        _model.monthDropDownValueController?.reset();
+                        _model.yearDropDownValueController?.reset();
+                      });
+
                       context.pushNamed('SearchTransactions');
                     },
                   ),
@@ -154,6 +160,12 @@ class _LedgerWidgetState extends State<LedgerWidget>
                       size: 24.0,
                     ),
                     onPressed: () async {
+                      setState(() {
+                        _model.householdDropDownValueController?.reset();
+                        _model.monthDropDownValueController?.reset();
+                        _model.yearDropDownValueController?.reset();
+                      });
+
                       context.pushNamed('AddTransaction');
                     },
                   ),
@@ -1721,45 +1733,12 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                                                 mainAxisAlignment: MainAxisAlignment.end,
                                                                                 children: [
                                                                                   Expanded(
-                                                                                    child: AutoSizeText(
-                                                                                      valueOrDefault<String>(
-                                                                                        '${valueOrDefault<String>(
-                                                                                          (valueOrDefault<String>(
-                                                                                                        TppbGroup.getLedgerCall.transactionType(
-                                                                                                          listViewGetLedgerResponse.jsonBody,
-                                                                                                        )?[ledgerEntriesIndex],
-                                                                                                        'true',
-                                                                                                      ) ==
-                                                                                                      'Debit') ||
-                                                                                                  (valueOrDefault<String>(
-                                                                                                        TppbGroup.getLedgerCall.transactionType(
-                                                                                                          listViewGetLedgerResponse.jsonBody,
-                                                                                                        )?[ledgerEntriesIndex],
-                                                                                                        'true',
-                                                                                                      ) ==
-                                                                                                      'debit')
-                                                                                              ? '-'
-                                                                                              : '+',
-                                                                                          '-',
-                                                                                        )}${valueOrDefault<String>(
-                                                                                          formatNumber(
-                                                                                            TppbGroup.getLedgerCall.amount(
-                                                                                              listViewGetLedgerResponse.jsonBody,
-                                                                                            )?[ledgerEntriesIndex],
-                                                                                            formatType: FormatType.custom,
-                                                                                            currency: '',
-                                                                                            format: '###,##0.00',
-                                                                                            locale: '',
-                                                                                          ),
-                                                                                          'true',
-                                                                                        )}',
-                                                                                        'Loading...',
-                                                                                      ),
-                                                                                      textAlign: TextAlign.end,
-                                                                                      maxLines: 1,
-                                                                                      style: FlutterFlowTheme.of(context).labelLarge.override(
-                                                                                            fontFamily: 'Noto Sans JP',
-                                                                                            color: (valueOrDefault<String>(
+                                                                                    child: Padding(
+                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                                                                                      child: AutoSizeText(
+                                                                                        valueOrDefault<String>(
+                                                                                          '${valueOrDefault<String>(
+                                                                                            (valueOrDefault<String>(
                                                                                                           TppbGroup.getLedgerCall.transactionType(
                                                                                                             listViewGetLedgerResponse.jsonBody,
                                                                                                           )?[ledgerEntriesIndex],
@@ -1773,12 +1752,48 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                                                                           'true',
                                                                                                         ) ==
                                                                                                         'debit')
-                                                                                                ? FlutterFlowTheme.of(context).error
-                                                                                                : FlutterFlowTheme.of(context).tertiary,
-                                                                                            fontSize: 38.73,
-                                                                                            letterSpacing: 0.0,
-                                                                                            fontWeight: FontWeight.bold,
-                                                                                          ),
+                                                                                                ? '-'
+                                                                                                : '+',
+                                                                                            '-',
+                                                                                          )}${valueOrDefault<String>(
+                                                                                            formatNumber(
+                                                                                              TppbGroup.getLedgerCall.amount(
+                                                                                                listViewGetLedgerResponse.jsonBody,
+                                                                                              )?[ledgerEntriesIndex],
+                                                                                              formatType: FormatType.custom,
+                                                                                              currency: '',
+                                                                                              format: '###,##0.00',
+                                                                                              locale: '',
+                                                                                            ),
+                                                                                            'true',
+                                                                                          )}',
+                                                                                          'Loading...',
+                                                                                        ),
+                                                                                        textAlign: TextAlign.end,
+                                                                                        maxLines: 1,
+                                                                                        style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                              fontFamily: 'Noto Sans JP',
+                                                                                              color: (valueOrDefault<String>(
+                                                                                                            TppbGroup.getLedgerCall.transactionType(
+                                                                                                              listViewGetLedgerResponse.jsonBody,
+                                                                                                            )?[ledgerEntriesIndex],
+                                                                                                            'true',
+                                                                                                          ) ==
+                                                                                                          'Debit') ||
+                                                                                                      (valueOrDefault<String>(
+                                                                                                            TppbGroup.getLedgerCall.transactionType(
+                                                                                                              listViewGetLedgerResponse.jsonBody,
+                                                                                                            )?[ledgerEntriesIndex],
+                                                                                                            'true',
+                                                                                                          ) ==
+                                                                                                          'debit')
+                                                                                                  ? FlutterFlowTheme.of(context).error
+                                                                                                  : FlutterFlowTheme.of(context).tertiary,
+                                                                                              fontSize: 38.73,
+                                                                                              letterSpacing: 0.0,
+                                                                                              fontWeight: FontWeight.bold,
+                                                                                            ),
+                                                                                      ),
                                                                                     ),
                                                                                   ),
                                                                                 ].divide(const SizedBox(width: 0.0)).around(const SizedBox(width: 0.0)),
@@ -1788,22 +1803,26 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                                                 mainAxisAlignment: MainAxisAlignment.end,
                                                                                 children: [
                                                                                   Padding(
-                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 8.0),
+                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                                                                                     child: Text(
                                                                                       valueOrDefault<String>(
-                                                                                        formatNumber(
-                                                                                          TppbGroup.getLedgerCall.runningTotal(
-                                                                                            listViewGetLedgerResponse.jsonBody,
-                                                                                          )?[ledgerEntriesIndex],
-                                                                                          formatType: FormatType.custom,
-                                                                                          currency: '',
-                                                                                          format: '###,##0.00',
-                                                                                          locale: '',
-                                                                                        ),
+                                                                                        'Running Total: ${valueOrDefault<String>(
+                                                                                          formatNumber(
+                                                                                            TppbGroup.getLedgerCall.runningTotal(
+                                                                                              listViewGetLedgerResponse.jsonBody,
+                                                                                            )?[ledgerEntriesIndex],
+                                                                                            formatType: FormatType.custom,
+                                                                                            currency: '',
+                                                                                            format: '###,##0.00',
+                                                                                            locale: '',
+                                                                                          ),
+                                                                                          'Loading...',
+                                                                                        )}',
                                                                                         'Loading...',
                                                                                       ),
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                             fontFamily: 'Noto Sans JP',
+                                                                                            fontSize: 13.0,
                                                                                             letterSpacing: 0.0,
                                                                                           ),
                                                                                     ),

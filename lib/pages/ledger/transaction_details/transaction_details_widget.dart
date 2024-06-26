@@ -123,18 +123,33 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                             size: 24.0,
                           ),
                           onPressed: () async {
-                            if (Navigator.of(context).canPop()) {
-                              context.pop();
+                            if (widget.type == 'transaction') {
+                              if (Navigator.of(context).canPop()) {
+                                context.pop();
+                              }
+                              context.pushNamed(
+                                'EditTransaction',
+                                queryParameters: {
+                                  'transactionId': serializeParam(
+                                    widget.transactionId,
+                                    ParamType.String,
+                                  ),
+                                }.withoutNulls,
+                              );
+                            } else {
+                              if (Navigator.of(context).canPop()) {
+                                context.pop();
+                              }
+                              context.pushNamed(
+                                'EditLEdgerEntry',
+                                queryParameters: {
+                                  'ledgerId': serializeParam(
+                                    widget.ledgerId,
+                                    ParamType.String,
+                                  ),
+                                }.withoutNulls,
+                              );
                             }
-                            context.pushNamed(
-                              'EditLEdgerEntry',
-                              queryParameters: {
-                                'ledgerId': serializeParam(
-                                  widget.ledgerId,
-                                  ParamType.String,
-                                ),
-                              }.withoutNulls,
-                            );
                           },
                         ),
                       ),
@@ -224,7 +239,64 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                                 Text(
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                    'nvyg6dlc' /* Amount:  */,
+                                                    'nvyg6dlc' /* Description:  */,
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .labelLarge
+                                                      .override(
+                                                        fontFamily:
+                                                            'Noto Sans JP',
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      ),
+                                                ),
+                                                Text(
+                                                  valueOrDefault<String>(
+                                                    TppbGroup.getLedgerEntryCall
+                                                        .description(
+                                                      transactionDetailsGetLedgerEntryResponse
+                                                          .jsonBody,
+                                                    ),
+                                                    'Loading...',
+                                                  ),
+                                                  maxLines: 2,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyLarge
+                                                      .override(
+                                                        fontFamily:
+                                                            'Noto Sans JP',
+                                                        color: TppbGroup
+                                                                    .getLedgerEntryCall
+                                                                    .transactionType(
+                                                                  transactionDetailsGetLedgerEntryResponse
+                                                                      .jsonBody,
+                                                                ) ==
+                                                                'Debit'
+                                                            ? FlutterFlowTheme
+                                                                    .of(context)
+                                                                .error
+                                                            : const Color(0xFF072D12),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      ),
+                                                ),
+                                              ]
+                                                  .divide(const SizedBox(width: 8.0))
+                                                  .around(const SizedBox(width: 8.0)),
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'yx3y9wxn' /* Amount:  */,
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)

@@ -206,12 +206,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'IncomeDetails',
-          path: '/incomeDetails',
-          requireAuth: true,
-          builder: (context, params) => const IncomeDetailsWidget(),
-        ),
-        FFRoute(
           name: 'AddTransaction',
           path: '/addTransaction',
           requireAuth: true,
@@ -352,6 +346,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'ViewAllBills',
           path: '/viewAllBills',
+          requireAuth: true,
           builder: (context, params) => ViewAllBillsWidget(
             householdId: params.getParam(
               'householdId',
@@ -362,6 +357,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'EditLEdgerEntry',
           path: '/editLEdgerEntry',
+          requireAuth: true,
           builder: (context, params) => EditLEdgerEntryWidget(
             ledgerId: params.getParam(
               'ledgerId',

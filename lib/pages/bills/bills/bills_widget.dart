@@ -76,8 +76,8 @@ class _BillsWidgetState extends State<BillsWidget>
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                         size: 24.0,
                       ),
-                      onPressed: () {
-                        print('IconButton pressed ...');
+                      onPressed: () async {
+                        context.pushNamed('Notifications');
                       },
                     ),
                     Padding(

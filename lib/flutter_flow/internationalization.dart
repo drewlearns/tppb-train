@@ -186,7 +186,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hant': '',
     },
     'bwxngpq0': {
-      'en': 'Marketing',
+      'en': 'May we contact you?',
       'es': '',
       'fr': '',
       'ru': '',
@@ -205,6 +205,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'ble29zwu': {
       'en': 'Sign Up',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
+    'auk30bb4': {
+      'en': 'Accept Invite',
       'es': '',
       'fr': '',
       'ru': '',
@@ -295,6 +304,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'm4o2is6k': {
       'en': 'Forgot Password',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
+    'ffli1euo': {
+      'en': 'Accept Invite',
       'es': '',
       'fr': '',
       'ru': '',
@@ -2166,27 +2184,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hant': '',
     },
   },
-  // IncomeDetails
-  {
-    'dm07kp6z': {
-      'en': 'Page Title',
-      'es': '',
-      'fr': '',
-      'ru': '',
-      'tl': '',
-      'zh_Hans': '',
-      'zh_Hant': '',
-    },
-    '8d5wjod5': {
-      'en': 'Home',
-      'es': '',
-      'fr': '',
-      'ru': '',
-      'tl': '',
-      'zh_Hans': '',
-      'zh_Hant': '',
-    },
-  },
   // AddTransaction
   {
     'edmtzvd8': {
@@ -2432,8 +2429,26 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // SearchTransactions
   {
+    'yxxi30a5': {
+      'en': 'Search',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
+    'ze61lhuu': {
+      'en': 'Search  Keywords, Amounts, Tags, Categories...',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
     '7tvb5lfk': {
-      'en': 'Page Title',
+      'en': 'Search Transactions',
       'es': '',
       'fr': '',
       'ru': '',
@@ -2454,6 +2469,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // TransactionDetails
   {
     'nvyg6dlc': {
+      'en': 'Description: ',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
+    'yx3y9wxn': {
       'en': 'Amount: ',
       'es': '',
       'fr': '',
@@ -2706,7 +2730,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // Wallets
   {
     'uyej0lms': {
-      'en': 'Page Title',
+      'en': 'Search',
       'es': '',
       'fr': '',
       'ru': '',

@@ -890,8 +890,9 @@ Sign up below to star... */
                                                   title: Text(
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                      'bwxngpq0' /* Marketing */,
+                                                      'bwxngpq0' /* May we contact you? */,
                                                     ),
+                                                    textAlign: TextAlign.start,
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .titleLarge
@@ -906,6 +907,7 @@ Sign up below to star... */
                                                         .getText(
                                                       'h0ovelqk' /* Opt-In to pigs and marketing i... */,
                                                     ),
+                                                    textAlign: TextAlign.center,
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .labelMedium
@@ -1096,6 +1098,63 @@ Sign up below to star... */
                                               Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
+                                                  FFButtonWidget(
+                                                    onPressed: () async {
+                                                      context.pushNamed(
+                                                          'AcceptInvite');
+                                                    },
+                                                    text: FFLocalizations.of(
+                                                            context)
+                                                        .getText(
+                                                      'auk30bb4' /* Accept Invite */,
+                                                    ),
+                                                    options: FFButtonOptions(
+                                                      width: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width *
+                                                          1.0,
+                                                      height: 40.0,
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  24.0,
+                                                                  0.0,
+                                                                  24.0,
+                                                                  0.0),
+                                                      iconPadding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Noto Sans JP',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                      elevation: 0.0,
+                                                      borderSide: const BorderSide(
+                                                        color:
+                                                            Colors.transparent,
+                                                        width: 1.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                  ),
                                                   Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -1111,9 +1170,10 @@ Sign up below to star... */
                                                                 .spaceEvenly,
                                                         children: [
                                                           FFButtonWidget(
-                                                            onPressed: () {
-                                                              print(
-                                                                  'Button pressed ...');
+                                                            onPressed:
+                                                                () async {
+                                                              await launchURL(
+                                                                  'https://thepurplepiggybank.com/terms');
                                                             },
                                                             text: FFLocalizations
                                                                     .of(context)
@@ -1163,9 +1223,10 @@ Sign up below to star... */
                                                             ),
                                                           ),
                                                           FFButtonWidget(
-                                                            onPressed: () {
-                                                              print(
-                                                                  'Button pressed ...');
+                                                            onPressed:
+                                                                () async {
+                                                              await launchURL(
+                                                                  'https://thepurplepiggybank.com/privacy');
                                                             },
                                                             text: FFLocalizations
                                                                     .of(context)
@@ -1215,9 +1276,10 @@ Sign up below to star... */
                                                             ),
                                                           ),
                                                           FFButtonWidget(
-                                                            onPressed: () {
-                                                              print(
-                                                                  'Button pressed ...');
+                                                            onPressed:
+                                                                () async {
+                                                              await launchURL(
+                                                                  'https://thepurplepiggybank.com/legal');
                                                             },
                                                             text: FFLocalizations
                                                                     .of(context)
@@ -1275,25 +1337,20 @@ Sign up below to star... */
                                               Align(
                                                 alignment: const AlignmentDirectional(
                                                     0.0, 1.0),
-                                                child: Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 30.0, 0.0, 0.0),
-                                                  child: Text(
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      'aiqn1km5' /* Disclaimer: The Purple Piggy B... */,
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Noto Sans JP',
-                                                          fontSize: 12.0,
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                                child: Text(
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'aiqn1km5' /* Disclaimer: The Purple Piggy B... */,
                                                   ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Noto Sans JP',
+                                                        fontSize: 12.0,
+                                                        letterSpacing: 0.0,
+                                                      ),
                                                 ),
                                               ),
                                             ]
@@ -1665,6 +1722,7 @@ Sign In below t... */
                                                 'm4o2is6k' /* Forgot Password */,
                                               ),
                                               options: FFButtonOptions(
+                                                width: double.infinity,
                                                 height: 40.0,
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -1673,7 +1731,54 @@ Sign In below t... */
                                                     const EdgeInsetsDirectional
                                                         .fromSTEB(
                                                             0.0, 0.0, 0.0, 0.0),
-                                                color: const Color(0x08A06EE1),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                elevation: 0.0,
+                                                borderSide: const BorderSide(
+                                                  color: Colors.transparent,
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                            ),
+                                            FFButtonWidget(
+                                              onPressed: () async {
+                                                context
+                                                    .pushNamed('AcceptInvite');
+                                              },
+                                              text: FFLocalizations.of(context)
+                                                  .getText(
+                                                'ffli1euo' /* Accept Invite */,
+                                              ),
+                                              options: FFButtonOptions(
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        1.0,
+                                                height: 40.0,
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        24.0, 0.0, 24.0, 0.0),
+                                                iconPadding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
                                                 textStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .titleSmall
@@ -1724,9 +1829,9 @@ Sign In below t... */
                                                           .spaceEvenly,
                                                   children: [
                                                     FFButtonWidget(
-                                                      onPressed: () {
-                                                        print(
-                                                            'Button pressed ...');
+                                                      onPressed: () async {
+                                                        await launchURL(
+                                                            'https://thepurplepiggybank.com/terms');
                                                       },
                                                       text: FFLocalizations.of(
                                                               context)
@@ -1773,9 +1878,9 @@ Sign In below t... */
                                                       ),
                                                     ),
                                                     FFButtonWidget(
-                                                      onPressed: () {
-                                                        print(
-                                                            'Button pressed ...');
+                                                      onPressed: () async {
+                                                        await launchURL(
+                                                            'https://thepurplepiggybank.com/privacy');
                                                       },
                                                       text: FFLocalizations.of(
                                                               context)
@@ -1822,9 +1927,9 @@ Sign In below t... */
                                                       ),
                                                     ),
                                                     FFButtonWidget(
-                                                      onPressed: () {
-                                                        print(
-                                                            'Button pressed ...');
+                                                      onPressed: () async {
+                                                        await launchURL(
+                                                            'https://thepurplepiggybank.com/terms');
                                                       },
                                                       text: FFLocalizations.of(
                                                               context)
@@ -1874,25 +1979,20 @@ Sign In below t... */
                                                 ),
                                               ],
                                             ),
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 30.0, 0.0, 0.0),
-                                              child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'lpr4l9ey' /* Disclaimer: The Purple Piggy B... */,
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Noto Sans JP',
-                                                          fontSize: 12.0,
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                            Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'lpr4l9ey' /* Disclaimer: The Purple Piggy B... */,
                                               ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Noto Sans JP',
+                                                        fontSize: 12.0,
+                                                        letterSpacing: 0.0,
+                                                      ),
                                             ),
                                           ]
                                               .divide(const SizedBox(height: 8.0))

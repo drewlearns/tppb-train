@@ -40,7 +40,7 @@ class _ViewAllBillsWidgetState extends State<ViewAllBillsWidget> {
   @override
   Widget build(BuildContext context) {
     return Title(
-        title: 'ViewAllBills',
+        title: 'All Bills',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () => _model.unfocusNode.canRequestFocus

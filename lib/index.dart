@@ -21,8 +21,6 @@ export '/pages/household/edit_members/edit_members_widget.dart'
 export '/pages/income/add_income/add_income_widget.dart' show AddIncomeWidget;
 export '/pages/income/edit_income/edit_income_widget.dart'
     show EditIncomeWidget;
-export '/pages/income/income_details/income_details_widget.dart'
-    show IncomeDetailsWidget;
 export '/pages/ledger/add_transaction/add_transaction_widget.dart'
     show AddTransactionWidget;
 export '/pages/ledger/categories/categories_widget.dart' show CategoriesWidget;
