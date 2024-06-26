@@ -1,32 +1,13 @@
 {
   "project_info": {
-    "project_number": "701061003268",
-    "project_id": "tppb2-f0p5cc",
-    "storage_bucket": "tppb2-f0p5cc.appspot.com"
+    "project_number": "109630664075",
+    "project_id": "the-purple-piggy-bank-llc",
+    "storage_bucket": "the-purple-piggy-bank-llc.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:701061003268:android:a797fe70945af5e2271d51",
-        "android_client_info": {
-          "package_name": "com.mycompany.tppb2"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCCFS6iqQJdSAIYV_j0Gyt4YFHEy8ASlgQ"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:701061003268:android:97a721f97bf55266271d51",
+        "mobilesdk_app_id": "1:109630664075:android:4123fbdbf2c96e32b6d38e",
         "android_client_info": {
           "package_name": "com.thepurplepiggybank.app"
         }
@@ -34,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCCFS6iqQJdSAIYV_j0Gyt4YFHEy8ASlgQ"
+          "current_key": "AIzaSyCzprNUDjUwsYvAanaW45KOSjfF9OWRVFY"
         }
       ],
       "services": {

@@ -973,6 +973,8 @@ Sign up below to star... */
                                                       context.goNamedAuth(
                                                           'Ledger',
                                                           context.mounted);
+                                                  await authManager
+                                                      .sendEmailVerification();
                                                   _model.addUserOutput =
                                                       await TppbGroup
                                                           .addUserCall
@@ -994,28 +996,36 @@ Sign up below to star... */
                                                   if ((_model.addUserOutput
                                                           ?.succeeded ??
                                                       true)) {
-                                                    await authManager
-                                                        .sendEmailVerification();
-                                                    await showDialog(
-                                                      context: context,
-                                                      builder:
-                                                          (alertDialogContext) {
-                                                        return AlertDialog(
-                                                          title:
-                                                              const Text('Success'),
-                                                          content: const Text(
-                                                              'Check your email for a verification link.'),
-                                                          actions: [
-                                                            TextButton(
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      alertDialogContext),
-                                                              child: const Text('Ok'),
-                                                            ),
-                                                          ],
-                                                        );
-                                                      },
-                                                    );
+                                                    var confirmDialogResponse =
+                                                        await showDialog<bool>(
+                                                              context: context,
+                                                              builder:
+                                                                  (alertDialogContext) {
+                                                                return AlertDialog(
+                                                                  title: const Text(
+                                                                      'Thank you!'),
+                                                                  content: const Text(
+                                                                      'Check your email for a verification link.'),
+                                                                  actions: [
+                                                                    TextButton(
+                                                                      onPressed: () => Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          false),
+                                                                      child: const Text(
+                                                                          'Exit'),
+                                                                    ),
+                                                                    TextButton(
+                                                                      onPressed: () => Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          true),
+                                                                      child: const Text(
+                                                                          'Ok'),
+                                                                    ),
+                                                                  ],
+                                                                );
+                                                              },
+                                                            ) ??
+                                                            false;
                                                   } else {
                                                     await showDialog(
                                                       context: context,
@@ -1023,14 +1033,11 @@ Sign up below to star... */
                                                           (alertDialogContext) {
                                                         return AlertDialog(
                                                           title: const Text('Error'),
-                                                          content: Text(
-                                                              TppbGroup
-                                                                  .addUserCall
-                                                                  .message(
-                                                            (_model.addUserOutput
-                                                                    ?.jsonBody ??
-                                                                ''),
-                                                          )!),
+                                                          content: Text((_model
+                                                                      .addUserOutput
+                                                                      ?.statusCode ??
+                                                                  200)
+                                                              .toString()),
                                                           actions: [
                                                             TextButton(
                                                               onPressed: () =>

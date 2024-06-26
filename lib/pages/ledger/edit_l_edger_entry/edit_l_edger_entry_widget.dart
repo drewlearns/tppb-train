@@ -1,26 +1,32 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'edit_ledger_entry_model.dart';
-export 'edit_ledger_entry_model.dart';
+import 'edit_l_edger_entry_model.dart';
+export 'edit_l_edger_entry_model.dart';
 
-class EditLedgerEntryWidget extends StatefulWidget {
-  const EditLedgerEntryWidget({super.key});
+class EditLEdgerEntryWidget extends StatefulWidget {
+  const EditLEdgerEntryWidget({
+    super.key,
+    required this.ledgerId,
+  });
+
+  final String? ledgerId;
 
   @override
-  State<EditLedgerEntryWidget> createState() => _EditLedgerEntryWidgetState();
+  State<EditLEdgerEntryWidget> createState() => _EditLEdgerEntryWidgetState();
 }
 
-class _EditLedgerEntryWidgetState extends State<EditLedgerEntryWidget> {
-  late EditLedgerEntryModel _model;
+class _EditLEdgerEntryWidgetState extends State<EditLEdgerEntryWidget> {
+  late EditLEdgerEntryModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => EditLedgerEntryModel());
+    _model = createModel(context, () => EditLEdgerEntryModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -65,12 +71,14 @@ class _EditLedgerEntryWidgetState extends State<EditLedgerEntryWidget> {
                 ),
                 actions: const [],
                 flexibleSpace: FlexibleSpaceBar(
-                  title: Text(
+                  title: AutoSizeText(
                     FFLocalizations.of(context).getText(
-                      'xcuujmw5' /* Page Title */,
+                      '4qo67f3n' /* Edit Ledger Entry */,
                     ),
                     style: FlutterFlowTheme.of(context).headlineLarge.override(
                           fontFamily: 'Noto Sans JP',
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
                           letterSpacing: 0.0,
                         ),
                   ),

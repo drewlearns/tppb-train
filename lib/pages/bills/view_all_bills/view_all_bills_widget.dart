@@ -6,7 +6,12 @@ import 'view_all_bills_model.dart';
 export 'view_all_bills_model.dart';
 
 class ViewAllBillsWidget extends StatefulWidget {
-  const ViewAllBillsWidget({super.key});
+  const ViewAllBillsWidget({
+    super.key,
+    required this.householdId,
+  });
+
+  final String? householdId;
 
   @override
   State<ViewAllBillsWidget> createState() => _ViewAllBillsWidgetState();

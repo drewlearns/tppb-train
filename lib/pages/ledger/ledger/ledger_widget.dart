@@ -1,6 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
-import '/components/ledger_entry_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -114,8 +113,8 @@ class _LedgerWidgetState extends State<LedgerWidget>
                       color: FlutterFlowTheme.of(context).secondaryBackground,
                       size: 24.0,
                     ),
-                    onPressed: () {
-                      print('IconButton pressed ...');
+                    onPressed: () async {
+                      context.pushNamed('SearchTransactions');
                     },
                   ),
                 ),
@@ -154,8 +153,8 @@ class _LedgerWidgetState extends State<LedgerWidget>
                       color: FlutterFlowTheme.of(context).secondaryBackground,
                       size: 24.0,
                     ),
-                    onPressed: () {
-                      print('IconButton pressed ...');
+                    onPressed: () async {
+                      context.pushNamed('AddTransaction');
                     },
                   ),
                 ),
@@ -179,7 +178,6 @@ class _LedgerWidgetState extends State<LedgerWidget>
             body: SafeArea(
               top: true,
               child: SingleChildScrollView(
-                primary: false,
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -192,6 +190,7 @@ class _LedgerWidgetState extends State<LedgerWidget>
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               SingleChildScrollView(
+                                primary: false,
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
@@ -401,9 +400,20 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                           setState(() => _model
                                                                   .thisMonthUpToTodayValue =
                                                               newValue);
-
-                                                          if (!newValue) {
+                                                          if (newValue) {
                                                             setState(() {});
+                                                            setState(() => _model
+                                                                    .apiRequestCompleter =
+                                                                null);
+                                                            await _model
+                                                                .waitForApiRequestCompleted();
+                                                          } else {
+                                                            setState(() {});
+                                                            setState(() => _model
+                                                                    .apiRequestCompleter =
+                                                                null);
+                                                            await _model
+                                                                .waitForApiRequestCompleted();
                                                           }
                                                         },
                                                         title: Text(
@@ -466,6 +476,18 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                               newValue);
                                                           if (newValue) {
                                                             setState(() {});
+                                                            setState(() => _model
+                                                                    .apiRequestCompleter =
+                                                                null);
+                                                            await _model
+                                                                .waitForApiRequestCompleted();
+                                                          } else {
+                                                            setState(() {});
+                                                            setState(() => _model
+                                                                    .apiRequestCompleter =
+                                                                null);
+                                                            await _model
+                                                                .waitForApiRequestCompleted();
                                                           }
                                                         },
                                                         title: Text(
@@ -528,6 +550,18 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                               newValue);
                                                           if (newValue) {
                                                             setState(() {});
+                                                            setState(() => _model
+                                                                    .apiRequestCompleter =
+                                                                null);
+                                                            await _model
+                                                                .waitForApiRequestCompleted();
+                                                          } else {
+                                                            setState(() {});
+                                                            setState(() => _model
+                                                                    .apiRequestCompleter =
+                                                                null);
+                                                            await _model
+                                                                .waitForApiRequestCompleted();
                                                           }
                                                         },
                                                         title: Text(
@@ -686,6 +720,11 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                                           val);
                                                                   setState(
                                                                       () {});
+                                                                  setState(() =>
+                                                                      _model.apiRequestCompleter =
+                                                                          null);
+                                                                  await _model
+                                                                      .waitForApiRequestCompleted();
                                                                 },
                                                                 width: 300.0,
                                                                 height: 56.0,
@@ -944,6 +983,11 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                                           val);
                                                                   setState(
                                                                       () {});
+                                                                  setState(() =>
+                                                                      _model.apiRequestCompleter =
+                                                                          null);
+                                                                  await _model
+                                                                      .waitForApiRequestCompleted();
                                                                 },
                                                                 width: 300.0,
                                                                 height: 56.0,
@@ -1208,7 +1252,7 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                                     title: const Text(
                                                                         'Information'),
                                                                     content: Text(
-                                                                        'Safe To Spend ™️is the amount that is safe to spend without going over between now and ${valueOrDefault<String>(
+                                                                        'Safe To Spend ™️ is the amount that is safe to spend without going over between now and ${valueOrDefault<String>(
                                                                       TppbGroup
                                                                           .getSafeToSpendCall
                                                                           .nextPayday(
@@ -1216,7 +1260,7 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                                             .jsonBody,
                                                                       ),
                                                                       'Loading...',
-                                                                    )} (your next pay day).  Disclaimer, this is only as accurate as the information you provide the application.'),
+                                                                    )} (your next pay day).  Disclaimer, this is only as accurate as the information you provide the application and only applies when you have 1 payment source (wallet)'),
                                                                     actions: [
                                                                       TextButton(
                                                                         onPressed:
@@ -1310,155 +1354,480 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                             ),
                                           );
                                         }
-                                        return RefreshIndicator(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primaryText,
-                                          strokeWidth: 5.0,
-                                          onRefresh: () async {
-                                            setState(() => _model
-                                                .apiRequestCompleter = null);
-                                            await _model
-                                                .waitForApiRequestCompleted();
-                                          },
-                                          child: ListView.separated(
-                                            padding: const EdgeInsets.fromLTRB(
-                                              0,
-                                              4.0,
-                                              0,
-                                              4.0,
-                                            ),
-                                            primary: false,
-                                            shrinkWrap: true,
-                                            scrollDirection: Axis.vertical,
-                                            itemCount: ledgerEntries.length,
-                                            separatorBuilder: (_, __) =>
-                                                const SizedBox(height: 4.0),
-                                            itemBuilder:
-                                                (context, ledgerEntriesIndex) {
-                                              final ledgerEntriesItem =
-                                                  ledgerEntries[
-                                                      ledgerEntriesIndex];
-                                              return Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  wrapWithModel(
-                                                    model: _model
-                                                        .ledgerEntryModels
-                                                        .getModel(
-                                                      ledgerEntriesIndex
-                                                          .toString(),
-                                                      ledgerEntriesIndex,
-                                                    ),
-                                                    updateCallback: () =>
-                                                        setState(() {}),
-                                                    updateOnChange: true,
-                                                    child: LedgerEntryWidget(
-                                                      key: Key(
-                                                        'Keynmu_${ledgerEntriesIndex.toString()}',
+                                        return ListView.separated(
+                                          padding: const EdgeInsets.fromLTRB(
+                                            0,
+                                            4.0,
+                                            0,
+                                            4.0,
+                                          ),
+                                          primary: false,
+                                          shrinkWrap: true,
+                                          scrollDirection: Axis.vertical,
+                                          itemCount: ledgerEntries.length,
+                                          separatorBuilder: (_, __) =>
+                                              const SizedBox(height: 4.0),
+                                          itemBuilder:
+                                              (context, ledgerEntriesIndex) {
+                                            final ledgerEntriesItem =
+                                                ledgerEntries[
+                                                    ledgerEntriesIndex];
+                                            return Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 8.0, 0.0, 0.0),
+                                                  child: Semantics(
+                                                    label:
+                                                        'Click to view transaction Details',
+                                                    child: InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        context.pushNamed(
+                                                          'TransactionDetails',
+                                                          queryParameters: {
+                                                            'ledgerId':
+                                                                serializeParam(
+                                                              valueOrDefault<
+                                                                  String>(
+                                                                TppbGroup
+                                                                    .getLedgerCall
+                                                                    .ledgerId(
+                                                                  listViewGetLedgerResponse
+                                                                      .jsonBody,
+                                                                )?[ledgerEntriesIndex],
+                                                                'true',
+                                                              ),
+                                                              ParamType.String,
+                                                            ),
+                                                            'billId':
+                                                                serializeParam(
+                                                              TppbGroup
+                                                                  .getLedgerCall
+                                                                  .billId(
+                                                                listViewGetLedgerResponse
+                                                                    .jsonBody,
+                                                              )?[ledgerEntriesIndex],
+                                                              ParamType.String,
+                                                            ),
+                                                            'transactionId':
+                                                                serializeParam(
+                                                              TppbGroup
+                                                                  .getLedgerCall
+                                                                  .transactionId(
+                                                                listViewGetLedgerResponse
+                                                                    .jsonBody,
+                                                              )?[ledgerEntriesIndex],
+                                                              ParamType.String,
+                                                            ),
+                                                            'incomeId':
+                                                                serializeParam(
+                                                              TppbGroup
+                                                                  .getLedgerCall
+                                                                  .incomeId(
+                                                                listViewGetLedgerResponse
+                                                                    .jsonBody,
+                                                              )?[ledgerEntriesIndex],
+                                                              ParamType.String,
+                                                            ),
+                                                            'type':
+                                                                serializeParam(
+                                                              TppbGroup
+                                                                  .getLedgerCall
+                                                                  .type(
+                                                                listViewGetLedgerResponse
+                                                                    .jsonBody,
+                                                              )?[ledgerEntriesIndex],
+                                                              ParamType.String,
+                                                            ),
+                                                          }.withoutNulls,
+                                                        );
+                                                      },
+                                                      child: Material(
+                                                        color:
+                                                            Colors.transparent,
+                                                        elevation: 5.0,
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      12.0),
+                                                        ),
+                                                        child: SafeArea(
+                                                          child: Container(
+                                                            width: 368.0,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryBackground,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          12.0),
+                                                              border:
+                                                                  Border.all(
+                                                                color: valueOrDefault<
+                                                                        bool>(
+                                                                  TppbGroup
+                                                                      .getLedgerCall
+                                                                      .status(
+                                                                    listViewGetLedgerResponse
+                                                                        .jsonBody,
+                                                                  )?[ledgerEntriesIndex],
+                                                                  true,
+                                                                )
+                                                                    ? FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondary
+                                                                    : FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .alternate,
+                                                                width: 2.0,
+                                                              ),
+                                                            ),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .center,
+                                                                  children: [
+                                                                    AutoSizeText(
+                                                                      valueOrDefault<
+                                                                          String>(
+                                                                        TppbGroup
+                                                                            .getLedgerCall
+                                                                            .description(
+                                                                          listViewGetLedgerResponse
+                                                                              .jsonBody,
+                                                                        )?[ledgerEntriesIndex],
+                                                                        'Loading....',
+                                                                      ).maybeHandleOverflow(
+                                                                        maxChars:
+                                                                            20,
+                                                                        replacement:
+                                                                            '…',
+                                                                      ),
+                                                                      textAlign:
+                                                                          TextAlign
+                                                                              .center,
+                                                                      maxLines:
+                                                                          1,
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelLarge
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Noto Sans JP',
+                                                                            fontSize:
+                                                                                23.0,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FontWeight.w600,
+                                                                          ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                                Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      children: [
+                                                                        Column(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.max,
+                                                                          mainAxisAlignment:
+                                                                              MainAxisAlignment.center,
+                                                                          children: [
+                                                                            Align(
+                                                                              alignment: const AlignmentDirectional(0.0, -1.0),
+                                                                              child: Padding(
+                                                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+                                                                                child: Semantics(
+                                                                                  label: 'Click to toggle Status',
+                                                                                  child: FlutterFlowIconButton(
+                                                                                    borderColor: Colors.transparent,
+                                                                                    borderRadius: 20.0,
+                                                                                    borderWidth: 1.0,
+                                                                                    buttonSize: 40.0,
+                                                                                    icon: Icon(
+                                                                                      Icons.check_circle,
+                                                                                      color: valueOrDefault<bool>(
+                                                                                        TppbGroup.getLedgerCall.status(
+                                                                                          listViewGetLedgerResponse.jsonBody,
+                                                                                        )?[ledgerEntriesIndex],
+                                                                                        true,
+                                                                                      )
+                                                                                          ? FlutterFlowTheme.of(context).secondary
+                                                                                          : FlutterFlowTheme.of(context).alternate,
+                                                                                      size: 24.0,
+                                                                                    ),
+                                                                                    showLoadingIndicator: true,
+                                                                                    onPressed: () async {
+                                                                                      _model.editLedgerEntryAsClearedOutput = await TppbGroup.editLedgerEntryAsClearedCall.call(
+                                                                                        ledgerId: valueOrDefault<String>(
+                                                                                          TppbGroup.getLedgerCall.ledgerId(
+                                                                                            listViewGetLedgerResponse.jsonBody,
+                                                                                          )?[ledgerEntriesIndex],
+                                                                                          'true',
+                                                                                        ),
+                                                                                        authenticationToken: currentJwtToken,
+                                                                                      );
+
+                                                                                      if ((_model.editLedgerEntryAsClearedOutput?.succeeded ?? true)) {
+                                                                                        setState(() => _model.apiRequestCompleter = null);
+                                                                                        await _model.waitForApiRequestCompleted();
+
+                                                                                        setState(() {});
+                                                                                      } else {
+                                                                                        await showDialog(
+                                                                                          context: context,
+                                                                                          builder: (alertDialogContext) {
+                                                                                            return AlertDialog(
+                                                                                              title: const Text('Error'),
+                                                                                              content: Text(TppbGroup.editLedgerEntryAsClearedCall
+                                                                                                  .message(
+                                                                                                    (_model.editLedgerEntryAsClearedOutput?.jsonBody ?? ''),
+                                                                                                  )
+                                                                                                  .toString()),
+                                                                                              actions: [
+                                                                                                TextButton(
+                                                                                                  onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                                  child: const Text('Ok'),
+                                                                                                ),
+                                                                                              ],
+                                                                                            );
+                                                                                          },
+                                                                                        );
+                                                                                      }
+
+                                                                                      setState(() {});
+                                                                                    },
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                        Expanded(
+                                                                          child:
+                                                                              Column(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.max,
+                                                                            children: [
+                                                                              Row(
+                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                children: [
+                                                                                  AutoSizeText(
+                                                                                    valueOrDefault<String>(
+                                                                                      'Wallet: ${valueOrDefault<String>(
+                                                                                        TppbGroup.getLedgerCall.paymentSourceName(
+                                                                                          listViewGetLedgerResponse.jsonBody,
+                                                                                        )?[ledgerEntriesIndex],
+                                                                                        'Loading....',
+                                                                                      )}',
+                                                                                      'Wallet: Loading...',
+                                                                                    ).maybeHandleOverflow(
+                                                                                      maxChars: 20,
+                                                                                      replacement: '…',
+                                                                                    ),
+                                                                                    maxLines: 1,
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                          fontFamily: 'Noto Sans JP',
+                                                                                          letterSpacing: 0.0,
+                                                                                        ),
+                                                                                  ),
+                                                                                ],
+                                                                              ),
+                                                                              Row(
+                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                children: [
+                                                                                  AutoSizeText(
+                                                                                    valueOrDefault<String>(
+                                                                                      'Category: ${valueOrDefault<String>(
+                                                                                        TppbGroup.getLedgerCall.category(
+                                                                                          listViewGetLedgerResponse.jsonBody,
+                                                                                        )?[ledgerEntriesIndex],
+                                                                                        'Loading....',
+                                                                                      )}',
+                                                                                      'Loading...',
+                                                                                    ).maybeHandleOverflow(
+                                                                                      maxChars: 20,
+                                                                                      replacement: '…',
+                                                                                    ),
+                                                                                    maxLines: 1,
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                          fontFamily: 'Noto Sans JP',
+                                                                                          letterSpacing: 0.0,
+                                                                                        ),
+                                                                                  ),
+                                                                                ],
+                                                                              ),
+                                                                              Padding(
+                                                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                                                                                child: Row(
+                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                  children: [
+                                                                                    AutoSizeText(
+                                                                                      valueOrDefault<String>(
+                                                                                        TppbGroup.getLedgerCall.transactionDate(
+                                                                                          listViewGetLedgerResponse.jsonBody,
+                                                                                        )?[ledgerEntriesIndex],
+                                                                                        'Loading....',
+                                                                                      ),
+                                                                                      maxLines: 1,
+                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                            fontFamily: 'Noto Sans JP',
+                                                                                            letterSpacing: 0.0,
+                                                                                          ),
+                                                                                    ),
+                                                                                  ],
+                                                                                ),
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                        ),
+                                                                        Expanded(
+                                                                          child:
+                                                                              Column(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.max,
+                                                                            children: [
+                                                                              Row(
+                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                mainAxisAlignment: MainAxisAlignment.end,
+                                                                                children: [
+                                                                                  Expanded(
+                                                                                    child: AutoSizeText(
+                                                                                      valueOrDefault<String>(
+                                                                                        '${valueOrDefault<String>(
+                                                                                          (valueOrDefault<String>(
+                                                                                                        TppbGroup.getLedgerCall.transactionType(
+                                                                                                          listViewGetLedgerResponse.jsonBody,
+                                                                                                        )?[ledgerEntriesIndex],
+                                                                                                        'true',
+                                                                                                      ) ==
+                                                                                                      'Debit') ||
+                                                                                                  (valueOrDefault<String>(
+                                                                                                        TppbGroup.getLedgerCall.transactionType(
+                                                                                                          listViewGetLedgerResponse.jsonBody,
+                                                                                                        )?[ledgerEntriesIndex],
+                                                                                                        'true',
+                                                                                                      ) ==
+                                                                                                      'debit')
+                                                                                              ? '-'
+                                                                                              : '+',
+                                                                                          '-',
+                                                                                        )}${valueOrDefault<String>(
+                                                                                          formatNumber(
+                                                                                            TppbGroup.getLedgerCall.amount(
+                                                                                              listViewGetLedgerResponse.jsonBody,
+                                                                                            )?[ledgerEntriesIndex],
+                                                                                            formatType: FormatType.custom,
+                                                                                            currency: '',
+                                                                                            format: '###,##0.00',
+                                                                                            locale: '',
+                                                                                          ),
+                                                                                          'true',
+                                                                                        )}',
+                                                                                        'Loading...',
+                                                                                      ),
+                                                                                      textAlign: TextAlign.end,
+                                                                                      maxLines: 1,
+                                                                                      style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                            fontFamily: 'Noto Sans JP',
+                                                                                            color: (valueOrDefault<String>(
+                                                                                                          TppbGroup.getLedgerCall.transactionType(
+                                                                                                            listViewGetLedgerResponse.jsonBody,
+                                                                                                          )?[ledgerEntriesIndex],
+                                                                                                          'true',
+                                                                                                        ) ==
+                                                                                                        'Debit') ||
+                                                                                                    (valueOrDefault<String>(
+                                                                                                          TppbGroup.getLedgerCall.transactionType(
+                                                                                                            listViewGetLedgerResponse.jsonBody,
+                                                                                                          )?[ledgerEntriesIndex],
+                                                                                                          'true',
+                                                                                                        ) ==
+                                                                                                        'debit')
+                                                                                                ? FlutterFlowTheme.of(context).error
+                                                                                                : FlutterFlowTheme.of(context).tertiary,
+                                                                                            fontSize: 38.73,
+                                                                                            letterSpacing: 0.0,
+                                                                                            fontWeight: FontWeight.bold,
+                                                                                          ),
+                                                                                    ),
+                                                                                  ),
+                                                                                ].divide(const SizedBox(width: 0.0)).around(const SizedBox(width: 0.0)),
+                                                                              ),
+                                                                              Row(
+                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                mainAxisAlignment: MainAxisAlignment.end,
+                                                                                children: [
+                                                                                  Padding(
+                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 8.0),
+                                                                                    child: Text(
+                                                                                      valueOrDefault<String>(
+                                                                                        formatNumber(
+                                                                                          TppbGroup.getLedgerCall.runningTotal(
+                                                                                            listViewGetLedgerResponse.jsonBody,
+                                                                                          )?[ledgerEntriesIndex],
+                                                                                          formatType: FormatType.custom,
+                                                                                          currency: '',
+                                                                                          format: '###,##0.00',
+                                                                                          locale: '',
+                                                                                        ),
+                                                                                        'Loading...',
+                                                                                      ),
+                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                            fontFamily: 'Noto Sans JP',
+                                                                                            letterSpacing: 0.0,
+                                                                                          ),
+                                                                                    ),
+                                                                                  ),
+                                                                                ],
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
                                                       ),
-                                                      description:
-                                                          valueOrDefault<
-                                                              String>(
-                                                        TppbGroup.getLedgerCall
-                                                            .description(
-                                                          listViewGetLedgerResponse
-                                                              .jsonBody,
-                                                        )?[ledgerEntriesIndex],
-                                                        'Loading...',
-                                                      ),
-                                                      status: TppbGroup
-                                                          .getLedgerCall
-                                                          .status(
-                                                        listViewGetLedgerResponse
-                                                            .jsonBody,
-                                                      )?[ledgerEntriesIndex],
-                                                      ledgerId: TppbGroup
-                                                          .getLedgerCall
-                                                          .ledgerId(
-                                                        listViewGetLedgerResponse
-                                                            .jsonBody,
-                                                      )?[ledgerEntriesIndex],
-                                                      paymentSourceName:
-                                                          valueOrDefault<
-                                                              String>(
-                                                        TppbGroup.getLedgerCall
-                                                            .paymentSourceName(
-                                                          listViewGetLedgerResponse
-                                                              .jsonBody,
-                                                        )?[ledgerEntriesIndex],
-                                                        'Loading...',
-                                                      ),
-                                                      category: valueOrDefault<
-                                                          String>(
-                                                        TppbGroup.getLedgerCall
-                                                            .category(
-                                                          listViewGetLedgerResponse
-                                                              .jsonBody,
-                                                        )?[ledgerEntriesIndex],
-                                                        'Loading...',
-                                                      ),
-                                                      transactionType:
-                                                          valueOrDefault<
-                                                              String>(
-                                                        TppbGroup.getLedgerCall
-                                                            .transactionType(
-                                                          listViewGetLedgerResponse
-                                                              .jsonBody,
-                                                        )?[ledgerEntriesIndex],
-                                                        'Loading...',
-                                                      ),
-                                                      amount: valueOrDefault<
-                                                          double>(
-                                                        TppbGroup.getLedgerCall
-                                                            .amount(
-                                                          listViewGetLedgerResponse
-                                                              .jsonBody,
-                                                        )?[ledgerEntriesIndex],
-                                                        123.12,
-                                                      ),
-                                                      runningTotal:
-                                                          valueOrDefault<
-                                                              double>(
-                                                        TppbGroup.getLedgerCall
-                                                            .runningTotal(
-                                                          listViewGetLedgerResponse
-                                                              .jsonBody,
-                                                        )?[ledgerEntriesIndex],
-                                                        123.12,
-                                                      ),
-                                                      billId: TppbGroup
-                                                          .getLedgerCall
-                                                          .billId(
-                                                        listViewGetLedgerResponse
-                                                            .jsonBody,
-                                                      )?[ledgerEntriesIndex],
-                                                      transactionId: TppbGroup
-                                                          .getLedgerCall
-                                                          .transactionId(
-                                                        listViewGetLedgerResponse
-                                                            .jsonBody,
-                                                      )?[ledgerEntriesIndex],
-                                                      incomeId: TppbGroup
-                                                          .getLedgerCall
-                                                          .incomeId(
-                                                        listViewGetLedgerResponse
-                                                            .jsonBody,
-                                                      )?[ledgerEntriesIndex],
-                                                      transactionDate: TppbGroup
-                                                          .getLedgerCall
-                                                          .transactionDate(
-                                                        listViewGetLedgerResponse
-                                                            .jsonBody,
-                                                      )?[ledgerEntriesIndex],
                                                     ),
                                                   ),
-                                                ],
-                                              );
-                                            },
-                                          ),
+                                                ),
+                                              ],
+                                            );
+                                          },
                                         ).animateOnPageLoad(animationsMap[
                                             'listViewOnPageLoadAnimation']!);
                                       },

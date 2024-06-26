@@ -239,34 +239,44 @@ class _BillsWidgetState extends State<BillsWidget>
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
-                                },
-                                text: FFLocalizations.of(context).getText(
-                                  '5i6gmt1b' /* View All Bills */,
-                                ),
-                                options: FFButtonOptions(
-                                  height: 40.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Noto Sans JP',
-                                        letterSpacing: 0.0,
-                                      ),
-                                  elevation: 0.0,
-                                  borderSide: const BorderSide(
-                                    color: Colors.transparent,
-                                    width: 1.0,
+                              if (_model.householdDropDownValue != null &&
+                                  _model.householdDropDownValue != '')
+                                FFButtonWidget(
+                                  onPressed: () async {
+                                    context.pushNamed(
+                                      'ViewAllBills',
+                                      queryParameters: {
+                                        'householdId': serializeParam(
+                                          _model.householdDropDownValue,
+                                          ParamType.String,
+                                        ),
+                                      }.withoutNulls,
+                                    );
+                                  },
+                                  text: FFLocalizations.of(context).getText(
+                                    '5i6gmt1b' /* View or Edit All Bills */,
                                   ),
-                                  borderRadius: BorderRadius.circular(8.0),
+                                  options: FFButtonOptions(
+                                    height: 40.0,
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        24.0, 0.0, 24.0, 0.0),
+                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Noto Sans JP',
+                                          letterSpacing: 0.0,
+                                        ),
+                                    elevation: 0.0,
+                                    borderSide: const BorderSide(
+                                      color: Colors.transparent,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
                                 ),
-                              ),
                             ],
                           ),
                         ],
@@ -445,6 +455,12 @@ class _BillsWidgetState extends State<BillsWidget>
                                                                       dueBillsListViewGetBillsResponse
                                                                           .jsonBody,
                                                                     )?[duelistIndex],
+                                                                    ParamType
+                                                                        .String,
+                                                                  ),
+                                                                  'type':
+                                                                      serializeParam(
+                                                                    'bill',
                                                                     ParamType
                                                                         .String,
                                                                   ),
@@ -739,6 +755,12 @@ class _BillsWidgetState extends State<BillsWidget>
                                                                       pastDueBillsGetBillsResponse
                                                                           .jsonBody,
                                                                     )?[pastDueListIndex],
+                                                                    ParamType
+                                                                        .String,
+                                                                  ),
+                                                                  'type':
+                                                                      serializeParam(
+                                                                    'bill',
                                                                     ParamType
                                                                         .String,
                                                                   ),
@@ -1046,6 +1068,12 @@ class _BillsWidgetState extends State<BillsWidget>
                                                                   dueBillsListViewGetBillsResponse
                                                                       .jsonBody,
                                                                 )?[paidbillsIndex],
+                                                                ParamType
+                                                                    .String,
+                                                              ),
+                                                              'type':
+                                                                  serializeParam(
+                                                                'bill',
                                                                 ParamType
                                                                     .String,
                                                               ),
@@ -1362,6 +1390,11 @@ class _BillsWidgetState extends State<BillsWidget>
                                                                 dueBillsListViewGetBillsResponse
                                                                     .jsonBody,
                                                               )?[futureDueBillsIndex],
+                                                              ParamType.String,
+                                                            ),
+                                                            'type':
+                                                                serializeParam(
+                                                              'bill',
                                                               ParamType.String,
                                                             ),
                                                           }.withoutNulls,

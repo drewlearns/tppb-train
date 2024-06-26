@@ -6,7 +6,12 @@ import 'edit_bill_model.dart';
 export 'edit_bill_model.dart';
 
 class EditBillWidget extends StatefulWidget {
-  const EditBillWidget({super.key});
+  const EditBillWidget({
+    super.key,
+    required this.billId,
+  });
+
+  final String? billId;
 
   @override
   State<EditBillWidget> createState() => _EditBillWidgetState();

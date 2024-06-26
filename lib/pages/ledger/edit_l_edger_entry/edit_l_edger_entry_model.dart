@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'edit_ledger_entry_widget.dart' show EditLedgerEntryWidget;
+import 'edit_l_edger_entry_widget.dart' show EditLEdgerEntryWidget;
 import 'package:flutter/material.dart';
 
-class EditLedgerEntryModel extends FlutterFlowModel<EditLedgerEntryWidget> {
+class EditLEdgerEntryModel extends FlutterFlowModel<EditLEdgerEntryWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

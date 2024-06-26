@@ -151,7 +151,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'EditBill',
           path: '/editBill',
           requireAuth: true,
-          builder: (context, params) => const EditBillWidget(),
+          builder: (context, params) => EditBillWidget(
+            billId: params.getParam(
+              'billId',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: 'BillDetails',
@@ -193,7 +198,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'EditIncome',
           path: '/editIncome',
           requireAuth: true,
-          builder: (context, params) => const EditIncomeWidget(),
+          builder: (context, params) => EditIncomeWidget(
+            incomeId: params.getParam(
+              'incomeId',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: 'IncomeDetails',
@@ -214,16 +224,15 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const CategoriesWidget(),
         ),
         FFRoute(
-          name: 'EditLedgerEntry',
-          path: '/editLedgerEntry',
-          requireAuth: true,
-          builder: (context, params) => const EditLedgerEntryWidget(),
-        ),
-        FFRoute(
           name: 'EditTransaction',
           path: '/editTransaction',
           requireAuth: true,
-          builder: (context, params) => const EditTransactionWidget(),
+          builder: (context, params) => EditTransactionWidget(
+            transactionId: params.getParam(
+              'transactionId',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: 'SearchTransactions',
@@ -250,6 +259,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             ),
             incomeId: params.getParam(
               'incomeId',
+              ParamType.String,
+            ),
+            type: params.getParam(
+              'type',
               ParamType.String,
             ),
           ),
@@ -339,7 +352,22 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'ViewAllBills',
           path: '/viewAllBills',
-          builder: (context, params) => const ViewAllBillsWidget(),
+          builder: (context, params) => ViewAllBillsWidget(
+            householdId: params.getParam(
+              'householdId',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'EditLEdgerEntry',
+          path: '/editLEdgerEntry',
+          builder: (context, params) => EditLEdgerEntryWidget(
+            ledgerId: params.getParam(
+              'ledgerId',
+              ParamType.String,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

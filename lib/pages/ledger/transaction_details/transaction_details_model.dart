@@ -6,6 +6,14 @@ import 'package:flutter/material.dart';
 
 class TransactionDetailsModel
     extends FlutterFlowModel<TransactionDetailsWidget> {
+  ///  Local state fields for this page.
+
+  bool revealPassword = false;
+
+  bool copyURL = false;
+
+  bool copyUserName = false;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

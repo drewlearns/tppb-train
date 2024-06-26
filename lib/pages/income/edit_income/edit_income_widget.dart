@@ -6,7 +6,12 @@ import 'edit_income_model.dart';
 export 'edit_income_model.dart';
 
 class EditIncomeWidget extends StatefulWidget {
-  const EditIncomeWidget({super.key});
+  const EditIncomeWidget({
+    super.key,
+    required this.incomeId,
+  });
+
+  final String? incomeId;
 
   @override
   State<EditIncomeWidget> createState() => _EditIncomeWidgetState();

@@ -1,5 +1,4 @@
 import '/backend/api_requests/api_calls.dart';
-import '/components/ledger_entry_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'dart:async';
@@ -32,18 +31,15 @@ class LedgerModel extends FlutterFlowModel<LedgerWidget> {
   // State field(s) for YearDropDown widget.
   int? yearDropDownValue;
   FormFieldController<int>? yearDropDownValueController;
-  // Models for LedgerEntry dynamic component.
-  late FlutterFlowDynamicModels<LedgerEntryModel> ledgerEntryModels;
+  // Stores action output result for [Backend Call - API (editLedgerEntryAsCleared)] action in IconButton widget.
+  ApiCallResponse? editLedgerEntryAsClearedOutput;
 
   @override
-  void initState(BuildContext context) {
-    ledgerEntryModels = FlutterFlowDynamicModels(() => LedgerEntryModel());
-  }
+  void initState(BuildContext context) {}
 
   @override
   void dispose() {
     unfocusNode.dispose();
-    ledgerEntryModels.dispose();
   }
 
   /// Additional helper methods.

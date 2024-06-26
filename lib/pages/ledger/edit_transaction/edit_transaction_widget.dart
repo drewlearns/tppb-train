@@ -6,7 +6,12 @@ import 'edit_transaction_model.dart';
 export 'edit_transaction_model.dart';
 
 class EditTransactionWidget extends StatefulWidget {
-  const EditTransactionWidget({super.key});
+  const EditTransactionWidget({
+    super.key,
+    required this.transactionId,
+  });
+
+  final String? transactionId;
 
   @override
   State<EditTransactionWidget> createState() => _EditTransactionWidgetState();

@@ -18,10 +18,10 @@
   },
   "scripts": {
     "lint": "./node_modules/.bin/eslint --max-warnings=0 .",
-    "serve": "firebase -P tppb2-f0p5cc emulators:start --only functions",
-    "shell": "firebase -P tppb2-f0p5cc functions:shell",
+    "serve": "firebase -P the-purple-piggy-bank-llc emulators:start --only functions",
+    "shell": "firebase -P the-purple-piggy-bank-llc functions:shell",
     "start": "npm run shell",
-    "logs": "firebase -P tppb2-f0p5cc functions:log",
+    "logs": "firebase -P the-purple-piggy-bank-llc functions:log",
     "compile": "cp ../../tsconfig.template.json ./tsconfig-compile.json && tsc --project tsconfig-compile.json"
   },
   "engines": {

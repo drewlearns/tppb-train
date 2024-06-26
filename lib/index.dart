@@ -26,8 +26,6 @@ export '/pages/income/income_details/income_details_widget.dart'
 export '/pages/ledger/add_transaction/add_transaction_widget.dart'
     show AddTransactionWidget;
 export '/pages/ledger/categories/categories_widget.dart' show CategoriesWidget;
-export '/pages/ledger/edit_ledger_entry/edit_ledger_entry_widget.dart'
-    show EditLedgerEntryWidget;
 export '/pages/ledger/edit_transaction/edit_transaction_widget.dart'
     show EditTransactionWidget;
 export '/pages/ledger/search_transactions/search_transactions_widget.dart'
@@ -59,3 +57,5 @@ export '/pages/user/change_password/change_password_widget.dart'
     show ChangePasswordWidget;
 export '/pages/bills/view_all_bills/view_all_bills_widget.dart'
     show ViewAllBillsWidget;
+export '/pages/ledger/edit_l_edger_entry/edit_l_edger_entry_widget.dart'
+    show EditLEdgerEntryWidget;

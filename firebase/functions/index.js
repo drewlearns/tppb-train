@@ -17,7 +17,7 @@ const secretKey = (isProd) =>
  *
  */
 exports.initStripePayment = functions
-  .region("us-east1")
+  .region("us-central1")
   .https.onCall(async (data, context) => {
     if (!context.auth) {
       return "Unauthenticated calls are not allowed.";
@@ -29,7 +29,7 @@ exports.initStripePayment = functions
  *
  */
 exports.initStripeTestPayment = functions
-  .region("us-east1")
+  .region("us-central1")
   .https.onCall(async (data, context) => {
     if (!context.auth) {
       return "Unauthenticated calls are not allowed.";

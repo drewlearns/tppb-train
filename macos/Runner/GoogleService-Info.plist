@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyDopDzN8BMAbUsGxk9q_zbUSNnUoV_UAP8</string>
+	<string>AIzaSyBAUQDqRVlZ9go4mv-6O2-d9GSTIRvNgXw</string>
 	<key>GCM_SENDER_ID</key>
-	<string>701061003268</string>
+	<string>109630664075</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.thepurplepiggybank.app</string>
 	<key>PROJECT_ID</key>
-	<string>tppb2-f0p5cc</string>
+	<string>the-purple-piggy-bank-llc</string>
 	<key>STORAGE_BUCKET</key>
-	<string>tppb2-f0p5cc.appspot.com</string>
+	<string>the-purple-piggy-bank-llc.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:701061003268:ios:3ce4974b8f353466271d51</string>
+	<string>1:109630664075:ios:f54d19ff1ea81bc8b6d38e</string>
 </dict>
 </plist>
