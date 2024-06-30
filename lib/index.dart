@@ -4,8 +4,7 @@ export '/pages/ledger/ledger/ledger_widget.dart' show LedgerWidget;
 export '/pages/bills/bills/bills_widget.dart' show BillsWidget;
 export '/pages/income/incomes/incomes_widget.dart' show IncomesWidget;
 export '/pages/misc/more/more_widget.dart' show MoreWidget;
-export '/pages/threshold/threshold/threshold_widget.dart' show ThresholdWidget;
-export '/pages/sales/sales_page/sales_page_widget.dart' show SalesPageWidget;
+export '/billing/sales_page/sales_page_widget.dart' show SalesPageWidget;
 export '/pages/bills/add_bill/add_bill_widget.dart' show AddBillWidget;
 export '/pages/bills/edit_bill/edit_bill_widget.dart' show EditBillWidget;
 export '/pages/bills/bill_details/bill_details_widget.dart'
@@ -57,3 +56,5 @@ export '/pages/bills/view_all_bills/view_all_bills_widget.dart'
     show ViewAllBillsWidget;
 export '/pages/ledger/edit_l_edger_entry/edit_l_edger_entry_widget.dart'
     show EditLEdgerEntryWidget;
+export '/wallet/add_wallet/add_wallet_widget.dart' show AddWalletWidget;
+export '/billing/account/account_widget.dart' show AccountWidget;

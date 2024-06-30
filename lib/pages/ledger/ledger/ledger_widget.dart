@@ -40,24 +40,109 @@ class _LedgerWidgetState extends State<LedgerWidget>
       if (RootPageContext.isInactiveRootPage(context)) {
         return;
       }
-      _model.gethouseholdOutput = await TppbGroup.getHouseholdCall.call(
-        authenticationToken: currentJwtToken,
+      _model.subscriptionCheckerOutput =
+          await TppbGroup.subscriptionCheckerCall.call(
+        userUuid: currentUserUid,
       );
 
-      setState(() {
-        _model.householdDropDownValueController?.value = valueOrDefault<String>(
-          TppbGroup.getHouseholdCall
-              .householdIds(
-                (_model.gethouseholdOutput?.jsonBody ?? ''),
-              )
-              ?.first,
-          'Loading...',
+      if ((_model.subscriptionCheckerOutput?.succeeded ?? true)) {
+        if (TppbGroup.subscriptionCheckerCall.isTrial(
+          (_model.subscriptionCheckerOutput?.jsonBody ?? ''),
+        )!) {
+          var confirmDialogResponse = await showDialog<bool>(
+                context: context,
+                builder: (alertDialogContext) {
+                  return AlertDialog(
+                    title: const Text('Thank you for Trying Our App'),
+                    content: Text('Your trial ends ${valueOrDefault<String>(
+                      TppbGroup.subscriptionCheckerCall.subscriptionEndDate(
+                        (_model.subscriptionCheckerOutput?.jsonBody ?? ''),
+                      ),
+                      'after 14 days',
+                    )}. Please consider purchasing from the account page'),
+                    actions: [
+                      TextButton(
+                        onPressed: () =>
+                            Navigator.pop(alertDialogContext, false),
+                        child: const Text('Buy now'),
+                      ),
+                      TextButton(
+                        onPressed: () =>
+                            Navigator.pop(alertDialogContext, true),
+                        child: const Text('Continue'),
+                      ),
+                    ],
+                  );
+                },
+              ) ??
+              false;
+          if (!confirmDialogResponse) {
+            if (Navigator.of(context).canPop()) {
+              context.pop();
+            }
+            context.pushNamedAuth('SalesPage', context.mounted);
+          }
+        } else if (TppbGroup.subscriptionCheckerCall.isExpired(
+          (_model.subscriptionCheckerOutput?.jsonBody ?? ''),
+        )!) {
+          var confirmDialogResponse = await showDialog<bool>(
+                context: context,
+                builder: (alertDialogContext) {
+                  return AlertDialog(
+                    title: const Text(
+                        'Your  trial Period is over or your subscription has expired'),
+                    content:
+                        Text('Your subscription ended${valueOrDefault<String>(
+                      TppbGroup.subscriptionCheckerCall.subscriptionEndDate(
+                        (_model.subscriptionCheckerOutput?.jsonBody ?? ''),
+                      ),
+                      'after 14 days',
+                    )}. Please consider purchasing from the account page'),
+                    actions: [
+                      TextButton(
+                        onPressed: () =>
+                            Navigator.pop(alertDialogContext, false),
+                        child: const Text('Buy now'),
+                      ),
+                      TextButton(
+                        onPressed: () =>
+                            Navigator.pop(alertDialogContext, true),
+                        child: const Text('Log Out'),
+                      ),
+                    ],
+                  );
+                },
+              ) ??
+              false;
+          if (confirmDialogResponse) {
+            GoRouter.of(context).prepareAuthEvent();
+            await authManager.signOut();
+            GoRouter.of(context).clearRedirectLocation();
+          } else {
+            if (Navigator.of(context).canPop()) {
+              context.pop();
+            }
+            context.pushNamedAuth('Account', context.mounted);
+          }
+        }
+      } else {
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              title: const Text('Error'),
+              content: const Text(
+                  'Error Checking Subscription Status - Please contact support, help@thepurplepiggybank.com'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: const Text('Ok'),
+                ),
+              ],
+            );
+          },
         );
-      });
-      _model.filterClicked = false;
-      setState(() {});
-      setState(() => _model.apiRequestCompleter = null);
-      await _model.waitForApiRequestCompleted();
+      }
     });
 
     animationsMap.addAll({
@@ -224,146 +309,136 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
-                                            if ((_model.gethouseholdOutput
-                                                    ?.succeeded ??
-                                                true))
-                                              Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 8.0, 0.0, 8.0),
-                                                child: FutureBuilder<
-                                                    ApiCallResponse>(
-                                                  future: TppbGroup
-                                                      .getHouseholdCall
-                                                      .call(
-                                                    authenticationToken:
-                                                        valueOrDefault<String>(
-                                                      currentJwtToken,
-                                                      'Loading...',
-                                                    ),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 8.0, 0.0, 8.0),
+                                              child: FutureBuilder<
+                                                  ApiCallResponse>(
+                                                future: TppbGroup
+                                                    .getHouseholdCall
+                                                    .call(
+                                                  authenticationToken:
+                                                      valueOrDefault<String>(
+                                                    currentJwtToken,
+                                                    'Loading...',
                                                   ),
-                                                  builder: (context, snapshot) {
-                                                    // Customize what your widget looks like when it's loading.
-                                                    if (!snapshot.hasData) {
-                                                      return Center(
-                                                        child: SizedBox(
-                                                          width: 50.0,
-                                                          height: 50.0,
-                                                          child:
-                                                              CircularProgressIndicator(
-                                                            valueColor:
-                                                                AlwaysStoppedAnimation<
-                                                                    Color>(
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .primary,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      );
-                                                    }
-                                                    final householdDropDownGetHouseholdResponse =
-                                                        snapshot.data!;
-                                                    return FlutterFlowDropDown<
-                                                        String>(
-                                                      controller: _model
-                                                              .householdDropDownValueController ??=
-                                                          FormFieldController<
-                                                              String>(null),
-                                                      options: List<
-                                                              String>.from(
-                                                          TppbGroup
-                                                              .getHouseholdCall
-                                                              .householdIds(
-                                                        householdDropDownGetHouseholdResponse
-                                                            .jsonBody,
-                                                      )!),
-                                                      optionLabels: TppbGroup
-                                                          .getHouseholdCall
-                                                          .householdNames(
-                                                        householdDropDownGetHouseholdResponse
-                                                            .jsonBody,
-                                                      )!,
-                                                      onChanged: (val) async {
-                                                        setState(() => _model
-                                                                .householdDropDownValue =
-                                                            val);
-                                                        setState(() => _model
-                                                                .apiRequestCompleter =
-                                                            null);
-                                                        await _model
-                                                            .waitForApiRequestCompleted();
-
-                                                        setState(() {});
-                                                      },
-                                                      width: 300.0,
-                                                      height: 56.0,
-                                                      textStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Noto Sans JP',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                      hintText:
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                        'ne8su8g7' /* Please select... */,
-                                                      ),
-                                                      icon: Icon(
-                                                        Icons
-                                                            .keyboard_arrow_down_rounded,
-                                                        color:
+                                                ),
+                                                builder: (context, snapshot) {
+                                                  // Customize what your widget looks like when it's loading.
+                                                  if (!snapshot.hasData) {
+                                                    return Center(
+                                                      child: SizedBox(
+                                                        width: 50.0,
+                                                        height: 50.0,
+                                                        child:
+                                                            CircularProgressIndicator(
+                                                          valueColor:
+                                                              AlwaysStoppedAnimation<
+                                                                  Color>(
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .secondaryText,
-                                                        size: 24.0,
+                                                                .primary,
+                                                          ),
+                                                        ),
                                                       ),
-                                                      fillColor: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                      elevation: 2.0,
-                                                      borderColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .alternate,
-                                                      borderWidth: 2.0,
-                                                      borderRadius: 8.0,
-                                                      margin:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  16.0,
-                                                                  0.0,
-                                                                  16.0,
-                                                                  0.0),
-                                                      hidesUnderline: true,
-                                                      isOverButton: true,
-                                                      isSearchable: false,
-                                                      isMultiSelect: false,
-                                                      labelText:
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                        'y1wzq8cs' /* Budget */,
-                                                      ),
-                                                      labelTextStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Noto Sans JP',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
                                                     );
-                                                  },
-                                                ),
+                                                  }
+                                                  final householdDropDownGetHouseholdResponse =
+                                                      snapshot.data!;
+                                                  return FlutterFlowDropDown<
+                                                      String>(
+                                                    controller: _model
+                                                            .householdDropDownValueController ??=
+                                                        FormFieldController<
+                                                            String>(null),
+                                                    options: List<String>.from(
+                                                        TppbGroup
+                                                            .getHouseholdCall
+                                                            .householdIds(
+                                                      householdDropDownGetHouseholdResponse
+                                                          .jsonBody,
+                                                    )!),
+                                                    optionLabels: TppbGroup
+                                                        .getHouseholdCall
+                                                        .householdNames(
+                                                      householdDropDownGetHouseholdResponse
+                                                          .jsonBody,
+                                                    )!,
+                                                    onChanged: (val) async {
+                                                      setState(() => _model
+                                                              .householdDropDownValue =
+                                                          val);
+                                                      setState(() => _model
+                                                              .apiRequestCompleter =
+                                                          null);
+                                                      await _model
+                                                          .waitForApiRequestCompleted();
+
+                                                      setState(() {});
+                                                    },
+                                                    width: 300.0,
+                                                    height: 56.0,
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    hintText:
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                      'ne8su8g7' /* Please select... */,
+                                                    ),
+                                                    icon: Icon(
+                                                      Icons
+                                                          .keyboard_arrow_down_rounded,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      size: 24.0,
+                                                    ),
+                                                    fillColor: FlutterFlowTheme
+                                                            .of(context)
+                                                        .secondaryBackground,
+                                                    elevation: 2.0,
+                                                    borderColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
+                                                    borderWidth: 2.0,
+                                                    borderRadius: 8.0,
+                                                    margin:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(16.0, 0.0,
+                                                                16.0, 0.0),
+                                                    hidesUnderline: true,
+                                                    isOverButton: true,
+                                                    isSearchable: false,
+                                                    isMultiSelect: false,
+                                                    labelText:
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                      'y1wzq8cs' /* Budget */,
+                                                    ),
+                                                    labelTextStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Noto Sans JP',
+                                                              letterSpacing:
+                                                                  0.0,
+                                                            ),
+                                                  );
+                                                },
                                               ),
+                                            ),
                                             if (_model.filterClicked)
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
@@ -1067,6 +1142,64 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                           ),
                                                         ],
                                                       ),
+                                                      Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Text(
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                              '2qm5vjd7' /* Threshold */,
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Noto Sans JP',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                          ),
+                                                          SizedBox(
+                                                            width: 360.0,
+                                                            child: Slider(
+                                                              activeColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                              inactiveColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .alternate,
+                                                              min: 0.0,
+                                                              max: 10000.0,
+                                                              value: _model
+                                                                      .sliderValue ??=
+                                                                  500.0,
+                                                              label: _model
+                                                                  .sliderValue
+                                                                  ?.toStringAsFixed(
+                                                                      1),
+                                                              divisions: 100,
+                                                              onChanged:
+                                                                  (newValue) {
+                                                                newValue = double
+                                                                    .parse(newValue
+                                                                        .toStringAsFixed(
+                                                                            1));
+                                                                setState(() =>
+                                                                    _model.sliderValue =
+                                                                        newValue);
+                                                              },
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
                                                     ]
                                                         .divide(const SizedBox(
                                                             height: 4.0))
@@ -1139,7 +1272,7 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                                         .custom,
                                                                 currency: '',
                                                                 format:
-                                                                    '###,###.00',
+                                                                    '###,##0.00',
                                                                 locale: '',
                                                               )}',
                                                               'Total Spent This Month: Loading...',
@@ -1211,20 +1344,23 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                           Text(
                                                             valueOrDefault<
                                                                 String>(
-                                                              'Safe To Spend: ${formatNumber(
-                                                                TppbGroup
-                                                                    .getSafeToSpendCall
-                                                                    .safeToSpend(
-                                                                  rowGetSafeToSpendResponse
-                                                                      .jsonBody,
+                                                              'Safe To Spend: ${valueOrDefault<String>(
+                                                                formatNumber(
+                                                                  TppbGroup
+                                                                      .getSafeToSpendCall
+                                                                      .safeToSpend(
+                                                                    rowGetSafeToSpendResponse
+                                                                        .jsonBody,
+                                                                  ),
+                                                                  formatType:
+                                                                      FormatType
+                                                                          .custom,
+                                                                  currency: '',
+                                                                  format:
+                                                                      '###,##0.00',
+                                                                  locale: '',
                                                                 ),
-                                                                formatType:
-                                                                    FormatType
-                                                                        .custom,
-                                                                currency: '',
-                                                                format:
-                                                                    '###,###.00',
-                                                                locale: '',
+                                                                'Loading...',
                                                               )}',
                                                               'Safe To Spend: Loading...',
                                                             ),
@@ -1325,6 +1461,10 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                   currentJwtToken,
                                               month: _model.monthDropDownValue,
                                               year: _model.yearDropDownValue,
+                                              threshold: valueOrDefault<double>(
+                                                _model.sliderValue,
+                                                500.0,
+                                              ),
                                             )))
                                       .future,
                                   builder: (context, snapshot) {
@@ -1480,9 +1620,19 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                             width: 368.0,
                                                             decoration:
                                                                 BoxDecoration(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryBackground,
+                                                              color: TppbGroup
+                                                                          .getLedgerCall
+                                                                          .threshold(
+                                                                listViewGetLedgerResponse
+                                                                    .jsonBody,
+                                                              )![
+                                                                      ledgerEntriesIndex]
+                                                                  ? FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .error
+                                                                  : FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
@@ -1548,6 +1698,8 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Noto Sans JP',
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).primaryText,
                                                                             fontSize:
                                                                                 23.0,
                                                                             letterSpacing:
@@ -1787,8 +1939,8 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                                                                             'true',
                                                                                                           ) ==
                                                                                                           'debit')
-                                                                                                  ? FlutterFlowTheme.of(context).error
-                                                                                                  : FlutterFlowTheme.of(context).tertiary,
+                                                                                                  ? FlutterFlowTheme.of(context).primaryText
+                                                                                                  : const Color(0xFF1C7A00),
                                                                                               fontSize: 38.73,
                                                                                               letterSpacing: 0.0,
                                                                                               fontWeight: FontWeight.bold,

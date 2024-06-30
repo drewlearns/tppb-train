@@ -128,14 +128,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               params.isEmpty ? const NavBarPage(initialPage: 'More') : const MoreWidget(),
         ),
         FFRoute(
-          name: 'Threshold',
-          path: '/threshold',
-          requireAuth: true,
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'Threshold')
-              : const ThresholdWidget(),
-        ),
-        FFRoute(
           name: 'SalesPage',
           path: '/purchase',
           requireAuth: true,
@@ -162,7 +154,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'BillDetails',
           path: '/billDetails',
           requireAuth: true,
-          builder: (context, params) => const BillDetailsWidget(),
+          builder: (context, params) => BillDetailsWidget(
+            billId: params.getParam(
+              'billId',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: 'AddInvite',
@@ -265,7 +262,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'EditNotification',
           path: '/editNotification',
           requireAuth: true,
-          builder: (context, params) => const EditNotificationWidget(),
+          builder: (context, params) => EditNotificationWidget(
+            billId: params.getParam(
+              'billId',
+              ParamType.String,
+            ),
+            notificationId: params.getParam(
+              'notificationId',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: 'Notifications',
@@ -277,7 +283,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Wallets',
           path: '/wallets',
           requireAuth: true,
-          builder: (context, params) => const WalletsWidget(),
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'Wallets')
+              : const WalletsWidget(),
         ),
         FFRoute(
           name: 'EditWallet',
@@ -364,6 +372,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.String,
             ),
           ),
+        ),
+        FFRoute(
+          name: 'AddWallet',
+          path: '/addWallet',
+          builder: (context, params) => const AddWalletWidget(),
+        ),
+        FFRoute(
+          name: 'Account',
+          path: '/account',
+          requireAuth: true,
+          builder: (context, params) => const AccountWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

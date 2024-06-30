@@ -37,6 +37,8 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
       confirmPasswordTextControllerValidator;
   // State field(s) for MailOptIn widget.
   bool? mailOptInValue;
+  // Stores action output result for [Backend Call - API (create Customer)] action in Button widget.
+  ApiCallResponse? stripeSubscriptionUserCreationOutput;
   // Stores action output result for [Backend Call - API (addUser)] action in Button widget.
   ApiCallResponse? addUserOutput;
   // State field(s) for EmailSignIn widget.

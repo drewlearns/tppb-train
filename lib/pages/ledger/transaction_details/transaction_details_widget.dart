@@ -957,7 +957,7 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                                 Text(
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                    '570pn7qx' /* Toggle me */,
+                                                    'p1bjs3as' /* Toggle me */,
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)

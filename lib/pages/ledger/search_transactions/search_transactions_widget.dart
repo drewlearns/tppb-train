@@ -138,7 +138,7 @@ class _SearchTransactionsWidgetState extends State<SearchTransactionsWidget> {
                                             labelText:
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                              'yxxi30a5' /* Search */,
+                                              'r4m80m5d' /* Search */,
                                             ),
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
@@ -151,7 +151,7 @@ class _SearchTransactionsWidgetState extends State<SearchTransactionsWidget> {
                                             hintText:
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                              'ze61lhuu' /* Search  Keywords, Amounts, Tag... */,
+                                              'ar603yxk' /* Search  Keywords, Amounts, Tag... */,
                                             ),
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
@@ -549,7 +549,7 @@ class _SearchTransactionsWidgetState extends State<SearchTransactionsWidget> {
                                                                                               listViewSearchTransactionsResponse.jsonBody,
                                                                                             )?[searchResultsIndex],
                                                                                             'Loading...',
-                                                                                          ),
+                                                                                          ).maybeHandleOverflow(maxChars: 10),
                                                                                           maxLines: 1,
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Noto Sans JP',

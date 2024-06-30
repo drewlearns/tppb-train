@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'login_model.dart';
 export 'login_model.dart';
 
@@ -64,6 +65,8 @@ class _LoginWidgetState extends State<LoginWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Title(
         title: 'Login',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
@@ -975,8 +978,19 @@ Sign up below to star... */
                                                       context.goNamedAuth(
                                                           'Ledger',
                                                           context.mounted);
-                                                  await authManager
-                                                      .sendEmailVerification();
+                                                  FFAppState().FullName =
+                                                      '${_model.firstNameTextController.text} ${_model.lastNameTextController.text}';
+                                                  _model.stripeSubscriptionUserCreationOutput =
+                                                      await StripeSubscriptionGroup
+                                                          .createCustomerCall
+                                                          .call(
+                                                    email: _model
+                                                        .emailTextController
+                                                        .text,
+                                                    id: currentUserUid,
+                                                    name: FFAppState().FullName,
+                                                  );
+
                                                   _model.addUserOutput =
                                                       await TppbGroup
                                                           .addUserCall
@@ -1028,6 +1042,8 @@ Sign up below to star... */
                                                               },
                                                             ) ??
                                                             false;
+                                                    await authManager
+                                                        .sendEmailVerification();
                                                   } else {
                                                     await showDialog(
                                                       context: context,

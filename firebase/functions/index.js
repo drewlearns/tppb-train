@@ -6,7 +6,7 @@ const stripeModule = require("stripe");
 
 // Credentials
 const kStripeProdSecretKey =
-  "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";
+  "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";
 const kStripeTestSecretKey =
   "sk_test_51OKoUuJMeGUbw0WodKTGYm9ICvEUEy14E2vjIci3XVvDQN0xTK6Yg0mOiCDNIRXYCrlxZT1BGKao12HsHudDXANE00hMkf8i1x";
 

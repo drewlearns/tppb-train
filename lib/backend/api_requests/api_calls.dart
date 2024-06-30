@@ -26,7 +26,7 @@ class TppbGroup {
   static GetHouseholdCall getHouseholdCall = GetHouseholdCall();
   static EditLedgerEntryAsClearedCall editLedgerEntryAsClearedCall =
       EditLedgerEntryAsClearedCall();
-  static GetPaymentSourcesCall getPaymentSourcesCall = GetPaymentSourcesCall();
+  static GetPaymentSourceCall getPaymentSourceCall = GetPaymentSourceCall();
   static AddBillCall addBillCall = AddBillCall();
   static AddIncomeCall addIncomeCall = AddIncomeCall();
   static GetBillsCall getBillsCall = GetBillsCall();
@@ -44,6 +44,11 @@ class TppbGroup {
       GetCurrentMonthIncomeCall();
   static SearchTransactionsCall searchTransactionsCall =
       SearchTransactionsCall();
+  static GetNotificationsCall getNotificationsCall = GetNotificationsCall();
+  static GetNotificationCall getNotificationCall = GetNotificationCall();
+  static EditNotificationCall editNotificationCall = EditNotificationCall();
+  static SubscriptionCheckerCall subscriptionCheckerCall =
+      SubscriptionCheckerCall();
 }
 
 class AddUserCall {
@@ -120,6 +125,7 @@ class GetLedgerCall {
     bool? showCurrentMonthOnly,
     bool? showClearedOnly,
     bool? showCurrentMonthUpToToday = false,
+    double? threshold,
     String? authenticationToken = '',
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
@@ -140,7 +146,8 @@ class GetLedgerCall {
     "showCurrentMonthOnly": $showCurrentMonthOnly,
     "showClearedOnly": $showClearedOnly,
     "showCurrentMonthUpToToday": $showCurrentMonthUpToToday
-  }
+  },
+  "threshold": "$threshold"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'getLedger',
@@ -355,6 +362,15 @@ class GetLedgerCall {
           .map((x) => castToType<String>(x))
           .withoutNulls
           .toList();
+  List<bool>? threshold(dynamic response) => (getJsonField(
+        response,
+        r'''$.data[:].threshold''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
 }
 
 class GetHouseholdCall {
@@ -455,7 +471,7 @@ class EditLedgerEntryAsClearedCall {
       );
 }
 
-class GetPaymentSourcesCall {
+class GetPaymentSourceCall {
   Future<ApiCallResponse> call({
     String? authenticationToken = '',
     String? householdIdGlobal = '',
@@ -473,7 +489,7 @@ class GetPaymentSourcesCall {
   "householdId": "$householdIdGlobal"
 }''';
     return ApiManager.instance.makeApiCall(
-      callName: 'getPaymentSources',
+      callName: 'getPaymentSource',
       apiUrl: '$baseUrl/getPaymentSource',
       callType: ApiCallType.POST,
       headers: {
@@ -507,6 +523,15 @@ class GetPaymentSourcesCall {
       ) as List?)
           ?.withoutNulls
           .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<double>? runningTotals(dynamic response) => (getJsonField(
+        response,
+        r'''$.runningTotals''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<double>(x))
           .withoutNulls
           .toList();
 }
@@ -1556,7 +1581,432 @@ class SearchTransactionsCall {
           .toList();
 }
 
+class GetNotificationsCall {
+  Future<ApiCallResponse> call({
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "authToken": "$authenticationToken"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'getNotifications',
+      apiUrl: '$baseUrl/getNotifications',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  List<String>? notificationId(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].notificationId''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? billId(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].billId''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? title(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].title''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? message(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].message''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? createdAt(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].createdAt''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? updatedAt(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].updatedAt''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? dueDate(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].dueDate''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+}
+
+class GetNotificationCall {
+  Future<ApiCallResponse> call({
+    String? notificationId = '',
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "notificationId": "$notificationId",
+  "authToken": "$authenticationToken"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'getNotification',
+      apiUrl: '$baseUrl/getNotification',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? notificationId(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.notificationId''',
+      ));
+  String? billId(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.billId''',
+      ));
+  String? title(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.title''',
+      ));
+  String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+  String? createdAt(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.createdAt''',
+      ));
+  String? updatedAt(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.updatedAt''',
+      ));
+  String? dueDate(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.dueDate''',
+      ));
+}
+
+class EditNotificationCall {
+  Future<ApiCallResponse> call({
+    String? notificationId = '',
+    String? dueDate = '',
+    String? title = '',
+    String? message = '',
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "authToken": "$authenticationToken",
+  "notificationId": "$notificationId",
+  "title": "$title",
+  "message": "$message",
+  "dueDate": "$dueDate"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'editNotification',
+      apiUrl: '$baseUrl/editNotification',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  dynamic message(dynamic response) => getJsonField(
+        response,
+        r'''$.message''',
+      );
+}
+
+class SubscriptionCheckerCall {
+  Future<ApiCallResponse> call({
+    String? userUuid = '',
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{"uuid":"$userUuid"}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'subscriptionChecker',
+      apiUrl: '$baseUrl/subscriptionChecker',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  bool? isTrial(dynamic response) => castToType<bool>(getJsonField(
+        response,
+        r'''$.trial''',
+      ));
+  bool? isExpired(dynamic response) => castToType<bool>(getJsonField(
+        response,
+        r'''$.expired''',
+      ));
+  String? subscriptionEndDate(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.subscriptionEndDate''',
+      ));
+  bool? isActive(dynamic response) => castToType<bool>(getJsonField(
+        response,
+        r'''$.active''',
+      ));
+  bool? isCancelled(dynamic response) => castToType<bool>(getJsonField(
+        response,
+        r'''$.cancelled''',
+      ));
+}
+
 /// End TPPB Group Code
+
+/// Start stripeSubscription Group Code
+
+class StripeSubscriptionGroup {
+  static String getBaseUrl() => 'https://api.stripe.com/v1';
+  static Map<String, String> headers = {
+    'Authorization':
+        'Bearer sk_test_51OKoUuJMeGUbw0WodKTGYm9ICvEUEy14E2vjIci3XVvDQN0xTK6Yg0mOiCDNIRXYCrlxZT1BGKao12HsHudDXANE00hMkf8i1x',
+    'ContentType': 'application/x-xxx-formm-urlencoded',
+  };
+  static CreateCustomerCall createCustomerCall = CreateCustomerCall();
+  static CreateCheckoutSessionCall createCheckoutSessionCall =
+      CreateCheckoutSessionCall();
+  static GetCustomerPortalSessionCall getCustomerPortalSessionCall =
+      GetCustomerPortalSessionCall();
+}
+
+class CreateCustomerCall {
+  Future<ApiCallResponse> call({
+    String? email = '',
+    String? id = '',
+    String? name = '',
+  }) async {
+    final baseUrl = StripeSubscriptionGroup.getBaseUrl();
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'create Customer',
+      apiUrl: '$baseUrl/customers',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization':
+            'Bearer sk_test_51OKoUuJMeGUbw0WodKTGYm9ICvEUEy14E2vjIci3XVvDQN0xTK6Yg0mOiCDNIRXYCrlxZT1BGKao12HsHudDXANE00hMkf8i1x',
+        'ContentType': 'application/x-xxx-formm-urlencoded',
+      },
+      params: {
+        'email': email,
+        'id': id,
+        'name': name,
+      },
+      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? id(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.id''',
+      ));
+}
+
+class CreateCheckoutSessionCall {
+  Future<ApiCallResponse> call({
+    String? priceId = '',
+    String? mode = '',
+    String? uuid = '',
+    String? cancelUrl = '',
+  }) async {
+    final baseUrl = StripeSubscriptionGroup.getBaseUrl();
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'create checkout session',
+      apiUrl: '$baseUrl/checkout/sessions',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization':
+            'Bearer sk_test_51OKoUuJMeGUbw0WodKTGYm9ICvEUEy14E2vjIci3XVvDQN0xTK6Yg0mOiCDNIRXYCrlxZT1BGKao12HsHudDXANE00hMkf8i1x',
+        'ContentType': 'application/x-xxx-formm-urlencoded',
+      },
+      params: {
+        'mode': mode,
+        'success_url': "https://thepurplepiggybank.com/thankyou",
+        'cancel_url': cancelUrl,
+        'line_items[0][price]': priceId,
+        'line_items[0][quantity': "1",
+        'customer': uuid,
+      },
+      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? subscriptionId(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.id''',
+      ));
+  int? expiresAt(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$.expires_at''',
+      ));
+  int? createdAt(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$.created''',
+      ));
+  String? paymentStatus(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.payment_status''',
+      ));
+  String? url(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.url''',
+      ));
+  dynamic error(dynamic response) => getJsonField(
+        response,
+        r'''$.error''',
+      );
+}
+
+class GetCustomerPortalSessionCall {
+  Future<ApiCallResponse> call({
+    String? uuid = '',
+  }) async {
+    final baseUrl = StripeSubscriptionGroup.getBaseUrl();
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'get customer portal session',
+      apiUrl: '$baseUrl/billing_portal/sessions',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization':
+            'Bearer sk_test_51OKoUuJMeGUbw0WodKTGYm9ICvEUEy14E2vjIci3XVvDQN0xTK6Yg0mOiCDNIRXYCrlxZT1BGKao12HsHudDXANE00hMkf8i1x',
+        'ContentType': 'application/x-xxx-formm-urlencoded',
+      },
+      params: {
+        'customer': uuid,
+      },
+      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? url(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.url''',
+      ));
+}
+
+/// End stripeSubscription Group Code
 
 class ApiPagingParams {
   int nextPageNumber = 0;

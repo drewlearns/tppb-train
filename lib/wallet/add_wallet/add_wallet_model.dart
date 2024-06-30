@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'sales_page_widget.dart' show SalesPageWidget;
+import 'add_wallet_widget.dart' show AddWalletWidget;
 import 'package:flutter/material.dart';
 
-class SalesPageModel extends FlutterFlowModel<SalesPageWidget> {
+class AddWalletModel extends FlutterFlowModel<AddWalletWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

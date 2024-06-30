@@ -11,10 +11,12 @@ class UserStruct extends BaseStruct {
     String? email,
     String? firstName,
     String? lastName,
+    String? stripeCustomerkeyId,
   })  : _uuid = uuid,
         _email = email,
         _firstName = firstName,
-        _lastName = lastName;
+        _lastName = lastName,
+        _stripeCustomerkeyId = stripeCustomerkeyId;
 
   // "uuid" field.
   String? _uuid;
@@ -44,11 +46,19 @@ class UserStruct extends BaseStruct {
 
   bool hasLastName() => _lastName != null;
 
+  // "stripeCustomerkeyId" field.
+  String? _stripeCustomerkeyId;
+  String get stripeCustomerkeyId => _stripeCustomerkeyId ?? '';
+  set stripeCustomerkeyId(String? val) => _stripeCustomerkeyId = val;
+
+  bool hasStripeCustomerkeyId() => _stripeCustomerkeyId != null;
+
   static UserStruct fromMap(Map<String, dynamic> data) => UserStruct(
         uuid: data['uuid'] as String?,
         email: data['email'] as String?,
         firstName: data['firstName'] as String?,
         lastName: data['lastName'] as String?,
+        stripeCustomerkeyId: data['stripeCustomerkeyId'] as String?,
       );
 
   static UserStruct? maybeFromMap(dynamic data) =>
@@ -59,6 +69,7 @@ class UserStruct extends BaseStruct {
         'email': _email,
         'firstName': _firstName,
         'lastName': _lastName,
+        'stripeCustomerkeyId': _stripeCustomerkeyId,
       }.withoutNulls;
 
   @override
@@ -77,6 +88,10 @@ class UserStruct extends BaseStruct {
         ),
         'lastName': serializeParam(
           _lastName,
+          ParamType.String,
+        ),
+        'stripeCustomerkeyId': serializeParam(
+          _stripeCustomerkeyId,
           ParamType.String,
         ),
       }.withoutNulls;
@@ -103,6 +118,11 @@ class UserStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
+        stripeCustomerkeyId: deserializeParam(
+          data['stripeCustomerkeyId'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -114,12 +134,13 @@ class UserStruct extends BaseStruct {
         uuid == other.uuid &&
         email == other.email &&
         firstName == other.firstName &&
-        lastName == other.lastName;
+        lastName == other.lastName &&
+        stripeCustomerkeyId == other.stripeCustomerkeyId;
   }
 
   @override
-  int get hashCode =>
-      const ListEquality().hash([uuid, email, firstName, lastName]);
+  int get hashCode => const ListEquality()
+      .hash([uuid, email, firstName, lastName, stripeCustomerkeyId]);
 }
 
 UserStruct createUserStruct({
@@ -127,10 +148,12 @@ UserStruct createUserStruct({
   String? email,
   String? firstName,
   String? lastName,
+  String? stripeCustomerkeyId,
 }) =>
     UserStruct(
       uuid: uuid,
       email: email,
       firstName: firstName,
       lastName: lastName,
+      stripeCustomerkeyId: stripeCustomerkeyId,
     );

@@ -854,6 +854,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
+    '2qm5vjd7': {
+      'en': 'Threshold',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
     '73lkrwlj': {
       'en': 'Ledger',
       'es': '',
@@ -1070,8 +1079,80 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // More
   {
-    'akcgco24': {
-      'en': 'More',
+    'uyusg8mi': {
+      'en': 'Account',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
+    '980eluqn': {
+      'en': 'Add Household',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
+    'kpyszh1w': {
+      'en': 'Edit Household Name',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
+    'bpwa2rc2': {
+      'en': 'Invitations',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
+    '5ybi6gjg': {
+      'en': 'Edit Members',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
+    '4mbx7eoq': {
+      'en': 'Notifications',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
+    'apfug1th': {
+      'en': 'Export to File',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
+    'yw3eh4o1': {
+      'en': 'Light Mode',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
+    'elhpyvgh': {
+      'en': 'Dark Mode',
       'es': '',
       'fr': '',
       'ru': '',
@@ -1081,45 +1162,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '6mrnu68q': {
       'en': 'More',
-      'es': '',
-      'fr': '',
-      'ru': '',
-      'tl': '',
-      'zh_Hans': '',
-      'zh_Hant': '',
-    },
-  },
-  // Threshold
-  {
-    '2tdj8d46': {
-      'en': 'Please select...',
-      'es': '',
-      'fr': '',
-      'ru': '',
-      'tl': '',
-      'zh_Hans': '',
-      'zh_Hant': '',
-    },
-    'mfbap13t': {
-      'en': 'Search for an item...',
-      'es': '',
-      'fr': '',
-      'ru': '',
-      'tl': '',
-      'zh_Hans': '',
-      'zh_Hant': '',
-    },
-    'a1otjehe': {
-      'en': 'Budget',
-      'es': '',
-      'fr': '',
-      'ru': '',
-      'tl': '',
-      'zh_Hans': '',
-      'zh_Hant': '',
-    },
-    'xrno1jb9': {
-      'en': 'Threshold',
       'es': '',
       'fr': '',
       'ru': '',
@@ -1229,6 +1271,24 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
+    'cjbpl603': {
+      'en': 'Forever',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
+    'bphr994u': {
+      'en': 'Full Access \$149.99 - Forever',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
     'c6yc0uex': {
       'en': 'Continue',
       'es': '',
@@ -1238,8 +1298,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'hmhu8zt6': {
-      'en': 'Restore',
+    'jydlwx7d': {
+      'en': 'Legal',
       'es': '',
       'fr': '',
       'ru': '',
@@ -1247,7 +1307,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'jydlwx7d': {
+    'nyyhtd6x': {
       'en': 'Terms',
       'es': '',
       'fr': '',
@@ -2240,7 +2300,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    '17nm1aqv': {
+    'ojwvwdeo': {
       'en': 'Add',
       'es': '',
       'fr': '',
@@ -2249,7 +2309,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'p9a37jjd': {
+    'ezmac1xn': {
       'en': 'Subtract',
       'es': '',
       'fr': '',
@@ -2267,7 +2327,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    '607z8xgr': {
+    'ckzg4mwp': {
       'en': 'Search for an item...',
       'es': '',
       'fr': '',
@@ -2276,7 +2336,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'qg6jn4io': {
+    '4577feh4': {
       'en': 'Add or Subtract*',
       'es': '',
       'fr': '',
@@ -2321,7 +2381,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    '7ylgyhpi': {
+    'rio16ero': {
       'en': 'Comma Separated list',
       'es': '',
       'fr': '',
@@ -2330,7 +2390,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'yeijn1lt': {
+    '7sxrh96v': {
       'en': 'Cleared?',
       'es': '',
       'fr': '',
@@ -2339,7 +2399,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'b4k1jgru': {
+    'sct8eowz': {
       'en': 'True or False',
       'es': '',
       'fr': '',
@@ -2348,7 +2408,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'qqq7fdur': {
+    'oe5w1lwd': {
       'en': 'Upload Receipt',
       'es': '',
       'fr': '',
@@ -2429,7 +2489,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // SearchTransactions
   {
-    'yxxi30a5': {
+    'r4m80m5d': {
       'en': 'Search',
       'es': '',
       'fr': '',
@@ -2438,7 +2498,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'ze61lhuu': {
+    'ar603yxk': {
       'en': 'Search  Keywords, Amounts, Tags, Categories...',
       'es': '',
       'fr': '',
@@ -2594,7 +2654,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    '570pn7qx': {
+    'p1bjs3as': {
       'en': 'Toggle me',
       'es': '',
       'fr': '',
@@ -2687,8 +2747,62 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // EditNotification
   {
+    'r0ki56im': {
+      'en': 'Pick a New Date',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
+    'djbaasoz': {
+      'en': 'Title*',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
+    '0k227e8q': {
+      'en': 'Message',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
+    'rrgtpl2r': {
+      'en': 'Frequency',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
+    'vqxl1f8p': {
+      'en': 'Day Of Month',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
+    'dw0qog5m': {
+      'en': 'Continue',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
     'sjbxjp5t': {
-      'en': 'Page Title',
+      'en': 'Edit Notification',
       'es': '',
       'fr': '',
       'ru': '',
@@ -2709,7 +2823,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // Notifications
   {
     'gs41b1cl': {
-      'en': 'Page Title',
+      'en': 'Notifications',
       'es': '',
       'fr': '',
       'ru': '',
@@ -2718,7 +2832,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hant': '',
     },
     'mxnq9p6w': {
-      'en': 'Home',
+      'en': 'Notifications',
       'es': '',
       'fr': '',
       'ru': '',
@@ -2729,8 +2843,44 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Wallets
   {
+    'fow3t0no': {
+      'en': 'example',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
+    'uo4dz4vi': {
+      'en': 'Please select...',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
+    'dt6hnwkl': {
+      'en': 'Search for an item...',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
+    'retso69b': {
+      'en': 'Select Household',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
     'uyej0lms': {
-      'en': 'Search',
+      'en': 'Wallets',
       'es': '',
       'fr': '',
       'ru': '',
@@ -2739,7 +2889,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hant': '',
     },
     'nawp5pzi': {
-      'en': 'Home',
+      'en': 'Wallet',
       'es': '',
       'fr': '',
       'ru': '',
@@ -3029,7 +3179,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // EditLEdgerEntry
   {
-    '4qo67f3n': {
+    'dm5i7e9o': {
       'en': 'Edit Ledger Entry',
       'es': '',
       'fr': '',
@@ -3038,8 +3188,86 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'fks17bnc': {
+    '1wnxa45e': {
       'en': 'Home',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
+  },
+  // AddWallet
+  {
+    '0vtt3op0': {
+      'en': 'Page Title',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
+    'hvn04fcj': {
+      'en': 'Home',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
+  },
+  // Account
+  {
+    'tl8c3ips': {
+      'en': 'Billing Portal',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
+    'mrkywghp': {
+      'en': 'Profile',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
+    'gmy6s7c7': {
+      'en': 'Edit Household Members',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
+    'n7o598t7': {
+      'en': 'Purchase or Redeem',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
+    'x8cwslzp': {
+      'en': 'Account Details',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
+    '6c3wp5t0': {
+      'en': 'More',
       'es': '',
       'fr': '',
       'ru': '',
@@ -3053,6 +3281,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '0vgxcamc': {
       'en':
           'In order to take a picture of a receipt, this app requires permissions for camera access',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
+    'l2qb7t33': {
+      'en':
+          'In order to upload a picture of a receipt, this app requires permissions for photo library',
       'es': '',
       'fr': '',
       'ru': '',

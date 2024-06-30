@@ -323,28 +323,59 @@ class _BillsWidgetState extends State<BillsWidget>
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),
                                   tabs: [
-                                    Tab(
-                                      text: FFLocalizations.of(context).getText(
-                                        'biwtfox2' /* Due */,
+                                    Semantics(
+                                      label: 'Refresh  Due Bills ',
+                                      child: Tab(
+                                        text:
+                                            FFLocalizations.of(context).getText(
+                                          'biwtfox2' /* Due */,
+                                        ),
                                       ),
                                     ),
-                                    Tab(
-                                      text: FFLocalizations.of(context).getText(
-                                        '4igamubx' /* Paid */,
+                                    Semantics(
+                                      label: 'Refresh Paid Bills',
+                                      child: Tab(
+                                        text:
+                                            FFLocalizations.of(context).getText(
+                                          '4igamubx' /* Paid */,
+                                        ),
                                       ),
                                     ),
-                                    Tab(
-                                      text: FFLocalizations.of(context).getText(
-                                        'ktydx6q3' /* Future */,
+                                    Semantics(
+                                      label: 'Refresh Future Due Bills List',
+                                      child: Tab(
+                                        text:
+                                            FFLocalizations.of(context).getText(
+                                          'ktydx6q3' /* Future */,
+                                        ),
                                       ),
                                     ),
                                   ],
                                   controller: _model.tabBarController,
                                   onTap: (i) async {
                                     [
-                                      () async {},
-                                      () async {},
-                                      () async {}
+                                      () async {
+                                        setState(() =>
+                                            _model.apiRequestCompleter3 = null);
+                                        await _model
+                                            .waitForApiRequestCompleted3();
+                                        setState(() =>
+                                            _model.apiRequestCompleter4 = null);
+                                        await _model
+                                            .waitForApiRequestCompleted4();
+                                      },
+                                      () async {
+                                        setState(() =>
+                                            _model.apiRequestCompleter1 = null);
+                                        await _model
+                                            .waitForApiRequestCompleted1();
+                                      },
+                                      () async {
+                                        setState(() =>
+                                            _model.apiRequestCompleter2 = null);
+                                        await _model
+                                            .waitForApiRequestCompleted2();
+                                      }
                                     ][i]();
                                   },
                                 ),
@@ -358,13 +389,22 @@ class _BillsWidgetState extends State<BillsWidget>
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           FutureBuilder<ApiCallResponse>(
-                                            future: TppbGroup.getBillsCall.call(
-                                              filterType: 'currentlyDue',
-                                              authenticationToken:
-                                                  currentJwtToken,
-                                              householdIdGlobal:
-                                                  _model.householdDropDownValue,
-                                            ),
+                                            future:
+                                                (_model.apiRequestCompleter3 ??=
+                                                        Completer<
+                                                            ApiCallResponse>()
+                                                          ..complete(TppbGroup
+                                                              .getBillsCall
+                                                              .call(
+                                                            filterType:
+                                                                'currentlyDue',
+                                                            authenticationToken:
+                                                                currentJwtToken,
+                                                            householdIdGlobal:
+                                                                _model
+                                                                    .householdDropDownValue,
+                                                          )))
+                                                    .future,
                                             builder: (context, snapshot) {
                                               // Customize what your widget looks like when it's loading.
                                               if (!snapshot.hasData) {
@@ -656,13 +696,22 @@ class _BillsWidgetState extends State<BillsWidget>
                                             },
                                           ),
                                           FutureBuilder<ApiCallResponse>(
-                                            future: TppbGroup.getBillsCall.call(
-                                              filterType: 'pastDue',
-                                              authenticationToken:
-                                                  currentJwtToken,
-                                              householdIdGlobal:
-                                                  _model.householdDropDownValue,
-                                            ),
+                                            future:
+                                                (_model.apiRequestCompleter4 ??=
+                                                        Completer<
+                                                            ApiCallResponse>()
+                                                          ..complete(TppbGroup
+                                                              .getBillsCall
+                                                              .call(
+                                                            filterType:
+                                                                'pastDue',
+                                                            authenticationToken:
+                                                                currentJwtToken,
+                                                            householdIdGlobal:
+                                                                _model
+                                                                    .householdDropDownValue,
+                                                          )))
+                                                    .future,
                                             builder: (context, snapshot) {
                                               // Customize what your widget looks like when it's loading.
                                               if (!snapshot.hasData) {
@@ -957,7 +1006,7 @@ class _BillsWidgetState extends State<BillsWidget>
                                       ),
                                     ),
                                     FutureBuilder<ApiCallResponse>(
-                                      future: (_model.apiRequestCompleter ??=
+                                      future: (_model.apiRequestCompleter1 ??=
                                               Completer<ApiCallResponse>()
                                                 ..complete(
                                                     TppbGroup.getBillsCall.call(
@@ -986,14 +1035,14 @@ class _BillsWidgetState extends State<BillsWidget>
                                             ),
                                           );
                                         }
-                                        final dueBillsListViewGetBillsResponse =
+                                        final paidBillsListViewGetBillsResponse =
                                             snapshot.data!;
                                         return Builder(
                                           builder: (context) {
                                             final paidbills =
                                                 TppbGroup.getBillsCall
                                                         .ledgerEntries(
-                                                          dueBillsListViewGetBillsResponse
+                                                          paidBillsListViewGetBillsResponse
                                                               .jsonBody,
                                                         )
                                                         ?.map((e) => e)
@@ -1009,11 +1058,11 @@ class _BillsWidgetState extends State<BillsWidget>
                                                       .primaryText,
                                               strokeWidth: 5.0,
                                               onRefresh: () async {
-                                                setState(() =>
-                                                    _model.apiRequestCompleter =
-                                                        null);
+                                                setState(() => _model
+                                                        .apiRequestCompleter1 =
+                                                    null);
                                                 await _model
-                                                    .waitForApiRequestCompleted();
+                                                    .waitForApiRequestCompleted1();
                                               },
                                               child: ListView.builder(
                                                 padding: EdgeInsets.zero,
@@ -1054,7 +1103,7 @@ class _BillsWidgetState extends State<BillsWidget>
                                                                 TppbGroup
                                                                     .getBillsCall
                                                                     .ledgerId(
-                                                                  dueBillsListViewGetBillsResponse
+                                                                  paidBillsListViewGetBillsResponse
                                                                       .jsonBody,
                                                                 )?[paidbillsIndex],
                                                                 ParamType
@@ -1065,7 +1114,7 @@ class _BillsWidgetState extends State<BillsWidget>
                                                                 TppbGroup
                                                                     .getBillsCall
                                                                     .billId(
-                                                                  dueBillsListViewGetBillsResponse
+                                                                  paidBillsListViewGetBillsResponse
                                                                       .jsonBody,
                                                                 )?[paidbillsIndex],
                                                                 ParamType
@@ -1138,7 +1187,7 @@ class _BillsWidgetState extends State<BillsWidget>
                                                                           valueOrDefault<
                                                                               String>(
                                                                             TppbGroup.getBillsCall.description(
-                                                                              dueBillsListViewGetBillsResponse.jsonBody,
+                                                                              paidBillsListViewGetBillsResponse.jsonBody,
                                                                             )?[paidbillsIndex],
                                                                             'Loading...',
                                                                           ),
@@ -1154,7 +1203,7 @@ class _BillsWidgetState extends State<BillsWidget>
                                                                               String>(
                                                                             'Wallet: ${valueOrDefault<String>(
                                                                               TppbGroup.getBillsCall.paymentSourceName(
-                                                                                dueBillsListViewGetBillsResponse.jsonBody,
+                                                                                paidBillsListViewGetBillsResponse.jsonBody,
                                                                               )?[paidbillsIndex],
                                                                               'Loading...',
                                                                             )}',
@@ -1182,7 +1231,7 @@ class _BillsWidgetState extends State<BillsWidget>
                                                                               Text(
                                                                             'Due on: ${valueOrDefault<String>(
                                                                               TppbGroup.getBillsCall.transactionDate(
-                                                                                dueBillsListViewGetBillsResponse.jsonBody,
+                                                                                paidBillsListViewGetBillsResponse.jsonBody,
                                                                               )?[paidbillsIndex],
                                                                               'Due on: Loading...',
                                                                             )}'
@@ -1212,7 +1261,7 @@ class _BillsWidgetState extends State<BillsWidget>
                                                                           TppbGroup
                                                                               .getBillsCall
                                                                               .amount(
-                                                                            dueBillsListViewGetBillsResponse.jsonBody,
+                                                                            paidBillsListViewGetBillsResponse.jsonBody,
                                                                           )?[paidbillsIndex],
                                                                           formatType:
                                                                               FormatType.custom,
@@ -1304,12 +1353,17 @@ class _BillsWidgetState extends State<BillsWidget>
                                       },
                                     ),
                                     FutureBuilder<ApiCallResponse>(
-                                      future: TppbGroup.getBillsCall.call(
-                                        filterType: 'futureDue',
-                                        authenticationToken: currentJwtToken,
-                                        householdIdGlobal:
-                                            _model.householdDropDownValue,
-                                      ),
+                                      future: (_model.apiRequestCompleter2 ??=
+                                              Completer<ApiCallResponse>()
+                                                ..complete(
+                                                    TppbGroup.getBillsCall.call(
+                                                  filterType: 'futureDue',
+                                                  authenticationToken:
+                                                      currentJwtToken,
+                                                  householdIdGlobal: _model
+                                                      .householdDropDownValue,
+                                                )))
+                                          .future,
                                       builder: (context, snapshot) {
                                         // Customize what your widget looks like when it's loading.
                                         if (!snapshot.hasData) {
@@ -1328,14 +1382,14 @@ class _BillsWidgetState extends State<BillsWidget>
                                             ),
                                           );
                                         }
-                                        final dueBillsListViewGetBillsResponse =
+                                        final futureDueBillsListViewGetBillsResponse =
                                             snapshot.data!;
                                         return Builder(
                                           builder: (context) {
                                             final futureDueBills =
                                                 TppbGroup.getBillsCall
                                                         .ledgerEntries(
-                                                          dueBillsListViewGetBillsResponse
+                                                          futureDueBillsListViewGetBillsResponse
                                                               .jsonBody,
                                                         )
                                                         ?.map((e) => e)
@@ -1377,7 +1431,7 @@ class _BillsWidgetState extends State<BillsWidget>
                                                               TppbGroup
                                                                   .getBillsCall
                                                                   .ledgerId(
-                                                                dueBillsListViewGetBillsResponse
+                                                                futureDueBillsListViewGetBillsResponse
                                                                     .jsonBody,
                                                               )?[futureDueBillsIndex],
                                                               ParamType.String,
@@ -1387,7 +1441,7 @@ class _BillsWidgetState extends State<BillsWidget>
                                                               TppbGroup
                                                                   .getBillsCall
                                                                   .billId(
-                                                                dueBillsListViewGetBillsResponse
+                                                                futureDueBillsListViewGetBillsResponse
                                                                     .jsonBody,
                                                               )?[futureDueBillsIndex],
                                                               ParamType.String,
@@ -1457,7 +1511,7 @@ class _BillsWidgetState extends State<BillsWidget>
                                                                           TppbGroup
                                                                               .getBillsCall
                                                                               .description(
-                                                                            dueBillsListViewGetBillsResponse.jsonBody,
+                                                                            futureDueBillsListViewGetBillsResponse.jsonBody,
                                                                           )?[futureDueBillsIndex],
                                                                           'Loading...',
                                                                         ),
@@ -1473,7 +1527,7 @@ class _BillsWidgetState extends State<BillsWidget>
                                                                           TppbGroup
                                                                               .getBillsCall
                                                                               .paymentSourceName(
-                                                                            dueBillsListViewGetBillsResponse.jsonBody,
+                                                                            futureDueBillsListViewGetBillsResponse.jsonBody,
                                                                           )?[futureDueBillsIndex],
                                                                           'Wallet: Loading...',
                                                                         )}'
@@ -1500,7 +1554,7 @@ class _BillsWidgetState extends State<BillsWidget>
                                                                             Text(
                                                                           'Due on: ${valueOrDefault<String>(
                                                                             TppbGroup.getBillsCall.transactionDate(
-                                                                              dueBillsListViewGetBillsResponse.jsonBody,
+                                                                              futureDueBillsListViewGetBillsResponse.jsonBody,
                                                                             )?[futureDueBillsIndex],
                                                                             'Loading...',
                                                                           )}'
@@ -1532,7 +1586,7 @@ class _BillsWidgetState extends State<BillsWidget>
                                                                         TppbGroup
                                                                             .getBillsCall
                                                                             .amount(
-                                                                          dueBillsListViewGetBillsResponse
+                                                                          futureDueBillsListViewGetBillsResponse
                                                                               .jsonBody,
                                                                         )?[futureDueBillsIndex],
                                                                         formatType:

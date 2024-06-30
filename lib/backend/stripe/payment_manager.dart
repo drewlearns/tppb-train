@@ -92,17 +92,17 @@ Future<StripePaymentResponse> processStripePayment(
         paymentIntentClientSecret: response['paymentIntent'],
         customerEphemeralKeySecret: response['ephemeralKey'],
         customerId: response['customer'],
-        merchantDisplayName: 'THEPURPLEPIGGYBANKCOM',
+        merchantDisplayName: 'The Purple Piggy Bank LLC',
         googlePay: allowGooglePay
             ? PaymentSheetGooglePay(
-                merchantCountryCode: 'US',
+                merchantCountryCode: 'USA',
                 currencyCode: currency,
                 testEnv: !_isProd,
               )
             : null,
         applePay: isiOS && allowApplePay
             ? const PaymentSheetApplePay(
-                merchantCountryCode: 'US',
+                merchantCountryCode: 'USA',
               )
             : null,
         style: themeStyle,

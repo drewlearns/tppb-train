@@ -13,8 +13,8 @@ class LedgerModel extends FlutterFlowModel<LedgerWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [Backend Call - API (getHousehold)] action in Ledger widget.
-  ApiCallResponse? gethouseholdOutput;
+  // Stores action output result for [Backend Call - API (subscriptionChecker)] action in Ledger widget.
+  ApiCallResponse? subscriptionCheckerOutput;
   Completer<ApiCallResponse>? apiRequestCompleter;
   // State field(s) for HouseholdDropDown widget.
   String? householdDropDownValue;
@@ -31,6 +31,8 @@ class LedgerModel extends FlutterFlowModel<LedgerWidget> {
   // State field(s) for YearDropDown widget.
   int? yearDropDownValue;
   FormFieldController<int>? yearDropDownValueController;
+  // State field(s) for Slider widget.
+  double? sliderValue;
   // Stores action output result for [Backend Call - API (editLedgerEntryAsCleared)] action in IconButton widget.
   ApiCallResponse? editLedgerEntryAsClearedOutput;
 

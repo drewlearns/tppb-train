@@ -66,7 +66,7 @@
 	<key>NSCameraUsageDescription</key>
     <string>In order to take a picture of a receipt, this app requires permissions for camera access</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-    <string>In order to upload data, this app requires permission to access the photo library.</string>
+    <string>In order to upload a picture of a receipt, this app requires permissions for photo library</string>
 
 
 

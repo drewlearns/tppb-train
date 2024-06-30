@@ -220,8 +220,7 @@ class _AddBillWidgetState extends State<AddBillWidget> {
                                 if (_model.householdDropDownValue != null &&
                                     _model.householdDropDownValue != '')
                                   FutureBuilder<ApiCallResponse>(
-                                    future:
-                                        TppbGroup.getPaymentSourcesCall.call(
+                                    future: TppbGroup.getPaymentSourceCall.call(
                                       householdIdGlobal:
                                           _model.householdDropDownValue,
                                       authenticationToken: currentJwtToken,
@@ -243,22 +242,22 @@ class _AddBillWidgetState extends State<AddBillWidget> {
                                           ),
                                         );
                                       }
-                                      final walletDropDownGetPaymentSourcesResponse =
+                                      final walletDropDownGetPaymentSourceResponse =
                                           snapshot.data!;
                                       return FlutterFlowDropDown<String>(
                                         controller: _model
                                                 .walletDropDownValueController ??=
                                             FormFieldController<String>(null),
                                         options: List<String>.from(TppbGroup
-                                            .getPaymentSourcesCall
+                                            .getPaymentSourceCall
                                             .paymentSourceId(
-                                          walletDropDownGetPaymentSourcesResponse
+                                          walletDropDownGetPaymentSourceResponse
                                               .jsonBody,
                                         )!),
                                         optionLabels: TppbGroup
-                                            .getPaymentSourcesCall
+                                            .getPaymentSourceCall
                                             .paymentSourceName(
-                                          walletDropDownGetPaymentSourcesResponse
+                                          walletDropDownGetPaymentSourceResponse
                                               .jsonBody,
                                         )!,
                                         onChanged: (val) async {

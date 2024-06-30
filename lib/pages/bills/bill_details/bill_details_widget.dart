@@ -6,7 +6,12 @@ import 'bill_details_model.dart';
 export 'bill_details_model.dart';
 
 class BillDetailsWidget extends StatefulWidget {
-  const BillDetailsWidget({super.key});
+  const BillDetailsWidget({
+    super.key,
+    required this.billId,
+  });
+
+  final String? billId;
 
   @override
   State<BillDetailsWidget> createState() => _BillDetailsWidgetState();

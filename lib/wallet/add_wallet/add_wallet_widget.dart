@@ -1,32 +1,26 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'edit_l_edger_entry_model.dart';
-export 'edit_l_edger_entry_model.dart';
+import 'add_wallet_model.dart';
+export 'add_wallet_model.dart';
 
-class EditLEdgerEntryWidget extends StatefulWidget {
-  const EditLEdgerEntryWidget({
-    super.key,
-    required this.ledgerId,
-  });
-
-  final String? ledgerId;
+class AddWalletWidget extends StatefulWidget {
+  const AddWalletWidget({super.key});
 
   @override
-  State<EditLEdgerEntryWidget> createState() => _EditLEdgerEntryWidgetState();
+  State<AddWalletWidget> createState() => _AddWalletWidgetState();
 }
 
-class _EditLEdgerEntryWidgetState extends State<EditLEdgerEntryWidget> {
-  late EditLEdgerEntryModel _model;
+class _AddWalletWidgetState extends State<AddWalletWidget> {
+  late AddWalletModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => EditLEdgerEntryModel());
+    _model = createModel(context, () => AddWalletModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -41,7 +35,7 @@ class _EditLEdgerEntryWidgetState extends State<EditLEdgerEntryWidget> {
   @override
   Widget build(BuildContext context) {
     return Title(
-        title: 'Edit Ledger Entry',
+        title: 'AddWallet',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () => _model.unfocusNode.canRequestFocus
@@ -71,14 +65,12 @@ class _EditLEdgerEntryWidgetState extends State<EditLEdgerEntryWidget> {
                 ),
                 actions: const [],
                 flexibleSpace: FlexibleSpaceBar(
-                  title: AutoSizeText(
+                  title: Text(
                     FFLocalizations.of(context).getText(
-                      'dm5i7e9o' /* Edit Ledger Entry */,
+                      '0vtt3op0' /* Page Title */,
                     ),
                     style: FlutterFlowTheme.of(context).headlineLarge.override(
                           fontFamily: 'Noto Sans JP',
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
                           letterSpacing: 0.0,
                         ),
                   ),

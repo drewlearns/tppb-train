@@ -1,3 +1,4 @@
+import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -23,9 +24,15 @@ void main() async {
 
   await FlutterFlowTheme.initialize();
 
+  final appState = FFAppState(); // Initialize FFAppState
+  await appState.initializePersistedState();
+
   await initializeStripe();
 
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+    create: (context) => appState,
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatefulWidget {
@@ -195,7 +202,7 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'Bills': const BillsWidget(),
-      'Threshold': const ThresholdWidget(),
+      'Wallets': const WalletsWidget(),
       'Ledger': const LedgerWidget(),
       'Incomes': const IncomesWidget(),
       'More': const MoreWidget(),
@@ -210,7 +217,7 @@ class _NavBarPageState extends State<NavBarPage> {
           _currentPage = null;
           _currentPageName = tabs.keys.toList()[i];
         }),
-        backgroundColor: Colors.white,
+        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         selectedItemColor: FlutterFlowTheme.of(context).secondary,
         unselectedItemColor: FlutterFlowTheme.of(context).primaryText,
         showSelectedLabels: true,
@@ -229,11 +236,11 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: const Icon(
-              Icons.data_thresholding_outlined,
+              Icons.wallet,
               size: 24.0,
             ),
             label: FFLocalizations.of(context).getText(
-              'xrno1jb9' /* Threshold */,
+              'nawp5pzi' /* Wallet */,
             ),
             tooltip: '',
           ),
