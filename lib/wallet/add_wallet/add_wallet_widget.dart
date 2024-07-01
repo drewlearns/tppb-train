@@ -67,10 +67,12 @@ class _AddWalletWidgetState extends State<AddWalletWidget> {
                 flexibleSpace: FlexibleSpaceBar(
                   title: Text(
                     FFLocalizations.of(context).getText(
-                      '0vtt3op0' /* Page Title */,
+                      'mktnom6s' /* Add Wallet */,
                     ),
                     style: FlutterFlowTheme.of(context).headlineLarge.override(
                           fontFamily: 'Noto Sans JP',
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
                           letterSpacing: 0.0,
                         ),
                   ),

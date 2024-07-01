@@ -1,7 +1,17 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
+import 'dart:async';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'bill_details_model.dart';
 export 'bill_details_model.dart';
 
@@ -26,6 +36,20 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => BillDetailsModel());
+
+    _model.categoryFocusNode ??= FocusNode();
+
+    _model.billnameFocusNode ??= FocusNode();
+
+    _model.amountFocusNode ??= FocusNode();
+
+    _model.descriptionFocusNode ??= FocusNode();
+
+    _model.urlFocusNode ??= FocusNode();
+
+    _model.usernameFocusNode ??= FocusNode();
+
+    _model.passwordFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -68,14 +92,81 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                     context.pop();
                   },
                 ),
-                actions: const [],
+                actions: [
+                  Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
+                    child: FlutterFlowIconButton(
+                      borderRadius: 20.0,
+                      borderWidth: 1.0,
+                      buttonSize: 40.0,
+                      icon: Icon(
+                        Icons.delete_forever,
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        size: 24.0,
+                      ),
+                      onPressed: () async {
+                        _model.deleteBillOutput =
+                            await TppbGroup.deleteBillCall.call(
+                          billId: widget.billId,
+                          householdIdGlobal: _model.householdValue,
+                          authenticationToken: currentJwtToken,
+                        );
+
+                        if ((_model.deleteBillOutput?.succeeded ?? true)) {
+                          await showDialog(
+                            context: context,
+                            builder: (alertDialogContext) {
+                              return AlertDialog(
+                                title: const Text('Success'),
+                                content: Text(TppbGroup.deleteBillCall.message(
+                                  (_model.deleteBillOutput?.jsonBody ?? ''),
+                                )!),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(alertDialogContext),
+                                    child: const Text('Ok'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        } else {
+                          await showDialog(
+                            context: context,
+                            builder: (alertDialogContext) {
+                              return AlertDialog(
+                                title: const Text('Error'),
+                                content: Text(TppbGroup.deleteBillCall.message(
+                                  (_model.deleteBillOutput?.jsonBody ?? ''),
+                                )!),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(alertDialogContext),
+                                    child: const Text('Ok'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        }
+
+                        setState(() {});
+                      },
+                    ),
+                  ),
+                ],
                 flexibleSpace: FlexibleSpaceBar(
-                  title: Text(
+                  title: AutoSizeText(
                     FFLocalizations.of(context).getText(
-                      'i4mekdfq' /* Page Title */,
+                      'i4mekdfq' /* Bill Details */,
                     ),
                     style: FlutterFlowTheme.of(context).headlineLarge.override(
                           fontFamily: 'Noto Sans JP',
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
                           letterSpacing: 0.0,
                         ),
                   ),
@@ -85,11 +176,1964 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                 elevation: 5.0,
               ),
             ),
-            body: const SafeArea(
+            body: SafeArea(
               top: true,
-              child: Column(
+              child: Row(
                 mainAxisSize: MainAxisSize.max,
-                children: [],
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 380.0,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).primaryBackground,
+                    ),
+                    child: Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 4.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Text(
+                            FFLocalizations.of(context).getText(
+                              'xrlz2qzb' /* Modify the Bill if you like an... */,
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Noto Sans JP',
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                          Expanded(
+                            child: ListView(
+                              padding: const EdgeInsets.symmetric(vertical: 4.0),
+                              primary: false,
+                              scrollDirection: Axis.vertical,
+                              children: [
+                                FutureBuilder<ApiCallResponse>(
+                                  future: (_model.apiRequestCompleter3 ??=
+                                          Completer<ApiCallResponse>()
+                                            ..complete(
+                                                TppbGroup.getBillCall.call(
+                                              billId: widget.billId,
+                                              authenticationToken:
+                                                  currentJwtToken,
+                                            )))
+                                      .future,
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          child: CircularProgressIndicator(
+                                            valueColor:
+                                                AlwaysStoppedAnimation<Color>(
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    final billListViewGetBillResponse =
+                                        snapshot.data!;
+                                    return ListView(
+                                      padding: EdgeInsets.zero,
+                                      primary: false,
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      children: [
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Expanded(
+                                              child: FlutterFlowDropDown<int>(
+                                                controller: _model
+                                                        .dayOfmonthValueController ??=
+                                                    FormFieldController<int>(
+                                                  _model.dayOfmonthValue ??=
+                                                      valueOrDefault<int>(
+                                                    TppbGroup.getBillCall
+                                                        .dayOfMonth(
+                                                      billListViewGetBillResponse
+                                                          .jsonBody,
+                                                    ),
+                                                    0,
+                                                  ),
+                                                ),
+                                                options: List<int>.from([
+                                                  1,
+                                                  2,
+                                                  3,
+                                                  4,
+                                                  5,
+                                                  6,
+                                                  7,
+                                                  8,
+                                                  9,
+                                                  10,
+                                                  11,
+                                                  12,
+                                                  13,
+                                                  14,
+                                                  15,
+                                                  16,
+                                                  17,
+                                                  18,
+                                                  19,
+                                                  20,
+                                                  21,
+                                                  22,
+                                                  23,
+                                                  24,
+                                                  25,
+                                                  26,
+                                                  27,
+                                                  28,
+                                                  29,
+                                                  30
+                                                ]),
+                                                optionLabels: [
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    '8e59avrn' /* 1st */,
+                                                  ),
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'h7buo1qh' /* 2nd */,
+                                                  ),
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    '36lklqss' /* 3rd */,
+                                                  ),
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'fr7hkbb5' /* 4th */,
+                                                  ),
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'fozt5e66' /* 5th */,
+                                                  ),
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    '1k8tbkep' /* 6th */,
+                                                  ),
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'iwsgxpls' /* 7th */,
+                                                  ),
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'yh8iwhzw' /* 8th */,
+                                                  ),
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'exxpad0z' /* 9th */,
+                                                  ),
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'jcyys65u' /* 10th */,
+                                                  ),
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'z3kh4q0h' /* 11th */,
+                                                  ),
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    '3bk9sv0f' /* 12th */,
+                                                  ),
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    '3sn8lw3d' /* 13th */,
+                                                  ),
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    '6lcqhoqx' /* 14th */,
+                                                  ),
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'ghwj4cdv' /* 15th */,
+                                                  ),
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'tgstk6p4' /* 16th */,
+                                                  ),
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'vyi580fy' /* 17th */,
+                                                  ),
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'nh6v7tj7' /* 18th */,
+                                                  ),
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'kst2e9h7' /* 19th */,
+                                                  ),
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'tzvalqct' /* 20th */,
+                                                  ),
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'hqvj0xs6' /* 21st */,
+                                                  ),
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    '36jfu1te' /* 22nd */,
+                                                  ),
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'gpjhj5l1' /* 23rd */,
+                                                  ),
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'gmlxiwf7' /* 24th */,
+                                                  ),
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'k0331g1o' /* 25th */,
+                                                  ),
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    '4kye0fir' /* 26th */,
+                                                  ),
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'x38jeewd' /* 27th */,
+                                                  ),
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'ekskhfwj' /* 28th */,
+                                                  ),
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'a2vjkm84' /* 29th */,
+                                                  ),
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    '22z8x3t1' /* 30th */,
+                                                  )
+                                                ],
+                                                onChanged: (val) => setState(
+                                                    () => _model
+                                                        .dayOfmonthValue = val),
+                                                width: 300.0,
+                                                height: 56.0,
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                hintText:
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                  'otfgkkwo' /* Please select... */,
+                                                ),
+                                                icon: Icon(
+                                                  Icons
+                                                      .keyboard_arrow_down_rounded,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  size: 24.0,
+                                                ),
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                elevation: 2.0,
+                                                borderColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                                borderWidth: 2.0,
+                                                borderRadius: 8.0,
+                                                margin: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        16.0, 4.0, 16.0, 4.0),
+                                                hidesUnderline: true,
+                                                isOverButton: true,
+                                                isSearchable: false,
+                                                isMultiSelect: false,
+                                                labelText:
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                  'upkxqd9z' /* Day Of The Month (initially Du... */,
+                                                ),
+                                                labelTextStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                            ),
+                                          ]
+                                              .divide(const SizedBox(width: 8.0))
+                                              .around(const SizedBox(width: 8.0)),
+                                        ),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Expanded(
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 4.0, 0.0, 0.0),
+                                                child: FutureBuilder<
+                                                    ApiCallResponse>(
+                                                  future: (_model
+                                                              .apiRequestCompleter1 ??=
+                                                          Completer<
+                                                              ApiCallResponse>()
+                                                            ..complete(TppbGroup
+                                                                .getHouseholdCall
+                                                                .call(
+                                                              authenticationToken:
+                                                                  currentJwtToken,
+                                                            )))
+                                                      .future,
+                                                  builder: (context, snapshot) {
+                                                    // Customize what your widget looks like when it's loading.
+                                                    if (!snapshot.hasData) {
+                                                      return Center(
+                                                        child: SizedBox(
+                                                          width: 50.0,
+                                                          height: 50.0,
+                                                          child:
+                                                              CircularProgressIndicator(
+                                                            valueColor:
+                                                                AlwaysStoppedAnimation<
+                                                                    Color>(
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .primary,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      );
+                                                    }
+                                                    final householdGetHouseholdResponse =
+                                                        snapshot.data!;
+                                                    return FlutterFlowDropDown<
+                                                        String>(
+                                                      controller: _model
+                                                              .householdValueController ??=
+                                                          FormFieldController<
+                                                              String>(
+                                                        _model.householdValue ??=
+                                                            valueOrDefault<
+                                                                String>(
+                                                          TppbGroup.getBillCall
+                                                              .householdId(
+                                                            billListViewGetBillResponse
+                                                                .jsonBody,
+                                                          ),
+                                                          'Loading...',
+                                                        ),
+                                                      ),
+                                                      options: List<
+                                                              String>.from(
+                                                          TppbGroup
+                                                              .getHouseholdCall
+                                                              .householdIds(
+                                                        householdGetHouseholdResponse
+                                                            .jsonBody,
+                                                      )!),
+                                                      optionLabels: TppbGroup
+                                                          .getHouseholdCall
+                                                          .householdNames(
+                                                        householdGetHouseholdResponse
+                                                            .jsonBody,
+                                                      )!,
+                                                      onChanged: (val) =>
+                                                          setState(() => _model
+                                                                  .householdValue =
+                                                              val),
+                                                      width: 300.0,
+                                                      height: 56.0,
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Noto Sans JP',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                      hintText:
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                        'f78pt67o' /* Please select... */,
+                                                      ),
+                                                      icon: Icon(
+                                                        Icons
+                                                            .keyboard_arrow_down_rounded,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        size: 24.0,
+                                                      ),
+                                                      fillColor: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      elevation: 2.0,
+                                                      borderColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .alternate,
+                                                      borderWidth: 2.0,
+                                                      borderRadius: 8.0,
+                                                      margin:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  16.0,
+                                                                  4.0,
+                                                                  16.0,
+                                                                  4.0),
+                                                      hidesUnderline: true,
+                                                      isOverButton: true,
+                                                      isSearchable: false,
+                                                      isMultiSelect: false,
+                                                      labelText:
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                        'ealks1um' /* Household */,
+                                                      ),
+                                                      labelTextStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Noto Sans JP',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                    );
+                                                  },
+                                                ),
+                                              ),
+                                            ),
+                                          ]
+                                              .divide(const SizedBox(width: 8.0))
+                                              .around(const SizedBox(width: 8.0)),
+                                        ),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Expanded(
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 4.0, 0.0, 0.0),
+                                                child: FutureBuilder<
+                                                    ApiCallResponse>(
+                                                  future: (_model
+                                                              .apiRequestCompleter2 ??=
+                                                          Completer<
+                                                              ApiCallResponse>()
+                                                            ..complete(TppbGroup
+                                                                .getPaymentSourceCall
+                                                                .call(
+                                                              authenticationToken:
+                                                                  currentJwtToken,
+                                                              householdIdGlobal:
+                                                                  _model
+                                                                      .householdValue,
+                                                            )))
+                                                      .future,
+                                                  builder: (context, snapshot) {
+                                                    // Customize what your widget looks like when it's loading.
+                                                    if (!snapshot.hasData) {
+                                                      return Center(
+                                                        child: SizedBox(
+                                                          width: 50.0,
+                                                          height: 50.0,
+                                                          child:
+                                                              CircularProgressIndicator(
+                                                            valueColor:
+                                                                AlwaysStoppedAnimation<
+                                                                    Color>(
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .primary,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      );
+                                                    }
+                                                    final walletGetPaymentSourceResponse =
+                                                        snapshot.data!;
+                                                    return FlutterFlowDropDown<
+                                                        String>(
+                                                      controller: _model
+                                                              .walletValueController ??=
+                                                          FormFieldController<
+                                                              String>(
+                                                        _model.walletValue ??=
+                                                            valueOrDefault<
+                                                                String>(
+                                                          TppbGroup.getBillCall
+                                                              .paymentSourceId(
+                                                            billListViewGetBillResponse
+                                                                .jsonBody,
+                                                          ),
+                                                          'Loading...',
+                                                        ),
+                                                      ),
+                                                      options: List<
+                                                              String>.from(
+                                                          TppbGroup
+                                                              .getPaymentSourceCall
+                                                              .paymentSourceId(
+                                                        walletGetPaymentSourceResponse
+                                                            .jsonBody,
+                                                      )!),
+                                                      optionLabels: TppbGroup
+                                                          .getPaymentSourceCall
+                                                          .paymentSourceName(
+                                                        walletGetPaymentSourceResponse
+                                                            .jsonBody,
+                                                      )!,
+                                                      onChanged: (val) =>
+                                                          setState(() => _model
+                                                                  .walletValue =
+                                                              val),
+                                                      width: 300.0,
+                                                      height: 56.0,
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Noto Sans JP',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                      hintText:
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                        'l0sqhh74' /* Please select... */,
+                                                      ),
+                                                      icon: Icon(
+                                                        Icons
+                                                            .keyboard_arrow_down_rounded,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        size: 24.0,
+                                                      ),
+                                                      fillColor: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      elevation: 2.0,
+                                                      borderColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .alternate,
+                                                      borderWidth: 2.0,
+                                                      borderRadius: 8.0,
+                                                      margin:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  16.0,
+                                                                  4.0,
+                                                                  16.0,
+                                                                  4.0),
+                                                      hidesUnderline: true,
+                                                      isOverButton: true,
+                                                      isSearchable: false,
+                                                      isMultiSelect: false,
+                                                      labelText:
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                        'ovqxv27p' /* Wallet */,
+                                                      ),
+                                                      labelTextStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Noto Sans JP',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                    );
+                                                  },
+                                                ),
+                                              ),
+                                            ),
+                                          ]
+                                              .divide(const SizedBox(width: 8.0))
+                                              .around(const SizedBox(width: 8.0)),
+                                        ),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Expanded(
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 4.0, 0.0, 0.0),
+                                                child: TextFormField(
+                                                  controller: _model
+                                                          .categoryTextController ??=
+                                                      TextEditingController(
+                                                    text:
+                                                        valueOrDefault<String>(
+                                                      TppbGroup.getBillCall
+                                                          .category(
+                                                        billListViewGetBillResponse
+                                                            .jsonBody,
+                                                      ),
+                                                      'Loading...',
+                                                    ),
+                                                  ),
+                                                  focusNode:
+                                                      _model.categoryFocusNode,
+                                                  autofocus: true,
+                                                  obscureText: false,
+                                                  decoration: InputDecoration(
+                                                    labelText:
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                      'uvxopr0k' /* Category */,
+                                                    ),
+                                                    labelStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    hintStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    focusedBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    errorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    focusedErrorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    filled: true,
+                                                    fillColor: FlutterFlowTheme
+                                                            .of(context)
+                                                        .secondaryBackground,
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Noto Sans JP',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                  validator: _model
+                                                      .categoryTextControllerValidator
+                                                      .asValidator(context),
+                                                ),
+                                              ),
+                                            ),
+                                          ]
+                                              .divide(const SizedBox(width: 8.0))
+                                              .around(const SizedBox(width: 8.0)),
+                                        ),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Expanded(
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 4.0, 0.0, 0.0),
+                                                child: TextFormField(
+                                                  controller: _model
+                                                          .billnameTextController ??=
+                                                      TextEditingController(
+                                                    text:
+                                                        valueOrDefault<String>(
+                                                      TppbGroup.getBillCall
+                                                          .billName(
+                                                        billListViewGetBillResponse
+                                                            .jsonBody,
+                                                      ),
+                                                      'Loading...',
+                                                    ),
+                                                  ),
+                                                  focusNode:
+                                                      _model.billnameFocusNode,
+                                                  autofocus: true,
+                                                  obscureText: false,
+                                                  decoration: InputDecoration(
+                                                    labelText:
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                      'o0gcll4n' /* Bill Name */,
+                                                    ),
+                                                    labelStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    hintStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    focusedBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    errorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    focusedErrorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    filled: true,
+                                                    fillColor: FlutterFlowTheme
+                                                            .of(context)
+                                                        .secondaryBackground,
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Noto Sans JP',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                  validator: _model
+                                                      .billnameTextControllerValidator
+                                                      .asValidator(context),
+                                                ),
+                                              ),
+                                            ),
+                                          ]
+                                              .divide(const SizedBox(width: 8.0))
+                                              .around(const SizedBox(width: 8.0)),
+                                        ),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Expanded(
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 4.0, 0.0, 0.0),
+                                                child: TextFormField(
+                                                  controller: _model
+                                                          .amountTextController ??=
+                                                      TextEditingController(
+                                                    text:
+                                                        valueOrDefault<String>(
+                                                      TppbGroup.getBillCall
+                                                          .amount(
+                                                        billListViewGetBillResponse
+                                                            .jsonBody,
+                                                      ),
+                                                      'Loading...',
+                                                    ),
+                                                  ),
+                                                  focusNode:
+                                                      _model.amountFocusNode,
+                                                  autofocus: true,
+                                                  obscureText: false,
+                                                  decoration: InputDecoration(
+                                                    labelText:
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                      'hxcg4uyb' /* Amount */,
+                                                    ),
+                                                    labelStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    hintStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    focusedBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    errorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    focusedErrorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    filled: true,
+                                                    fillColor: FlutterFlowTheme
+                                                            .of(context)
+                                                        .secondaryBackground,
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Noto Sans JP',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                  keyboardType:
+                                                      const TextInputType
+                                                          .numberWithOptions(
+                                                          decimal: true),
+                                                  validator: _model
+                                                      .amountTextControllerValidator
+                                                      .asValidator(context),
+                                                ),
+                                              ),
+                                            ),
+                                          ]
+                                              .divide(const SizedBox(width: 8.0))
+                                              .around(const SizedBox(width: 8.0)),
+                                        ),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Expanded(
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 4.0, 0.0, 0.0),
+                                                child: TextFormField(
+                                                  controller: _model
+                                                          .descriptionTextController ??=
+                                                      TextEditingController(
+                                                    text:
+                                                        valueOrDefault<String>(
+                                                      TppbGroup.getBillCall
+                                                          .description(
+                                                        billListViewGetBillResponse
+                                                            .jsonBody,
+                                                      ),
+                                                      'Loading...',
+                                                    ),
+                                                  ),
+                                                  focusNode: _model
+                                                      .descriptionFocusNode,
+                                                  autofocus: true,
+                                                  obscureText: false,
+                                                  decoration: InputDecoration(
+                                                    labelText:
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                      'iy2p2xjl' /* Description */,
+                                                    ),
+                                                    labelStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    hintStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    focusedBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    errorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    focusedErrorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 2.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    filled: true,
+                                                    fillColor: FlutterFlowTheme
+                                                            .of(context)
+                                                        .secondaryBackground,
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Noto Sans JP',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                  keyboardType:
+                                                      const TextInputType
+                                                          .numberWithOptions(
+                                                          decimal: true),
+                                                  validator: _model
+                                                      .descriptionTextControllerValidator
+                                                      .asValidator(context),
+                                                ),
+                                              ),
+                                            ),
+                                          ]
+                                              .divide(const SizedBox(width: 8.0))
+                                              .around(const SizedBox(width: 8.0)),
+                                        ),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Expanded(
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 4.0, 0.0, 0.0),
+                                                child:
+                                                    FlutterFlowDropDown<String>(
+                                                  controller: _model
+                                                          .frequencyValueController ??=
+                                                      FormFieldController<
+                                                          String>(
+                                                    _model.frequencyValue ??=
+                                                        valueOrDefault<String>(
+                                                      TppbGroup.getBillCall
+                                                          .frequency(
+                                                        billListViewGetBillResponse
+                                                            .jsonBody,
+                                                      ),
+                                                      'Loading...',
+                                                    ),
+                                                  ),
+                                                  options: List<String>.from([
+                                                    'once',
+                                                    'weekly',
+                                                    'biweekly',
+                                                    'monthly',
+                                                    'bimonthly',
+                                                    'quarterly',
+                                                    'semiAnnually',
+                                                    'annually'
+                                                  ]),
+                                                  optionLabels: [
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'cb7hynio' /* Once */,
+                                                    ),
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      '5dlg1uxu' /* Weekly (7 days) */,
+                                                    ),
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'xgfklnwm' /* Biweekly (14 days) */,
+                                                    ),
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'lvu96m2n' /* Monthly (30 days) */,
+                                                    ),
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'foahaxvi' /* Bimonthly (60 days) */,
+                                                    ),
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'ulek7uon' /* Quarterly (90 days) */,
+                                                    ),
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'r5fy1h0j' /* Semi-Annually (180 days) */,
+                                                    ),
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'u8me2d7f' /* Annually (yearly) */,
+                                                    )
+                                                  ],
+                                                  onChanged: (val) => setState(
+                                                      () => _model
+                                                              .frequencyValue =
+                                                          val),
+                                                  width: 300.0,
+                                                  height: 56.0,
+                                                  textStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Noto Sans JP',
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                  hintText: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    'eebdojk3' /* Description */,
+                                                  ),
+                                                  icon: Icon(
+                                                    Icons
+                                                        .keyboard_arrow_down_rounded,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    size: 24.0,
+                                                  ),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                  elevation: 2.0,
+                                                  borderColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
+                                                  borderWidth: 2.0,
+                                                  borderRadius: 8.0,
+                                                  margin: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          16.0, 4.0, 16.0, 4.0),
+                                                  hidesUnderline: true,
+                                                  isOverButton: true,
+                                                  isSearchable: false,
+                                                  isMultiSelect: false,
+                                                ),
+                                              ),
+                                            ),
+                                          ]
+                                              .divide(const SizedBox(width: 8.0))
+                                              .around(const SizedBox(width: 8.0)),
+                                        ),
+                                        Semantics(
+                                          label:
+                                              'Click to open URL and copy it to the clipboard',
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Expanded(
+                                                child: Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 4.0, 0.0, 0.0),
+                                                  child: TextFormField(
+                                                    controller: _model
+                                                            .urlTextController ??=
+                                                        TextEditingController(
+                                                      text: valueOrDefault<
+                                                          String>(
+                                                        TppbGroup.getBillCall
+                                                            .url(
+                                                          billListViewGetBillResponse
+                                                              .jsonBody,
+                                                        ),
+                                                        'Loading...',
+                                                      ),
+                                                    ),
+                                                    focusNode:
+                                                        _model.urlFocusNode,
+                                                    autofocus: true,
+                                                    obscureText: false,
+                                                    decoration: InputDecoration(
+                                                      labelText:
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                        'xqhzxlw9' /* Biller URL */,
+                                                      ),
+                                                      labelStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Noto Sans JP',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                      hintStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Noto Sans JP',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                      enabledBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .alternate,
+                                                          width: 2.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                      ),
+                                                      focusedBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primary,
+                                                          width: 2.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                      ),
+                                                      errorBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .error,
+                                                          width: 2.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                      ),
+                                                      focusedErrorBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .error,
+                                                          width: 2.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                      ),
+                                                      filled: true,
+                                                      fillColor: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    validator: _model
+                                                        .urlTextControllerValidator
+                                                        .asValidator(context),
+                                                  ),
+                                                ),
+                                              ),
+                                              ToggleIcon(
+                                                onPressed: () async {
+                                                  setState(() =>
+                                                      _model.url = !_model.url);
+                                                  await Clipboard.setData(
+                                                      ClipboardData(
+                                                          text: TppbGroup
+                                                              .getBillCall
+                                                              .url(
+                                                    billListViewGetBillResponse
+                                                        .jsonBody,
+                                                  )!));
+                                                },
+                                                value: _model.url,
+                                                onIcon: FaIcon(
+                                                  FontAwesomeIcons
+                                                      .clipboardCheck,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primary,
+                                                  size: 25.0,
+                                                ),
+                                                offIcon: FaIcon(
+                                                  FontAwesomeIcons.clipboard,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  size: 25.0,
+                                                ),
+                                              ),
+                                            ]
+                                                .divide(const SizedBox(width: 8.0))
+                                                .around(const SizedBox(width: 8.0)),
+                                          ),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                ),
+                                FutureBuilder<ApiCallResponse>(
+                                  future: (_model.apiRequestCompleter4 ??=
+                                          Completer<ApiCallResponse>()
+                                            ..complete(TppbGroup
+                                                .getBillPasswordCall
+                                                .call(
+                                              billId: widget.billId,
+                                              authenticationToken:
+                                                  currentJwtToken,
+                                            )))
+                                      .future,
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          child: CircularProgressIndicator(
+                                            valueColor:
+                                                AlwaysStoppedAnimation<Color>(
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    final billPasswordListViewGetBillPasswordResponse =
+                                        snapshot.data!;
+                                    return ListView(
+                                      padding: EdgeInsets.zero,
+                                      primary: false,
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      children: [
+                                        Semantics(
+                                          label: 'Click to Copy User Name',
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              await Clipboard.setData(
+                                                  ClipboardData(
+                                                      text: TppbGroup
+                                                          .getBillPasswordCall
+                                                          .username(
+                                                billPasswordListViewGetBillPasswordResponse
+                                                    .jsonBody,
+                                              )!));
+                                            },
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: [
+                                                Expanded(
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 4.0,
+                                                                0.0, 0.0),
+                                                    child: TextFormField(
+                                                      controller: _model
+                                                              .usernameTextController ??=
+                                                          TextEditingController(
+                                                        text: valueOrDefault<
+                                                            String>(
+                                                          TppbGroup
+                                                              .getBillPasswordCall
+                                                              .username(
+                                                            billPasswordListViewGetBillPasswordResponse
+                                                                .jsonBody,
+                                                          ),
+                                                          'Loading...',
+                                                        ),
+                                                      ),
+                                                      focusNode: _model
+                                                          .usernameFocusNode,
+                                                      autofocus: true,
+                                                      obscureText: false,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        labelText:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                          'bknep6hr' /* Username */,
+                                                        ),
+                                                        labelStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Noto Sans JP',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                        hintStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Noto Sans JP',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                        enabledBorder:
+                                                            OutlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .alternate,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                        ),
+                                                        focusedBorder:
+                                                            OutlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                        ),
+                                                        errorBorder:
+                                                            OutlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .error,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                        ),
+                                                        focusedErrorBorder:
+                                                            OutlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .error,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                        ),
+                                                        filled: true,
+                                                        fillColor: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                      ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Noto Sans JP',
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                      validator: _model
+                                                          .usernameTextControllerValidator
+                                                          .asValidator(context),
+                                                    ),
+                                                  ),
+                                                ),
+                                                ToggleIcon(
+                                                  onPressed: () async {
+                                                    setState(() =>
+                                                        _model.username =
+                                                            !_model.username);
+                                                    await Clipboard.setData(
+                                                        ClipboardData(
+                                                            text: TppbGroup
+                                                                .getBillPasswordCall
+                                                                .username(
+                                                      billPasswordListViewGetBillPasswordResponse
+                                                          .jsonBody,
+                                                    )!));
+                                                  },
+                                                  value: _model.username,
+                                                  onIcon: FaIcon(
+                                                    FontAwesomeIcons
+                                                        .clipboardCheck,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    size: 25.0,
+                                                  ),
+                                                  offIcon: FaIcon(
+                                                    FontAwesomeIcons.clipboard,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    size: 25.0,
+                                                  ),
+                                                ),
+                                              ]
+                                                  .divide(const SizedBox(width: 8.0))
+                                                  .around(const SizedBox(width: 8.0)),
+                                            ),
+                                          ),
+                                        ),
+                                        Semantics(
+                                          label: 'Click to copy password',
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Expanded(
+                                                child: Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 4.0, 0.0, 0.0),
+                                                  child: TextFormField(
+                                                    controller: _model
+                                                            .passwordTextController ??=
+                                                        TextEditingController(
+                                                      text: TppbGroup
+                                                          .getBillPasswordCall
+                                                          .password(
+                                                        billPasswordListViewGetBillPasswordResponse
+                                                            .jsonBody,
+                                                      ),
+                                                    ),
+                                                    focusNode: _model
+                                                        .passwordFocusNode,
+                                                    autofocus: true,
+                                                    obscureText: !_model
+                                                        .passwordVisibility,
+                                                    decoration: InputDecoration(
+                                                      labelText:
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                        'chz2x4t3' /* Password (shared with househol... */,
+                                                      ),
+                                                      labelStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Noto Sans JP',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                      hintStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Noto Sans JP',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                      enabledBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .alternate,
+                                                          width: 2.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                      ),
+                                                      focusedBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primary,
+                                                          width: 2.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                      ),
+                                                      errorBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .error,
+                                                          width: 2.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                      ),
+                                                      focusedErrorBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .error,
+                                                          width: 2.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                      ),
+                                                      filled: true,
+                                                      fillColor: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      suffixIcon: InkWell(
+                                                        onTap: () => setState(
+                                                          () => _model
+                                                                  .passwordVisibility =
+                                                              !_model
+                                                                  .passwordVisibility,
+                                                        ),
+                                                        focusNode: FocusNode(
+                                                            skipTraversal:
+                                                                true),
+                                                        child: Icon(
+                                                          _model.passwordVisibility
+                                                              ? Icons
+                                                                  .visibility_outlined
+                                                              : Icons
+                                                                  .visibility_off_outlined,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondary,
+                                                          size: 24.0,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    validator: _model
+                                                        .passwordTextControllerValidator
+                                                        .asValidator(context),
+                                                  ),
+                                                ),
+                                              ),
+                                              ToggleIcon(
+                                                onPressed: () async {
+                                                  setState(() =>
+                                                      _model.password =
+                                                          !_model.password);
+                                                  await Clipboard.setData(
+                                                      ClipboardData(
+                                                          text: TppbGroup
+                                                              .getBillPasswordCall
+                                                              .password(
+                                                    billPasswordListViewGetBillPasswordResponse
+                                                        .jsonBody,
+                                                  )!));
+                                                },
+                                                value: _model.password,
+                                                onIcon: FaIcon(
+                                                  FontAwesomeIcons
+                                                      .clipboardCheck,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primary,
+                                                  size: 25.0,
+                                                ),
+                                                offIcon: FaIcon(
+                                                  FontAwesomeIcons.clipboard,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  size: 25.0,
+                                                ),
+                                              ),
+                                            ]
+                                                .divide(const SizedBox(width: 8.0))
+                                                .around(const SizedBox(width: 8.0)),
+                                          ),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                ),
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      10.0, 0.0, 10.0, 0.0),
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      _model.editBillOutput =
+                                          await TppbGroup.editBillCall.call(
+                                        amount: double.tryParse(
+                                            _model.amountTextController.text),
+                                        dayOfMonth: _model.dayOfmonthValue,
+                                        category:
+                                            _model.categoryTextController.text,
+                                        description: _model
+                                            .descriptionTextController.text,
+                                        sourceId: _model.walletValue,
+                                        billId: widget.billId,
+                                        url: _model.urlTextController.text,
+                                        username:
+                                            _model.usernameTextController.text,
+                                        password:
+                                            _model.passwordTextController.text,
+                                        frequency: _model.frequencyValue,
+                                        authenticationToken: currentJwtToken,
+                                        householdIdGlobal:
+                                            _model.householdValue,
+                                        paymentSourceIdGlobal:
+                                            _model.walletValue,
+                                      );
+
+                                      if ((_model.editBillOutput?.succeeded ??
+                                          true)) {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: const Text('Success'),
+                                              content: Text(getJsonField(
+                                                (_model.editBillOutput
+                                                        ?.jsonBody ??
+                                                    ''),
+                                                r'''$.message''',
+                                              ).toString()),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: const Text('Ok'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                      } else {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: const Text('Error'),
+                                              content: Text(getJsonField(
+                                                (_model.editBillOutput
+                                                        ?.jsonBody ??
+                                                    ''),
+                                                r'''$.message''',
+                                              ).toString()),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: const Text('Ok'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                      }
+
+                                      setState(() =>
+                                          _model.apiRequestCompleter3 = null);
+                                      await _model
+                                          .waitForApiRequestCompleted3();
+                                      setState(() =>
+                                          _model.apiRequestCompleter1 = null);
+                                      await _model
+                                          .waitForApiRequestCompleted1();
+                                      setState(() =>
+                                          _model.apiRequestCompleter2 = null);
+                                      await _model
+                                          .waitForApiRequestCompleted2();
+                                      setState(() =>
+                                          _model.apiRequestCompleter4 = null);
+                                      await _model
+                                          .waitForApiRequestCompleted4();
+
+                                      setState(() {});
+                                    },
+                                    text: FFLocalizations.of(context).getText(
+                                      'njk36nhn' /* Edit bill */,
+                                    ),
+                                    options: FFButtonOptions(
+                                      width: 360.0,
+                                      height: 40.0,
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          24.0, 0.0, 24.0, 0.0),
+                                      iconPadding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily: 'Noto Sans JP',
+                                            color: Colors.white,
+                                            letterSpacing: 0.0,
+                                          ),
+                                      elevation: 3.0,
+                                      borderSide: const BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                  ),
+                                ),
+                              ].divide(const SizedBox(height: 4.0)),
+                            ),
+                          ),
+                        ]
+                            .divide(const SizedBox(height: 4.0))
+                            .around(const SizedBox(height: 4.0)),
+                      ),
+                    ),
+                  ),
+                ]
+                    .divide(const SizedBox(width: 4.0))
+                    .addToStart(const SizedBox(width: 4.0))
+                    .addToEnd(const SizedBox(width: 4.0)),
               ),
             ),
           ),

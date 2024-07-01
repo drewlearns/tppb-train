@@ -186,9 +186,37 @@ class _LedgerWidgetState extends State<LedgerWidget>
             appBar: AppBar(
               backgroundColor: FlutterFlowTheme.of(context).primary,
               automaticallyImplyLeading: false,
+              leading: Visibility(
+                visible: _model.householdDropDownValue != null &&
+                    _model.householdDropDownValue != '',
+                child: Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                  child: FlutterFlowIconButton(
+                    borderRadius: 20.0,
+                    borderWidth: 1.0,
+                    buttonSize: 40.0,
+                    icon: Icon(
+                      Icons.category_outlined,
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      size: 24.0,
+                    ),
+                    onPressed: () async {
+                      context.pushNamed(
+                        'Categories',
+                        queryParameters: {
+                          'householdId': serializeParam(
+                            _model.householdDropDownValue,
+                            ParamType.String,
+                          ),
+                        }.withoutNulls,
+                      );
+                    },
+                  ),
+                ),
+              ),
               actions: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                   child: FlutterFlowIconButton(
                     borderRadius: 20.0,
                     borderWidth: 1.0,
@@ -210,7 +238,7 @@ class _LedgerWidgetState extends State<LedgerWidget>
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                   child: ToggleIcon(
                     onPressed: () async {
                       setState(
@@ -234,7 +262,7 @@ class _LedgerWidgetState extends State<LedgerWidget>
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 8.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 8.0, 0.0),
                   child: FlutterFlowIconButton(
                     borderRadius: 20.0,
                     borderWidth: 1.0,

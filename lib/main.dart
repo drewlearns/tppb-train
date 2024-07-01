@@ -205,7 +205,7 @@ class _NavBarPageState extends State<NavBarPage> {
       'Wallets': const WalletsWidget(),
       'Ledger': const LedgerWidget(),
       'Incomes': const IncomesWidget(),
-      'More': const MoreWidget(),
+      'Options': const OptionsWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -274,7 +274,7 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24.0,
             ),
             label: FFLocalizations.of(context).getText(
-              '6mrnu68q' /* More */,
+              '6mrnu68q' /* Options */,
             ),
             tooltip: '',
           )

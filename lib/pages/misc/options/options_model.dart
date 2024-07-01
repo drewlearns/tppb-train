@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'more_widget.dart' show MoreWidget;
+import 'options_widget.dart' show OptionsWidget;
 import 'package:flutter/material.dart';
 
-class MoreModel extends FlutterFlowModel<MoreWidget> {
+class OptionsModel extends FlutterFlowModel<OptionsWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

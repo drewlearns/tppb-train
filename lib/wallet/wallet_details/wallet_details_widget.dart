@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'wallet_details_model.dart';
 export 'wallet_details_model.dart';
@@ -65,12 +66,14 @@ class _WalletDetailsWidgetState extends State<WalletDetailsWidget> {
                 ),
                 actions: const [],
                 flexibleSpace: FlexibleSpaceBar(
-                  title: Text(
+                  title: AutoSizeText(
                     FFLocalizations.of(context).getText(
-                      '7hqdz2sf' /* Page Title */,
+                      '7hqdz2sf' /* Wallet */,
                     ),
                     style: FlutterFlowTheme.of(context).headlineLarge.override(
                           fontFamily: 'Noto Sans JP',
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
                           letterSpacing: 0.0,
                         ),
                   ),

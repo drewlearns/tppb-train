@@ -121,11 +121,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : const IncomesWidget(),
         ),
         FFRoute(
-          name: 'More',
+          name: 'Options',
           path: '/More',
           requireAuth: true,
-          builder: (context, params) =>
-              params.isEmpty ? const NavBarPage(initialPage: 'More') : const MoreWidget(),
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'Options')
+              : const OptionsWidget(),
         ),
         FFRoute(
           name: 'SalesPage',
@@ -138,17 +139,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/addBill',
           requireAuth: true,
           builder: (context, params) => const AddBillWidget(),
-        ),
-        FFRoute(
-          name: 'EditBill',
-          path: '/editBill',
-          requireAuth: true,
-          builder: (context, params) => EditBillWidget(
-            billId: params.getParam(
-              'billId',
-              ParamType.String,
-            ),
-          ),
         ),
         FFRoute(
           name: 'BillDetails',
@@ -212,7 +202,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Categories',
           path: '/categories',
           requireAuth: true,
-          builder: (context, params) => const CategoriesWidget(),
+          builder: (context, params) => CategoriesWidget(
+            householdId: params.getParam(
+              'householdId',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: 'EditTransaction',
@@ -309,19 +304,34 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'ExportSearch',
           path: '/exportSearch',
           requireAuth: true,
-          builder: (context, params) => const ExportSearchWidget(),
+          builder: (context, params) => ExportSearchWidget(
+            householdId: params.getParam(
+              'householdId',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: 'ExportToCSV',
           path: '/exportToCSV',
           requireAuth: true,
-          builder: (context, params) => const ExportToCSVWidget(),
+          builder: (context, params) => ExportToCSVWidget(
+            householdId: params.getParam(
+              'householdId',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: 'ExportToQBO',
           path: '/exportToQBO',
           requireAuth: true,
-          builder: (context, params) => const ExportToQBOWidget(),
+          builder: (context, params) => ExportToQBOWidget(
+            householdid: params.getParam(
+              'householdid',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: 'forgotPassword',
@@ -342,8 +352,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         ),
         FFRoute(
           name: 'AcceptInvite',
-          path: '/acceptInvite',
-          builder: (context, params) => const AcceptInviteWidget(),
+          path: '/AcceptInvite',
+          builder: (context, params) => AcceptInviteWidget(
+            email: params.getParam(
+              'email',
+              ParamType.String,
+            ),
+            firstname: params.getParam(
+              'firstname',
+              ParamType.String,
+            ),
+            lastname: params.getParam(
+              'lastname',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: 'ChangePassword',

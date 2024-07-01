@@ -404,7 +404,11 @@ class _IncomesWidgetState extends State<IncomesWidget> {
                                                                           {
                                                                         'incomeId':
                                                                             serializeParam(
-                                                                          '',
+                                                                          TppbGroup
+                                                                              .getIncomesCall
+                                                                              .incomeId(
+                                                                            listViewGetIncomesResponse.jsonBody,
+                                                                          )?[incomesIndex],
                                                                           ParamType
                                                                               .String,
                                                                         ),

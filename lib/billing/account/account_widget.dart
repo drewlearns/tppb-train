@@ -92,7 +92,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                     flexibleSpace: FlexibleSpaceBar(
                       title: AutoSizeText(
                         FFLocalizations.of(context).getText(
-                          'x8cwslzp' /* Account Details */,
+                          '8fxcf5er' /* Account Details */,
                         ),
                         style:
                             FlutterFlowTheme.of(context).headlineLarge.override(

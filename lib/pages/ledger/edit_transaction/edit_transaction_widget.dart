@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'edit_transaction_model.dart';
 export 'edit_transaction_model.dart';
@@ -70,12 +71,14 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                 ),
                 actions: const [],
                 flexibleSpace: FlexibleSpaceBar(
-                  title: Text(
+                  title: AutoSizeText(
                     FFLocalizations.of(context).getText(
-                      '0grn4d40' /* Page Title */,
+                      '0grn4d40' /* Edit Transaction */,
                     ),
                     style: FlutterFlowTheme.of(context).headlineLarge.override(
                           fontFamily: 'Noto Sans JP',
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
                           letterSpacing: 0.0,
                         ),
                   ),

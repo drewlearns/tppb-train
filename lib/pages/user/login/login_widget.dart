@@ -895,7 +895,7 @@ Sign up below to star... */
                                                         .getText(
                                                       'bwxngpq0' /* May we contact you? */,
                                                     ),
-                                                    textAlign: TextAlign.start,
+                                                    textAlign: TextAlign.center,
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .titleLarge
@@ -1117,7 +1117,31 @@ Sign up below to star... */
                                                   FFButtonWidget(
                                                     onPressed: () async {
                                                       context.pushNamed(
-                                                          'AcceptInvite');
+                                                        'AcceptInvite',
+                                                        queryParameters: {
+                                                          'email':
+                                                              serializeParam(
+                                                            _model
+                                                                .emailTextController
+                                                                .text,
+                                                            ParamType.String,
+                                                          ),
+                                                          'firstname':
+                                                              serializeParam(
+                                                            _model
+                                                                .firstNameTextController
+                                                                .text,
+                                                            ParamType.String,
+                                                          ),
+                                                          'lastname':
+                                                              serializeParam(
+                                                            _model
+                                                                .lastNameTextController
+                                                                .text,
+                                                            ParamType.String,
+                                                          ),
+                                                        }.withoutNulls,
+                                                      );
                                                     },
                                                     text: FFLocalizations.of(
                                                             context)

@@ -49,6 +49,24 @@ class TppbGroup {
   static EditNotificationCall editNotificationCall = EditNotificationCall();
   static SubscriptionCheckerCall subscriptionCheckerCall =
       SubscriptionCheckerCall();
+  static GetAllBillsCall getAllBillsCall = GetAllBillsCall();
+  static EditBillCall editBillCall = EditBillCall();
+  static DeleteBillCall deleteBillCall = DeleteBillCall();
+  static AddInviteCall addInviteCall = AddInviteCall();
+  static AcceptInviteCall acceptInviteCall = AcceptInviteCall();
+  static AddHouseholdCall addHouseholdCall = AddHouseholdCall();
+  static EditHouseholdCall editHouseholdCall = EditHouseholdCall();
+  static GetHouseholdMembersCall getHouseholdMembersCall =
+      GetHouseholdMembersCall();
+  static DeleteMemberFromHouseholdCall deleteMemberFromHouseholdCall =
+      DeleteMemberFromHouseholdCall();
+  static DeleteHouseholdCall deleteHouseholdCall = DeleteHouseholdCall();
+  static EditIncomeCall editIncomeCall = EditIncomeCall();
+  static DeleteIncomeCall deleteIncomeCall = DeleteIncomeCall();
+  static GetCategoriesCall getCategoriesCall = GetCategoriesCall();
+  static ExportLedgerToCsvCall exportLedgerToCsvCall = ExportLedgerToCsvCall();
+  static ExportLedgerToQBOCall exportLedgerToQBOCall = ExportLedgerToQBOCall();
+  static ExportSearchCall exportSearchCall = ExportSearchCall();
 }
 
 class AddUserCall {
@@ -507,15 +525,6 @@ class GetPaymentSourceCall {
     );
   }
 
-  List<String>? paymentSourceId(dynamic response) => (getJsonField(
-        response,
-        r'''$.paymentSourceIDs''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<String>(x))
-          .withoutNulls
-          .toList();
   List<String>? paymentSourceName(dynamic response) => (getJsonField(
         response,
         r'''$.paymentSourceNames''',
@@ -532,6 +541,24 @@ class GetPaymentSourceCall {
       ) as List?)
           ?.withoutNulls
           .map((x) => castToType<double>(x))
+          .withoutNulls
+          .toList();
+  List<bool>? isDefault(dynamic response) => (getJsonField(
+        response,
+        r'''$.isDefault''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<bool>(x))
+          .withoutNulls
+          .toList();
+  List<String>? paymentSourceId(dynamic response) => (getJsonField(
+        response,
+        r'''$.paymentSourceIds''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
           .withoutNulls
           .toList();
 }
@@ -1188,6 +1215,54 @@ class GetBillCall {
         response,
         r'''$.url''',
       ));
+  String? billId(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.billId''',
+      ));
+  String? householdId(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.householdId''',
+      ));
+  String? category(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.category''',
+      ));
+  String? billName(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.billName''',
+      ));
+  String? amount(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.amount''',
+      ));
+  String? description(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.description''',
+      ));
+  bool? status(dynamic response) => castToType<bool>(getJsonField(
+        response,
+        r'''$.status''',
+      ));
+  String? username(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.username''',
+      ));
+  String? password(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.password''',
+      ));
+  String? createdAt(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.createdAt''',
+      ));
+  String? updatedAt(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.updatedAt''',
+      ));
+  String? paymentSourceId(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.ledgers[0].paymentSourceId''',
+      ));
 }
 
 class GetIncomeCall {
@@ -1234,6 +1309,30 @@ class GetIncomeCall {
   String? firstPayDay(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.firstPayDay''',
+      ));
+  String? incomeId(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.incomeId''',
+      ));
+  String? householdId(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.householdId''',
+      ));
+  String? name(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.name''',
+      ));
+  String? amount(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.amount''',
+      ));
+  String? createdAt(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.createdAt''',
+      ));
+  String? updatedAt(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.updatedAt''',
       ));
 }
 
@@ -1851,6 +1950,859 @@ class SubscriptionCheckerCall {
   bool? isCancelled(dynamic response) => castToType<bool>(getJsonField(
         response,
         r'''$.cancelled''',
+      ));
+}
+
+class GetAllBillsCall {
+  Future<ApiCallResponse> call({
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "authToken": "$authenticationToken",
+  "householdId": "$householdIdGlobal"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'getAllBills',
+      apiUrl: '$baseUrl/getAllBills',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+  List? billsList(dynamic response) => getJsonField(
+        response,
+        r'''$.bills''',
+        true,
+      ) as List?;
+  List<String>? billId(dynamic response) => (getJsonField(
+        response,
+        r'''$.bills[:].billId''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? billName(dynamic response) => (getJsonField(
+        response,
+        r'''$.bills[:].billName''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+}
+
+class EditBillCall {
+  Future<ApiCallResponse> call({
+    double? amount,
+    int? dayOfMonth,
+    String? category = '',
+    String? description = '',
+    String? sourceId = '',
+    String? billId = '',
+    String? url = '',
+    String? username = '',
+    String? password = '',
+    String? frequency = '',
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "householdId": "$householdIdGlobal",
+  "amount": "$amount",
+  "dayOfMonth": $dayOfMonth,
+  "category": "$category",
+  "description": "$description",
+  "sourceId": "$sourceId",
+  "billId": "$billId",
+  "url": "$url",
+  "username": "$username",
+  "password": "$password",
+  "frequency": "$frequency"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'editBill',
+      apiUrl: '$baseUrl/editBill',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class DeleteBillCall {
+  Future<ApiCallResponse> call({
+    String? billId = '',
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "authToken": "$authenticationToken",
+  "householdId": "$householdIdGlobal",
+  "billId": "$billId"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'deleteBill',
+      apiUrl: '$baseUrl/deleteBill',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+}
+
+class AddInviteCall {
+  Future<ApiCallResponse> call({
+    String? email = '',
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "authorizationToken": "$authenticationToken",
+  "email": "$email",
+  "householdId": "$householdIdGlobal"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'addInvite',
+      apiUrl: '$baseUrl/addInvite',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+}
+
+class AcceptInviteCall {
+  Future<ApiCallResponse> call({
+    String? invitationId = '',
+    bool? mailOptIn,
+    String? firstName = '',
+    String? lastName = '',
+    String? uuid = '',
+    String? email = '',
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "invitationId": "$invitationId",
+  "email": "$email",
+  "mailOptIn": $mailOptIn,
+  "firstName": "$firstName",
+  "lastName": "$lastName",
+  "uuid": "$uuid"
+}
+''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'acceptInvite',
+      apiUrl: '$baseUrl/acceptInvite',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+}
+
+class AddHouseholdCall {
+  Future<ApiCallResponse> call({
+    String? householdName = '',
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "authToken": "$authenticationToken",
+  "householdData": {
+    "householdName": "$householdName",
+    "activeSubscription": false
+  }
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'addHousehold',
+      apiUrl: '$baseUrl/addHousehold',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? householdName(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.householdName''',
+      ));
+}
+
+class EditHouseholdCall {
+  Future<ApiCallResponse> call({
+    String? householdName = '',
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "authToken": "$authenticationToken",
+  "householdId": "$householdIdGlobal",
+  "householdData": {
+    "householdName": "$householdName"
+  }
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'editHousehold',
+      apiUrl: '$baseUrl/editHousehold',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class GetHouseholdMembersCall {
+  Future<ApiCallResponse> call({
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "authToken": "$authenticationToken",
+  "householdId": "$householdIdGlobal"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'getHouseholdMembers',
+      apiUrl: '$baseUrl/getHouseholdMembers',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  List<String>? uuid(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].uuid''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? firstName(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].firstName''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? lastName(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].lastName''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? email(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].email''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? role(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].role''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<String>? joinedDate(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].joinedDate''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+}
+
+class DeleteMemberFromHouseholdCall {
+  Future<ApiCallResponse> call({
+    String? memberUuid = '',
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "authToken": "$authenticationToken",
+  "householdId": "$householdIdGlobal",
+  "memberUuid": "$memberUuid"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'deleteMemberFromHousehold',
+      apiUrl: '$baseUrl/deleteMemberFromHousehold',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+}
+
+class DeleteHouseholdCall {
+  Future<ApiCallResponse> call({
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "authToken": "$authenticationToken",
+  "householdId": "$householdIdGlobal"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'deleteHousehold',
+      apiUrl: '$baseUrl/deleteHousehold',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+}
+
+class EditIncomeCall {
+  Future<ApiCallResponse> call({
+    String? incomeId = '',
+    String? name = '',
+    double? amount,
+    String? frequency = '',
+    String? date = '',
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "authToken": "$authenticationToken",
+  "incomeId": "$incomeId",
+  "updatedIncomeData": {
+    "name": "$name",
+    "amount": $amount,
+    "frequency": "$frequency",
+    "firstPayDay": "$date",
+    "paymentSourceId": "$paymentSourceIdGlobal"
+  }
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'editIncome',
+      apiUrl: '$baseUrl/editIncome',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+}
+
+class DeleteIncomeCall {
+  Future<ApiCallResponse> call({
+    String? incomeId = '',
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "authToken": "$authenticationToken",
+  "incomeId": "$incomeId"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'deleteIncome',
+      apiUrl: '$baseUrl/deleteIncome',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+}
+
+class GetCategoriesCall {
+  Future<ApiCallResponse> call({
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "authToken": "$authenticationToken",
+  "householdId": "$householdIdGlobal"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'getCategories',
+      apiUrl: '$baseUrl/getCategories',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  List? ytdList(dynamic response) => getJsonField(
+        response,
+        r'''$.yearToDate''',
+        true,
+      ) as List?;
+  List<String>? ytdCateegory(dynamic response) => (getJsonField(
+        response,
+        r'''$.yearToDate[:].category''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<double>? ytdAmount(dynamic response) => (getJsonField(
+        response,
+        r'''$.yearToDate[:].totalAmount''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<double>(x))
+          .withoutNulls
+          .toList();
+  List? mtdList(dynamic response) => getJsonField(
+        response,
+        r'''$.monthToDate''',
+        true,
+      ) as List?;
+  List<String>? mtdCategory(dynamic response) => (getJsonField(
+        response,
+        r'''$.monthToDate[:].category''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  List<double>? mtdAmount(dynamic response) => (getJsonField(
+        response,
+        r'''$.monthToDate[:].totalAmount''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<double>(x))
+          .withoutNulls
+          .toList();
+}
+
+class ExportLedgerToCsvCall {
+  Future<ApiCallResponse> call({
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "authorizationToken": "$authenticationToken",
+  "householdId": "$householdIdGlobal",
+  "paymentSourceId": "$paymentSourceIdGlobal"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'exportLedgerToCsv',
+      apiUrl: '$baseUrl/exportLedgerToCsv',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+  String? url(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.presignedUrl''',
+      ));
+}
+
+class ExportLedgerToQBOCall {
+  Future<ApiCallResponse> call({
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "authorizationToken": "$authenticationToken",
+  "householdId": "$householdIdGlobal",
+  "paymentSourceId": "$paymentSourceIdGlobal"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'exportLedgerToQBO',
+      apiUrl: '$baseUrl/exportLedgerToQBO',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+  String? url(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.presignedUrl''',
+      ));
+}
+
+class ExportSearchCall {
+  Future<ApiCallResponse> call({
+    String? reportType = '',
+    String? category = '',
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "authorizationToken": "$authenticationToken",
+  "householdId": "$householdIdGlobal",
+  "paymentSourceId": "$paymentSourceIdGlobal",
+  "reportType": "$reportType",
+  "category": "$category"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'exportSearch',
+      apiUrl: '$baseUrl/exportSearch',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+  String? url(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.presignedUrl''',
       ));
 }
 

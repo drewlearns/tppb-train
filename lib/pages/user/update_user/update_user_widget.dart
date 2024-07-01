@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'update_user_model.dart';
 export 'update_user_model.dart';
@@ -65,12 +66,14 @@ class _UpdateUserWidgetState extends State<UpdateUserWidget> {
                 ),
                 actions: const [],
                 flexibleSpace: FlexibleSpaceBar(
-                  title: Text(
+                  title: AutoSizeText(
                     FFLocalizations.of(context).getText(
-                      'iq05qu7h' /* Page Title */,
+                      'iq05qu7h' /* Update User */,
                     ),
                     style: FlutterFlowTheme.of(context).headlineLarge.override(
                           fontFamily: 'Noto Sans JP',
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
                           letterSpacing: 0.0,
                         ),
                   ),
