@@ -12,11 +12,11 @@ class SalesPageModel extends FlutterFlowModel<SalesPageWidget> {
 
   bool foreverClicked = true;
 
-  String monthlyProductid = 'price_1PWwdlJMeGUbw0Woizgfwewb';
+  String monthlyProductid = 'price_1PXL0DJMeGUbw0WoxAAWG9dn';
 
-  String annualProductId = 'price_1PWwdyJMeGUbw0WoOdIpDGOL';
+  String annualProductId = 'price_1PXL0BJMeGUbw0WoipD03nSh';
 
-  String foreverProductId = 'price_1PWweBJMeGUbw0Wok4l6BNNc';
+  String foreverProductId = 'price_1PXL09JMeGUbw0WoMdJ0VNQ3';
 
   ///  State fields for stateful widgets in this page.
 

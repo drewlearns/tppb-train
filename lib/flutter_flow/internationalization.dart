@@ -6024,6 +6024,26 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '为了从您的照片库添加收据的图片，此应用程序需要获得您照片库的权限。',
       'zh_Hant': '為了從您的照片庫中添加收據圖片，此應用程式需要您的照片庫的權限。',
     },
+    '91mdybup': {
+      'en':
+          'We don\'t actually need this but an SDK and the Apple store require it be listed. Feel free to deny it.',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
+    '15jvarru': {
+      'en':
+          'We don\'t actually need this but an SDK and the Apple store require it be listed. Feel free to deny it.',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
+    },
     'clt9qi38': {
       'en': '',
       'es': '',

@@ -67,7 +67,10 @@
     <string>In order to take a picture of a receipt, this app requires permissions for camera access</string>
 	<key>NSPhotoLibraryUsageDescription</key>
     <string>In order to upload a picture of a receipt, this app requires permissions for photo library</string>
-
+	<key>NSMicrophoneUsageDescription</key>
+    <string>We don't actually need this but an SDK and the Apple store require it be listed. Feel free to deny it.</string>
+	<key>PermissionGroupNotification</key>
+    <string>We don't actually need this but an SDK and the Apple store require it be listed. Feel free to deny it.</string>
 
 
 	<key>UILaunchStoryboardName</key>

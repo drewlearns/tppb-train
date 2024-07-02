@@ -1,4 +1,5 @@
 import 'dart:convert';
+import '../cloud_functions/cloud_functions.dart';
 
 import 'package:flutter/foundation.dart';
 
@@ -12,15 +13,6 @@ const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 /// Start TPPB Group Code
 
 class TppbGroup {
-  static String getBaseUrl({
-    String? authenticationToken = '',
-    String? householdIdGlobal = '',
-    String? paymentSourceIdGlobal = '',
-  }) =>
-      'https://api.thepurplepiggybank.com';
-  static Map<String, String> headers = {
-    'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
-  };
   static AddUserCall addUserCall = AddUserCall();
   static GetLedgerCall getLedgerCall = GetLedgerCall();
   static GetHouseholdCall getHouseholdCall = GetHouseholdCall();
@@ -94,37 +86,23 @@ class AddUserCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-"email":"$email",
-"mailOptIn":$mailOptIn,
-"firstName":"$firstName",
-"lastName":"$lastName",
-"uuid":"$uuid"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'addUser',
-      apiUrl: '$baseUrl/addUser',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'AddUserCall',
+        'variables': {
+          'email': email,
+          'mailOptIn': mailOptIn,
+          'firstName': firstName,
+          'lastName': lastName,
+          'uuid': uuid,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? message(dynamic response) => castToType<String>(getJsonField(
@@ -162,42 +140,25 @@ class GetLedgerCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "householdId": "$householdIdGlobal",
-  "filters": {
-    "month": $month,
-    "year": $year,
-    "showCurrentMonthOnly": $showCurrentMonthOnly,
-    "showClearedOnly": $showClearedOnly,
-    "showCurrentMonthUpToToday": $showCurrentMonthUpToToday
-  },
-  "threshold": "$threshold"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'getLedger',
-      apiUrl: '$baseUrl/getLedger',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'GetLedgerCall',
+        'variables': {
+          'householdId': householdId,
+          'month': month,
+          'year': year,
+          'showCurrentMonthOnly': showCurrentMonthOnly,
+          'showClearedOnly': showClearedOnly,
+          'showCurrentMonthUpToToday': showCurrentMonthUpToToday,
+          'threshold': threshold,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   List? data(dynamic response) => getJsonField(
@@ -411,33 +372,18 @@ class GetHouseholdCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'getHousehold',
-      apiUrl: '$baseUrl/getHousehold',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'GetHouseholdCall',
+        'variables': {
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   List<String>? householdIds(dynamic response) => (getJsonField(
@@ -467,34 +413,19 @@ class EditLedgerEntryAsClearedCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "ledgerId": "$ledgerId"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'editLedgerEntryAsCleared',
-      apiUrl: '$baseUrl/editLedgerEntryAsCleared',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'EditLedgerEntryAsClearedCall',
+        'variables': {
+          'ledgerId': ledgerId,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   dynamic message(dynamic response) => getJsonField(
@@ -509,34 +440,18 @@ class GetPaymentSourceCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "householdId": "$householdIdGlobal"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'getPaymentSource',
-      apiUrl: '$baseUrl/getPaymentSource',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'GetPaymentSourceCall',
+        'variables': {
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   List<String>? paymentSourceName(dynamic response) => (getJsonField(
@@ -592,46 +507,27 @@ class AddBillCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "householdId": "$householdIdGlobal",
-  "billData": {
-    "category": "$category",
-    "billName": "$billName",
-    "amount": $amount,
-    "dayOfMonth": $dayOfMonth,
-    "frequency": "$frequency",
-    "description": "$description",
-    "url": "$url",
-    "username": "$user",
-    "paymentSourceId": "$paymentSourceIdGlobal",
-    "password": "$password"
-  }
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'addBill',
-      apiUrl: '$baseUrl/addBill',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'AddBillCall',
+        'variables': {
+          'category': category,
+          'billName': billName,
+          'amount': amount,
+          'dayOfMonth': dayOfMonth,
+          'frequency': frequency,
+          'description': description,
+          'url': url,
+          'user': user,
+          'password': password,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? billId(dynamic response) => castToType<String>(getJsonField(
@@ -706,41 +602,22 @@ class AddIncomeCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "householdId": "$householdIdGlobal",
-  "paymentSourceId": "$paymentSourceIdGlobal",
-  "incomeData": {
-    "name": "$incomeName",
-    "amount": $incomeAmount,
-    "frequency": "$incomeFrequency",
-    "firstPayDay": "$incomeFirstPayDay"
-  }
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'addIncome',
-      apiUrl: '$baseUrl/addIncome',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'AddIncomeCall',
+        'variables': {
+          'incomeName': incomeName,
+          'incomeAmount': incomeAmount,
+          'incomeFrequency': incomeFrequency,
+          'incomeFirstPayDay': incomeFirstPayDay,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? message(dynamic response) => castToType<String>(getJsonField(
@@ -756,35 +633,19 @@ class GetBillsCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "householdId": "$householdIdGlobal",
-  "filterType": "$filterType"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'getBills',
-      apiUrl: '$baseUrl/getBills',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'GetBillsCall',
+        'variables': {
+          'filterType': filterType,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? message(dynamic response) => castToType<String>(getJsonField(
@@ -877,34 +738,19 @@ class GetLedgerEntryCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "ledgerId": "$ledgerId"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'getLedgerEntry',
-      apiUrl: '$baseUrl/getLedgerEntry',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'GetLedgerEntryCall',
+        'variables': {
+          'ledgerId': ledgerId,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? ledgerId(dynamic response) => castToType<String>(getJsonField(
@@ -992,34 +838,18 @@ class GetSafeToSpendCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "householdId": "$householdIdGlobal"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'getSafeToSpend',
-      apiUrl: '$baseUrl/getSafeToSpend',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'GetSafeToSpendCall',
+        'variables': {
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   double? safeToSpend(dynamic response) => castToType<double>(getJsonField(
@@ -1038,34 +868,18 @@ class GetTotalSpentCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "householdId": "$householdIdGlobal"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'getTotalSpent',
-      apiUrl: '$baseUrl/getTotalSpent',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'GetTotalSpentCall',
+        'variables': {
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   double? totalSpent(dynamic response) => castToType<double>(getJsonField(
@@ -1088,43 +902,26 @@ class AddTransactionCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "householdId": "$householdIdGlobal",
-  "amount": $amount,
-  "transactionType": "$transactionType",
-  "transactionDate": "$transactionDate",
-  "category": "$category",
-  "description": "$description",
-  "status": $status,
-  "sourceId": "$paymentSourceIdGlobal",
-  "tags": "$tags",
-  "image": "$image"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'addTransaction',
-      apiUrl: '$baseUrl/addTransaction',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'AddTransactionCall',
+        'variables': {
+          'amount': amount,
+          'transactionType': transactionType,
+          'transactionDate': transactionDate,
+          'category': category,
+          'description': description,
+          'status': status,
+          'tags': tags,
+          'image': image,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? message(dynamic response) => castToType<String>(getJsonField(
@@ -1140,34 +937,19 @@ class GetBillPasswordCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "billId": "$billId"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'getBillPassword',
-      apiUrl: '$baseUrl/getBillPassword',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'GetBillPasswordCall',
+        'variables': {
+          'billId': billId,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? username(dynamic response) => castToType<String>(getJsonField(
@@ -1187,34 +969,19 @@ class GetBillCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "billId": "$billId"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'getBill',
-      apiUrl: '$baseUrl/getBill',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'GetBillCall',
+        'variables': {
+          'billId': billId,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   int? dayOfMonth(dynamic response) => castToType<int>(getJsonField(
@@ -1286,34 +1053,19 @@ class GetIncomeCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "incomeId": "$incomeId"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'getIncome',
-      apiUrl: '$baseUrl/getIncome',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'GetIncomeCall',
+        'variables': {
+          'incomeId': incomeId,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? frequency(dynamic response) => castToType<String>(getJsonField(
@@ -1357,34 +1109,19 @@ class GetTransactionCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "transactionId": "$transactionId",
-  "authToken": "$authenticationToken"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'getTransaction',
-      apiUrl: '$baseUrl/getTransaction',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'GetTransactionCall',
+        'variables': {
+          'transactionId': transactionId,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 }
 
@@ -1395,34 +1132,19 @@ class GetFilePathCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "transactionId": "$transactionId"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'getFilePath',
-      apiUrl: '$baseUrl/getFilePath',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'GetFilePathCall',
+        'variables': {
+          'transactionId': transactionId,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? message(dynamic response) => castToType<String>(getJsonField(
@@ -1441,34 +1163,18 @@ class GetIncomesCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "householdId": "$householdIdGlobal"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'getIncomes',
-      apiUrl: '$baseUrl/getIncomes',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'GetIncomesCall',
+        'variables': {
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   List<String>? incomeId(dynamic response) => (getJsonField(
@@ -1506,34 +1212,18 @@ class GetCurrentMonthIncomeCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "householdId": "$householdIdGlobal"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'getCurrentMonthIncome',
-      apiUrl: '$baseUrl/getCurrentMonthIncome',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'GetCurrentMonthIncomeCall',
+        'variables': {
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   double? totalIncome(dynamic response) => castToType<double>(getJsonField(
@@ -1549,34 +1239,19 @@ class SearchTransactionsCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-"query":"$query"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'searchTransactions',
-      apiUrl: '$baseUrl/searchTransactions',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'SearchTransactionsCall',
+        'variables': {
+          'query': query,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   List? list(dynamic response) => getJsonField(
@@ -1700,33 +1375,18 @@ class GetNotificationsCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'getNotifications',
-      apiUrl: '$baseUrl/getNotifications',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'GetNotificationsCall',
+        'variables': {
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   List<String>? notificationId(dynamic response) => (getJsonField(
@@ -1801,34 +1461,19 @@ class GetNotificationCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "notificationId": "$notificationId",
-  "authToken": "$authenticationToken"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'getNotification',
-      apiUrl: '$baseUrl/getNotification',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'GetNotificationCall',
+        'variables': {
+          'notificationId': notificationId,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? notificationId(dynamic response) => castToType<String>(getJsonField(
@@ -1871,37 +1516,22 @@ class EditNotificationCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "notificationId": "$notificationId",
-  "title": "$title",
-  "message": "$message",
-  "dueDate": "$dueDate"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'editNotification',
-      apiUrl: '$baseUrl/editNotification',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'EditNotificationCall',
+        'variables': {
+          'notificationId': notificationId,
+          'dueDate': dueDate,
+          'title': title,
+          'message': message,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   dynamic message(dynamic response) => getJsonField(
@@ -1917,31 +1547,19 @@ class SubscriptionCheckerCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{"uuid":"$userUuid"}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'subscriptionChecker',
-      apiUrl: '$baseUrl/subscriptionChecker',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'SubscriptionCheckerCall',
+        'variables': {
+          'userUuid': userUuid,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   bool? isTrial(dynamic response) => castToType<bool>(getJsonField(
@@ -1973,34 +1591,18 @@ class GetAllBillsCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "householdId": "$householdIdGlobal"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'getAllBills',
-      apiUrl: '$baseUrl/getAllBills',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'GetAllBillsCall',
+        'variables': {
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? message(dynamic response) => castToType<String>(getJsonField(
@@ -2048,43 +1650,28 @@ class EditBillCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "householdId": "$householdIdGlobal",
-  "amount": "$amount",
-  "dayOfMonth": $dayOfMonth,
-  "category": "$category",
-  "description": "$description",
-  "sourceId": "$sourceId",
-  "billId": "$billId",
-  "url": "$url",
-  "username": "$username",
-  "password": "$password",
-  "frequency": "$frequency"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'editBill',
-      apiUrl: '$baseUrl/editBill',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'EditBillCall',
+        'variables': {
+          'amount': amount,
+          'dayOfMonth': dayOfMonth,
+          'category': category,
+          'description': description,
+          'sourceId': sourceId,
+          'billId': billId,
+          'url': url,
+          'username': username,
+          'password': password,
+          'frequency': frequency,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 }
 
@@ -2095,35 +1682,19 @@ class DeleteBillCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "householdId": "$householdIdGlobal",
-  "billId": "$billId"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'deleteBill',
-      apiUrl: '$baseUrl/deleteBill',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'DeleteBillCall',
+        'variables': {
+          'billId': billId,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? message(dynamic response) => castToType<String>(getJsonField(
@@ -2139,35 +1710,19 @@ class AddInviteCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authorizationToken": "$authenticationToken",
-  "email": "$email",
-  "householdId": "$householdIdGlobal"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'addInvite',
-      apiUrl: '$baseUrl/addInvite',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'AddInviteCall',
+        'variables': {
+          'email': email,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? message(dynamic response) => castToType<String>(getJsonField(
@@ -2188,39 +1743,24 @@ class AcceptInviteCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "invitationId": "$invitationId",
-  "email": "$email",
-  "mailOptIn": $mailOptIn,
-  "firstName": "$firstName",
-  "lastName": "$lastName",
-  "uuid": "$uuid"
-}
-''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'acceptInvite',
-      apiUrl: '$baseUrl/acceptInvite',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'AcceptInviteCall',
+        'variables': {
+          'invitationId': invitationId,
+          'mailOptIn': mailOptIn,
+          'firstName': firstName,
+          'lastName': lastName,
+          'uuid': uuid,
+          'email': email,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? message(dynamic response) => castToType<String>(getJsonField(
@@ -2236,37 +1776,19 @@ class AddHouseholdCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "householdData": {
-    "householdName": "$householdName",
-    "activeSubscription": false
-  }
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'addHousehold',
-      apiUrl: '$baseUrl/addHousehold',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'AddHouseholdCall',
+        'variables': {
+          'householdName': householdName,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? householdName(dynamic response) => castToType<String>(getJsonField(
@@ -2282,37 +1804,19 @@ class EditHouseholdCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "householdId": "$householdIdGlobal",
-  "householdData": {
-    "householdName": "$householdName"
-  }
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'editHousehold',
-      apiUrl: '$baseUrl/editHousehold',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'EditHouseholdCall',
+        'variables': {
+          'householdName': householdName,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 }
 
@@ -2322,34 +1826,18 @@ class GetHouseholdMembersCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "householdId": "$householdIdGlobal"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'getHouseholdMembers',
-      apiUrl: '$baseUrl/getHouseholdMembers',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'GetHouseholdMembersCall',
+        'variables': {
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   List<String>? uuid(dynamic response) => (getJsonField(
@@ -2415,35 +1903,19 @@ class DeleteMemberFromHouseholdCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "householdId": "$householdIdGlobal",
-  "memberUuid": "$memberUuid"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'deleteMemberFromHousehold',
-      apiUrl: '$baseUrl/deleteMemberFromHousehold',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'DeleteMemberFromHouseholdCall',
+        'variables': {
+          'memberUuid': memberUuid,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? message(dynamic response) => castToType<String>(getJsonField(
@@ -2458,34 +1930,18 @@ class DeleteHouseholdCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "householdId": "$householdIdGlobal"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'deleteHousehold',
-      apiUrl: '$baseUrl/deleteHousehold',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'DeleteHouseholdCall',
+        'variables': {
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? message(dynamic response) => castToType<String>(getJsonField(
@@ -2505,41 +1961,23 @@ class EditIncomeCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "incomeId": "$incomeId",
-  "updatedIncomeData": {
-    "name": "$name",
-    "amount": $amount,
-    "frequency": "$frequency",
-    "firstPayDay": "$date",
-    "paymentSourceId": "$paymentSourceIdGlobal"
-  }
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'editIncome',
-      apiUrl: '$baseUrl/editIncome',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'EditIncomeCall',
+        'variables': {
+          'incomeId': incomeId,
+          'name': name,
+          'amount': amount,
+          'frequency': frequency,
+          'date': date,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? message(dynamic response) => castToType<String>(getJsonField(
@@ -2555,34 +1993,19 @@ class DeleteIncomeCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "incomeId": "$incomeId"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'deleteIncome',
-      apiUrl: '$baseUrl/deleteIncome',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'DeleteIncomeCall',
+        'variables': {
+          'incomeId': incomeId,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? message(dynamic response) => castToType<String>(getJsonField(
@@ -2597,34 +2020,18 @@ class GetCategoriesCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "householdId": "$householdIdGlobal"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'getCategories',
-      apiUrl: '$baseUrl/getCategories',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'GetCategoriesCall',
+        'variables': {
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   List? ytdList(dynamic response) => getJsonField(
@@ -2681,35 +2088,18 @@ class ExportLedgerToCsvCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authorizationToken": "$authenticationToken",
-  "householdId": "$householdIdGlobal",
-  "paymentSourceId": "$paymentSourceIdGlobal"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'exportLedgerToCsv',
-      apiUrl: '$baseUrl/exportLedgerToCsv',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'ExportLedgerToCsvCall',
+        'variables': {
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? message(dynamic response) => castToType<String>(getJsonField(
@@ -2728,35 +2118,18 @@ class ExportLedgerToQBOCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authorizationToken": "$authenticationToken",
-  "householdId": "$householdIdGlobal",
-  "paymentSourceId": "$paymentSourceIdGlobal"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'exportLedgerToQBO',
-      apiUrl: '$baseUrl/exportLedgerToQBO',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'ExportLedgerToQBOCall',
+        'variables': {
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? message(dynamic response) => castToType<String>(getJsonField(
@@ -2777,37 +2150,20 @@ class ExportSearchCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authorizationToken": "$authenticationToken",
-  "householdId": "$householdIdGlobal",
-  "paymentSourceId": "$paymentSourceIdGlobal",
-  "reportType": "$reportType",
-  "category": "$category"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'exportSearch',
-      apiUrl: '$baseUrl/exportSearch',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'ExportSearchCall',
+        'variables': {
+          'reportType': reportType,
+          'category': category,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? message(dynamic response) => castToType<String>(getJsonField(
@@ -2834,45 +2190,26 @@ class EditLedgerEntryCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "ledgerId": "$ledgerId",
-  "updatedLedgerData": {
-    "transactionDate": "$transactionDate",
-    "status": $status,
-    "description": "$description",
-    "amount": $amount,
-    "category": "$category",
-    "tags": "$tags",
-    "householdId": "$householdIdGlobal",
-    "paymentSourceId": "$paymentSourceIdGlobal",
-    "transactionType": "$transactionType"
-  }
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'editLedgerEntry',
-      apiUrl: '$baseUrl/editLedgerEntry',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'EditLedgerEntryCall',
+        'variables': {
+          'status': status,
+          'ledgerId': ledgerId,
+          'transactionDate': transactionDate,
+          'description': description,
+          'amount': amount,
+          'category': category,
+          'tags': tags,
+          'transactionType': transactionType,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? message(dynamic response) => castToType<String>(getJsonField(
@@ -2896,44 +2233,27 @@ class EditTransactionCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "transactionId": "$transactionId",
-  "householdId": "$householdIdGlobal",
-  "amount": $amount,
-  "transactionType": "$transactionType",
-  "transactionDate": "$transactionDate",
-  "category": "$category",
-  "description": "$description",
-  "status": $status,
-  "sourceId": "$paymentSourceIdGlobal",
-  "tags": "$tags",
-  "image": "$image"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'editTransaction',
-      apiUrl: '$baseUrl/editTransaction',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'EditTransactionCall',
+        'variables': {
+          'amount': amount,
+          'transactionType': transactionType,
+          'transactionDate': transactionDate,
+          'category': category,
+          'description': description,
+          'status': status,
+          'tags': tags,
+          'image': image,
+          'transactionId': transactionId,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? message(dynamic response) => castToType<String>(getJsonField(
@@ -2948,33 +2268,18 @@ class GetUserCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'getUser',
-      apiUrl: '$baseUrl/getUser',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'GetUserCall',
+        'variables': {
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? firstName(dynamic response) => castToType<String>(getJsonField(
@@ -3023,37 +2328,22 @@ class EditUserCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "email": "$email",
-  "mailOptIn": $optin,
-  "firstName": "$firstName",
-  "lastName": "$lastName"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'editUser',
-      apiUrl: '$baseUrl/editUser',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'EditUserCall',
+        'variables': {
+          'email': email,
+          'optin': optin,
+          'firstName': firstName,
+          'lastName': lastName,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? message(dynamic response) => castToType<String>(getJsonField(
@@ -3068,33 +2358,18 @@ class DeleteUserCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'deleteUser',
-      apiUrl: '$baseUrl/deleteUser',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'DeleteUserCall',
+        'variables': {
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   dynamic message(dynamic response) => getJsonField(
@@ -3109,33 +2384,18 @@ class GetDefaultPaymentSourceCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "householdId": "$householdIdGlobal"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'getDefaultPaymentSource',
-      apiUrl: '$baseUrl/getDefaultPaymentSource',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'GetDefaultPaymentSourceCall',
+        'variables': {
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? defaultPaymentSourceId(dynamic response) =>
@@ -3151,34 +2411,18 @@ class SetDefaultPaymentSourceCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "householdId": "$householdIdGlobal",
-  "paymentSourceId": "$paymentSourceIdGlobal"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'setDefaultPaymentSource',
-      apiUrl: '$baseUrl/setDefaultPaymentSource',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'SetDefaultPaymentSourceCall',
+        'variables': {
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? message(dynamic response) => castToType<String>(getJsonField(
@@ -3195,36 +2439,20 @@ class AddPaymentSourceCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "householdId": "$householdIdGlobal",
-  "name": "$name",
-  "type": "$type"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'addPaymentSource',
-      apiUrl: '$baseUrl/addPaymentSource',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'AddPaymentSourceCall',
+        'variables': {
+          'name': name,
+          'type': type,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 }
 
@@ -3237,37 +2465,21 @@ class EditPaymentSourceCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "sourceId": "$paymentSourceIdGlobal",
-  "name": "$name",
-  "type": "$type",
-  "description": "$description"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'editPaymentSource',
-      apiUrl: '$baseUrl/editPaymentSource',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'EditPaymentSourceCall',
+        'variables': {
+          'name': name,
+          'type': type,
+          'description': description,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? message(dynamic response) => castToType<String>(getJsonField(
@@ -3282,34 +2494,18 @@ class DeletePaymentSourceCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "sourceId": "$paymentSourceIdGlobal"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'deletePaymentSource',
-      apiUrl: '$baseUrl/deletePaymentSource',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'DeletePaymentSourceCall',
+        'variables': {
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 }
 
@@ -3320,34 +2516,19 @@ class DeleteTransactionCall {
     String? householdIdGlobal = '',
     String? paymentSourceIdGlobal = '',
   }) async {
-    final baseUrl = TppbGroup.getBaseUrl(
-      authenticationToken: authenticationToken,
-      householdIdGlobal: householdIdGlobal,
-      paymentSourceIdGlobal: paymentSourceIdGlobal,
-    );
-
-    final ffApiRequestBody = '''
-{
-  "authToken": "$authenticationToken",
-  "transactionId": "$transactionId"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'deleteTransaction',
-      apiUrl: '$baseUrl/deleteTransaction',
-      callType: ApiCallType.POST,
-      headers: {
-        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'DeleteTransactionCall',
+        'variables': {
+          'transactionId': transactionId,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? message(dynamic response) => castToType<String>(getJsonField(
@@ -3361,12 +2542,6 @@ class DeleteTransactionCall {
 /// Start stripeSubscription Group Code
 
 class StripeSubscriptionGroup {
-  static String getBaseUrl() => 'https://api.stripe.com/v1';
-  static Map<String, String> headers = {
-    'Authorization':
-        'Bearer sk_test_51OKoUuJMeGUbw0WodKTGYm9ICvEUEy14E2vjIci3XVvDQN0xTK6Yg0mOiCDNIRXYCrlxZT1BGKao12HsHudDXANE00hMkf8i1x',
-    'ContentType': 'application/x-xxx-formm-urlencoded',
-  };
   static CreateCustomerCall createCustomerCall = CreateCustomerCall();
   static CreateCheckoutSessionCall createCheckoutSessionCall =
       CreateCheckoutSessionCall();
@@ -3380,30 +2555,18 @@ class CreateCustomerCall {
     String? id = '',
     String? name = '',
   }) async {
-    final baseUrl = StripeSubscriptionGroup.getBaseUrl();
-
-    return ApiManager.instance.makeApiCall(
-      callName: 'create Customer',
-      apiUrl: '$baseUrl/customers',
-      callType: ApiCallType.POST,
-      headers: {
-        'Authorization':
-            'Bearer sk_test_51OKoUuJMeGUbw0WodKTGYm9ICvEUEy14E2vjIci3XVvDQN0xTK6Yg0mOiCDNIRXYCrlxZT1BGKao12HsHudDXANE00hMkf8i1x',
-        'ContentType': 'application/x-xxx-formm-urlencoded',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'CreateCustomerCall',
+        'variables': {
+          'email': email,
+          'id': id,
+          'name': name,
+        },
       },
-      params: {
-        'email': email,
-        'id': id,
-        'name': name,
-      },
-      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? id(dynamic response) => castToType<String>(getJsonField(
@@ -3419,33 +2582,19 @@ class CreateCheckoutSessionCall {
     String? uuid = '',
     String? cancelUrl = '',
   }) async {
-    final baseUrl = StripeSubscriptionGroup.getBaseUrl();
-
-    return ApiManager.instance.makeApiCall(
-      callName: 'create checkout session',
-      apiUrl: '$baseUrl/checkout/sessions',
-      callType: ApiCallType.POST,
-      headers: {
-        'Authorization':
-            'Bearer sk_test_51OKoUuJMeGUbw0WodKTGYm9ICvEUEy14E2vjIci3XVvDQN0xTK6Yg0mOiCDNIRXYCrlxZT1BGKao12HsHudDXANE00hMkf8i1x',
-        'ContentType': 'application/x-xxx-formm-urlencoded',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'CreateCheckoutSessionCall',
+        'variables': {
+          'priceId': priceId,
+          'mode': mode,
+          'uuid': uuid,
+          'cancelUrl': cancelUrl,
+        },
       },
-      params: {
-        'mode': mode,
-        'success_url': "https://thepurplepiggybank.com/thankyou",
-        'cancel_url': cancelUrl,
-        'line_items[0][price]': priceId,
-        'line_items[0][quantity': "1",
-        'customer': uuid,
-      },
-      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? subscriptionId(dynamic response) => castToType<String>(getJsonField(
@@ -3478,28 +2627,16 @@ class GetCustomerPortalSessionCall {
   Future<ApiCallResponse> call({
     String? uuid = '',
   }) async {
-    final baseUrl = StripeSubscriptionGroup.getBaseUrl();
-
-    return ApiManager.instance.makeApiCall(
-      callName: 'get customer portal session',
-      apiUrl: '$baseUrl/billing_portal/sessions',
-      callType: ApiCallType.POST,
-      headers: {
-        'Authorization':
-            'Bearer sk_test_51OKoUuJMeGUbw0WodKTGYm9ICvEUEy14E2vjIci3XVvDQN0xTK6Yg0mOiCDNIRXYCrlxZT1BGKao12HsHudDXANE00hMkf8i1x',
-        'ContentType': 'application/x-xxx-formm-urlencoded',
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'GetCustomerPortalSessionCall',
+        'variables': {
+          'uuid': uuid,
+        },
       },
-      params: {
-        'customer': uuid,
-      },
-      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
 
   String? url(dynamic response) => castToType<String>(getJsonField(

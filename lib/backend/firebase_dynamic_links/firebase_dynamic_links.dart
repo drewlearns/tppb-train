@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 const _kDynamicLinksUrl = 'https://app.thepurplepiggybank.com';
 const _kAppBundleId = 'com.thepurplepiggybank.app';
+const _kIosAppId = '6504499654';
 
 Future<String> generateCurrentPageLink(
   BuildContext context, {
@@ -22,6 +23,7 @@ Future<String> generateCurrentPageLink(
     androidParameters: const AndroidParameters(packageName: _kAppBundleId),
     iosParameters: const IOSParameters(
       bundleId: _kAppBundleId,
+      appStoreId: _kIosAppId,
     ),
     socialMetaTagParameters: SocialMetaTagParameters(
       title: title,
