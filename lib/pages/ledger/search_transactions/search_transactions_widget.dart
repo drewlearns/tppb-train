@@ -7,6 +7,7 @@ import 'dart:async';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
 import 'search_transactions_model.dart';
 export 'search_transactions_model.dart';
 
@@ -452,6 +453,13 @@ class _SearchTransactionsWidgetState extends State<SearchTransactionsWidget> {
                                                                                           );
 
                                                                                           if ((_model.editLedgerEntryAsClearedOutput?.succeeded ?? true)) {
+                                                                                            _model.soundPlayer ??= AudioPlayer();
+                                                                                            if (_model.soundPlayer!.playing) {
+                                                                                              await _model.soundPlayer!.stop();
+                                                                                            }
+                                                                                            _model.soundPlayer!.setVolume(1.0);
+                                                                                            _model.soundPlayer!.setAsset('assets/audios/cash-register-kaching-sound-effect-125042.mp3').then((_) => _model.soundPlayer!.play());
+
                                                                                             setState(() => _model.apiRequestCompleter = null);
                                                                                             await _model.waitForApiRequestCompleted();
 

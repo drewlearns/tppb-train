@@ -1,1 +1,2 @@
-
+NSCameraUsageDescription = "為了拍攝收據照片，此應用程式需要相機存取權限";
+NSPhotoLibraryUsageDescription = "為了從您的照片庫中添加收據圖片，此應用程式需要您的照片庫的權限。";

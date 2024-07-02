@@ -12,6 +12,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:just_audio/just_audio.dart';
 import 'ledger_model.dart';
 export 'ledger_model.dart';
 
@@ -1788,6 +1789,13 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                                                         ),
                                                                                         authenticationToken: currentJwtToken,
                                                                                       );
+
+                                                                                      _model.soundPlayer ??= AudioPlayer();
+                                                                                      if (_model.soundPlayer!.playing) {
+                                                                                        await _model.soundPlayer!.stop();
+                                                                                      }
+                                                                                      _model.soundPlayer!.setVolume(1.0);
+                                                                                      await _model.soundPlayer!.setAsset('assets/audios/cash-register-kaching-sound-effect-125042.mp3').then((_) => _model.soundPlayer!.play());
 
                                                                                       if ((_model.editLedgerEntryAsClearedOutput?.succeeded ?? true)) {
                                                                                         setState(() => _model.apiRequestCompleter = null);

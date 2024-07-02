@@ -219,6 +219,7 @@ class _AddInviteWidgetState extends State<AddInviteWidget> {
                                       controller: _model.textController,
                                       focusNode: _model.textFieldFocusNode,
                                       autofocus: true,
+                                      textInputAction: TextInputAction.next,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText:
@@ -287,6 +288,7 @@ class _AddInviteWidgetState extends State<AddInviteWidget> {
                                             fontFamily: 'Noto Sans JP',
                                             letterSpacing: 0.0,
                                           ),
+                                      keyboardType: TextInputType.emailAddress,
                                       validator: _model.textControllerValidator
                                           .asValidator(context),
                                     ),

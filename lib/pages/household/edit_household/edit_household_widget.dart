@@ -228,6 +228,8 @@ class _EditHouseholdWidgetState extends State<EditHouseholdWidget> {
                                   controller: _model.textController,
                                   focusNode: _model.textFieldFocusNode,
                                   autofocus: true,
+                                  textCapitalization: TextCapitalization.words,
+                                  textInputAction: TextInputAction.next,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelText:
@@ -298,53 +300,141 @@ class _EditHouseholdWidgetState extends State<EditHouseholdWidget> {
                       ),
                     ),
                   ),
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      FFButtonWidget(
-                        onPressed: () async {
-                          var confirmDialogResponse = await showDialog<bool>(
-                                context: context,
-                                builder: (alertDialogContext) {
-                                  return AlertDialog(
-                                    title: const Text(
-                                        'Are you sure you want to delete this household?'),
-                                    content: const Text(
-                                        'This action cannot be undone, all transactions will be deleted and cannot be restored.'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () => Navigator.pop(
-                                            alertDialogContext, false),
-                                        child: const Text('Cancel'),
-                                      ),
-                                      TextButton(
-                                        onPressed: () => Navigator.pop(
-                                            alertDialogContext, true),
-                                        child: const Text('Confirm'),
-                                      ),
-                                    ],
-                                  );
-                                },
-                              ) ??
-                              false;
-                          if (confirmDialogResponse) {
-                            _model.apiResulty7e =
-                                await TppbGroup.deleteHouseholdCall.call(
+                  Container(
+                    width: 380.0,
+                    decoration: const BoxDecoration(),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        FFButtonWidget(
+                          onPressed: () async {
+                            var confirmDialogResponse = await showDialog<bool>(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: const Text(
+                                          'Are you sure you want to delete this household?'),
+                                      content: const Text(
+                                          'This action cannot be undone, all transactions will be deleted and cannot be restored.'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () => Navigator.pop(
+                                              alertDialogContext, false),
+                                          child: const Text('Cancel'),
+                                        ),
+                                        TextButton(
+                                          onPressed: () => Navigator.pop(
+                                              alertDialogContext, true),
+                                          child: const Text('Confirm'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                ) ??
+                                false;
+                            if (confirmDialogResponse) {
+                              _model.apiResulty7e =
+                                  await TppbGroup.deleteHouseholdCall.call(
+                                authenticationToken: currentJwtToken,
+                                householdIdGlobal:
+                                    _model.householdDropDownValue,
+                              );
+
+                              if ((_model.apiResulty7e?.succeeded ?? true)) {
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: const Text('Error'),
+                                      content: Text(
+                                          TppbGroup.deleteHouseholdCall.message(
+                                        (_model.apiResulty7e?.jsonBody ?? ''),
+                                      )!),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: const Text('Ok'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                                setState(
+                                    () => _model.apiRequestCompleter = null);
+                                await _model.waitForApiRequestCompleted();
+                                context.safePop();
+                              } else {
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: const Text('Error'),
+                                      content: Text(
+                                          TppbGroup.deleteHouseholdCall.message(
+                                        (_model.apiResulty7e?.jsonBody ?? ''),
+                                      )!),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: const Text('Ok'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
+                            } else {
+                              context.safePop();
+                            }
+
+                            setState(() {});
+                          },
+                          text: FFLocalizations.of(context).getText(
+                            '6exdehmp' /* Delete Household */,
+                          ),
+                          options: FFButtonOptions(
+                            width: 180.0,
+                            height: 40.0,
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                24.0, 0.0, 24.0, 0.0),
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: FlutterFlowTheme.of(context).error,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Noto Sans JP',
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                ),
+                            elevation: 3.0,
+                            borderSide: const BorderSide(
+                              color: Colors.transparent,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                        ),
+                        FFButtonWidget(
+                          onPressed: () async {
+                            _model.apiResult2qy =
+                                await TppbGroup.editHouseholdCall.call(
+                              householdName: _model.textController.text,
                               authenticationToken: currentJwtToken,
                               householdIdGlobal: _model.householdDropDownValue,
                             );
 
-                            if ((_model.apiResulty7e?.succeeded ?? true)) {
+                            if ((_model.apiResult2qy?.succeeded ?? true)) {
                               await showDialog(
                                 context: context,
                                 builder: (alertDialogContext) {
                                   return AlertDialog(
-                                    title: const Text('Error'),
-                                    content: Text(
-                                        TppbGroup.deleteHouseholdCall.message(
-                                      (_model.apiResulty7e?.jsonBody ?? ''),
-                                    )!),
+                                    title: const Text('Success'),
+                                    content: const Text(
+                                        'Successfully updated household name'),
                                     actions: [
                                       TextButton(
                                         onPressed: () =>
@@ -355,8 +445,9 @@ class _EditHouseholdWidgetState extends State<EditHouseholdWidget> {
                                   );
                                 },
                               );
-                              setState(() => _model.apiRequestCompleter = null);
-                              await _model.waitForApiRequestCompleted();
+                              setState(() {
+                                _model.textController?.clear();
+                              });
                               context.safePop();
                             } else {
                               await showDialog(
@@ -364,10 +455,8 @@ class _EditHouseholdWidgetState extends State<EditHouseholdWidget> {
                                 builder: (alertDialogContext) {
                                   return AlertDialog(
                                     title: const Text('Error'),
-                                    content: Text(
-                                        TppbGroup.deleteHouseholdCall.message(
-                                      (_model.apiResulty7e?.jsonBody ?? ''),
-                                    )!),
+                                    content: const Text(
+                                        'Unable to edit household name at this time. Reach out to support - help@thepurplepiggybank.com'),
                                     actions: [
                                       TextButton(
                                         onPressed: () =>
@@ -379,116 +468,37 @@ class _EditHouseholdWidgetState extends State<EditHouseholdWidget> {
                                 },
                               );
                             }
-                          } else {
-                            context.safePop();
-                          }
 
-                          setState(() {});
-                        },
-                        text: FFLocalizations.of(context).getText(
-                          '6exdehmp' /* Delete Household */,
-                        ),
-                        options: FFButtonOptions(
-                          width: 180.0,
-                          height: 40.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              24.0, 0.0, 24.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).error,
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Noto Sans JP',
-                                    color: Colors.white,
-                                    letterSpacing: 0.0,
-                                  ),
-                          elevation: 3.0,
-                          borderSide: const BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
+                            setState(() {});
+                          },
+                          text: FFLocalizations.of(context).getText(
+                            'tyv5vxz1' /* Edit Household */,
                           ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                      ),
-                      FFButtonWidget(
-                        onPressed: () async {
-                          _model.apiResult2qy =
-                              await TppbGroup.editHouseholdCall.call(
-                            householdName: _model.textController.text,
-                            authenticationToken: currentJwtToken,
-                            householdIdGlobal: _model.householdDropDownValue,
-                          );
-
-                          if ((_model.apiResult2qy?.succeeded ?? true)) {
-                            await showDialog(
-                              context: context,
-                              builder: (alertDialogContext) {
-                                return AlertDialog(
-                                  title: const Text('Success'),
-                                  content: const Text(
-                                      'Successfully updated household name'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () =>
-                                          Navigator.pop(alertDialogContext),
-                                      child: const Text('Ok'),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
-                            setState(() {
-                              _model.textController?.clear();
-                            });
-                            context.safePop();
-                          } else {
-                            await showDialog(
-                              context: context,
-                              builder: (alertDialogContext) {
-                                return AlertDialog(
-                                  title: const Text('Error'),
-                                  content: const Text(
-                                      'Unable to edit household name at this time. Reach out to support - help@thepurplepiggybank.com'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () =>
-                                          Navigator.pop(alertDialogContext),
-                                      child: const Text('Ok'),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
-                          }
-
-                          setState(() {});
-                        },
-                        text: FFLocalizations.of(context).getText(
-                          'tyv5vxz1' /* Edit Household */,
-                        ),
-                        options: FFButtonOptions(
-                          width: 180.0,
-                          height: 40.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              24.0, 0.0, 24.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primary,
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Noto Sans JP',
-                                    color: Colors.white,
-                                    letterSpacing: 0.0,
-                                  ),
-                          elevation: 3.0,
-                          borderSide: const BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
+                          options: FFButtonOptions(
+                            width: 180.0,
+                            height: 40.0,
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                24.0, 0.0, 24.0, 0.0),
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: FlutterFlowTheme.of(context).primary,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Noto Sans JP',
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                ),
+                            elevation: 3.0,
+                            borderSide: const BorderSide(
+                              color: Colors.transparent,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
                           ),
-                          borderRadius: BorderRadius.circular(8.0),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),

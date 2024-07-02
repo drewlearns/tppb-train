@@ -413,6 +413,8 @@ class _AddTransactionWidgetState extends State<AddTransactionWidget> {
                                                 _model.amountTextController,
                                             focusNode: _model.amountFocusNode,
                                             autofocus: true,
+                                            textInputAction:
+                                                TextInputAction.next,
                                             obscureText: false,
                                             decoration: InputDecoration(
                                               labelText:
@@ -714,6 +716,8 @@ class _AddTransactionWidgetState extends State<AddTransactionWidget> {
                                                   autofocus: true,
                                                   textCapitalization:
                                                       TextCapitalization.words,
+                                                  textInputAction:
+                                                      TextInputAction.next,
                                                   obscureText: false,
                                                   decoration: InputDecoration(
                                                     labelText:
@@ -828,6 +832,8 @@ class _AddTransactionWidgetState extends State<AddTransactionWidget> {
                                                   autofocus: true,
                                                   textCapitalization:
                                                       TextCapitalization.words,
+                                                  textInputAction:
+                                                      TextInputAction.next,
                                                   obscureText: false,
                                                   decoration: InputDecoration(
                                                     labelText:
@@ -942,6 +948,8 @@ class _AddTransactionWidgetState extends State<AddTransactionWidget> {
                                                   autofocus: true,
                                                   textCapitalization:
                                                       TextCapitalization.words,
+                                                  textInputAction:
+                                                      TextInputAction.next,
                                                   obscureText: false,
                                                   decoration: InputDecoration(
                                                     labelText:

@@ -76,16 +76,20 @@ class _ExportToQBOWidgetState extends State<ExportToQBOWidget> {
                 ),
                 actions: const [],
                 flexibleSpace: FlexibleSpaceBar(
-                  title: AutoSizeText(
-                    FFLocalizations.of(context).getText(
-                      'vxc0c5my' /* Export To QBO */,
+                  title: Padding(
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
+                    child: AutoSizeText(
+                      FFLocalizations.of(context).getText(
+                        'vxc0c5my' /* Export To QBO */,
+                      ),
+                      style:
+                          FlutterFlowTheme.of(context).headlineLarge.override(
+                                fontFamily: 'Noto Sans JP',
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                letterSpacing: 0.0,
+                              ),
                     ),
-                    style: FlutterFlowTheme.of(context).headlineLarge.override(
-                          fontFamily: 'Noto Sans JP',
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          letterSpacing: 0.0,
-                        ),
                   ),
                   centerTitle: true,
                   expandedTitleScale: 1.0,
@@ -108,12 +112,11 @@ class _ExportToQBOWidgetState extends State<ExportToQBOWidget> {
                             alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
-                                  8.0, 16.0, 8.0, 0.0),
+                                  8.0, 4.0, 8.0, 0.0),
                               child: FutureBuilder<ApiCallResponse>(
-                                future: TppbGroup.exportLedgerToQBOCall.call(
+                                future: TppbGroup.getPaymentSourceCall.call(
                                   authenticationToken: currentJwtToken,
                                   householdIdGlobal: widget.householdid,
-                                  paymentSourceIdGlobal: _model.dropDownValue,
                                 ),
                                 builder: (context, snapshot) {
                                   // Customize what your widget looks like when it's loading.
@@ -132,7 +135,7 @@ class _ExportToQBOWidgetState extends State<ExportToQBOWidget> {
                                       ),
                                     );
                                   }
-                                  final dropDownExportLedgerToQBOResponse =
+                                  final dropDownGetPaymentSourceResponse =
                                       snapshot.data!;
                                   return FlutterFlowDropDown<String>(
                                     controller:
@@ -140,22 +143,15 @@ class _ExportToQBOWidgetState extends State<ExportToQBOWidget> {
                                             FormFieldController<String>(
                                       _model.dropDownValue ??= '',
                                     ),
-                                    options: List<String>.from((getJsonField(
-                                      dropDownExportLedgerToQBOResponse
-                                          .jsonBody,
-                                      r'''$.paymentSources[:].sourceId''',
-                                      true,
-                                    ) as List)
-                                        .map<String>((s) => s.toString())
-                                        .toList()),
-                                    optionLabels: (getJsonField(
-                                      dropDownExportLedgerToQBOResponse
-                                          .jsonBody,
-                                      r'''$.paymentSources[:].sourceName''',
-                                      true,
-                                    ) as List)
-                                        .map<String>((s) => s.toString())
-                                        .toList(),
+                                    options: List<String>.from(TppbGroup
+                                        .getPaymentSourceCall
+                                        .paymentSourceId(
+                                      dropDownGetPaymentSourceResponse.jsonBody,
+                                    )!),
+                                    optionLabels: TppbGroup.getPaymentSourceCall
+                                        .paymentSourceName(
+                                      dropDownGetPaymentSourceResponse.jsonBody,
+                                    )!,
                                     onChanged: (val) => setState(
                                         () => _model.dropDownValue = val),
                                     width: 350.0,
@@ -210,12 +206,16 @@ class _ExportToQBOWidgetState extends State<ExportToQBOWidget> {
                             alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 16.0, 0.0, 0.0),
+                                  0.0, 4.0, 0.0, 0.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
                                   _model.apiResultfzl = await TppbGroup
                                       .exportLedgerToQBOCall
-                                      .call();
+                                      .call(
+                                    authenticationToken: currentJwtToken,
+                                    householdIdGlobal: widget.householdid,
+                                    paymentSourceIdGlobal: _model.dropDownValue,
+                                  );
 
                                   if ((_model.apiResultfzl?.succeeded ??
                                       true)) {
@@ -262,9 +262,10 @@ class _ExportToQBOWidgetState extends State<ExportToQBOWidget> {
                                   setState(() {});
                                 },
                                 text: FFLocalizations.of(context).getText(
-                                  'm5km0x1r' /* Export To QBB/QBO */,
+                                  'm5km0x1r' /* Export */,
                                 ),
                                 options: FFButtonOptions(
+                                  width: 350.0,
                                   height: 40.0,
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),

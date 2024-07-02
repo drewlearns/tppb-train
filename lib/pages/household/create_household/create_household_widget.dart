@@ -114,6 +114,7 @@ class _CreateHouseholdWidgetState extends State<CreateHouseholdWidget> {
                                       controller: _model.textController,
                                       focusNode: _model.textFieldFocusNode,
                                       autofocus: true,
+                                      textInputAction: TextInputAction.next,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText:

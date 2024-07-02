@@ -350,7 +350,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
-                                        context.pushNamed('updateUser');
+                                        context.pushNamed('Profile');
                                       },
                                       child: Material(
                                         color: Colors.transparent,

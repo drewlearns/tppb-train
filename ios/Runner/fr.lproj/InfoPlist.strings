@@ -1,1 +1,2 @@
-
+NSCameraUsageDescription = "Afin de prendre une photo d'un reçu, cette application nécessite des autorisations pour accéder à la caméra";
+NSPhotoLibraryUsageDescription = "Afin d'ajouter une image d'un reçu de votre photothèque, cette application nécessite des autorisations sur votre photothèque.";

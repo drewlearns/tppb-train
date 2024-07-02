@@ -1,9 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
 import 'edit_notification_model.dart';
 export 'edit_notification_model.dart';
@@ -34,11 +36,7 @@ class _EditNotificationWidgetState extends State<EditNotificationWidget> {
 
     _model.billNameFocusNode ??= FocusNode();
 
-    _model.amountFocusNode1 ??= FocusNode();
-
-    _model.amountFocusNode2 ??= FocusNode();
-
-    _model.amountFocusNode3 ??= FocusNode();
+    _model.amountFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -299,6 +297,8 @@ class _EditNotificationWidgetState extends State<EditNotificationWidget> {
                                             autofocus: true,
                                             textCapitalization:
                                                 TextCapitalization.words,
+                                            textInputAction:
+                                                TextInputAction.next,
                                             obscureText: false,
                                             decoration: InputDecoration(
                                               labelText:
@@ -393,7 +393,7 @@ class _EditNotificationWidgetState extends State<EditNotificationWidget> {
                                         Expanded(
                                           child: TextFormField(
                                             controller:
-                                                _model.amountTextController1 ??=
+                                                _model.amountTextController ??=
                                                     TextEditingController(
                                               text: TppbGroup
                                                   .getNotificationCall
@@ -402,8 +402,12 @@ class _EditNotificationWidgetState extends State<EditNotificationWidget> {
                                                     .jsonBody,
                                               ),
                                             ),
-                                            focusNode: _model.amountFocusNode1,
+                                            focusNode: _model.amountFocusNode,
                                             autofocus: true,
+                                            textCapitalization:
+                                                TextCapitalization.sentences,
+                                            textInputAction:
+                                                TextInputAction.next,
                                             obscureText: false,
                                             decoration: InputDecoration(
                                               labelText:
@@ -484,7 +488,7 @@ class _EditNotificationWidgetState extends State<EditNotificationWidget> {
                                                   letterSpacing: 0.0,
                                                 ),
                                             validator: _model
-                                                .amountTextController1Validator
+                                                .amountTextControllerValidator
                                                 .asValidator(context),
                                           ),
                                         ),
@@ -530,123 +534,81 @@ class _EditNotificationWidgetState extends State<EditNotificationWidget> {
                                                       MainAxisAlignment.center,
                                                   children: [
                                                     Expanded(
-                                                      child: TextFormField(
-                                                        controller: _model
-                                                                .amountTextController2 ??=
-                                                            TextEditingController(
-                                                          text: valueOrDefault<
+                                                      child:
+                                                          FlutterFlowDropDown<
                                                               String>(
-                                                            TppbGroup
-                                                                .getBillCall
-                                                                .frequency(
-                                                              listViewGetBillResponse
-                                                                  .jsonBody,
-                                                            ),
-                                                            'Loading...',
+                                                        controller: _model
+                                                                .amountValueController1 ??=
+                                                            FormFieldController<
+                                                                String>(
+                                                          _model.amountValue1 ??=
+                                                              TppbGroup
+                                                                  .getBillCall
+                                                                  .frequency(
+                                                            listViewGetBillResponse
+                                                                .jsonBody,
                                                           ),
                                                         ),
-                                                        focusNode: _model
-                                                            .amountFocusNode2,
-                                                        autofocus: true,
-                                                        readOnly: true,
-                                                        obscureText: false,
-                                                        decoration:
-                                                            InputDecoration(
-                                                          labelText:
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .getText(
-                                                            'rrgtpl2r' /* Frequency */,
+                                                        options:
+                                                            List<String>.from([
+                                                          'once',
+                                                          'weekly',
+                                                          'biweekly',
+                                                          'monthly',
+                                                          'bimonthly',
+                                                          'quarterly',
+                                                          'semiAnnually',
+                                                          'Annually'
+                                                        ]),
+                                                        optionLabels: [
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'c8dvk0jg' /* Once */,
                                                           ),
-                                                          labelStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Noto Sans JP',
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                  ),
-                                                          hintStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Noto Sans JP',
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                  ),
-                                                          enabledBorder:
-                                                              OutlineInputBorder(
-                                                            borderSide:
-                                                                BorderSide(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .alternate,
-                                                              width: 2.0,
-                                                            ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        12.0),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'hq91442q' /* weekly */,
                                                           ),
-                                                          focusedBorder:
-                                                              OutlineInputBorder(
-                                                            borderSide:
-                                                                BorderSide(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primary,
-                                                              width: 2.0,
-                                                            ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        12.0),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'jz45fnu5' /* Bi-Weekly (every 7 days) */,
                                                           ),
-                                                          errorBorder:
-                                                              OutlineInputBorder(
-                                                            borderSide:
-                                                                BorderSide(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .error,
-                                                              width: 2.0,
-                                                            ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        12.0),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'oft9kiek' /* Monthly (every 30 days) */,
                                                           ),
-                                                          focusedErrorBorder:
-                                                              OutlineInputBorder(
-                                                            borderSide:
-                                                                BorderSide(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .error,
-                                                              width: 2.0,
-                                                            ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        12.0),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'bpvgv07t' /* Bi-Monthly (every 60 days) */,
                                                           ),
-                                                          filled: true,
-                                                          fillColor: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          contentPadding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      16.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                        ),
-                                                        style:
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'ifs0csya' /* Quarterly (every 90 days) */,
+                                                          ),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            '4rb4o8lu' /* Semi-Annually (every 180 days) */,
+                                                          ),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            '62x432fk' /* Annually (yearly) */,
+                                                          )
+                                                        ],
+                                                        onChanged: (val) =>
+                                                            setState(() => _model
+                                                                    .amountValue1 =
+                                                                val),
+                                                        width: 300.0,
+                                                        height: 56.0,
+                                                        textStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .bodyMedium
@@ -656,10 +618,57 @@ class _EditNotificationWidgetState extends State<EditNotificationWidget> {
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
-                                                        validator: _model
-                                                            .amountTextController2Validator
-                                                            .asValidator(
-                                                                context),
+                                                        hintText:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                          'rrgtpl2r' /* Please Select */,
+                                                        ),
+                                                        icon: Icon(
+                                                          Icons
+                                                              .keyboard_arrow_down_rounded,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                          size: 24.0,
+                                                        ),
+                                                        fillColor: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        elevation: 2.0,
+                                                        borderColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
+                                                        borderWidth: 2.0,
+                                                        borderRadius: 8.0,
+                                                        margin:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    16.0,
+                                                                    4.0,
+                                                                    16.0,
+                                                                    4.0),
+                                                        hidesUnderline: true,
+                                                        isOverButton: true,
+                                                        isSearchable: false,
+                                                        isMultiSelect: false,
+                                                        labelText:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                          'athrgnco' /* Frequency */,
+                                                        ),
+                                                        labelTextStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Noto Sans JP',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
                                                       ),
                                                     ),
                                                     FlutterFlowIconButton(
@@ -707,120 +716,214 @@ class _EditNotificationWidgetState extends State<EditNotificationWidget> {
                                                       MainAxisAlignment.center,
                                                   children: [
                                                     Expanded(
-                                                      child: TextFormField(
+                                                      child:
+                                                          FlutterFlowDropDown<
+                                                              String>(
                                                         controller: _model
-                                                                .amountTextController3 ??=
-                                                            TextEditingController(
-                                                          text: TppbGroup
-                                                              .getBillCall
-                                                              .dayOfMonth(
-                                                                listViewGetBillResponse
-                                                                    .jsonBody,
-                                                              )
-                                                              ?.toString(),
+                                                                .amountValueController2 ??=
+                                                            FormFieldController<
+                                                                String>(
+                                                          _model.amountValue2 ??=
+                                                              TppbGroup
+                                                                  .getBillCall
+                                                                  .dayOfMonth(
+                                                                    listViewGetBillResponse
+                                                                        .jsonBody,
+                                                                  )
+                                                                  ?.toString(),
                                                         ),
-                                                        focusNode: _model
-                                                            .amountFocusNode3,
-                                                        autofocus: true,
-                                                        readOnly: true,
-                                                        obscureText: false,
-                                                        decoration:
-                                                            InputDecoration(
-                                                          labelText:
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .getText(
-                                                            'vqxl1f8p' /* Day Of Month */,
+                                                        options:
+                                                            List<String>.from([
+                                                          '1',
+                                                          '2',
+                                                          '3',
+                                                          '4',
+                                                          '5',
+                                                          '6',
+                                                          '7',
+                                                          '8',
+                                                          '9',
+                                                          '10',
+                                                          '11',
+                                                          '12',
+                                                          '13',
+                                                          '14',
+                                                          '15',
+                                                          '16',
+                                                          '17',
+                                                          '18',
+                                                          '19',
+                                                          '20',
+                                                          '21',
+                                                          '22',
+                                                          '23',
+                                                          '24',
+                                                          '25',
+                                                          '26',
+                                                          '27',
+                                                          '28',
+                                                          '29',
+                                                          '30'
+                                                        ]),
+                                                        optionLabels: [
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'y08fw7w5' /* 1st */,
                                                           ),
-                                                          labelStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Noto Sans JP',
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                  ),
-                                                          hintStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Noto Sans JP',
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                  ),
-                                                          enabledBorder:
-                                                              OutlineInputBorder(
-                                                            borderSide:
-                                                                BorderSide(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .alternate,
-                                                              width: 2.0,
-                                                            ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        12.0),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'a5if3zgi' /* 2nd */,
                                                           ),
-                                                          focusedBorder:
-                                                              OutlineInputBorder(
-                                                            borderSide:
-                                                                BorderSide(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primary,
-                                                              width: 2.0,
-                                                            ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        12.0),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'y0r1zd5y' /* 3rd */,
                                                           ),
-                                                          errorBorder:
-                                                              OutlineInputBorder(
-                                                            borderSide:
-                                                                BorderSide(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .error,
-                                                              width: 2.0,
-                                                            ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        12.0),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'k1pvqpca' /* 4th */,
                                                           ),
-                                                          focusedErrorBorder:
-                                                              OutlineInputBorder(
-                                                            borderSide:
-                                                                BorderSide(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .error,
-                                                              width: 2.0,
-                                                            ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        12.0),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            '7rff3y7k' /* 5th */,
                                                           ),
-                                                          filled: true,
-                                                          fillColor: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          contentPadding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      16.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                        ),
-                                                        style:
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'hx1kv8hu' /* 6th */,
+                                                          ),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'cu9ysp5b' /* 7th */,
+                                                          ),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'bicirhl8' /* 8th */,
+                                                          ),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            '86av5rax' /* 9th */,
+                                                          ),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'p1nwpcya' /* 10th */,
+                                                          ),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'v8j2faip' /* 11th */,
+                                                          ),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            '9umhbwph' /* 12th */,
+                                                          ),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'svafvc16' /* 13th */,
+                                                          ),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'w5gaa5b8' /* 14th */,
+                                                          ),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'xmbv1mx5' /* 15th */,
+                                                          ),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            '5gdbgffd' /* 16th */,
+                                                          ),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            '4ur77o0q' /* 17th */,
+                                                          ),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'b4cd17pg' /* 18th */,
+                                                          ),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            '4eunudv8' /* 19th */,
+                                                          ),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'ea4zwj8r' /* 20th */,
+                                                          ),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'j87becbo' /* 21st */,
+                                                          ),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'umjsuyzl' /* 22nd */,
+                                                          ),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            '7q0oynn3' /* 23rd */,
+                                                          ),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            '7hxbhkgz' /* 24th */,
+                                                          ),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'vm9k6pxz' /* 25th */,
+                                                          ),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'sgy65c78' /* 26th */,
+                                                          ),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'f22v2zd2' /* 27th */,
+                                                          ),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            '4zn8rjj1' /* 28th */,
+                                                          ),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'qqzhxfqw' /* 29th */,
+                                                          ),
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'nmiukyxm' /* 30th */,
+                                                          )
+                                                        ],
+                                                        onChanged: (val) =>
+                                                            setState(() => _model
+                                                                    .amountValue2 =
+                                                                val),
+                                                        width: 300.0,
+                                                        height: 56.0,
+                                                        textStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .bodyMedium
@@ -830,10 +933,57 @@ class _EditNotificationWidgetState extends State<EditNotificationWidget> {
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
-                                                        validator: _model
-                                                            .amountTextController3Validator
-                                                            .asValidator(
-                                                                context),
+                                                        hintText:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                          'vqxl1f8p' /* Please Select... */,
+                                                        ),
+                                                        icon: Icon(
+                                                          Icons
+                                                              .keyboard_arrow_down_rounded,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                          size: 24.0,
+                                                        ),
+                                                        fillColor: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        elevation: 2.0,
+                                                        borderColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
+                                                        borderWidth: 2.0,
+                                                        borderRadius: 8.0,
+                                                        margin:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    16.0,
+                                                                    4.0,
+                                                                    16.0,
+                                                                    4.0),
+                                                        hidesUnderline: true,
+                                                        isOverButton: true,
+                                                        isSearchable: false,
+                                                        isMultiSelect: false,
+                                                        labelText:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                          '50j6icbo' /* Day Of Month */,
+                                                        ),
+                                                        labelTextStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Noto Sans JP',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
                                                       ),
                                                     ),
                                                     FlutterFlowIconButton(
@@ -903,7 +1053,7 @@ class _EditNotificationWidgetState extends State<EditNotificationWidget> {
                                               title: _model
                                                   .billNameTextController.text,
                                               message: _model
-                                                  .amountTextController1.text,
+                                                  .amountTextController.text,
                                             );
 
                                             if ((_model.editNotificationOutput

@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
 import 'add_income_model.dart';
 export 'add_income_model.dart';
 
@@ -757,9 +758,6 @@ class _AddIncomeWidgetState extends State<AddIncomeWidget> {
                                                   fontFamily: 'Noto Sans JP',
                                                   letterSpacing: 0.0,
                                                 ),
-                                            keyboardType: const TextInputType
-                                                .numberWithOptions(
-                                                decimal: true),
                                             validator: _model
                                                 .incomeNameTextControllerValidator
                                                 .asValidator(context),
@@ -901,6 +899,21 @@ class _AddIncomeWidgetState extends State<AddIncomeWidget> {
                                             if ((_model.addIncomeOutput
                                                     ?.succeeded ??
                                                 true)) {
+                                              _model.soundPlayer ??=
+                                                  AudioPlayer();
+                                              if (_model.soundPlayer!.playing) {
+                                                await _model.soundPlayer!
+                                                    .stop();
+                                              }
+                                              _model.soundPlayer!
+                                                  .setVolume(1.0);
+                                              _model.soundPlayer!
+                                                  .setAsset(
+                                                      'assets/audios/cash-register-kaching-sound-effect-125042.mp3')
+                                                  .then((_) => _model
+                                                      .soundPlayer!
+                                                      .play());
+
                                               await showDialog(
                                                 context: context,
                                                 builder: (alertDialogContext) {

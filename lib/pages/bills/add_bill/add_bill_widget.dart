@@ -642,6 +642,7 @@ class _AddBillWidgetState extends State<AddBillWidget> {
                                         autofocus: true,
                                         textCapitalization:
                                             TextCapitalization.words,
+                                        textInputAction: TextInputAction.next,
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           labelText: FFLocalizations.of(context)
@@ -735,6 +736,7 @@ class _AddBillWidgetState extends State<AddBillWidget> {
                                         controller: _model.amountTextController,
                                         focusNode: _model.amountFocusNode,
                                         autofocus: true,
+                                        textInputAction: TextInputAction.next,
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           labelText: FFLocalizations.of(context)
@@ -831,6 +833,7 @@ class _AddBillWidgetState extends State<AddBillWidget> {
                                         autofocus: true,
                                         textCapitalization:
                                             TextCapitalization.words,
+                                        textInputAction: TextInputAction.next,
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           labelText: FFLocalizations.of(context)
@@ -925,6 +928,7 @@ class _AddBillWidgetState extends State<AddBillWidget> {
                                         autofocus: true,
                                         textCapitalization:
                                             TextCapitalization.words,
+                                        textInputAction: TextInputAction.next,
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           labelText: FFLocalizations.of(context)
@@ -1023,6 +1027,10 @@ class _AddBillWidgetState extends State<AddBillWidget> {
                                                   _model.urlTextController,
                                               focusNode: _model.urlFocusNode,
                                               autofocus: true,
+                                              textCapitalization:
+                                                  TextCapitalization.none,
+                                              textInputAction:
+                                                  TextInputAction.next,
                                               obscureText: false,
                                               decoration: InputDecoration(
                                                 labelText:
@@ -1038,6 +1046,11 @@ class _AddBillWidgetState extends State<AddBillWidget> {
                                                               'Noto Sans JP',
                                                           letterSpacing: 0.0,
                                                         ),
+                                                hintText:
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                  'lnsbsd4j' /* Include https:// */,
+                                                ),
                                                 hintStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .labelMedium
@@ -1236,6 +1249,8 @@ class _AddBillWidgetState extends State<AddBillWidget> {
                                               focusNode:
                                                   _model.passwordFocusNode,
                                               autofocus: true,
+                                              textInputAction:
+                                                  TextInputAction.next,
                                               obscureText:
                                                   !_model.passwordVisibility,
                                               decoration: InputDecoration(

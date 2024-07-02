@@ -108,7 +108,7 @@ class _ExportToCSVWidgetState extends State<ExportToCSVWidget> {
                             alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
-                                  8.0, 16.0, 8.0, 0.0),
+                                  8.0, 4.0, 8.0, 0.0),
                               child: FutureBuilder<ApiCallResponse>(
                                 future: TppbGroup.getPaymentSourceCall.call(
                                   authenticationToken: currentJwtToken,
@@ -139,20 +139,15 @@ class _ExportToCSVWidgetState extends State<ExportToCSVWidget> {
                                             FormFieldController<String>(
                                       _model.dropDownValue ??= '',
                                     ),
-                                    options: List<String>.from((getJsonField(
+                                    options: List<String>.from(TppbGroup
+                                        .getPaymentSourceCall
+                                        .paymentSourceId(
                                       dropDownGetPaymentSourceResponse.jsonBody,
-                                      r'''$.paymentSources[:].sourceId''',
-                                      true,
-                                    ) as List)
-                                        .map<String>((s) => s.toString())
-                                        .toList()),
-                                    optionLabels: (getJsonField(
+                                    )!),
+                                    optionLabels: TppbGroup.getPaymentSourceCall
+                                        .paymentSourceName(
                                       dropDownGetPaymentSourceResponse.jsonBody,
-                                      r'''$.paymentSources[:].sourceName''',
-                                      true,
-                                    ) as List)
-                                        .map<String>((s) => s.toString())
-                                        .toList(),
+                                    )!,
                                     onChanged: (val) => setState(
                                         () => _model.dropDownValue = val),
                                     width: 350.0,
@@ -207,7 +202,7 @@ class _ExportToCSVWidgetState extends State<ExportToCSVWidget> {
                             alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 16.0, 0.0, 0.0),
+                                  0.0, 4.0, 0.0, 0.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
                                   _model.exportLedgerToCsvOutput =
@@ -265,9 +260,10 @@ class _ExportToCSVWidgetState extends State<ExportToCSVWidget> {
                                   setState(() {});
                                 },
                                 text: FFLocalizations.of(context).getText(
-                                  'ww7mb9a9' /* Export To CSV */,
+                                  'ww7mb9a9' /* Export */,
                                 ),
                                 options: FFButtonOptions(
+                                  width: 350.0,
                                   height: 40.0,
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),

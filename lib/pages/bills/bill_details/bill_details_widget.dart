@@ -816,6 +816,8 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                   focusNode:
                                                       _model.categoryFocusNode,
                                                   autofocus: true,
+                                                  textInputAction:
+                                                      TextInputAction.next,
                                                   obscureText: false,
                                                   decoration: InputDecoration(
                                                     labelText:
@@ -942,6 +944,8 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                   focusNode:
                                                       _model.billnameFocusNode,
                                                   autofocus: true,
+                                                  textInputAction:
+                                                      TextInputAction.next,
                                                   obscureText: false,
                                                   decoration: InputDecoration(
                                                     labelText:
@@ -1068,6 +1072,8 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                   focusNode:
                                                       _model.amountFocusNode,
                                                   autofocus: true,
+                                                  textInputAction:
+                                                      TextInputAction.next,
                                                   obscureText: false,
                                                   decoration: InputDecoration(
                                                     labelText:
@@ -1198,6 +1204,8 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                   focusNode: _model
                                                       .descriptionFocusNode,
                                                   autofocus: true,
+                                                  textInputAction:
+                                                      TextInputAction.next,
                                                   obscureText: false,
                                                   decoration: InputDecoration(
                                                     labelText:
@@ -1287,10 +1295,6 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                             'Noto Sans JP',
                                                         letterSpacing: 0.0,
                                                       ),
-                                                  keyboardType:
-                                                      const TextInputType
-                                                          .numberWithOptions(
-                                                          decimal: true),
                                                   validator: _model
                                                       .descriptionTextControllerValidator
                                                       .asValidator(context),
@@ -1454,6 +1458,8 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                     focusNode:
                                                         _model.urlFocusNode,
                                                     autofocus: true,
+                                                    textInputAction:
+                                                        TextInputAction.next,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
                                                       labelText:
@@ -1543,6 +1549,8 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                               'Noto Sans JP',
                                                           letterSpacing: 0.0,
                                                         ),
+                                                    keyboardType:
+                                                        TextInputType.url,
                                                     validator: _model
                                                         .urlTextControllerValidator
                                                         .asValidator(context),
@@ -1670,6 +1678,8 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                       focusNode: _model
                                                           .usernameFocusNode,
                                                       autofocus: true,
+                                                      textInputAction:
+                                                          TextInputAction.next,
                                                       obscureText: false,
                                                       decoration:
                                                           InputDecoration(
@@ -1837,6 +1847,8 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                     focusNode: _model
                                                         .passwordFocusNode,
                                                     autofocus: true,
+                                                    textInputAction:
+                                                        TextInputAction.next,
                                                     obscureText: !_model
                                                         .passwordVisibility,
                                                     decoration: InputDecoration(

@@ -4,6 +4,7 @@ import '/flutter_flow/form_field_controller.dart';
 import 'dart:async';
 import 'ledger_widget.dart' show LedgerWidget;
 import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
 
 class LedgerModel extends FlutterFlowModel<LedgerWidget> {
   ///  Local state fields for this page.
@@ -35,6 +36,7 @@ class LedgerModel extends FlutterFlowModel<LedgerWidget> {
   double? sliderValue;
   // Stores action output result for [Backend Call - API (editLedgerEntryAsCleared)] action in IconButton widget.
   ApiCallResponse? editLedgerEntryAsClearedOutput;
+  AudioPlayer? soundPlayer;
 
   @override
   void initState(BuildContext context) {}

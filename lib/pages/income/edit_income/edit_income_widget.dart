@@ -628,9 +628,7 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
                                                           letterSpacing: 0.0,
                                                         ),
                                                     keyboardType:
-                                                        const TextInputType
-                                                            .numberWithOptions(
-                                                            decimal: true),
+                                                        TextInputType.datetime,
                                                     validator: _model
                                                         .incomeNameTextController1Validator
                                                         .asValidator(context),
@@ -949,10 +947,6 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
                                                               'Noto Sans JP',
                                                           letterSpacing: 0.0,
                                                         ),
-                                                    keyboardType:
-                                                        const TextInputType
-                                                            .numberWithOptions(
-                                                            decimal: true),
                                                     validator: _model
                                                         .incomeNameTextController2Validator
                                                         .asValidator(context),

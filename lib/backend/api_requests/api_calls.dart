@@ -67,6 +67,20 @@ class TppbGroup {
   static ExportLedgerToCsvCall exportLedgerToCsvCall = ExportLedgerToCsvCall();
   static ExportLedgerToQBOCall exportLedgerToQBOCall = ExportLedgerToQBOCall();
   static ExportSearchCall exportSearchCall = ExportSearchCall();
+  static EditLedgerEntryCall editLedgerEntryCall = EditLedgerEntryCall();
+  static EditTransactionCall editTransactionCall = EditTransactionCall();
+  static GetUserCall getUserCall = GetUserCall();
+  static EditUserCall editUserCall = EditUserCall();
+  static DeleteUserCall deleteUserCall = DeleteUserCall();
+  static GetDefaultPaymentSourceCall getDefaultPaymentSourceCall =
+      GetDefaultPaymentSourceCall();
+  static SetDefaultPaymentSourceCall setDefaultPaymentSourceCall =
+      SetDefaultPaymentSourceCall();
+  static AddPaymentSourceCall addPaymentSourceCall = AddPaymentSourceCall();
+  static EditPaymentSourceCall editPaymentSourceCall = EditPaymentSourceCall();
+  static DeletePaymentSourceCall deletePaymentSourceCall =
+      DeletePaymentSourceCall();
+  static DeleteTransactionCall deleteTransactionCall = DeleteTransactionCall();
 }
 
 class AddUserCall {
@@ -2803,6 +2817,542 @@ class ExportSearchCall {
   String? url(dynamic response) => castToType<String>(getJsonField(
         response,
         r'''$.presignedUrl''',
+      ));
+}
+
+class EditLedgerEntryCall {
+  Future<ApiCallResponse> call({
+    bool? status,
+    String? ledgerId = '',
+    String? transactionDate = '',
+    String? description = '',
+    double? amount,
+    String? category = '',
+    String? tags = '',
+    String? transactionType = '',
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "authToken": "$authenticationToken",
+  "ledgerId": "$ledgerId",
+  "updatedLedgerData": {
+    "transactionDate": "$transactionDate",
+    "status": $status,
+    "description": "$description",
+    "amount": $amount,
+    "category": "$category",
+    "tags": "$tags",
+    "householdId": "$householdIdGlobal",
+    "paymentSourceId": "$paymentSourceIdGlobal",
+    "transactionType": "$transactionType"
+  }
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'editLedgerEntry',
+      apiUrl: '$baseUrl/editLedgerEntry',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+}
+
+class EditTransactionCall {
+  Future<ApiCallResponse> call({
+    double? amount,
+    String? transactionType = '',
+    String? transactionDate = '',
+    String? category = '',
+    String? description = '',
+    bool? status,
+    String? tags = '',
+    String? image = '',
+    String? transactionId = '',
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "authToken": "$authenticationToken",
+  "transactionId": "$transactionId",
+  "householdId": "$householdIdGlobal",
+  "amount": $amount,
+  "transactionType": "$transactionType",
+  "transactionDate": "$transactionDate",
+  "category": "$category",
+  "description": "$description",
+  "status": $status,
+  "sourceId": "$paymentSourceIdGlobal",
+  "tags": "$tags",
+  "image": "$image"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'editTransaction',
+      apiUrl: '$baseUrl/editTransaction',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+}
+
+class GetUserCall {
+  Future<ApiCallResponse> call({
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "authToken": "$authenticationToken"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'getUser',
+      apiUrl: '$baseUrl/getUser',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? firstName(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.user.firstName''',
+      ));
+  String? lastName(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.user.lastName''',
+      ));
+  String? email(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.user.email''',
+      ));
+  String? signupDate(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.user.signupDate''',
+      ));
+  bool? mailOptin(dynamic response) => castToType<bool>(getJsonField(
+        response,
+        r'''$.user.mailOptIn''',
+      ));
+  String? updatedAt(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.user.updatedAt''',
+      ));
+  String? subscriptionEndDate(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.user.subscriptionEndDate''',
+      ));
+  String? subscriptionStatus(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.user.subscriptionStatus''',
+      ));
+}
+
+class EditUserCall {
+  Future<ApiCallResponse> call({
+    String? email = '',
+    bool? optin,
+    String? firstName = '',
+    String? lastName = '',
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "authToken": "$authenticationToken",
+  "email": "$email",
+  "mailOptIn": $optin,
+  "firstName": "$firstName",
+  "lastName": "$lastName"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'editUser',
+      apiUrl: '$baseUrl/editUser',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+}
+
+class DeleteUserCall {
+  Future<ApiCallResponse> call({
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "authToken": "$authenticationToken"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'deleteUser',
+      apiUrl: '$baseUrl/deleteUser',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  dynamic message(dynamic response) => getJsonField(
+        response,
+        r'''$.message''',
+      );
+}
+
+class GetDefaultPaymentSourceCall {
+  Future<ApiCallResponse> call({
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "householdId": "$householdIdGlobal"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'getDefaultPaymentSource',
+      apiUrl: '$baseUrl/getDefaultPaymentSource',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? defaultPaymentSourceId(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.defaultPaymentSource''',
+      ));
+}
+
+class SetDefaultPaymentSourceCall {
+  Future<ApiCallResponse> call({
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "householdId": "$householdIdGlobal",
+  "paymentSourceId": "$paymentSourceIdGlobal"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'setDefaultPaymentSource',
+      apiUrl: '$baseUrl/setDefaultPaymentSource',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+}
+
+class AddPaymentSourceCall {
+  Future<ApiCallResponse> call({
+    String? name = '',
+    String? type = '',
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "authToken": "$authenticationToken",
+  "householdId": "$householdIdGlobal",
+  "name": "$name",
+  "type": "$type"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'addPaymentSource',
+      apiUrl: '$baseUrl/addPaymentSource',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class EditPaymentSourceCall {
+  Future<ApiCallResponse> call({
+    String? name = '',
+    String? type = '',
+    String? description = '',
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "authToken": "$authenticationToken",
+  "sourceId": "$paymentSourceIdGlobal",
+  "name": "$name",
+  "type": "$type",
+  "description": "$description"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'editPaymentSource',
+      apiUrl: '$baseUrl/editPaymentSource',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+}
+
+class DeletePaymentSourceCall {
+  Future<ApiCallResponse> call({
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "authToken": "$authenticationToken",
+  "sourceId": "$paymentSourceIdGlobal"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'deletePaymentSource',
+      apiUrl: '$baseUrl/deletePaymentSource',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class DeleteTransactionCall {
+  Future<ApiCallResponse> call({
+    String? transactionId = '',
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final baseUrl = TppbGroup.getBaseUrl(
+      authenticationToken: authenticationToken,
+      householdIdGlobal: householdIdGlobal,
+      paymentSourceIdGlobal: paymentSourceIdGlobal,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "authToken": "$authenticationToken",
+  "transactionId": "$transactionId"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'deleteTransaction',
+      apiUrl: '$baseUrl/deleteTransaction',
+      callType: ApiCallType.POST,
+      headers: {
+        'x-api-key': 'zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
       ));
 }
 

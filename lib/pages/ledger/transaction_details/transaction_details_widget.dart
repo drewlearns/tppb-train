@@ -9,6 +9,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:just_audio/just_audio.dart';
 import 'transaction_details_model.dart';
 export 'transaction_details_model.dart';
 
@@ -123,33 +124,26 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                             size: 24.0,
                           ),
                           onPressed: () async {
-                            if (widget.type == 'transaction') {
-                              if (Navigator.of(context).canPop()) {
-                                context.pop();
-                              }
-                              context.pushNamed(
-                                'EditTransaction',
-                                queryParameters: {
-                                  'transactionId': serializeParam(
-                                    widget.transactionId,
-                                    ParamType.String,
-                                  ),
-                                }.withoutNulls,
-                              );
-                            } else {
-                              if (Navigator.of(context).canPop()) {
-                                context.pop();
-                              }
-                              context.pushNamed(
-                                'EditLEdgerEntry',
-                                queryParameters: {
-                                  'ledgerId': serializeParam(
-                                    widget.ledgerId,
-                                    ParamType.String,
-                                  ),
-                                }.withoutNulls,
-                              );
+                            if (Navigator.of(context).canPop()) {
+                              context.pop();
                             }
+                            context.pushNamed(
+                              'EditTransaction',
+                              queryParameters: {
+                                'transactionId': serializeParam(
+                                  widget.transactionId,
+                                  ParamType.String,
+                                ),
+                                'type': serializeParam(
+                                  'transaction',
+                                  ParamType.String,
+                                ),
+                                'ledgerId': serializeParam(
+                                  widget.ledgerId,
+                                  ParamType.String,
+                                ),
+                              }.withoutNulls,
+                            );
                           },
                         ),
                       ),
@@ -912,6 +906,27 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                                                     .apiResultnnq
                                                                     ?.succeeded ??
                                                                 true)) {
+                                                              _model.soundPlayer ??=
+                                                                  AudioPlayer();
+                                                              if (_model
+                                                                  .soundPlayer!
+                                                                  .playing) {
+                                                                await _model
+                                                                    .soundPlayer!
+                                                                    .stop();
+                                                              }
+                                                              _model
+                                                                  .soundPlayer!
+                                                                  .setVolume(
+                                                                      1.0);
+                                                              _model
+                                                                  .soundPlayer!
+                                                                  .setAsset(
+                                                                      'assets/audios/cash-register-kaching-sound-effect-125042.mp3')
+                                                                  .then((_) => _model
+                                                                      .soundPlayer!
+                                                                      .play());
+
                                                               setState(() =>
                                                                   _model.apiRequestCompleter =
                                                                       null);

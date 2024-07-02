@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:async';
 import 'transaction_details_widget.dart' show TransactionDetailsWidget;
 import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
 
 class TransactionDetailsModel
     extends FlutterFlowModel<TransactionDetailsWidget> {
@@ -19,6 +20,7 @@ class TransactionDetailsModel
   final unfocusNode = FocusNode();
   // Stores action output result for [Backend Call - API (editLedgerEntryAsCleared)] action in IconButton widget.
   ApiCallResponse? apiResultnnq;
+  AudioPlayer? soundPlayer;
   Completer<ApiCallResponse>? apiRequestCompleter;
 
   @override

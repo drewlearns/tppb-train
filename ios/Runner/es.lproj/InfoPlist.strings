@@ -1,1 +1,2 @@
-
+NSCameraUsageDescription = "Para tomar una fotografía de un recibo, esta aplicación requiere permisos de acceso a la cámara";
+NSPhotoLibraryUsageDescription = "Para agregar una imagen de un recibo de su biblioteca de fotos, esta aplicación requiere permisos para su biblioteca de fotos.";

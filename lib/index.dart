@@ -33,7 +33,6 @@ export '/pages/notifications/edit_notification/edit_notification_widget.dart'
 export '/pages/notifications/notifications/notifications_widget.dart'
     show NotificationsWidget;
 export '/wallet/wallets/wallets_widget.dart' show WalletsWidget;
-export '/wallet/edit_wallet/edit_wallet_widget.dart' show EditWalletWidget;
 export '/wallet/wallet_details/wallet_details_widget.dart'
     show WalletDetailsWidget;
 export '/reporting/export/export_widget.dart' show ExportWidget;
@@ -45,15 +44,12 @@ export '/reporting/export_to_q_b_o/export_to_q_b_o_widget.dart'
     show ExportToQBOWidget;
 export '/pages/user/forgot_password/forgot_password_widget.dart'
     show ForgotPasswordWidget;
-export '/pages/user/update_user/update_user_widget.dart' show UpdateUserWidget;
-export '/pages/user/delete_user/delete_user_widget.dart' show DeleteUserWidget;
+export '/pages/user/profile/profile_widget.dart' show ProfileWidget;
 export '/pages/user/accept_invite/accept_invite_widget.dart'
     show AcceptInviteWidget;
-export '/pages/user/change_password/change_password_widget.dart'
-    show ChangePasswordWidget;
 export '/pages/bills/view_all_bills/view_all_bills_widget.dart'
     show ViewAllBillsWidget;
-export '/pages/ledger/edit_l_edger_entry/edit_l_edger_entry_widget.dart'
-    show EditLEdgerEntryWidget;
 export '/wallet/add_wallet/add_wallet_widget.dart' show AddWalletWidget;
 export '/billing/account/account_widget.dart' show AccountWidget;
+export '/wallet/set_default_wallet/set_default_wallet_widget.dart'
+    show SetDefaultWalletWidget;

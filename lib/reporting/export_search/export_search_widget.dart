@@ -107,7 +107,7 @@ class _ExportSearchWidgetState extends State<ExportSearchWidget> {
                         alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 16.0, 0.0, 0.0),
+                              0.0, 4.0, 0.0, 0.0),
                           child: SizedBox(
                             width: 350.0,
                             child: TextFormField(

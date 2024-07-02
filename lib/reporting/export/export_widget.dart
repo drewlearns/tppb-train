@@ -216,7 +216,7 @@ class _ExportWidgetState extends State<ExportWidget> {
                             _model.householdIdDropdownValue != '')
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 16.0, 0.0, 0.0),
+                                0.0, 4.0, 0.0, 0.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.center,

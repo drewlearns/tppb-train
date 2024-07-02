@@ -218,6 +218,22 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'transactionId',
               ParamType.String,
             ),
+            billId: params.getParam(
+              'billId',
+              ParamType.String,
+            ),
+            incomeId: params.getParam(
+              'incomeId',
+              ParamType.String,
+            ),
+            type: params.getParam(
+              'type',
+              ParamType.String,
+            ),
+            ledgerId: params.getParam(
+              'ledgerId',
+              ParamType.String,
+            ),
           ),
         ),
         FFRoute(
@@ -283,16 +299,27 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : const WalletsWidget(),
         ),
         FFRoute(
-          name: 'EditWallet',
-          path: '/editWallet',
-          requireAuth: true,
-          builder: (context, params) => const EditWalletWidget(),
-        ),
-        FFRoute(
           name: 'WalletDetails',
           path: '/walletDetails',
           requireAuth: true,
-          builder: (context, params) => const WalletDetailsWidget(),
+          builder: (context, params) => WalletDetailsWidget(
+            paymentSourceId: params.getParam(
+              'paymentSourceId',
+              ParamType.String,
+            ),
+            type: params.getParam(
+              'type',
+              ParamType.String,
+            ),
+            name: params.getParam(
+              'name',
+              ParamType.String,
+            ),
+            isDefault: params.getParam(
+              'isDefault',
+              ParamType.bool,
+            ),
+          ),
         ),
         FFRoute(
           name: 'Export',
@@ -339,16 +366,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const ForgotPasswordWidget(),
         ),
         FFRoute(
-          name: 'updateUser',
-          path: '/updateUser',
+          name: 'Profile',
+          path: '/profile',
           requireAuth: true,
-          builder: (context, params) => const UpdateUserWidget(),
-        ),
-        FFRoute(
-          name: 'DeleteUser',
-          path: '/deleteUser',
-          requireAuth: true,
-          builder: (context, params) => const DeleteUserWidget(),
+          builder: (context, params) => const ProfileWidget(),
         ),
         FFRoute(
           name: 'AcceptInvite',
@@ -369,12 +390,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'ChangePassword',
-          path: '/changePassword',
-          requireAuth: true,
-          builder: (context, params) => const ChangePasswordWidget(),
-        ),
-        FFRoute(
           name: 'ViewAllBills',
           path: '/viewAllBills',
           requireAuth: true,
@@ -386,26 +401,32 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'EditLEdgerEntry',
-          path: '/editLEdgerEntry',
+          name: 'AddWallet',
+          path: '/addWallet',
           requireAuth: true,
-          builder: (context, params) => EditLEdgerEntryWidget(
-            ledgerId: params.getParam(
-              'ledgerId',
+          builder: (context, params) => AddWalletWidget(
+            householdId: params.getParam(
+              'householdId',
               ParamType.String,
             ),
           ),
-        ),
-        FFRoute(
-          name: 'AddWallet',
-          path: '/addWallet',
-          builder: (context, params) => const AddWalletWidget(),
         ),
         FFRoute(
           name: 'Account',
           path: '/account',
           requireAuth: true,
           builder: (context, params) => const AccountWidget(),
+        ),
+        FFRoute(
+          name: 'SetDefaultWallet',
+          path: '/SetDefaultWallet',
+          requireAuth: true,
+          builder: (context, params) => SetDefaultWalletWidget(
+            householdId: params.getParam(
+              'householdId',
+              ParamType.String,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
