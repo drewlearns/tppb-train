@@ -59,3 +59,4 @@ export '/pages/walkthroughs/incomes_waklthrough/incomes_waklthrough_widget.dart'
     show IncomesWaklthroughWidget;
 export '/pages/walkthroughs/wallet_walkthrough/wallet_walkthrough_widget.dart'
     show WalletWalkthroughWidget;
+export '/pages/user/onboarding/onboarding_widget.dart' show OnboardingWidget;

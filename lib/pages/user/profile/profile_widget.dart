@@ -125,267 +125,290 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           padding: EdgeInsets.zero,
                           scrollDirection: Axis.vertical,
                           children: [
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  16.0, 0.0, 0.0, 0.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Expanded(
-                                        child: Text(
-                                          valueOrDefault<String>(
-                                            'Name: ${TppbGroup.getUserCall.firstName(
-                                              listViewGetUserResponse.jsonBody,
-                                            )} ${TppbGroup.getUserCall.lastName(
-                                              listViewGetUserResponse.jsonBody,
-                                            )}',
-                                            'Loading...',
+                            if (TppbGroup.getUserCall.lastName(
+                                      listViewGetUserResponse.jsonBody,
+                                    ) !=
+                                    null &&
+                                TppbGroup.getUserCall.lastName(
+                                      listViewGetUserResponse.jsonBody,
+                                    ) !=
+                                    '')
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 0.0, 0.0, 0.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Expanded(
+                                          child: Text(
+                                            valueOrDefault<String>(
+                                              'Name: ${TppbGroup.getUserCall.firstName(
+                                                listViewGetUserResponse
+                                                    .jsonBody,
+                                              )} ${TppbGroup.getUserCall.lastName(
+                                                listViewGetUserResponse
+                                                    .jsonBody,
+                                              )}',
+                                              'Loading...',
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelLarge
+                                                .override(
+                                                  fontFamily: 'Noto Sans JP',
+                                                  fontSize: 24.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Text(
+                                          FFLocalizations.of(context).getText(
+                                            'tc5bfkmt' /* Sign Up Date: */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .labelLarge
                                               .override(
                                                 fontFamily: 'Noto Sans JP',
-                                                fontSize: 24.0,
                                                 letterSpacing: 0.0,
-                                                fontWeight: FontWeight.bold,
                                               ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Text(
-                                        FFLocalizations.of(context).getText(
-                                          'tc5bfkmt' /* Sign Up Date: */,
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .labelLarge
-                                            .override(
-                                              fontFamily: 'Noto Sans JP',
-                                              letterSpacing: 0.0,
-                                            ),
-                                      ),
-                                      Expanded(
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  8.0, 0.0, 8.0, 0.0),
-                                          child: Text(
-                                            valueOrDefault<String>(
-                                              TppbGroup.getUserCall.signupDate(
-                                                listViewGetUserResponse
-                                                    .jsonBody,
-                                              ),
-                                              'Loading...',
-                                            ).maybeHandleOverflow(maxChars: 10),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyLarge
-                                                .override(
-                                                  fontFamily: 'Noto Sans JP',
-                                                  letterSpacing: 0.0,
+                                        Expanded(
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    8.0, 0.0, 8.0, 0.0),
+                                            child: Text(
+                                              valueOrDefault<String>(
+                                                TppbGroup.getUserCall
+                                                    .signupDate(
+                                                  listViewGetUserResponse
+                                                      .jsonBody,
                                                 ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Text(
-                                        FFLocalizations.of(context).getText(
-                                          'zc3gtnmz' /* Updated At: */,
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .labelLarge
-                                            .override(
-                                              fontFamily: 'Noto Sans JP',
-                                              letterSpacing: 0.0,
-                                            ),
-                                      ),
-                                      Expanded(
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  8.0, 0.0, 8.0, 0.0),
-                                          child: Text(
-                                            valueOrDefault<String>(
-                                              TppbGroup.getUserCall.updatedAt(
-                                                listViewGetUserResponse
-                                                    .jsonBody,
-                                              ),
-                                              'Loading...',
-                                            ).maybeHandleOverflow(maxChars: 10),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyLarge
-                                                .override(
-                                                  fontFamily: 'Noto Sans JP',
-                                                  letterSpacing: 0.0,
-                                                ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Text(
-                                        FFLocalizations.of(context).getText(
-                                          'i7d65dw0' /* Subscription End Date: */,
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .labelLarge
-                                            .override(
-                                              fontFamily: 'Noto Sans JP',
-                                              letterSpacing: 0.0,
-                                            ),
-                                      ),
-                                      Expanded(
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  8.0, 0.0, 8.0, 0.0),
-                                          child: Text(
-                                            valueOrDefault<String>(
-                                              TppbGroup.getUserCall
-                                                  .subscriptionEndDate(
-                                                listViewGetUserResponse
-                                                    .jsonBody,
-                                              ),
-                                              'Loading...',
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyLarge
-                                                .override(
-                                                  fontFamily: 'Noto Sans JP',
-                                                  fontSize: 14.0,
-                                                  letterSpacing: 0.0,
-                                                ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Text(
-                                        FFLocalizations.of(context).getText(
-                                          'd74e2bg6' /* Subscription Status:  */,
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .labelLarge
-                                            .override(
-                                              fontFamily: 'Noto Sans JP',
-                                              letterSpacing: 0.0,
-                                            ),
-                                      ),
-                                      Expanded(
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  8.0, 0.0, 8.0, 0.0),
-                                          child: Text(
-                                            valueOrDefault<String>(
-                                              TppbGroup.getUserCall
-                                                  .subscriptionStatus(
-                                                listViewGetUserResponse
-                                                    .jsonBody,
-                                              ),
-                                              'Loading...',
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyLarge
-                                                .override(
-                                                  fontFamily: 'Noto Sans JP',
-                                                  fontSize: 14.0,
-                                                  letterSpacing: 0.0,
-                                                ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Expanded(
-                                        child: Theme(
-                                          data: ThemeData(
-                                            unselectedWidgetColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryText,
-                                          ),
-                                          child: CheckboxListTile(
-                                            value: _model
-                                                    .checkboxListTileValue ??=
-                                                TppbGroup.getUserCall.mailOptin(
-                                              listViewGetUserResponse.jsonBody,
-                                            )!,
-                                            onChanged: (newValue) async {
-                                              setState(() =>
-                                                  _model.checkboxListTileValue =
-                                                      newValue!);
-                                            },
-                                            title: Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'ayd3mj7e' /* Mail Opt In */,
-                                              ),
-                                              textAlign: TextAlign.start,
+                                                'Loading...',
+                                              ).maybeHandleOverflow(
+                                                  maxChars: 10),
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .titleLarge
+                                                      .bodyLarge
                                                       .override(
                                                         fontFamily:
                                                             'Noto Sans JP',
                                                         letterSpacing: 0.0,
                                                       ),
                                             ),
-                                            subtitle: Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'c86ep4lh' /* I'd like to get pigs and marke... */,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Text(
+                                          FFLocalizations.of(context).getText(
+                                            'zc3gtnmz' /* Updated At: */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .labelLarge
+                                              .override(
+                                                fontFamily: 'Noto Sans JP',
+                                                letterSpacing: 0.0,
                                               ),
-                                              textAlign: TextAlign.start,
+                                        ),
+                                        Expanded(
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    8.0, 0.0, 8.0, 0.0),
+                                            child: Text(
+                                              valueOrDefault<String>(
+                                                TppbGroup.getUserCall.updatedAt(
+                                                  listViewGetUserResponse
+                                                      .jsonBody,
+                                                ),
+                                                'Loading...',
+                                              ).maybeHandleOverflow(
+                                                  maxChars: 10),
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .labelMedium
+                                                      .bodyLarge
                                                       .override(
                                                         fontFamily:
                                                             'Noto Sans JP',
                                                         letterSpacing: 0.0,
                                                       ),
                                             ),
-                                            tileColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primaryBackground,
-                                            activeColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primary,
-                                            checkColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .info,
-                                            dense: false,
-                                            controlAffinity:
-                                                ListTileControlAffinity
-                                                    .trailing,
                                           ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ]
-                                    .divide(const SizedBox(height: 4.0))
-                                    .around(const SizedBox(height: 4.0)),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Text(
+                                          FFLocalizations.of(context).getText(
+                                            'i7d65dw0' /* Subscription End Date: */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .labelLarge
+                                              .override(
+                                                fontFamily: 'Noto Sans JP',
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                        Expanded(
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    8.0, 0.0, 8.0, 0.0),
+                                            child: Text(
+                                              valueOrDefault<String>(
+                                                TppbGroup.getUserCall
+                                                    .subscriptionEndDate(
+                                                  listViewGetUserResponse
+                                                      .jsonBody,
+                                                ),
+                                                'Loading...',
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyLarge
+                                                      .override(
+                                                        fontFamily:
+                                                            'Noto Sans JP',
+                                                        fontSize: 14.0,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Text(
+                                          FFLocalizations.of(context).getText(
+                                            'd74e2bg6' /* Subscription Status:  */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .labelLarge
+                                              .override(
+                                                fontFamily: 'Noto Sans JP',
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                        Expanded(
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    8.0, 0.0, 8.0, 0.0),
+                                            child: Text(
+                                              valueOrDefault<String>(
+                                                TppbGroup.getUserCall
+                                                    .subscriptionStatus(
+                                                  listViewGetUserResponse
+                                                      .jsonBody,
+                                                ),
+                                                'Loading...',
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyLarge
+                                                      .override(
+                                                        fontFamily:
+                                                            'Noto Sans JP',
+                                                        fontSize: 14.0,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Expanded(
+                                          child: Theme(
+                                            data: ThemeData(
+                                              unselectedWidgetColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                            ),
+                                            child: CheckboxListTile(
+                                              value: _model
+                                                      .checkboxListTileValue ??=
+                                                  TppbGroup.getUserCall
+                                                      .mailOptin(
+                                                listViewGetUserResponse
+                                                    .jsonBody,
+                                              )!,
+                                              onChanged: (newValue) async {
+                                                setState(() => _model
+                                                        .checkboxListTileValue =
+                                                    newValue!);
+                                              },
+                                              title: Text(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'ayd3mj7e' /* Mail Opt In */,
+                                                ),
+                                                textAlign: TextAlign.start,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                              subtitle: Text(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'c86ep4lh' /* I'd like to get pigs and marke... */,
+                                                ),
+                                                textAlign: TextAlign.start,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                              tileColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryBackground,
+                                              activeColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              checkColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .info,
+                                              dense: false,
+                                              controlAffinity:
+                                                  ListTileControlAffinity
+                                                      .trailing,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ]
+                                      .divide(const SizedBox(height: 4.0))
+                                      .around(const SizedBox(height: 4.0)),
+                                ),
                               ),
-                            ),
                             Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 12.0, 0.0),
@@ -645,7 +668,6 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                       0.0, 30.0, 0.0, 0.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
-                                      navigate() {}
                                       var confirmDialogResponse =
                                           await showDialog<bool>(
                                                 context: context,
@@ -687,6 +709,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                           FFAppState().FullName = '';
                                           setState(() {});
                                           await authManager.deleteUser(context);
+
+                                          context.pushNamed('Onboarding');
                                         } else {
                                           await showDialog(
                                             context: context,
@@ -706,6 +730,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                               );
                                             },
                                           );
+
+                                          context.pushNamed('Onboarding');
                                         }
                                       } else {
                                         await showDialog(
@@ -727,8 +753,6 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                           },
                                         );
                                       }
-
-                                      navigate();
 
                                       setState(() {});
                                     },

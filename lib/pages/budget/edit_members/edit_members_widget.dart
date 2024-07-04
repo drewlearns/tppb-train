@@ -83,7 +83,51 @@ class _EditMembersWidgetState extends State<EditMembersWidget> {
                         size: 24.0,
                       ),
                       onPressed: () async {
-                        context.pushNamed('AddInvite');
+                        _model.subscriptionCheckerOutput2 =
+                            await TppbGroup.subscriptionCheckerCall.call(
+                          userUuid: currentUserUid,
+                          authenticationToken: currentJwtToken,
+                        );
+
+                        if (TppbGroup.subscriptionCheckerCall.isTrial(
+                              (_model.subscriptionCheckerOutput2?.jsonBody ??
+                                  ''),
+                            ) ==
+                            true) {
+                          var confirmDialogResponse = await showDialog<bool>(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return AlertDialog(
+                                    title:
+                                        const Text('Your account is In Trial Mode'),
+                                    content: const Text(
+                                        'To invite, you must purchase a subscription'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () => Navigator.pop(
+                                            alertDialogContext, false),
+                                        child: const Text('Buy Now'),
+                                      ),
+                                      TextButton(
+                                        onPressed: () => Navigator.pop(
+                                            alertDialogContext, true),
+                                        child: const Text('Go Home'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              ) ??
+                              false;
+                          if (confirmDialogResponse) {
+                            context.pushNamed('Home');
+                          } else {
+                            context.pushNamed('SalesPage');
+                          }
+                        } else {
+                          context.pushNamed('AddInvite');
+                        }
+
+                        setState(() {});
                       },
                     ),
                   ),

@@ -1,2 +1,4 @@
 NSCameraUsageDescription = "Afin de prendre une photo d'un reçu, cette application nécessite des autorisations pour accéder à la caméra";
 NSPhotoLibraryUsageDescription = "Afin d'ajouter une image d'un reçu de votre photothèque, cette application nécessite des autorisations sur votre photothèque.";
+NSMicrophoneUsageDescription = "Nous n'en avons pas réellement besoin, mais un SDK et l'Apple Store exigent qu'il soit répertorié. N'hésitez pas à le nier.";
+PermissionGroupNotification = "Nous n'en avons pas réellement besoin, mais un SDK et l'Apple Store exigent qu'il soit répertorié. N'hésitez pas à le nier.";

@@ -9,6 +9,8 @@ class EditMembersModel extends FlutterFlowModel<EditMembersWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // Stores action output result for [Backend Call - API (subscriptionChecker)] action in IconButton widget.
+  ApiCallResponse? subscriptionCheckerOutput2;
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
