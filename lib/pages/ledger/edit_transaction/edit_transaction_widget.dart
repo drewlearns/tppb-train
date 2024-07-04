@@ -877,7 +877,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                      'd4vjau0c' /* Please Select... */,
+                                                      'aeowz7gn' /* Please Select... */,
                                                     ),
                                                     icon: Icon(
                                                       Icons
@@ -974,7 +974,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                      '48kghtz5' /* Please Select... */,
+                                                      'wrqer42y' /* Please Select... */,
                                                     ),
                                                     icon: Icon(
                                                       Icons
@@ -1503,6 +1503,14 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                             return AlertDialog(
                                                               title:
                                                                   const Text('Error'),
+                                                              content: Text(
+                                                                  TppbGroup
+                                                                      .editTransactionCall
+                                                                      .message(
+                                                                (_model.editTransactionOutput
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              )!),
                                                               actions: [
                                                                 TextButton(
                                                                   onPressed: () =>

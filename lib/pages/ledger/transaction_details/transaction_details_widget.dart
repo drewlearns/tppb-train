@@ -135,11 +135,19 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                   ParamType.String,
                                 ),
                                 'type': serializeParam(
-                                  'transaction',
+                                  widget.type,
                                   ParamType.String,
                                 ),
                                 'ledgerId': serializeParam(
                                   widget.ledgerId,
+                                  ParamType.String,
+                                ),
+                                'billId': serializeParam(
+                                  widget.billId,
+                                  ParamType.String,
+                                ),
+                                'incomeId': serializeParam(
+                                  widget.incomeId,
                                   ParamType.String,
                                 ),
                               }.withoutNulls,
@@ -428,7 +436,7 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                                       transactionDetailsGetLedgerEntryResponse
                                                           .jsonBody,
                                                     ),
-                                                    'Loading...',
+                                                    'None',
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -471,7 +479,7 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                                       transactionDetailsGetLedgerEntryResponse
                                                           .jsonBody,
                                                     ),
-                                                    'Loading...',
+                                                    'None',
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -514,6 +522,46 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                                       transactionDetailsGetLedgerEntryResponse
                                                           .jsonBody,
                                                     ),
+                                                    'Loading...',
+                                                  ).maybeHandleOverflow(
+                                                      maxChars: 20),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyLarge
+                                                      .override(
+                                                        fontFamily:
+                                                            'Noto Sans JP',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ]
+                                                  .divide(const SizedBox(width: 8.0))
+                                                  .around(const SizedBox(width: 8.0)),
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'rk328yam' /* Transaction Type */,
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .labelLarge
+                                                      .override(
+                                                        fontFamily:
+                                                            'Noto Sans JP',
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      ),
+                                                ),
+                                                Text(
+                                                  valueOrDefault<String>(
+                                                    widget.type,
                                                     'Loading...',
                                                   ).maybeHandleOverflow(
                                                       maxChars: 20),
@@ -720,76 +768,6 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                                 shrinkWrap: true,
                                                 scrollDirection: Axis.vertical,
                                                 children: [
-                                                  if (widget.type == 'bill')
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                            '5yq85eeh' /* Start Date */,
-                                                          ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelLarge
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Noto Sans JP',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                              ),
-                                                        ),
-                                                        Text(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            TppbGroup
-                                                                .getBillCall
-                                                                .dayOfMonth(
-                                                                  billListViewGetBillResponse
-                                                                      .jsonBody,
-                                                                )
-                                                                ?.toString(),
-                                                            'Loading...',
-                                                          ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyLarge
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Noto Sans JP',
-                                                                color: TppbGroup
-                                                                            .getLedgerEntryCall
-                                                                            .transactionType(
-                                                                          transactionDetailsGetLedgerEntryResponse
-                                                                              .jsonBody,
-                                                                        ) ==
-                                                                        'Debit'
-                                                                    ? FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .error
-                                                                    : const Color(
-                                                                        0xFF072D12),
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
-                                                              ),
-                                                        ),
-                                                      ]
-                                                          .divide(const SizedBox(
-                                                              width: 8.0))
-                                                          .around(const SizedBox(
-                                                              width: 8.0)),
-                                                    ),
                                                   if (widget.type == 'bill')
                                                     Semantics(
                                                       label:

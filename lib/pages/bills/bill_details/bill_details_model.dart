@@ -61,10 +61,10 @@ class BillDetailsModel extends FlutterFlowModel<BillDetailsWidget> {
   String? Function(BuildContext, String?)? passwordTextControllerValidator;
   // Stores action output result for [Backend Call - API (editBill)] action in Button widget.
   ApiCallResponse? editBillOutput;
-  Completer<ApiCallResponse>? apiRequestCompleter3;
+  Completer<ApiCallResponse>? apiRequestCompleter4;
   Completer<ApiCallResponse>? apiRequestCompleter1;
   Completer<ApiCallResponse>? apiRequestCompleter2;
-  Completer<ApiCallResponse>? apiRequestCompleter4;
+  Completer<ApiCallResponse>? apiRequestCompleter3;
 
   @override
   void initState(BuildContext context) {
@@ -97,7 +97,7 @@ class BillDetailsModel extends FlutterFlowModel<BillDetailsWidget> {
   }
 
   /// Additional helper methods.
-  Future waitForApiRequestCompleted3({
+  Future waitForApiRequestCompleted4({
     double minWait = 0,
     double maxWait = double.infinity,
   }) async {
@@ -105,7 +105,7 @@ class BillDetailsModel extends FlutterFlowModel<BillDetailsWidget> {
     while (true) {
       await Future.delayed(const Duration(milliseconds: 50));
       final timeElapsed = stopwatch.elapsedMilliseconds;
-      final requestComplete = apiRequestCompleter3?.isCompleted ?? false;
+      final requestComplete = apiRequestCompleter4?.isCompleted ?? false;
       if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
         break;
       }
@@ -142,7 +142,7 @@ class BillDetailsModel extends FlutterFlowModel<BillDetailsWidget> {
     }
   }
 
-  Future waitForApiRequestCompleted4({
+  Future waitForApiRequestCompleted3({
     double minWait = 0,
     double maxWait = double.infinity,
   }) async {
@@ -150,7 +150,7 @@ class BillDetailsModel extends FlutterFlowModel<BillDetailsWidget> {
     while (true) {
       await Future.delayed(const Duration(milliseconds: 50));
       final timeElapsed = stopwatch.elapsedMilliseconds;
-      final requestComplete = apiRequestCompleter4?.isCompleted ?? false;
+      final requestComplete = apiRequestCompleter3?.isCompleted ?? false;
       if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
         break;
       }

@@ -5,7 +5,7 @@ import '/pages/walkthroughs/walkthrough_card/walkthrough_card_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 // Focus widget keys for this walkthrough
-final dropDownXne9ald0 = GlobalKey();
+final columnV9edxhj6 = GlobalKey();
 final textUxtutexg = GlobalKey();
 final rowWqe60v8q = GlobalKey();
 final containerLgd8iryk = GlobalKey();
@@ -22,17 +22,17 @@ final iconButtonJtxu4a25 = GlobalKey();
 List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
       /// Step 1
       TargetFocus(
-        keyTarget: dropDownXne9ald0,
+        keyTarget: columnV9edxhj6,
         enableOverlayTab: true,
         alignSkip: Alignment.bottomRight,
-        shape: ShapeLightFocus.Circle,
+        shape: ShapeLightFocus.RRect,
         color: Colors.black,
         contents: [
           TargetContent(
             align: ContentAlign.bottom,
             builder: (context, __) => WalkthroughCardWidget(
               description: FFLocalizations.of(context).getText(
-                '6rwic8me' /* You will select a Budget on ev... */,
+                'll25ixvt' /* You will select a Budget on ev... */,
               ),
               header: 'Budget Selection',
             ),
@@ -71,7 +71,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
             align: ContentAlign.bottom,
             builder: (context, __) => WalkthroughCardWidget(
               description: FFLocalizations.of(context).getText(
-                'rs57gitq' /* This is your safe to spend amo... */,
+                'ixjs6qh2' /* This is your safe to spend amo... */,
               ),
               header: 'Safe To Spend',
             ),

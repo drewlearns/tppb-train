@@ -1093,7 +1093,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Home
   {
-    '5ag8qrbs': {
+    '1wvk5glm': {
       'en': 'Home',
       'es': '',
       'fr': '',
@@ -1129,7 +1129,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '预算',
       'zh_Hant': '預算',
     },
-    'qza8mon4': {
+    'yctrj6g6': {
       'en': 'Safe To Spend: ',
       'es': '',
       'fr': '',
@@ -1138,7 +1138,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'ws7j740a': {
+    'vmvgqi9n': {
       'en': 'Bills Due Today:',
       'es': '',
       'fr': '',
@@ -3283,7 +3283,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '編輯交易',
       'zh_Hant': '編輯交易',
     },
-    '198c1m99': {
+    'f5c2nxs9': {
       'en': 'Hello World',
       'es': 'Hola Mundo',
       'fr': 'Bonjour le monde',
@@ -3301,7 +3301,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '交易日期',
       'zh_Hant': '交易日期',
     },
-    'mkj17nxl': {
+    'x55a88k8': {
       'en': 'Hello World',
       'es': '',
       'fr': '',
@@ -3391,7 +3391,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '减去（借记）',
       'zh_Hant': '減去（借方）',
     },
-    'd4vjau0c': {
+    'aeowz7gn': {
       'en': 'Please Select...',
       'es': 'Por favor seleccione...',
       'fr': 'Veuillez sélectionner...',
@@ -3400,7 +3400,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '请选择...',
       'zh_Hant': '請選擇...',
     },
-    'uxileswl': {
+    'z9yanvl5': {
       'en': 'Search for an item...',
       'es': 'Buscar un artículo...',
       'fr': 'Rechercher un article...',
@@ -3436,7 +3436,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '待处理/未清除',
       'zh_Hant': '待處理/未清除',
     },
-    '48kghtz5': {
+    'wrqer42y': {
       'en': 'Please Select...',
       'es': 'Por favor seleccione...',
       'fr': 'Veuillez sélectionner...',
@@ -3659,6 +3659,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '钱包名称',
       'zh_Hant': '錢包名稱',
     },
+    'rk328yam': {
+      'en': 'Transaction Type',
+      'es': 'Nombre de la billetera',
+      'fr': 'Nom du portefeuille',
+      'ru': 'Имя кошелька',
+      'tl': 'Pangalan ng Wallet',
+      'zh_Hans': '钱包名称',
+      'zh_Hant': '錢包名稱',
+    },
     'bm1nz2z4': {
       'en': 'Status:',
       'es': 'Estado:',
@@ -3676,15 +3685,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'tl': 'I-toggle ako',
       'zh_Hans': '切换我',
       'zh_Hant': '切換我',
-    },
-    '5yq85eeh': {
-      'en': 'Start Date',
-      'es': 'Día del mes de vencimiento (inicialmente):',
-      'fr': 'Jour du mois dû (initialement) :',
-      'ru': 'День месяца к оплате (первоначально):',
-      'tl': 'Araw ng Buwan na Nakatakda (sa una):',
-      'zh_Hans': '每月到期日（最初）：',
-      'zh_Hant': '每月到期日（初始）：',
     },
     'uy72d85h': {
       'en': 'URL: ',
@@ -4721,7 +4721,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '请提供....',
       'zh_Hant': '請提供....',
     },
-    'vs10ydua': {
+    '1utz5tgh': {
       'en': 'Continue',
       'es': 'Continuar',
       'fr': 'Continuer',
@@ -5020,7 +5020,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '所有账单',
       'zh_Hant': '所有帳單',
     },
-    'eah8h4rx': {
+    'm52cklra': {
       'en': 'Home',
       'es': 'Hogar',
       'fr': 'Maison',
@@ -5361,7 +5361,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '总帐',
       'zh_Hant': '帳本',
     },
-    '3fvfl1dk': {
+    'rrovg1lu': {
       'en': 'Karriker-1234567',
       'es': '',
       'fr': '',
@@ -5370,7 +5370,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    '75zajvbi': {
+    'cd43kvvv': {
       'en': 'Karriker-1234567',
       'es': '',
       'fr': '',
@@ -5866,7 +5866,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '临界点',
       'zh_Hant': '臨界點',
     },
-    'vzfwv3pj': {
+    'tkjsx5sr': {
       'en': 'Total Spent this month: \$99,999.99',
       'es': '',
       'fr': '',
@@ -5875,7 +5875,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'edcn5r9t': {
+    'zp4sccae': {
       'en': 'Safe To Spend: \$500.99',
       'es': '',
       'fr': '',
@@ -5995,7 +5995,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // BillsWalkthrough
   {
-    't0ndya3s': {
+    'ymzq4eqv': {
       'en': 'Karriker 1234567',
       'es': '',
       'fr': '',
@@ -6004,7 +6004,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'zxzt7ipv': {
+    '8g9khnqk': {
       'en': 'Karriker 1234567',
       'es': '',
       'fr': '',
@@ -6286,7 +6286,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '收入',
       'zh_Hant': '收入',
     },
-    'xj2bxqaf': {
+    'pmn4wfu5': {
       'en': 'Karriker-1234567',
       'es': '',
       'fr': '',
@@ -6295,7 +6295,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'ypar0aau': {
+    'rr2ft5uj': {
       'en': 'Karriker-1234567',
       'es': '',
       'fr': '',
@@ -6433,7 +6433,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // WalletWalkthrough
   {
-    '0vo9u0nj': {
+    'jx6la59i': {
       'en': 'Karriker-1234567',
       'es': '',
       'fr': '',
@@ -6544,7 +6544,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // WalkthroughCard
   {
-    '3bh1bz3s': {
+    '78f9tlzs': {
       'en': 'Walkthrough',
       'es': '',
       'fr': '',
@@ -6843,7 +6843,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    '6rwic8me': {
+    'll25ixvt': {
       'en':
           'You will select a Budget on every page, this is because you can have unlimited budgets!',
       'es': '',
@@ -6853,7 +6853,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'rs57gitq': {
+    'ixjs6qh2': {
       'en':
           'This is your safe to spend amount, it will show how much you can safely spend between now and your next pay day. It is based on your default wallet.',
       'es': '',
@@ -6863,7 +6863,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'gtouv6ul': {
+    'j319nkbx': {
       'en': 'Income Entries',
       'es': '',
       'fr': '',

@@ -75,7 +75,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                 flexibleSpace: FlexibleSpaceBar(
                   title: Text(
                     FFLocalizations.of(context).getText(
-                      '5ag8qrbs' /* Home */,
+                      '1wvk5glm' /* Home */,
                     ),
                     style: FlutterFlowTheme.of(context).headlineLarge.override(
                           fontFamily: 'Noto Sans JP',
@@ -244,7 +244,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                       FFLocalizations.of(
                                                               context)
                                                           .getText(
-                                                        'qza8mon4' /* Safe To Spend:  */,
+                                                        'yctrj6g6' /* Safe To Spend:  */,
                                                       ),
                                                       style: FlutterFlowTheme
                                                               .of(context)
@@ -365,7 +365,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                 Text(
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                    'ws7j740a' /* Bills Due Today: */,
+                                                    'vmvgqi9n' /* Bills Due Today: */,
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)

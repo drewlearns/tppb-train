@@ -724,7 +724,7 @@ class _AddIncomeWidgetState extends State<AddIncomeWidget> {
                                                         initialDate:
                                                             getCurrentTimestamp,
                                                         firstDate:
-                                                            DateTime(1900),
+                                                            getCurrentTimestamp,
                                                         lastDate:
                                                             DateTime(2050),
                                                         builder:

@@ -148,12 +148,12 @@ class _IncomesWaklthroughWidgetState extends State<IncomesWaklthroughWidget> {
                                         FormFieldController<String>(
                                       _model.householdDropDownValue ??=
                                           FFLocalizations.of(context).getText(
-                                        'xj2bxqaf' /* Karriker-1234567 */,
+                                        'pmn4wfu5' /* Karriker-1234567 */,
                                       ),
                                     ),
                                     options: [
                                       FFLocalizations.of(context).getText(
-                                        'ypar0aau' /* Karriker-1234567 */,
+                                        'rr2ft5uj' /* Karriker-1234567 */,
                                       )
                                     ],
                                     onChanged: (val) => setState(() =>
@@ -199,12 +199,12 @@ class _IncomesWaklthroughWidgetState extends State<IncomesWaklthroughWidget> {
                                           fontFamily: 'Noto Sans JP',
                                           letterSpacing: 0.0,
                                         ),
-                                  ).addWalkthrough(
-                                    dropDownSo6mxhwr,
-                                    _model.incomesWalkthroughController,
                                   ),
                                 ),
                               ],
+                            ).addWalkthrough(
+                              rowA7m13dby,
+                              _model.incomesWalkthroughController,
                             ),
                           ),
                         ),

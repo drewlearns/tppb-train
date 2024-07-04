@@ -8,9 +8,9 @@ class AccountModel extends FlutterFlowModel<AccountWidget> {
 
   final unfocusNode = FocusNode();
   // Stores action output result for [Backend Call - API (subscriptionChecker)] action in invitationsContainer widget.
-  ApiCallResponse? subscriptionCheckerOutput;
-  // Stores action output result for [Backend Call - API (subscriptionChecker)] action in NotificationsRow widget.
   ApiCallResponse? subscriptionCheckerOutput2;
+  // Stores action output result for [Backend Call - API (subscriptionChecker)] action in NotificationsRow widget.
+  ApiCallResponse? subscriptionCheckerOutput1;
 
   @override
   void initState(BuildContext context) {}

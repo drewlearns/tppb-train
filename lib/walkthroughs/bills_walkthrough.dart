@@ -4,7 +4,7 @@ import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 import '/pages/walkthroughs/walkthrough_card/walkthrough_card_widget.dart';
 
 // Focus widget keys for this walkthrough
-final dropDownO0c54v1e = GlobalKey();
+final row69y6ly9q = GlobalKey();
 final tabFe5nlzod = GlobalKey();
 final container6zod3qsn = GlobalKey();
 final iconButtonKgzw3s9f = GlobalKey();
@@ -16,10 +16,10 @@ final iconButtonOdzbpvwc = GlobalKey();
 List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
       /// Step 1
       TargetFocus(
-        keyTarget: dropDownO0c54v1e,
+        keyTarget: row69y6ly9q,
         enableOverlayTab: true,
         alignSkip: Alignment.bottomRight,
-        shape: ShapeLightFocus.Circle,
+        shape: ShapeLightFocus.RRect,
         color: Colors.black,
         contents: [
           TargetContent(

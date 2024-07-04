@@ -172,12 +172,12 @@ class _BillsWalkthroughWidgetState extends State<BillsWalkthroughWidget>
                                           _model.householdDropDownValue ??=
                                               FFLocalizations.of(context)
                                                   .getText(
-                                            't0ndya3s' /* Karriker 1234567 */,
+                                            'ymzq4eqv' /* Karriker 1234567 */,
                                           ),
                                         ),
                                         options: [
                                           FFLocalizations.of(context).getText(
-                                            'zxzt7ipv' /* Karriker 1234567 */,
+                                            '8g9khnqk' /* Karriker 1234567 */,
                                           )
                                         ],
                                         onChanged: (val) => setState(() =>
@@ -226,12 +226,12 @@ class _BillsWalkthroughWidgetState extends State<BillsWalkthroughWidget>
                                                   fontFamily: 'Noto Sans JP',
                                                   letterSpacing: 0.0,
                                                 ),
-                                      ).addWalkthrough(
-                                        dropDownO0c54v1e,
-                                        _model.billsWalkthroughController,
                                       ),
                                     ),
                                   ],
+                                ).addWalkthrough(
+                                  row69y6ly9q,
+                                  _model.billsWalkthroughController,
                                 ),
                                 Row(
                                   mainAxisSize: MainAxisSize.max,

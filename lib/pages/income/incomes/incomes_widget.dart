@@ -55,7 +55,7 @@ class _IncomesWidgetState extends State<IncomesWidget> {
                 backgroundColor: FlutterFlowTheme.of(context).primary,
                 iconTheme: IconThemeData(
                     color: FlutterFlowTheme.of(context).secondaryBackground),
-                automaticallyImplyLeading: true,
+                automaticallyImplyLeading: false,
                 actions: [
                   Padding(
                     padding:

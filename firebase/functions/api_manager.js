@@ -318,7 +318,7 @@ async function _addIncomeCall(context, ffVariables) {
     "name": "${incomeName}",
     "amount": ${incomeAmount},
     "frequency": "${incomeFrequency}",
-    "startdate": "${startDate}",
+    "startDate": "${startDate}",
     "endDate": "${endDate}"
   }
 }`;

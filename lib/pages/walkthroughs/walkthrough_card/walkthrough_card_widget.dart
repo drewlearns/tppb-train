@@ -70,7 +70,7 @@ class _WalkthroughCardWidgetState extends State<WalkthroughCardWidget> {
             children: [
               Text(
                 FFLocalizations.of(context).getText(
-                  '3bh1bz3s' /* Walkthrough */,
+                  '78f9tlzs' /* Walkthrough */,
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Noto Sans JP',

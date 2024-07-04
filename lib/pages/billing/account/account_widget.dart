@@ -841,7 +841,7 @@ class _AccountWidgetState extends State<AccountWidget>
                                                           highlightColor: Colors
                                                               .transparent,
                                                           onTap: () async {
-                                                            _model.subscriptionCheckerOutput =
+                                                            _model.subscriptionCheckerOutput2 =
                                                                 await TppbGroup
                                                                     .subscriptionCheckerCall
                                                                     .call(
@@ -854,9 +854,8 @@ class _AccountWidgetState extends State<AccountWidget>
                                                             if (TppbGroup
                                                                     .subscriptionCheckerCall
                                                                     .isTrial(
-                                                                  (_model.subscriptionCheckerOutput2
-                                                                          ?.jsonBody ??
-                                                                      ''),
+                                                                  accountSubscriptionCheckerResponse
+                                                                      .jsonBody,
                                                                 ) ==
                                                                 true) {
                                                               var confirmDialogResponse =
@@ -870,7 +869,7 @@ class _AccountWidgetState extends State<AccountWidget>
                                                                             title:
                                                                                 const Text('Your account is In Trial Mode'),
                                                                             content:
-                                                                                const Text('To export, you must purchase a subscription'),
+                                                                                const Text('To invite, you must purchase a subscription'),
                                                                             actions: [
                                                                               TextButton(
                                                                                 onPressed: () => Navigator.pop(alertDialogContext, false),
@@ -1023,7 +1022,7 @@ class _AccountWidgetState extends State<AccountWidget>
                                                           highlightColor: Colors
                                                               .transparent,
                                                           onTap: () async {
-                                                            _model.subscriptionCheckerOutput2 =
+                                                            _model.subscriptionCheckerOutput1 =
                                                                 await TppbGroup
                                                                     .subscriptionCheckerCall
                                                                     .call(
@@ -1036,7 +1035,7 @@ class _AccountWidgetState extends State<AccountWidget>
                                                             if (TppbGroup
                                                                     .subscriptionCheckerCall
                                                                     .isTrial(
-                                                                  (_model.subscriptionCheckerOutput2
+                                                                  (_model.subscriptionCheckerOutput1
                                                                           ?.jsonBody ??
                                                                       ''),
                                                                 ) ==
@@ -1052,7 +1051,7 @@ class _AccountWidgetState extends State<AccountWidget>
                                                                             title:
                                                                                 const Text('Your account is In Trial Mode'),
                                                                             content:
-                                                                                const Text('To invite, you must purchase a subscription'),
+                                                                                const Text('To export, you must purchase a subscription'),
                                                                             actions: [
                                                                               TextButton(
                                                                                 onPressed: () => Navigator.pop(alertDialogContext, false),

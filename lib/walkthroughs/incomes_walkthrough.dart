@@ -5,7 +5,7 @@ import '/pages/walkthroughs/walkthrough_card/walkthrough_card_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 // Focus widget keys for this walkthrough
-final dropDownSo6mxhwr = GlobalKey();
+final rowA7m13dby = GlobalKey();
 final columnZdrbjk0v = GlobalKey();
 final rowV9ulecxu = GlobalKey();
 final row2mygxa0h = GlobalKey();
@@ -16,10 +16,10 @@ final row2mygxa0h = GlobalKey();
 List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
       /// Step 1
       TargetFocus(
-        keyTarget: dropDownSo6mxhwr,
+        keyTarget: rowA7m13dby,
         enableOverlayTab: true,
         alignSkip: Alignment.bottomRight,
-        shape: ShapeLightFocus.Circle,
+        shape: ShapeLightFocus.RRect,
         color: Colors.black,
         contents: [
           TargetContent(
@@ -46,7 +46,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
             builder: (context, __) => WalkthroughCardWidget(
               description: 'Here will be a list of all incomes',
               header: FFLocalizations.of(context).getText(
-                'gtouv6ul' /* Income Entries */,
+                'j319nkbx' /* Income Entries */,
               ),
             ),
           ),

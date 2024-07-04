@@ -174,7 +174,7 @@ class _WalletWalkthroughWidgetState extends State<WalletWalkthroughWidget> {
                                                 _model.dropDownValue ??=
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  '0vo9u0nj' /* Karriker-1234567 */,
+                                                  'jx6la59i' /* Karriker-1234567 */,
                                                 ),
                                               ),
                                               options: [
@@ -237,12 +237,11 @@ class _WalletWalkthroughWidgetState extends State<WalletWalkthroughWidget> {
                                                             'Noto Sans JP',
                                                         letterSpacing: 0.0,
                                                       ),
-                                            ).addWalkthrough(
-                                              dropDown9e8639mc,
-                                              _model
-                                                  .walletWalkthroughController,
                                             ),
                                           ],
+                                        ).addWalkthrough(
+                                          rowAsmni7oq,
+                                          _model.walletWalkthroughController,
                                         ),
                                       ),
                                     ],

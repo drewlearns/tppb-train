@@ -209,7 +209,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                               );
                             },
                             text: FFLocalizations.of(context).getText(
-                              'vs10ydua' /* Continue */,
+                              '1utz5tgh' /* Continue */,
                             ),
                             options: FFButtonOptions(
                               width: 360.0,

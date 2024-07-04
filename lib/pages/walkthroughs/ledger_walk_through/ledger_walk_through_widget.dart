@@ -244,14 +244,14 @@ class _LedgerWalkThroughWidgetState extends State<LedgerWalkThroughWidget>
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                        '3fvfl1dk' /* Karriker-1234567 */,
+                                                        'rrovg1lu' /* Karriker-1234567 */,
                                                       ),
                                                     ),
                                                     options: [
                                                       FFLocalizations.of(
                                                               context)
                                                           .getText(
-                                                        '75zajvbi' /* Karriker-1234567 */,
+                                                        'cd43kvvv' /* Karriker-1234567 */,
                                                       )
                                                     ],
                                                     onChanged: (val) =>
@@ -317,10 +317,6 @@ class _LedgerWalkThroughWidgetState extends State<LedgerWalkThroughWidget>
                                                               letterSpacing:
                                                                   0.0,
                                                             ),
-                                                  ).addWalkthrough(
-                                                    dropDownXne9ald0,
-                                                    _model
-                                                        .ledgerWalkthroughController,
                                                   ),
                                                 ),
                                                 if (_model.filterClicked)
@@ -1055,7 +1051,7 @@ class _LedgerWalkThroughWidgetState extends State<LedgerWalkThroughWidget>
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            'vzfwv3pj' /* Total Spent this month: $99,99... */,
+                                                            'tkjsx5sr' /* Total Spent this month: $99,99... */,
                                                           ),
                                                           textAlign:
                                                               TextAlign.start,
@@ -1131,7 +1127,7 @@ class _LedgerWalkThroughWidgetState extends State<LedgerWalkThroughWidget>
                                                                 FFLocalizations.of(
                                                                         context)
                                                                     .getText(
-                                                                  'edcn5r9t' /* Safe To Spend: $500.99 */,
+                                                                  'zp4sccae' /* Safe To Spend: $500.99 */,
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
@@ -1210,6 +1206,9 @@ class _LedgerWalkThroughWidgetState extends State<LedgerWalkThroughWidget>
                                                   .addToEnd(
                                                       const SizedBox(height: 4.0)),
                                             ),
+                                          ).addWalkthrough(
+                                            columnV9edxhj6,
+                                            _model.ledgerWalkthroughController,
                                           ),
                                         ),
                                       ],
