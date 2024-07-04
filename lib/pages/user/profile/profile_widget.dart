@@ -182,7 +182,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                     .jsonBody,
                                               ),
                                               'Loading...',
-                                            ),
+                                            ).maybeHandleOverflow(maxChars: 10),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyLarge
                                                 .override(
@@ -220,7 +220,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                     .jsonBody,
                                               ),
                                               'Loading...',
-                                            ),
+                                            ).maybeHandleOverflow(maxChars: 10),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyLarge
                                                 .override(
@@ -318,13 +318,6 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                       Expanded(
                                         child: Theme(
                                           data: ThemeData(
-                                            checkboxTheme: const CheckboxThemeData(
-                                              visualDensity:
-                                                  VisualDensity.compact,
-                                              materialTapTargetSize:
-                                                  MaterialTapTargetSize
-                                                      .shrinkWrap,
-                                            ),
                                             unselectedWidgetColor:
                                                 FlutterFlowTheme.of(context)
                                                     .secondaryText,
