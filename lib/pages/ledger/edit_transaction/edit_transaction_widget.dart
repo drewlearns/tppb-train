@@ -877,7 +877,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                      'gcepz184' /* Please Select... */,
+                                                      'd4vjau0c' /* Please Select... */,
                                                     ),
                                                     icon: Icon(
                                                       Icons
@@ -974,7 +974,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                      's81h8sol' /* Please Select... */,
+                                                      '48kghtz5' /* Please Select... */,
                                                     ),
                                                     icon: Icon(
                                                       Icons
@@ -1139,7 +1139,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                          'sbew41ua' /* Household */,
+                                                          'sbew41ua' /* Budget */,
                                                         ),
                                                         labelTextStyle:
                                                             FlutterFlowTheme.of(

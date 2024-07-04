@@ -110,7 +110,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                 controller: _model.emailAddressTextController,
                                 focusNode: _model.emailAddressFocusNode,
                                 autofocus: true,
-                                textInputAction: TextInputAction.next,
+                                textInputAction: TextInputAction.done,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   labelText:
@@ -123,9 +123,6 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                         fontFamily: 'Noto Sans JP',
                                         letterSpacing: 0.0,
                                       ),
-                                  hintText: FFLocalizations.of(context).getText(
-                                    'ayq1foub' /* Please Provide.... */,
-                                  ),
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
@@ -212,7 +209,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                               );
                             },
                             text: FFLocalizations.of(context).getText(
-                              '6sf2qx9i' /* Continue */,
+                              'vs10ydua' /* Continue */,
                             ),
                             options: FFButtonOptions(
                               width: 360.0,

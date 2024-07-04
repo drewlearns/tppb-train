@@ -636,7 +636,7 @@ Sign up below to star... */
                                       focusNode:
                                           _model.confirmPasswordFocusNode,
                                       autofocus: true,
-                                      textInputAction: TextInputAction.next,
+                                      textInputAction: TextInputAction.done,
                                       obscureText:
                                           !_model.confirmPasswordVisibility,
                                       decoration: InputDecoration(
@@ -808,7 +808,7 @@ Sign up below to star... */
                                     }
 
                                     navigate = () => context.goNamedAuth(
-                                        'Ledger', context.mounted);
+                                        'Home', context.mounted);
                                     FFAppState().FullName =
                                         '${_model.firstNameTextController.text} ${_model.lastNameTextController.text}';
                                     _model.acceptInviteOutput =

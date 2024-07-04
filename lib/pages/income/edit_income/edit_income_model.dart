@@ -14,17 +14,15 @@ class EditIncomeModel extends FlutterFlowModel<EditIncomeWidget> {
   // State field(s) for walletDropDown widget.
   String? walletDropDownValue;
   FormFieldController<String>? walletDropDownValueController;
-  // State field(s) for IncomeName widget.
-  FocusNode? incomeNameFocusNode1;
-  TextEditingController? incomeNameTextController1;
-  String? Function(BuildContext, String?)? incomeNameTextController1Validator;
   // State field(s) for frequency widget.
   String? frequencyValue;
   FormFieldController<String>? frequencyValueController;
+  DateTime? datePicked1;
+  DateTime? datePicked2;
   // State field(s) for IncomeName widget.
-  FocusNode? incomeNameFocusNode2;
-  TextEditingController? incomeNameTextController2;
-  String? Function(BuildContext, String?)? incomeNameTextController2Validator;
+  FocusNode? incomeNameFocusNode;
+  TextEditingController? incomeNameTextController;
+  String? Function(BuildContext, String?)? incomeNameTextControllerValidator;
   // State field(s) for Amount widget.
   FocusNode? amountFocusNode;
   TextEditingController? amountTextController;
@@ -40,11 +38,8 @@ class EditIncomeModel extends FlutterFlowModel<EditIncomeWidget> {
   @override
   void dispose() {
     unfocusNode.dispose();
-    incomeNameFocusNode1?.dispose();
-    incomeNameTextController1?.dispose();
-
-    incomeNameFocusNode2?.dispose();
-    incomeNameTextController2?.dispose();
+    incomeNameFocusNode?.dispose();
+    incomeNameTextController?.dispose();
 
     amountFocusNode?.dispose();
     amountTextController?.dispose();

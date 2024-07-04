@@ -747,7 +747,7 @@ Sign up below to star... */
                                                         .confirmPasswordFocusNode,
                                                     autofocus: true,
                                                     textInputAction:
-                                                        TextInputAction.next,
+                                                        TextInputAction.done,
                                                     obscureText: !_model
                                                         .confirmPasswordVisibility,
                                                     decoration: InputDecoration(
@@ -940,7 +940,6 @@ Sign up below to star... */
                                               ),
                                               FFButtonWidget(
                                                 onPressed: () async {
-                                                  Function() navigate = () {};
                                                   GoRouter.of(context)
                                                       .prepareAuthEvent();
                                                   if (_model
@@ -974,10 +973,6 @@ Sign up below to star... */
                                                     return;
                                                   }
 
-                                                  navigate = () =>
-                                                      context.goNamedAuth(
-                                                          'Ledger',
-                                                          context.mounted);
                                                   FFAppState().FullName =
                                                       '${_model.firstNameTextController.text} ${_model.lastNameTextController.text}';
                                                   _model.stripeSubscriptionUserCreationOutput =
@@ -1012,38 +1007,12 @@ Sign up below to star... */
                                                   if ((_model.addUserOutput
                                                           ?.succeeded ??
                                                       true)) {
-                                                    var confirmDialogResponse =
-                                                        await showDialog<bool>(
-                                                              context: context,
-                                                              builder:
-                                                                  (alertDialogContext) {
-                                                                return AlertDialog(
-                                                                  title: const Text(
-                                                                      'Thank you!'),
-                                                                  content: const Text(
-                                                                      'Check your email for a verification link.'),
-                                                                  actions: [
-                                                                    TextButton(
-                                                                      onPressed: () => Navigator.pop(
-                                                                          alertDialogContext,
-                                                                          false),
-                                                                      child: const Text(
-                                                                          'Exit'),
-                                                                    ),
-                                                                    TextButton(
-                                                                      onPressed: () => Navigator.pop(
-                                                                          alertDialogContext,
-                                                                          true),
-                                                                      child: const Text(
-                                                                          'Ok'),
-                                                                    ),
-                                                                  ],
-                                                                );
-                                                              },
-                                                            ) ??
-                                                            false;
                                                     await authManager
                                                         .sendEmailVerification();
+
+                                                    context.pushNamedAuth(
+                                                        'LedgerWalkThrough',
+                                                        context.mounted);
                                                   } else {
                                                     await showDialog(
                                                       context: context,
@@ -1068,8 +1037,6 @@ Sign up below to star... */
                                                       },
                                                     );
                                                   }
-
-                                                  navigate();
 
                                                   setState(() {});
                                                 },
@@ -1715,7 +1682,7 @@ Sign In below t... */
                                                 }
 
                                                 context.goNamedAuth(
-                                                    'Ledger', context.mounted);
+                                                    'Home', context.mounted);
                                               },
                                               text: FFLocalizations.of(context)
                                                   .getText(

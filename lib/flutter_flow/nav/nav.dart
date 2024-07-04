@@ -121,12 +121,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : const IncomesWidget(),
         ),
         FFRoute(
-          name: 'Options',
-          path: '/More',
+          name: 'Home',
+          path: '/Home',
           requireAuth: true,
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'Options')
-              : const OptionsWidget(),
+          builder: (context, params) =>
+              params.isEmpty ? const NavBarPage(initialPage: 'Home') : const HomeWidget(),
         ),
         FFRoute(
           name: 'SalesPage',
@@ -158,16 +157,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const AddInviteWidget(),
         ),
         FFRoute(
-          name: 'CreateHousehold',
-          path: '/createHousehold',
+          name: 'AddBudget',
+          path: '/addBudget',
           requireAuth: true,
-          builder: (context, params) => const CreateHouseholdWidget(),
+          builder: (context, params) => const AddBudgetWidget(),
         ),
         FFRoute(
-          name: 'EditHousehold',
-          path: '/editHousehold',
+          name: 'EditBudget',
+          path: '/editBudget',
           requireAuth: true,
-          builder: (context, params) => const EditHouseholdWidget(),
+          builder: (context, params) => const EditBudgetWidget(),
         ),
         FFRoute(
           name: 'EditMembers',
@@ -415,7 +414,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Account',
           path: '/account',
           requireAuth: true,
-          builder: (context, params) => const AccountWidget(),
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'Account')
+              : const AccountWidget(),
         ),
         FFRoute(
           name: 'SetDefaultWallet',
@@ -427,6 +428,29 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.String,
             ),
           ),
+        ),
+        FFRoute(
+          name: 'LedgerWalkThrough',
+          path: '/ledgerWalkThrough',
+          builder: (context, params) => const LedgerWalkThroughWidget(),
+        ),
+        FFRoute(
+          name: 'BillsWalkthrough',
+          path: '/billsWalkthrough',
+          requireAuth: true,
+          builder: (context, params) => const BillsWalkthroughWidget(),
+        ),
+        FFRoute(
+          name: 'IncomesWaklthrough',
+          path: '/incomesWaklthrough',
+          requireAuth: true,
+          builder: (context, params) => const IncomesWaklthroughWidget(),
+        ),
+        FFRoute(
+          name: 'WalletWalkthrough',
+          path: '/walletWalkthrough',
+          requireAuth: true,
+          builder: (context, params) => const WalletWalkthroughWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

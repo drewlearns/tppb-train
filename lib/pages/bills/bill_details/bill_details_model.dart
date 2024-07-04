@@ -19,9 +19,11 @@ class BillDetailsModel extends FlutterFlowModel<BillDetailsWidget> {
   final unfocusNode = FocusNode();
   // Stores action output result for [Backend Call - API (deleteBill)] action in IconButton widget.
   ApiCallResponse? deleteBillOutput;
-  // State field(s) for dayOfmonth widget.
-  int? dayOfmonthValue;
-  FormFieldController<int>? dayOfmonthValueController;
+  DateTime? datePicked1;
+  DateTime? datePicked2;
+  // State field(s) for frequency widget.
+  String? frequencyValue;
+  FormFieldController<String>? frequencyValueController;
   // State field(s) for Household widget.
   String? householdValue;
   FormFieldController<String>? householdValueController;
@@ -44,9 +46,6 @@ class BillDetailsModel extends FlutterFlowModel<BillDetailsWidget> {
   FocusNode? descriptionFocusNode;
   TextEditingController? descriptionTextController;
   String? Function(BuildContext, String?)? descriptionTextControllerValidator;
-  // State field(s) for frequency widget.
-  String? frequencyValue;
-  FormFieldController<String>? frequencyValueController;
   // State field(s) for url widget.
   FocusNode? urlFocusNode;
   TextEditingController? urlTextController;

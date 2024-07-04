@@ -211,7 +211,7 @@ class _IncomesWidgetState extends State<IncomesWidget> {
                                         isMultiSelect: false,
                                         labelText:
                                             FFLocalizations.of(context).getText(
-                                          'b2ukmat3' /* Budget */,
+                                          'b2ukmat3' /* Budget* */,
                                         ),
                                         labelTextStyle:
                                             FlutterFlowTheme.of(context)
@@ -734,7 +734,7 @@ class _IncomesWidgetState extends State<IncomesWidget> {
                                                                         textGetSafeToSpendResponse
                                                                             .jsonBody,
                                                                       ),
-                                                                      'Loading...',
+                                                                      'No Incomes Yet',
                                                                     ).maybeHandleOverflow(
                                                                         maxChars:
                                                                             10),

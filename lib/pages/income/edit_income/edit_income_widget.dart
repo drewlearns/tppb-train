@@ -33,9 +33,7 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
     super.initState();
     _model = createModel(context, () => EditIncomeModel());
 
-    _model.incomeNameFocusNode1 ??= FocusNode();
-
-    _model.incomeNameFocusNode2 ??= FocusNode();
+    _model.incomeNameFocusNode ??= FocusNode();
 
     _model.amountFocusNode ??= FocusNode();
 
@@ -355,7 +353,7 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
                                                   labelText: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    'kabgc36k' /* Household */,
+                                                    'kabgc36k' /* Budget* */,
                                                   ),
                                                   labelTextStyle:
                                                       FlutterFlowTheme.of(
@@ -506,188 +504,6 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
                                               ),
                                             Row(
                                               mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Expanded(
-                                                  child: TextFormField(
-                                                    controller: _model
-                                                            .incomeNameTextController1 ??=
-                                                        TextEditingController(
-                                                      text: valueOrDefault<
-                                                          String>(
-                                                        TppbGroup.getIncomeCall
-                                                            .firstPayDay(
-                                                          editIncomeGetIncomeResponse
-                                                              .jsonBody,
-                                                        ),
-                                                        'Loading...',
-                                                      ),
-                                                    ),
-                                                    focusNode: _model
-                                                        .incomeNameFocusNode1,
-                                                    autofocus: true,
-                                                    textCapitalization:
-                                                        TextCapitalization
-                                                            .words,
-                                                    obscureText: false,
-                                                    decoration: InputDecoration(
-                                                      labelText:
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                        '80ik4fx7' /* First Pay Day* (See Informatio... */,
-                                                      ),
-                                                      labelStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Noto Sans JP',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                      hintStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Noto Sans JP',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                      enabledBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .alternate,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12.0),
-                                                      ),
-                                                      focusedBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12.0),
-                                                      ),
-                                                      errorBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .error,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12.0),
-                                                      ),
-                                                      focusedErrorBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .error,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12.0),
-                                                      ),
-                                                      filled: true,
-                                                      fillColor: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                      contentPadding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  16.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Noto Sans JP',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                    keyboardType:
-                                                        TextInputType.datetime,
-                                                    validator: _model
-                                                        .incomeNameTextController1Validator
-                                                        .asValidator(context),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          8.0, 0.0, 0.0, 0.0),
-                                                  child: Semantics(
-                                                    label:
-                                                        'Click for more Information',
-                                                    child: InkWell(
-                                                      splashColor:
-                                                          Colors.transparent,
-                                                      focusColor:
-                                                          Colors.transparent,
-                                                      hoverColor:
-                                                          Colors.transparent,
-                                                      highlightColor:
-                                                          Colors.transparent,
-                                                      onTap: () async {
-                                                        await showDialog(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: const Text(
-                                                                  'Information'),
-                                                              content: const Text(
-                                                                  'Select the most recent pay date. Suggestion is to make the time early in the day so it comes before bills and expenses.'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext),
-                                                                  child: const Text(
-                                                                      'Ok'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        );
-                                                      },
-                                                      child: Icon(
-                                                        Icons.info_outline,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
-                                                        size: 24.0,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Expanded(
                                                   child: FlutterFlowDropDown<
@@ -828,12 +644,443 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
                                             Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
+                                                  MainAxisAlignment.spaceEvenly,
+                                              children: [
+                                                Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          2.0, 0.0, 0.0, 0.0),
+                                                  child: FFButtonWidget(
+                                                    onPressed: () async {
+                                                      final datePicked1Date =
+                                                          await showDatePicker(
+                                                        context: context,
+                                                        initialDate:
+                                                            getCurrentTimestamp,
+                                                        firstDate:
+                                                            DateTime(1900),
+                                                        lastDate:
+                                                            DateTime(2050),
+                                                        builder:
+                                                            (context, child) {
+                                                          return wrapInMaterialDatePickerTheme(
+                                                            context,
+                                                            child!,
+                                                            headerBackgroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                            headerForegroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .info,
+                                                            headerTextStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineLarge
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Noto Sans JP',
+                                                                      fontSize:
+                                                                          32.0,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                    ),
+                                                            pickerBackgroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
+                                                            pickerForegroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                            selectedDateTimeBackgroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                            selectedDateTimeForegroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .info,
+                                                            actionButtonForegroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                            iconSize: 24.0,
+                                                          );
+                                                        },
+                                                      );
+
+                                                      TimeOfDay?
+                                                          datePicked1Time;
+                                                      if (datePicked1Date !=
+                                                          null) {
+                                                        datePicked1Time =
+                                                            await showTimePicker(
+                                                          context: context,
+                                                          initialTime: TimeOfDay
+                                                              .fromDateTime(
+                                                                  getCurrentTimestamp),
+                                                          builder:
+                                                              (context, child) {
+                                                            return wrapInMaterialTimePickerTheme(
+                                                              context,
+                                                              child!,
+                                                              headerBackgroundColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                              headerForegroundColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .info,
+                                                              headerTextStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .headlineLarge
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Noto Sans JP',
+                                                                        fontSize:
+                                                                            32.0,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w600,
+                                                                      ),
+                                                              pickerBackgroundColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                              pickerForegroundColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                              selectedDateTimeBackgroundColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                              selectedDateTimeForegroundColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .info,
+                                                              actionButtonForegroundColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                              iconSize: 24.0,
+                                                            );
+                                                          },
+                                                        );
+                                                      }
+
+                                                      if (datePicked1Date !=
+                                                              null &&
+                                                          datePicked1Time !=
+                                                              null) {
+                                                        safeSetState(() {
+                                                          _model.datePicked1 =
+                                                              DateTime(
+                                                            datePicked1Date
+                                                                .year,
+                                                            datePicked1Date
+                                                                .month,
+                                                            datePicked1Date
+                                                                .day,
+                                                            datePicked1Time!
+                                                                .hour,
+                                                            datePicked1Time
+                                                                .minute,
+                                                          );
+                                                        });
+                                                      }
+                                                    },
+                                                    text:
+                                                        valueOrDefault<String>(
+                                                      _model.datePicked1
+                                                          ?.toString(),
+                                                      'Start Date*',
+                                                    ),
+                                                    icon: Icon(
+                                                      Icons.calendar_month,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                      size: 15.0,
+                                                    ),
+                                                    options: FFButtonOptions(
+                                                      width: 175.0,
+                                                      height: 56.0,
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  24.0,
+                                                                  0.0,
+                                                                  24.0,
+                                                                  0.0),
+                                                      iconPadding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Noto Sans JP',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                      elevation: 0.0,
+                                                      borderSide: const BorderSide(
+                                                        color:
+                                                            Colors.transparent,
+                                                        width: 1.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                  ),
+                                                ),
+                                                if (_model.frequencyValue !=
+                                                    'once')
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(2.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: FFButtonWidget(
+                                                      onPressed: () async {
+                                                        final datePicked2Date =
+                                                            await showDatePicker(
+                                                          context: context,
+                                                          initialDate:
+                                                              getCurrentTimestamp,
+                                                          firstDate:
+                                                              DateTime(1900),
+                                                          lastDate:
+                                                              DateTime(2050),
+                                                          builder:
+                                                              (context, child) {
+                                                            return wrapInMaterialDatePickerTheme(
+                                                              context,
+                                                              child!,
+                                                              headerBackgroundColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                              headerForegroundColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .info,
+                                                              headerTextStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .headlineLarge
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Noto Sans JP',
+                                                                        fontSize:
+                                                                            32.0,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w600,
+                                                                      ),
+                                                              pickerBackgroundColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                              pickerForegroundColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                              selectedDateTimeBackgroundColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                              selectedDateTimeForegroundColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .info,
+                                                              actionButtonForegroundColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                              iconSize: 24.0,
+                                                            );
+                                                          },
+                                                        );
+
+                                                        TimeOfDay?
+                                                            datePicked2Time;
+                                                        if (datePicked2Date !=
+                                                            null) {
+                                                          datePicked2Time =
+                                                              await showTimePicker(
+                                                            context: context,
+                                                            initialTime: TimeOfDay
+                                                                .fromDateTime(
+                                                                    getCurrentTimestamp),
+                                                            builder: (context,
+                                                                child) {
+                                                              return wrapInMaterialTimePickerTheme(
+                                                                context,
+                                                                child!,
+                                                                headerBackgroundColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primary,
+                                                                headerForegroundColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .info,
+                                                                headerTextStyle:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineLarge
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Noto Sans JP',
+                                                                          fontSize:
+                                                                              32.0,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight:
+                                                                              FontWeight.w600,
+                                                                        ),
+                                                                pickerBackgroundColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
+                                                                pickerForegroundColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
+                                                                selectedDateTimeBackgroundColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primary,
+                                                                selectedDateTimeForegroundColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .info,
+                                                                actionButtonForegroundColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
+                                                                iconSize: 24.0,
+                                                              );
+                                                            },
+                                                          );
+                                                        }
+
+                                                        if (datePicked2Date !=
+                                                                null &&
+                                                            datePicked2Time !=
+                                                                null) {
+                                                          safeSetState(() {
+                                                            _model.datePicked2 =
+                                                                DateTime(
+                                                              datePicked2Date
+                                                                  .year,
+                                                              datePicked2Date
+                                                                  .month,
+                                                              datePicked2Date
+                                                                  .day,
+                                                              datePicked2Time!
+                                                                  .hour,
+                                                              datePicked2Time
+                                                                  .minute,
+                                                            );
+                                                          });
+                                                        }
+                                                      },
+                                                      text: valueOrDefault<
+                                                          String>(
+                                                        _model.datePicked2
+                                                            ?.toString(),
+                                                        'End Date*',
+                                                      ),
+                                                      icon: Icon(
+                                                        Icons.calendar_month,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                        size: 15.0,
+                                                      ),
+                                                      options: FFButtonOptions(
+                                                        width: 175.0,
+                                                        height: 56.0,
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    24.0,
+                                                                    0.0,
+                                                                    24.0,
+                                                                    0.0),
+                                                        iconPadding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        textStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Noto Sans JP',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                        elevation: 0.0,
+                                                        borderSide: const BorderSide(
+                                                          color: Colors
+                                                              .transparent,
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                      ),
+                                                    ),
+                                                  ),
+                                              ],
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               children: [
                                                 Expanded(
                                                   child: TextFormField(
                                                     controller: _model
-                                                            .incomeNameTextController2 ??=
+                                                            .incomeNameTextController ??=
                                                         TextEditingController(
                                                       text: valueOrDefault<
                                                           String>(
@@ -846,11 +1093,13 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
                                                       ),
                                                     ),
                                                     focusNode: _model
-                                                        .incomeNameFocusNode2,
+                                                        .incomeNameFocusNode,
                                                     autofocus: true,
                                                     textCapitalization:
                                                         TextCapitalization
                                                             .words,
+                                                    textInputAction:
+                                                        TextInputAction.next,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
                                                       labelText:
@@ -948,7 +1197,7 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
                                                           letterSpacing: 0.0,
                                                         ),
                                                     validator: _model
-                                                        .incomeNameTextController2Validator
+                                                        .incomeNameTextControllerValidator
                                                         .asValidator(context),
                                                   ),
                                                 ),
@@ -977,6 +1226,8 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
                                                     focusNode:
                                                         _model.amountFocusNode,
                                                     autofocus: true,
+                                                    textInputAction:
+                                                        TextInputAction.done,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
                                                       labelText:
@@ -1100,7 +1351,7 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
                                                             .call(
                                                       incomeId: widget.incomeId,
                                                       name: _model
-                                                          .incomeNameTextController2
+                                                          .incomeNameTextController
                                                           .text,
                                                       amount: double.tryParse(
                                                           _model
@@ -1108,15 +1359,18 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
                                                               .text),
                                                       frequency:
                                                           _model.frequencyValue,
-                                                      date: _model
-                                                          .incomeNameTextController1
-                                                          .text,
                                                       authenticationToken:
                                                           currentJwtToken,
                                                       householdIdGlobal: _model
                                                           .householdDropDownValue,
                                                       paymentSourceIdGlobal: _model
                                                           .walletDropDownValue,
+                                                      startDate: _model
+                                                          .datePicked1
+                                                          ?.toString(),
+                                                      endDate: _model
+                                                          .datePicked2
+                                                          ?.toString(),
                                                     );
 
                                                     if ((_model.editIncomeOutput
@@ -1211,6 +1465,10 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
                                                   ),
                                                 ),
                                               ],
+                                            ),
+                                            Container(
+                                              width: 250.0,
+                                              decoration: const BoxDecoration(),
                                             ),
                                           ]
                                               .divide(const SizedBox(height: 4.0))

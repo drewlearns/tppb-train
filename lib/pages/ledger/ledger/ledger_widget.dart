@@ -38,9 +38,6 @@ class _LedgerWidgetState extends State<LedgerWidget>
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (RootPageContext.isInactiveRootPage(context)) {
-        return;
-      }
       _model.subscriptionCheckerOutput =
           await TppbGroup.subscriptionCheckerCall.call(
         userUuid: currentUserUid,
@@ -452,7 +449,7 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                      'y1wzq8cs' /* Budget */,
+                                                      'y1wzq8cs' /* Budget* */,
                                                     ),
                                                     labelTextStyle:
                                                         FlutterFlowTheme.of(
@@ -1389,9 +1386,9 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                                       '###,##0.00',
                                                                   locale: '',
                                                                 ),
-                                                                'Loading...',
+                                                                '\$0.00',
                                                               )}',
-                                                              'Safe To Spend: Loading...',
+                                                              'Safe To Spend: \$0.00',
                                                             ),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
@@ -1429,7 +1426,7 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                                     title: const Text(
                                                                         'Information'),
                                                                     content: Text(
-                                                                        'Safe To Spend ™️ is the amount that is safe to spend without going over between now and ${valueOrDefault<String>(
+                                                                        'Safe To Spend  is the amount that is safe to spend without going over between now and ${valueOrDefault<String>(
                                                                       TppbGroup
                                                                           .getSafeToSpendCall
                                                                           .nextPayday(
@@ -1437,7 +1434,7 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                                             .jsonBody,
                                                                       ),
                                                                       'Loading...',
-                                                                    )} (your next pay day).  Disclaimer, this is only as accurate as the information you provide the application and only applies when you have 1 payment source (wallet)'),
+                                                                    )} (your next pay day).  Disclaimer, this is only as accurate as the information you provide the application and only applies to the default payment source (wallet).'),
                                                                     actions: [
                                                                       TextButton(
                                                                         onPressed:
@@ -1780,39 +1777,31 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                                                     ),
                                                                                     showLoadingIndicator: true,
                                                                                     onPressed: () async {
-                                                                                      _model.editLedgerEntryAsClearedOutput = await TppbGroup.editLedgerEntryAsClearedCall.call(
-                                                                                        ledgerId: valueOrDefault<String>(
-                                                                                          TppbGroup.getLedgerCall.ledgerId(
-                                                                                            listViewGetLedgerResponse.jsonBody,
-                                                                                          )?[ledgerEntriesIndex],
-                                                                                          'true',
-                                                                                        ),
+                                                                                      _model.apiResultlh2 = await TppbGroup.editLedgerEntryAsClearedCall.call(
+                                                                                        ledgerId: TppbGroup.getLedgerCall.ledgerId(
+                                                                                          listViewGetLedgerResponse.jsonBody,
+                                                                                        )?[ledgerEntriesIndex],
                                                                                         authenticationToken: currentJwtToken,
+                                                                                        householdIdGlobal: _model.householdDropDownValue,
                                                                                       );
 
-                                                                                      _model.soundPlayer ??= AudioPlayer();
-                                                                                      if (_model.soundPlayer!.playing) {
-                                                                                        await _model.soundPlayer!.stop();
-                                                                                      }
-                                                                                      _model.soundPlayer!.setVolume(1.0);
-                                                                                      await _model.soundPlayer!.setAsset('assets/audios/cash-register-kaching-sound-effect-125042.mp3').then((_) => _model.soundPlayer!.play());
+                                                                                      if ((_model.apiResultlh2?.succeeded ?? true)) {
+                                                                                        _model.soundPlayer ??= AudioPlayer();
+                                                                                        if (_model.soundPlayer!.playing) {
+                                                                                          await _model.soundPlayer!.stop();
+                                                                                        }
+                                                                                        _model.soundPlayer!.setVolume(1.0);
+                                                                                        _model.soundPlayer!.setAsset('assets/audios/cash-register-kaching-sound-effect-125042.mp3').then((_) => _model.soundPlayer!.play());
 
-                                                                                      if ((_model.editLedgerEntryAsClearedOutput?.succeeded ?? true)) {
                                                                                         setState(() => _model.apiRequestCompleter = null);
                                                                                         await _model.waitForApiRequestCompleted();
-
-                                                                                        setState(() {});
                                                                                       } else {
                                                                                         await showDialog(
                                                                                           context: context,
                                                                                           builder: (alertDialogContext) {
                                                                                             return AlertDialog(
                                                                                               title: const Text('Error'),
-                                                                                              content: Text(TppbGroup.editLedgerEntryAsClearedCall
-                                                                                                  .message(
-                                                                                                    (_model.editLedgerEntryAsClearedOutput?.jsonBody ?? ''),
-                                                                                                  )
-                                                                                                  .toString()),
+                                                                                              content: const Text('Unable to update status at this time. Please try again.'),
                                                                                               actions: [
                                                                                                 TextButton(
                                                                                                   onPressed: () => Navigator.pop(alertDialogContext),

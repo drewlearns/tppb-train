@@ -14,12 +14,11 @@ class AddBillModel extends FlutterFlowModel<AddBillWidget> {
   // State field(s) for walletDropDown widget.
   String? walletDropDownValue;
   FormFieldController<String>? walletDropDownValueController;
-  // State field(s) for dayOfMonth widget.
-  int? dayOfMonthValue;
-  FormFieldController<int>? dayOfMonthValueController;
   // State field(s) for frequency widget.
   String? frequencyValue;
   FormFieldController<String>? frequencyValueController;
+  DateTime? datePicked1;
+  DateTime? datePicked2;
   // State field(s) for BillName widget.
   FocusNode? billNameFocusNode;
   TextEditingController? billNameTextController;

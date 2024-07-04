@@ -35,7 +35,7 @@ class LedgerModel extends FlutterFlowModel<LedgerWidget> {
   // State field(s) for Slider widget.
   double? sliderValue;
   // Stores action output result for [Backend Call - API (editLedgerEntryAsCleared)] action in IconButton widget.
-  ApiCallResponse? editLedgerEntryAsClearedOutput;
+  ApiCallResponse? apiResultlh2;
   AudioPlayer? soundPlayer;
 
   @override

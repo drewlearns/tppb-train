@@ -234,12 +234,13 @@ async function _addBillCall(context, ffVariables) {
   var category = ffVariables["category"];
   var billName = ffVariables["billName"];
   var amount = ffVariables["amount"];
-  var dayOfMonth = ffVariables["dayOfMonth"];
   var frequency = ffVariables["frequency"];
   var description = ffVariables["description"];
   var url = ffVariables["url"];
   var user = ffVariables["user"];
   var password = ffVariables["password"];
+  var startDate = ffVariables["startDate"];
+  var endDate = ffVariables["endDate"];
   var authenticationToken = ffVariables["authenticationToken"];
   var householdIdGlobal = ffVariables["householdIdGlobal"];
   var paymentSourceIdGlobal = ffVariables["paymentSourceIdGlobal"];
@@ -260,7 +261,8 @@ async function _addBillCall(context, ffVariables) {
     "category": "${category}",
     "billName": "${billName}",
     "amount": ${amount},
-    "dayOfMonth": ${dayOfMonth},
+    "startDate": "${startDate}",
+    "endDate": "${endDate}",
     "frequency": "${frequency}",
     "description": "${description}",
     "url": "${url}",
@@ -293,7 +295,8 @@ async function _addIncomeCall(context, ffVariables) {
   var incomeName = ffVariables["incomeName"];
   var incomeAmount = ffVariables["incomeAmount"];
   var incomeFrequency = ffVariables["incomeFrequency"];
-  var incomeFirstPayDay = ffVariables["incomeFirstPayDay"];
+  var startDate = ffVariables["startDate"];
+  var endDate = ffVariables["endDate"];
   var authenticationToken = ffVariables["authenticationToken"];
   var householdIdGlobal = ffVariables["householdIdGlobal"];
   var paymentSourceIdGlobal = ffVariables["paymentSourceIdGlobal"];
@@ -315,7 +318,8 @@ async function _addIncomeCall(context, ffVariables) {
     "name": "${incomeName}",
     "amount": ${incomeAmount},
     "frequency": "${incomeFrequency}",
-    "firstPayDay": "${incomeFirstPayDay}"
+    "startdate": "${startDate}",
+    "endDate": "${endDate}"
   }
 }`;
 
@@ -1055,7 +1059,6 @@ async function _editBillCall(context, ffVariables) {
     return _unauthenticatedResponse;
   }
   var amount = ffVariables["amount"];
-  var dayOfMonth = ffVariables["dayOfMonth"];
   var category = ffVariables["category"];
   var description = ffVariables["description"];
   var sourceId = ffVariables["sourceId"];
@@ -1064,6 +1067,8 @@ async function _editBillCall(context, ffVariables) {
   var username = ffVariables["username"];
   var password = ffVariables["password"];
   var frequency = ffVariables["frequency"];
+  var startDate = ffVariables["startDate"];
+  var endDate = ffVariables["endDate"];
   var authenticationToken = ffVariables["authenticationToken"];
   var householdIdGlobal = ffVariables["householdIdGlobal"];
   var paymentSourceIdGlobal = ffVariables["paymentSourceIdGlobal"];
@@ -1080,7 +1085,8 @@ async function _editBillCall(context, ffVariables) {
 {
   "householdId": "${householdIdGlobal}",
   "amount": "${amount}",
-  "dayOfMonth": ${dayOfMonth},
+  "startDate": "${startDate}",
+  "endDate": "${endDate}",
   "category": "${category}",
   "description": "${description}",
   "sourceId": "${sourceId}",
@@ -1445,6 +1451,8 @@ async function _editIncomeCall(context, ffVariables) {
   var amount = ffVariables["amount"];
   var frequency = ffVariables["frequency"];
   var date = ffVariables["date"];
+  var startDate = ffVariables["startDate"];
+  var endDate = ffVariables["endDate"];
   var authenticationToken = ffVariables["authenticationToken"];
   var householdIdGlobal = ffVariables["householdIdGlobal"];
   var paymentSourceIdGlobal = ffVariables["paymentSourceIdGlobal"];
@@ -1465,7 +1473,8 @@ async function _editIncomeCall(context, ffVariables) {
     "name": "${name}",
     "amount": ${amount},
     "frequency": "${frequency}",
-    "firstPayDay": "${date}",
+    "startDate":"${startDate}",
+    "endDate":"${endDate}",
     "paymentSourceId": "${paymentSourceIdGlobal}"
   }
 }`;

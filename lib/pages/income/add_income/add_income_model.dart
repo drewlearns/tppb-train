@@ -15,10 +15,11 @@ class AddIncomeModel extends FlutterFlowModel<AddIncomeWidget> {
   // State field(s) for walletDropDown widget.
   String? walletDropDownValue;
   FormFieldController<String>? walletDropDownValueController;
-  DateTime? datePicked;
   // State field(s) for frequency widget.
   String? frequencyValue;
   FormFieldController<String>? frequencyValueController;
+  DateTime? datePicked1;
+  DateTime? datePicked2;
   // State field(s) for IncomeName widget.
   FocusNode? incomeNameFocusNode;
   TextEditingController? incomeNameTextController;

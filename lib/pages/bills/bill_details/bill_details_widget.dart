@@ -210,6 +210,365 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                               primary: false,
                               scrollDirection: Axis.vertical,
                               children: [
+                                Container(
+                                  width: 250.0,
+                                  decoration: const BoxDecoration(),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            2.0, 0.0, 0.0, 0.0),
+                                        child: FFButtonWidget(
+                                          onPressed: () async {
+                                            final datePicked1Date =
+                                                await showDatePicker(
+                                              context: context,
+                                              initialDate: getCurrentTimestamp,
+                                              firstDate: DateTime(1900),
+                                              lastDate: DateTime(2050),
+                                              builder: (context, child) {
+                                                return wrapInMaterialDatePickerTheme(
+                                                  context,
+                                                  child!,
+                                                  headerBackgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary,
+                                                  headerForegroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .info,
+                                                  headerTextStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineLarge
+                                                          .override(
+                                                            fontFamily:
+                                                                'Noto Sans JP',
+                                                            fontSize: 32.0,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                          ),
+                                                  pickerBackgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                  pickerForegroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryText,
+                                                  selectedDateTimeBackgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary,
+                                                  selectedDateTimeForegroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .info,
+                                                  actionButtonForegroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryText,
+                                                  iconSize: 24.0,
+                                                );
+                                              },
+                                            );
+
+                                            TimeOfDay? datePicked1Time;
+                                            if (datePicked1Date != null) {
+                                              datePicked1Time =
+                                                  await showTimePicker(
+                                                context: context,
+                                                initialTime:
+                                                    TimeOfDay.fromDateTime(
+                                                        getCurrentTimestamp),
+                                                builder: (context, child) {
+                                                  return wrapInMaterialTimePickerTheme(
+                                                    context,
+                                                    child!,
+                                                    headerBackgroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primary,
+                                                    headerForegroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .info,
+                                                    headerTextStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .headlineLarge
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Noto Sans JP',
+                                                              fontSize: 32.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                            ),
+                                                    pickerBackgroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .secondaryBackground,
+                                                    pickerForegroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primaryText,
+                                                    selectedDateTimeBackgroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primary,
+                                                    selectedDateTimeForegroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .info,
+                                                    actionButtonForegroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primaryText,
+                                                    iconSize: 24.0,
+                                                  );
+                                                },
+                                              );
+                                            }
+
+                                            if (datePicked1Date != null &&
+                                                datePicked1Time != null) {
+                                              safeSetState(() {
+                                                _model.datePicked1 = DateTime(
+                                                  datePicked1Date.year,
+                                                  datePicked1Date.month,
+                                                  datePicked1Date.day,
+                                                  datePicked1Time!.hour,
+                                                  datePicked1Time.minute,
+                                                );
+                                              });
+                                            }
+                                          },
+                                          text: valueOrDefault<String>(
+                                            _model.datePicked1?.toString(),
+                                            'Start Date*',
+                                          ),
+                                          icon: Icon(
+                                            Icons.calendar_month,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 15.0,
+                                          ),
+                                          options: FFButtonOptions(
+                                            width: 175.0,
+                                            height: 56.0,
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    24.0, 0.0, 24.0, 0.0),
+                                            iconPadding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            textStyle: FlutterFlowTheme.of(
+                                                    context)
+                                                .titleSmall
+                                                .override(
+                                                  fontFamily: 'Noto Sans JP',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  letterSpacing: 0.0,
+                                                ),
+                                            elevation: 0.0,
+                                            borderSide: const BorderSide(
+                                              color: Colors.transparent,
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            2.0, 0.0, 0.0, 0.0),
+                                        child: FFButtonWidget(
+                                          onPressed: () async {
+                                            final datePicked2Date =
+                                                await showDatePicker(
+                                              context: context,
+                                              initialDate: getCurrentTimestamp,
+                                              firstDate: DateTime(1900),
+                                              lastDate: DateTime(2050),
+                                              builder: (context, child) {
+                                                return wrapInMaterialDatePickerTheme(
+                                                  context,
+                                                  child!,
+                                                  headerBackgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary,
+                                                  headerForegroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .info,
+                                                  headerTextStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineLarge
+                                                          .override(
+                                                            fontFamily:
+                                                                'Noto Sans JP',
+                                                            fontSize: 32.0,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                          ),
+                                                  pickerBackgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                  pickerForegroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryText,
+                                                  selectedDateTimeBackgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary,
+                                                  selectedDateTimeForegroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .info,
+                                                  actionButtonForegroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryText,
+                                                  iconSize: 24.0,
+                                                );
+                                              },
+                                            );
+
+                                            TimeOfDay? datePicked2Time;
+                                            if (datePicked2Date != null) {
+                                              datePicked2Time =
+                                                  await showTimePicker(
+                                                context: context,
+                                                initialTime:
+                                                    TimeOfDay.fromDateTime(
+                                                        getCurrentTimestamp),
+                                                builder: (context, child) {
+                                                  return wrapInMaterialTimePickerTheme(
+                                                    context,
+                                                    child!,
+                                                    headerBackgroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primary,
+                                                    headerForegroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .info,
+                                                    headerTextStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .headlineLarge
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Noto Sans JP',
+                                                              fontSize: 32.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                            ),
+                                                    pickerBackgroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .secondaryBackground,
+                                                    pickerForegroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primaryText,
+                                                    selectedDateTimeBackgroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primary,
+                                                    selectedDateTimeForegroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .info,
+                                                    actionButtonForegroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primaryText,
+                                                    iconSize: 24.0,
+                                                  );
+                                                },
+                                              );
+                                            }
+
+                                            if (datePicked2Date != null &&
+                                                datePicked2Time != null) {
+                                              safeSetState(() {
+                                                _model.datePicked2 = DateTime(
+                                                  datePicked2Date.year,
+                                                  datePicked2Date.month,
+                                                  datePicked2Date.day,
+                                                  datePicked2Time!.hour,
+                                                  datePicked2Time.minute,
+                                                );
+                                              });
+                                            }
+                                          },
+                                          text: valueOrDefault<String>(
+                                            _model.datePicked2?.toString(),
+                                            'End Date*',
+                                          ),
+                                          icon: Icon(
+                                            Icons.calendar_month,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 15.0,
+                                          ),
+                                          options: FFButtonOptions(
+                                            width: 175.0,
+                                            height: 56.0,
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    24.0, 0.0, 24.0, 0.0),
+                                            iconPadding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            textStyle: FlutterFlowTheme.of(
+                                                    context)
+                                                .titleSmall
+                                                .override(
+                                                  fontFamily: 'Noto Sans JP',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  letterSpacing: 0.0,
+                                                ),
+                                            elevation: 0.0,
+                                            borderSide: const BorderSide(
+                                              color: Colors.transparent,
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                                 FutureBuilder<ApiCallResponse>(
                                   future: (_model.apiRequestCompleter3 ??=
                                           Completer<ApiCallResponse>()
@@ -251,229 +610,117 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                               MainAxisAlignment.start,
                                           children: [
                                             Expanded(
-                                              child: FlutterFlowDropDown<int>(
-                                                controller: _model
-                                                        .dayOfmonthValueController ??=
-                                                    FormFieldController<int>(
-                                                  _model.dayOfmonthValue ??=
-                                                      valueOrDefault<int>(
-                                                    TppbGroup.getBillCall
-                                                        .dayOfMonth(
-                                                      billListViewGetBillResponse
-                                                          .jsonBody,
-                                                    ),
-                                                    0,
-                                                  ),
-                                                ),
-                                                options: List<int>.from([
-                                                  1,
-                                                  2,
-                                                  3,
-                                                  4,
-                                                  5,
-                                                  6,
-                                                  7,
-                                                  8,
-                                                  9,
-                                                  10,
-                                                  11,
-                                                  12,
-                                                  13,
-                                                  14,
-                                                  15,
-                                                  16,
-                                                  17,
-                                                  18,
-                                                  19,
-                                                  20,
-                                                  21,
-                                                  22,
-                                                  23,
-                                                  24,
-                                                  25,
-                                                  26,
-                                                  27,
-                                                  28,
-                                                  29,
-                                                  30
-                                                ]),
-                                                optionLabels: [
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    '8e59avrn' /* 1st */,
-                                                  ),
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'h7buo1qh' /* 2nd */,
-                                                  ),
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    '36lklqss' /* 3rd */,
-                                                  ),
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'fr7hkbb5' /* 4th */,
-                                                  ),
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'fozt5e66' /* 5th */,
-                                                  ),
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    '1k8tbkep' /* 6th */,
-                                                  ),
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'iwsgxpls' /* 7th */,
-                                                  ),
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'yh8iwhzw' /* 8th */,
-                                                  ),
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'exxpad0z' /* 9th */,
-                                                  ),
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'jcyys65u' /* 10th */,
-                                                  ),
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'z3kh4q0h' /* 11th */,
-                                                  ),
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    '3bk9sv0f' /* 12th */,
-                                                  ),
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    '3sn8lw3d' /* 13th */,
-                                                  ),
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    '6lcqhoqx' /* 14th */,
-                                                  ),
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'ghwj4cdv' /* 15th */,
-                                                  ),
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'tgstk6p4' /* 16th */,
-                                                  ),
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'vyi580fy' /* 17th */,
-                                                  ),
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'nh6v7tj7' /* 18th */,
-                                                  ),
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'kst2e9h7' /* 19th */,
-                                                  ),
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'tzvalqct' /* 20th */,
-                                                  ),
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'hqvj0xs6' /* 21st */,
-                                                  ),
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    '36jfu1te' /* 22nd */,
-                                                  ),
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'gpjhj5l1' /* 23rd */,
-                                                  ),
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'gmlxiwf7' /* 24th */,
-                                                  ),
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'k0331g1o' /* 25th */,
-                                                  ),
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    '4kye0fir' /* 26th */,
-                                                  ),
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'x38jeewd' /* 27th */,
-                                                  ),
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'ekskhfwj' /* 28th */,
-                                                  ),
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'a2vjkm84' /* 29th */,
-                                                  ),
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    '22z8x3t1' /* 30th */,
-                                                  )
-                                                ],
-                                                onChanged: (val) => setState(
-                                                    () => _model
-                                                        .dayOfmonthValue = val),
-                                                width: 300.0,
-                                                height: 56.0,
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Noto Sans JP',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                hintText:
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                  'otfgkkwo' /* Please select... */,
-                                                ),
-                                                icon: Icon(
-                                                  Icons
-                                                      .keyboard_arrow_down_rounded,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryText,
-                                                  size: 24.0,
-                                                ),
-                                                fillColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                elevation: 2.0,
-                                                borderColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .alternate,
-                                                borderWidth: 2.0,
-                                                borderRadius: 8.0,
-                                                margin: const EdgeInsetsDirectional
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        16.0, 4.0, 16.0, 4.0),
-                                                hidesUnderline: true,
-                                                isOverButton: true,
-                                                isSearchable: false,
-                                                isMultiSelect: false,
-                                                labelText:
+                                                        0.0, 4.0, 0.0, 0.0),
+                                                child:
+                                                    FlutterFlowDropDown<String>(
+                                                  controller: _model
+                                                          .frequencyValueController ??=
+                                                      FormFieldController<
+                                                          String>(
+                                                    _model.frequencyValue ??=
+                                                        valueOrDefault<String>(
+                                                      TppbGroup.getBillCall
+                                                          .frequency(
+                                                        billListViewGetBillResponse
+                                                            .jsonBody,
+                                                      ),
+                                                      'Loading...',
+                                                    ),
+                                                  ),
+                                                  options: List<String>.from([
+                                                    'once',
+                                                    'weekly',
+                                                    'biweekly',
+                                                    'monthly',
+                                                    'bimonthly',
+                                                    'quarterly',
+                                                    'semiAnnually',
+                                                    'annually'
+                                                  ]),
+                                                  optionLabels: [
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'upkxqd9z' /* Day Of The Month (initially Du... */,
+                                                      'cb7hynio' /* Once */,
+                                                    ),
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      '5dlg1uxu' /* Weekly (7 days) */,
+                                                    ),
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'xgfklnwm' /* Biweekly (14 days) */,
+                                                    ),
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'lvu96m2n' /* Monthly (30 days) */,
+                                                    ),
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'foahaxvi' /* Bimonthly (60 days) */,
+                                                    ),
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'ulek7uon' /* Quarterly (90 days) */,
+                                                    ),
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'r5fy1h0j' /* Semi-Annually (180 days) */,
+                                                    ),
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'u8me2d7f' /* Annually (yearly) */,
+                                                    )
+                                                  ],
+                                                  onChanged: (val) => setState(
+                                                      () => _model
+                                                              .frequencyValue =
+                                                          val),
+                                                  width: 300.0,
+                                                  height: 56.0,
+                                                  textStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Noto Sans JP',
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                  hintText: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    'eebdojk3' /* Description */,
+                                                  ),
+                                                  icon: Icon(
+                                                    Icons
+                                                        .keyboard_arrow_down_rounded,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    size: 24.0,
+                                                  ),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                  elevation: 2.0,
+                                                  borderColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
+                                                  borderWidth: 2.0,
+                                                  borderRadius: 8.0,
+                                                  margin: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          16.0, 4.0, 16.0, 4.0),
+                                                  hidesUnderline: true,
+                                                  isOverButton: true,
+                                                  isSearchable: false,
+                                                  isMultiSelect: false,
                                                 ),
-                                                labelTextStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Noto Sans JP',
-                                                          letterSpacing: 0.0,
-                                                        ),
                                               ),
                                             ),
                                           ]
@@ -1305,129 +1552,6 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                               .divide(const SizedBox(width: 8.0))
                                               .around(const SizedBox(width: 8.0)),
                                         ),
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            Expanded(
-                                              child: Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 4.0, 0.0, 0.0),
-                                                child:
-                                                    FlutterFlowDropDown<String>(
-                                                  controller: _model
-                                                          .frequencyValueController ??=
-                                                      FormFieldController<
-                                                          String>(
-                                                    _model.frequencyValue ??=
-                                                        valueOrDefault<String>(
-                                                      TppbGroup.getBillCall
-                                                          .frequency(
-                                                        billListViewGetBillResponse
-                                                            .jsonBody,
-                                                      ),
-                                                      'Loading...',
-                                                    ),
-                                                  ),
-                                                  options: List<String>.from([
-                                                    'once',
-                                                    'weekly',
-                                                    'biweekly',
-                                                    'monthly',
-                                                    'bimonthly',
-                                                    'quarterly',
-                                                    'semiAnnually',
-                                                    'annually'
-                                                  ]),
-                                                  optionLabels: [
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      'cb7hynio' /* Once */,
-                                                    ),
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      '5dlg1uxu' /* Weekly (7 days) */,
-                                                    ),
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      'xgfklnwm' /* Biweekly (14 days) */,
-                                                    ),
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      'lvu96m2n' /* Monthly (30 days) */,
-                                                    ),
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      'foahaxvi' /* Bimonthly (60 days) */,
-                                                    ),
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      'ulek7uon' /* Quarterly (90 days) */,
-                                                    ),
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      'r5fy1h0j' /* Semi-Annually (180 days) */,
-                                                    ),
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      'u8me2d7f' /* Annually (yearly) */,
-                                                    )
-                                                  ],
-                                                  onChanged: (val) => setState(
-                                                      () => _model
-                                                              .frequencyValue =
-                                                          val),
-                                                  width: 300.0,
-                                                  height: 56.0,
-                                                  textStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                'Noto Sans JP',
-                                                            letterSpacing: 0.0,
-                                                          ),
-                                                  hintText: FFLocalizations.of(
-                                                          context)
-                                                      .getText(
-                                                    'eebdojk3' /* Description */,
-                                                  ),
-                                                  icon: Icon(
-                                                    Icons
-                                                        .keyboard_arrow_down_rounded,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryText,
-                                                    size: 24.0,
-                                                  ),
-                                                  fillColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondaryBackground,
-                                                  elevation: 2.0,
-                                                  borderColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .alternate,
-                                                  borderWidth: 2.0,
-                                                  borderRadius: 8.0,
-                                                  margin: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          16.0, 4.0, 16.0, 4.0),
-                                                  hidesUnderline: true,
-                                                  isOverButton: true,
-                                                  isSearchable: false,
-                                                  isMultiSelect: false,
-                                                ),
-                                              ),
-                                            ),
-                                          ]
-                                              .divide(const SizedBox(width: 8.0))
-                                              .around(const SizedBox(width: 8.0)),
-                                        ),
                                         Semantics(
                                           label:
                                               'Click to open URL and copy it to the clipboard',
@@ -2016,7 +2140,6 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                           await TppbGroup.editBillCall.call(
                                         amount: double.tryParse(
                                             _model.amountTextController.text),
-                                        dayOfMonth: _model.dayOfmonthValue,
                                         category:
                                             _model.categoryTextController.text,
                                         description: _model
@@ -2034,6 +2157,9 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                             _model.householdValue,
                                         paymentSourceIdGlobal:
                                             _model.walletValue,
+                                        startDate:
+                                            _model.datePicked1?.toString(),
+                                        endDate: _model.datePicked2?.toString(),
                                       );
 
                                       if ((_model.editBillOutput?.succeeded ??

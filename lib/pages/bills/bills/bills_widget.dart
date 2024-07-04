@@ -241,7 +241,7 @@ class _BillsWidgetState extends State<BillsWidget>
                                             labelText:
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                              'wy0g1tkg' /* Budget */,
+                                              'wy0g1tkg' /* Budget* */,
                                             ),
                                             labelTextStyle:
                                                 FlutterFlowTheme.of(context)

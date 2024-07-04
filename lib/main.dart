@@ -191,7 +191,7 @@ class NavBarPage extends StatefulWidget {
 
 /// This is the private State class that goes with NavBarPage.
 class _NavBarPageState extends State<NavBarPage> {
-  String _currentPageName = 'Ledger';
+  String _currentPageName = 'Home';
   late Widget? _currentPage;
 
   @override
@@ -204,11 +204,12 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'Bills': const BillsWidget(),
-      'Wallets': const WalletsWidget(),
+      'Home': const HomeWidget(),
       'Ledger': const LedgerWidget(),
+      'Bills': const BillsWidget(),
       'Incomes': const IncomesWidget(),
-      'Options': const OptionsWidget(),
+      'Wallets': const WalletsWidget(),
+      'Account': const AccountWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -229,21 +230,11 @@ class _NavBarPageState extends State<NavBarPage> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: const Icon(
-              Icons.outbox,
+              Icons.cottage_outlined,
               size: 24.0,
             ),
             label: FFLocalizations.of(context).getText(
-              'zuxkjjxf' /* Bills */,
-            ),
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: const Icon(
-              Icons.wallet,
-              size: 24.0,
-            ),
-            label: FFLocalizations.of(context).getText(
-              'nawp5pzi' /* Wallet */,
+              '6mrnu68q' /* Home */,
             ),
             tooltip: '',
           ),
@@ -263,6 +254,16 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: const Icon(
+              Icons.outbox,
+              size: 24.0,
+            ),
+            label: FFLocalizations.of(context).getText(
+              'zuxkjjxf' /* Bills */,
+            ),
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: const Icon(
               Icons.move_to_inbox_sharp,
               size: 24.0,
             ),
@@ -273,11 +274,21 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: const Icon(
-              Icons.settings_suggest,
+              Icons.wallet,
               size: 24.0,
             ),
             label: FFLocalizations.of(context).getText(
-              '6mrnu68q' /* Options */,
+              'nawp5pzi' /* Wallet */,
+            ),
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: const Icon(
+              Icons.person,
+              size: 24.0,
+            ),
+            label: FFLocalizations.of(context).getText(
+              '6c3wp5t0' /* Account */,
             ),
             tooltip: '',
           )

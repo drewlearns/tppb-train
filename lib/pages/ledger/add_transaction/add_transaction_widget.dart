@@ -208,7 +208,7 @@ class _AddTransactionWidgetState extends State<AddTransactionWidget> {
                                           isMultiSelect: false,
                                           labelText: FFLocalizations.of(context)
                                               .getText(
-                                            'dmhivq7s' /* Household */,
+                                            'dmhivq7s' /* Budget */,
                                           ),
                                           labelTextStyle:
                                               FlutterFlowTheme.of(context)

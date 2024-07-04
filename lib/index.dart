@@ -3,18 +3,16 @@ export '/pages/user/login/login_widget.dart' show LoginWidget;
 export '/pages/ledger/ledger/ledger_widget.dart' show LedgerWidget;
 export '/pages/bills/bills/bills_widget.dart' show BillsWidget;
 export '/pages/income/incomes/incomes_widget.dart' show IncomesWidget;
-export '/pages/misc/options/options_widget.dart' show OptionsWidget;
-export '/billing/sales_page/sales_page_widget.dart' show SalesPageWidget;
+export '/pages/misc/home/home_widget.dart' show HomeWidget;
+export '/pages/billing/sales_page/sales_page_widget.dart' show SalesPageWidget;
 export '/pages/bills/add_bill/add_bill_widget.dart' show AddBillWidget;
 export '/pages/bills/bill_details/bill_details_widget.dart'
     show BillDetailsWidget;
-export '/pages/household/add_invite/add_invite_widget.dart'
-    show AddInviteWidget;
-export '/pages/household/create_household/create_household_widget.dart'
-    show CreateHouseholdWidget;
-export '/pages/household/edit_household/edit_household_widget.dart'
-    show EditHouseholdWidget;
-export '/pages/household/edit_members/edit_members_widget.dart'
+export '/pages/budget/add_invite/add_invite_widget.dart' show AddInviteWidget;
+export '/pages/budget/add_budget/add_budget_widget.dart' show AddBudgetWidget;
+export '/pages/budget/edit_budget/edit_budget_widget.dart'
+    show EditBudgetWidget;
+export '/pages/budget/edit_members/edit_members_widget.dart'
     show EditMembersWidget;
 export '/pages/income/add_income/add_income_widget.dart' show AddIncomeWidget;
 export '/pages/income/edit_income/edit_income_widget.dart'
@@ -32,15 +30,15 @@ export '/pages/notifications/edit_notification/edit_notification_widget.dart'
     show EditNotificationWidget;
 export '/pages/notifications/notifications/notifications_widget.dart'
     show NotificationsWidget;
-export '/wallet/wallets/wallets_widget.dart' show WalletsWidget;
-export '/wallet/wallet_details/wallet_details_widget.dart'
+export '/pages/wallet/wallets/wallets_widget.dart' show WalletsWidget;
+export '/pages/wallet/wallet_details/wallet_details_widget.dart'
     show WalletDetailsWidget;
-export '/reporting/export/export_widget.dart' show ExportWidget;
-export '/reporting/export_search/export_search_widget.dart'
+export '/pages/reporting/export/export_widget.dart' show ExportWidget;
+export '/pages/reporting/export_search/export_search_widget.dart'
     show ExportSearchWidget;
-export '/reporting/export_to_c_s_v/export_to_c_s_v_widget.dart'
+export '/pages/reporting/export_to_c_s_v/export_to_c_s_v_widget.dart'
     show ExportToCSVWidget;
-export '/reporting/export_to_q_b_o/export_to_q_b_o_widget.dart'
+export '/pages/reporting/export_to_q_b_o/export_to_q_b_o_widget.dart'
     show ExportToQBOWidget;
 export '/pages/user/forgot_password/forgot_password_widget.dart'
     show ForgotPasswordWidget;
@@ -49,7 +47,15 @@ export '/pages/user/accept_invite/accept_invite_widget.dart'
     show AcceptInviteWidget;
 export '/pages/bills/view_all_bills/view_all_bills_widget.dart'
     show ViewAllBillsWidget;
-export '/wallet/add_wallet/add_wallet_widget.dart' show AddWalletWidget;
-export '/billing/account/account_widget.dart' show AccountWidget;
-export '/wallet/set_default_wallet/set_default_wallet_widget.dart'
+export '/pages/wallet/add_wallet/add_wallet_widget.dart' show AddWalletWidget;
+export '/pages/billing/account/account_widget.dart' show AccountWidget;
+export '/pages/wallet/set_default_wallet/set_default_wallet_widget.dart'
     show SetDefaultWalletWidget;
+export '/pages/walkthroughs/ledger_walk_through/ledger_walk_through_widget.dart'
+    show LedgerWalkThroughWidget;
+export '/pages/walkthroughs/bills_walkthrough/bills_walkthrough_widget.dart'
+    show BillsWalkthroughWidget;
+export '/pages/walkthroughs/incomes_waklthrough/incomes_waklthrough_widget.dart'
+    show IncomesWaklthroughWidget;
+export '/pages/walkthroughs/wallet_walkthrough/wallet_walkthrough_widget.dart'
+    show WalletWalkthroughWidget;

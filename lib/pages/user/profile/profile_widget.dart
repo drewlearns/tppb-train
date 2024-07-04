@@ -413,7 +413,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                         ),
                                         focusNode: _model.emailFocusNode,
                                         autofocus: true,
-                                        textInputAction: TextInputAction.next,
+                                        textInputAction: TextInputAction.done,
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           labelText: FFLocalizations.of(context)
