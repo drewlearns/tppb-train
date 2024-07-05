@@ -233,500 +233,512 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                         Column(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'nvyg6dlc' /* Description:  */,
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            'Noto Sans JP',
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                      ),
-                                                ),
-                                                Text(
-                                                  valueOrDefault<String>(
-                                                    TppbGroup.getLedgerEntryCall
-                                                        .description(
-                                                      transactionDetailsGetLedgerEntryResponse
-                                                          .jsonBody,
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 8.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'nvyg6dlc' /* Description:  */,
                                                     ),
-                                                    'Loading...',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
                                                   ),
-                                                  maxLines: 2,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            'Noto Sans JP',
-                                                        color: TppbGroup
-                                                                    .getLedgerEntryCall
-                                                                    .transactionType(
-                                                                  transactionDetailsGetLedgerEntryResponse
-                                                                      .jsonBody,
-                                                                ) ==
-                                                                'Debit'
-                                                            ? FlutterFlowTheme
-                                                                    .of(context)
-                                                                .error
-                                                            : const Color(0xFF072D12),
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w600,
+                                                  Text(
+                                                    valueOrDefault<String>(
+                                                      TppbGroup
+                                                          .getLedgerEntryCall
+                                                          .description(
+                                                        transactionDetailsGetLedgerEntryResponse
+                                                            .jsonBody,
                                                       ),
-                                                ),
-                                              ]
-                                                  .divide(const SizedBox(width: 8.0))
-                                                  .around(const SizedBox(width: 8.0)),
+                                                      'Loading...',
+                                                    ),
+                                                    maxLines: 2,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          color: TppbGroup
+                                                                      .getLedgerEntryCall
+                                                                      .transactionType(
+                                                                    transactionDetailsGetLedgerEntryResponse
+                                                                        .jsonBody,
+                                                                  ) ==
+                                                                  'Debit'
+                                                              ? FlutterFlowTheme
+                                                                      .of(
+                                                                          context)
+                                                                  .error
+                                                              : const Color(
+                                                                  0xFF072D12),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                  ),
+                                                ]
+                                                    .divide(
+                                                        const SizedBox(width: 8.0))
+                                                    .around(
+                                                        const SizedBox(width: 8.0)),
+                                              ),
                                             ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'yx3y9wxn' /* Amount:  */,
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 8.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'yx3y9wxn' /* Amount:  */,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
                                                   ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            'Noto Sans JP',
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                      ),
-                                                ),
-                                                Text(
-                                                  valueOrDefault<String>(
-                                                    '${valueOrDefault<String>(
+                                                  Text(
+                                                    valueOrDefault<String>(
+                                                      '${valueOrDefault<String>(
+                                                            TppbGroup
+                                                                .getLedgerEntryCall
+                                                                .transactionType(
+                                                              transactionDetailsGetLedgerEntryResponse
+                                                                  .jsonBody,
+                                                            ),
+                                                            'Loading...',
+                                                          ) == 'Debit' ? '-' : '+'}${valueOrDefault<String>(
+                                                        formatNumber(
                                                           TppbGroup
                                                               .getLedgerEntryCall
-                                                              .transactionType(
+                                                              .amount(
                                                             transactionDetailsGetLedgerEntryResponse
                                                                 .jsonBody,
                                                           ),
-                                                          'Loading...',
-                                                        ) == 'Debit' ? '-' : '+'}${valueOrDefault<String>(
-                                                      formatNumber(
-                                                        TppbGroup
-                                                            .getLedgerEntryCall
-                                                            .amount(
-                                                          transactionDetailsGetLedgerEntryResponse
-                                                              .jsonBody,
+                                                          formatType:
+                                                              FormatType.custom,
+                                                          currency: '',
+                                                          format: '###,###.00',
+                                                          locale: '',
                                                         ),
-                                                        formatType:
-                                                            FormatType.custom,
-                                                        currency: '',
-                                                        format: '###,###.00',
-                                                        locale: '',
+                                                        'Loading...',
+                                                      )}',
+                                                      '-\$99,999.99',
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          color: TppbGroup
+                                                                      .getLedgerEntryCall
+                                                                      .transactionType(
+                                                                    transactionDetailsGetLedgerEntryResponse
+                                                                        .jsonBody,
+                                                                  ) ==
+                                                                  'Debit'
+                                                              ? FlutterFlowTheme
+                                                                      .of(
+                                                                          context)
+                                                                  .error
+                                                              : const Color(
+                                                                  0xFF072D12),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                  ),
+                                                ]
+                                                    .divide(
+                                                        const SizedBox(width: 8.0))
+                                                    .around(
+                                                        const SizedBox(width: 8.0)),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 8.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'kdijiniz' /* Date:  */,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                  ),
+                                                  Text(
+                                                    valueOrDefault<String>(
+                                                      TppbGroup
+                                                          .getLedgerEntryCall
+                                                          .transactionDate(
+                                                        transactionDetailsGetLedgerEntryResponse
+                                                            .jsonBody,
                                                       ),
                                                       'Loading...',
-                                                    )}',
-                                                    '-\$99,999.99',
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            'Noto Sans JP',
-                                                        color: TppbGroup
-                                                                    .getLedgerEntryCall
-                                                                    .transactionType(
-                                                                  transactionDetailsGetLedgerEntryResponse
-                                                                      .jsonBody,
-                                                                ) ==
-                                                                'Debit'
-                                                            ? FlutterFlowTheme
-                                                                    .of(context)
-                                                                .error
-                                                            : const Color(0xFF072D12),
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                      ),
-                                                ),
-                                              ]
-                                                  .divide(const SizedBox(width: 8.0))
-                                                  .around(const SizedBox(width: 8.0)),
-                                            ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'kdijiniz' /* Date:  */,
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            'Noto Sans JP',
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                      ),
-                                                ),
-                                                Text(
-                                                  valueOrDefault<String>(
-                                                    TppbGroup.getLedgerEntryCall
-                                                        .transactionDate(
-                                                      transactionDetailsGetLedgerEntryResponse
-                                                          .jsonBody,
                                                     ),
-                                                    'Loading...',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                   ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            'Noto Sans JP',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                                ),
-                                              ]
-                                                  .divide(const SizedBox(width: 8.0))
-                                                  .around(const SizedBox(width: 8.0)),
+                                                ]
+                                                    .divide(
+                                                        const SizedBox(width: 8.0))
+                                                    .around(
+                                                        const SizedBox(width: 8.0)),
+                                              ),
                                             ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'zv2jqgi3' /* Category:  */,
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            'Noto Sans JP',
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                      ),
-                                                ),
-                                                Text(
-                                                  valueOrDefault<String>(
-                                                    TppbGroup.getLedgerEntryCall
-                                                        .category(
-                                                      transactionDetailsGetLedgerEntryResponse
-                                                          .jsonBody,
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 8.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'zv2jqgi3' /* Category:  */,
                                                     ),
-                                                    'None',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
                                                   ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            'Noto Sans JP',
-                                                        letterSpacing: 0.0,
+                                                  Text(
+                                                    valueOrDefault<String>(
+                                                      TppbGroup
+                                                          .getLedgerEntryCall
+                                                          .category(
+                                                        transactionDetailsGetLedgerEntryResponse
+                                                            .jsonBody,
                                                       ),
-                                                ),
-                                              ]
-                                                  .divide(const SizedBox(width: 8.0))
-                                                  .around(const SizedBox(width: 8.0)),
-                                            ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'xcluxzwh' /* Tags:  */,
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            'Noto Sans JP',
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                      ),
-                                                ),
-                                                Text(
-                                                  valueOrDefault<String>(
-                                                    TppbGroup.getLedgerEntryCall
-                                                        .tags(
-                                                      transactionDetailsGetLedgerEntryResponse
-                                                          .jsonBody,
+                                                      'None',
                                                     ),
-                                                    'None',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                   ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            'Noto Sans JP',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                                ),
-                                              ]
-                                                  .divide(const SizedBox(width: 8.0))
-                                                  .around(const SizedBox(width: 8.0)),
+                                                ]
+                                                    .divide(
+                                                        const SizedBox(width: 8.0))
+                                                    .around(
+                                                        const SizedBox(width: 8.0)),
+                                              ),
                                             ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    '67r3wu2q' /* Wallet Name */,
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            'Noto Sans JP',
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                      ),
-                                                ),
-                                                Text(
-                                                  valueOrDefault<String>(
-                                                    TppbGroup.getLedgerEntryCall
-                                                        .sourcename(
-                                                      transactionDetailsGetLedgerEntryResponse
-                                                          .jsonBody,
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 8.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'xcluxzwh' /* Tags:  */,
                                                     ),
-                                                    'Loading...',
-                                                  ).maybeHandleOverflow(
-                                                      maxChars: 20),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            'Noto Sans JP',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                                ),
-                                              ]
-                                                  .divide(const SizedBox(width: 8.0))
-                                                  .around(const SizedBox(width: 8.0)),
-                                            ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'rk328yam' /* Transaction Type */,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
                                                   ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            'Noto Sans JP',
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w600,
+                                                  Text(
+                                                    valueOrDefault<String>(
+                                                      TppbGroup
+                                                          .getLedgerEntryCall
+                                                          .tags(
+                                                        transactionDetailsGetLedgerEntryResponse
+                                                            .jsonBody,
                                                       ),
-                                                ),
-                                                Text(
-                                                  valueOrDefault<String>(
-                                                    widget.type,
-                                                    'Loading...',
-                                                  ).maybeHandleOverflow(
-                                                      maxChars: 20),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            'Noto Sans JP',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                                ),
-                                              ]
-                                                  .divide(const SizedBox(width: 8.0))
-                                                  .around(const SizedBox(width: 8.0)),
-                                            ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'bm1nz2z4' /* Status: */,
+                                                      'None',
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                   ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            'Noto Sans JP',
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w600,
+                                                ]
+                                                    .divide(
+                                                        const SizedBox(width: 8.0))
+                                                    .around(
+                                                        const SizedBox(width: 8.0)),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      '67r3wu2q' /* Wallet Name */,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                  ),
+                                                  Text(
+                                                    valueOrDefault<String>(
+                                                      TppbGroup
+                                                          .getLedgerEntryCall
+                                                          .sourcename(
+                                                        transactionDetailsGetLedgerEntryResponse
+                                                            .jsonBody,
                                                       ),
-                                                ),
-                                                Stack(
-                                                  children: [
-                                                    Align(
-                                                      alignment:
-                                                          const AlignmentDirectional(
-                                                              0.0, 0.0),
-                                                      child: Semantics(
-                                                        label:
-                                                            'Click to toggle status',
-                                                        child:
-                                                            FlutterFlowIconButton(
-                                                          borderRadius: 20.0,
-                                                          borderWidth: 1.0,
-                                                          buttonSize: 40.0,
-                                                          icon: Icon(
-                                                            Icons.check_circle,
-                                                            color: TppbGroup
-                                                                        .getLedgerEntryCall
-                                                                        .status(
-                                                                      transactionDetailsGetLedgerEntryResponse
-                                                                          .jsonBody,
-                                                                    ) ==
-                                                                    true
-                                                                ? FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryText
-                                                                : FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .accent1,
-                                                            size: 24.0,
-                                                          ),
-                                                          showLoadingIndicator:
-                                                              true,
-                                                          onPressed: () async {
-                                                            _model.apiResultnnq =
-                                                                await TppbGroup
-                                                                    .editLedgerEntryAsClearedCall
-                                                                    .call(
-                                                              ledgerId: widget
-                                                                  .ledgerId,
-                                                              authenticationToken:
-                                                                  currentJwtToken,
-                                                            );
-
-                                                            if ((_model
-                                                                    .apiResultnnq
-                                                                    ?.succeeded ??
-                                                                true)) {
-                                                              _model.soundPlayer ??=
-                                                                  AudioPlayer();
-                                                              if (_model
-                                                                  .soundPlayer!
-                                                                  .playing) {
-                                                                await _model
-                                                                    .soundPlayer!
-                                                                    .stop();
-                                                              }
-                                                              _model
-                                                                  .soundPlayer!
-                                                                  .setVolume(
-                                                                      1.0);
-                                                              _model
-                                                                  .soundPlayer!
-                                                                  .setAsset(
-                                                                      'assets/audios/cash-register-kaching-sound-effect-125042.mp3')
-                                                                  .then((_) => _model
-                                                                      .soundPlayer!
-                                                                      .play());
-
-                                                              setState(() =>
-                                                                  _model.apiRequestCompleter =
-                                                                      null);
-                                                              await _model
-                                                                  .waitForApiRequestCompleted();
-                                                            } else {
-                                                              await showDialog(
-                                                                context:
-                                                                    context,
-                                                                builder:
-                                                                    (alertDialogContext) {
-                                                                  return AlertDialog(
-                                                                    title: const Text(
-                                                                        'Error'),
-                                                                    content: Text(TppbGroup
-                                                                        .editLedgerEntryAsClearedCall
-                                                                        .message(
-                                                                          (_model.apiResultnnq?.jsonBody ??
-                                                                              ''),
-                                                                        )
-                                                                        .toString()),
-                                                                    actions: [
-                                                                      TextButton(
-                                                                        onPressed:
-                                                                            () =>
-                                                                                Navigator.pop(alertDialogContext),
-                                                                        child: const Text(
-                                                                            'Ok'),
-                                                                      ),
-                                                                    ],
-                                                                  );
-                                                                },
+                                                      'Loading...',
+                                                    ).maybeHandleOverflow(
+                                                        maxChars: 20),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
+                                                ]
+                                                    .divide(
+                                                        const SizedBox(width: 8.0))
+                                                    .around(
+                                                        const SizedBox(width: 8.0)),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 8.0, 0.0, 0.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'bm1nz2z4' /* Status: */,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                  ),
+                                                  Stack(
+                                                    children: [
+                                                      Align(
+                                                        alignment:
+                                                            const AlignmentDirectional(
+                                                                0.0, 0.0),
+                                                        child: Semantics(
+                                                          label:
+                                                              'Click to toggle status',
+                                                          child:
+                                                              FlutterFlowIconButton(
+                                                            borderRadius: 20.0,
+                                                            borderWidth: 1.0,
+                                                            buttonSize: 40.0,
+                                                            icon: Icon(
+                                                              Icons
+                                                                  .check_circle,
+                                                              color: TppbGroup
+                                                                          .getLedgerEntryCall
+                                                                          .status(
+                                                                        transactionDetailsGetLedgerEntryResponse
+                                                                            .jsonBody,
+                                                                      ) ==
+                                                                      true
+                                                                  ? FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText
+                                                                  : FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .accent1,
+                                                              size: 24.0,
+                                                            ),
+                                                            showLoadingIndicator:
+                                                                true,
+                                                            onPressed:
+                                                                () async {
+                                                              _model.apiResultnnq =
+                                                                  await TppbGroup
+                                                                      .editLedgerEntryAsClearedCall
+                                                                      .call(
+                                                                ledgerId: widget
+                                                                    .ledgerId,
+                                                                authenticationToken:
+                                                                    currentJwtToken,
                                                               );
-                                                            }
 
-                                                            setState(() {});
-                                                          },
+                                                              if ((_model
+                                                                      .apiResultnnq
+                                                                      ?.succeeded ??
+                                                                  true)) {
+                                                                _model.soundPlayer ??=
+                                                                    AudioPlayer();
+                                                                if (_model
+                                                                    .soundPlayer!
+                                                                    .playing) {
+                                                                  await _model
+                                                                      .soundPlayer!
+                                                                      .stop();
+                                                                }
+                                                                _model
+                                                                    .soundPlayer!
+                                                                    .setVolume(
+                                                                        1.0);
+                                                                _model
+                                                                    .soundPlayer!
+                                                                    .setAsset(
+                                                                        'assets/audios/cash-register-kaching-sound-effect-125042.mp3')
+                                                                    .then((_) => _model
+                                                                        .soundPlayer!
+                                                                        .play());
+
+                                                                setState(() =>
+                                                                    _model.apiRequestCompleter =
+                                                                        null);
+                                                                await _model
+                                                                    .waitForApiRequestCompleted();
+                                                              } else {
+                                                                await showDialog(
+                                                                  context:
+                                                                      context,
+                                                                  builder:
+                                                                      (alertDialogContext) {
+                                                                    return AlertDialog(
+                                                                      title: const Text(
+                                                                          'Error'),
+                                                                      content: Text(TppbGroup
+                                                                          .editLedgerEntryAsClearedCall
+                                                                          .message(
+                                                                            (_model.apiResultnnq?.jsonBody ??
+                                                                                ''),
+                                                                          )
+                                                                          .toString()),
+                                                                      actions: [
+                                                                        TextButton(
+                                                                          onPressed: () =>
+                                                                              Navigator.pop(alertDialogContext),
+                                                                          child:
+                                                                              const Text('Ok'),
+                                                                        ),
+                                                                      ],
+                                                                    );
+                                                                  },
+                                                                );
+                                                              }
+
+                                                              setState(() {});
+                                                            },
+                                                          ),
                                                         ),
                                                       ),
-                                                    ),
-                                                  ],
-                                                ),
-                                                Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'p1bjs3as' /* Toggle me */,
+                                                    ],
                                                   ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Noto Sans JP',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                                ),
-                                              ]
-                                                  .divide(const SizedBox(width: 8.0))
-                                                  .around(const SizedBox(width: 8.0)),
+                                                  Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'p1bjs3as' /* Toggle me */,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
+                                                ]
+                                                    .divide(
+                                                        const SizedBox(width: 8.0))
+                                                    .around(
+                                                        const SizedBox(width: 8.0)),
+                                              ),
                                             ),
                                           ]
                                               .divide(const SizedBox(height: 4.0))
@@ -835,7 +847,7 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                                                   billListViewGetBillResponse
                                                                       .jsonBody,
                                                                 ),
-                                                                'Loading...',
+                                                                'None Provided',
                                                               ),
                                                               style: FlutterFlowTheme
                                                                       .of(context)
@@ -946,140 +958,136 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                                 shrinkWrap: true,
                                                 scrollDirection: Axis.vertical,
                                                 children: [
-                                                  Semantics(
-                                                    label:
-                                                        'Click to Copy User Name',
-                                                    child: InkWell(
-                                                      splashColor:
-                                                          Colors.transparent,
-                                                      focusColor:
-                                                          Colors.transparent,
-                                                      hoverColor:
-                                                          Colors.transparent,
-                                                      highlightColor:
-                                                          Colors.transparent,
-                                                      onTap: () async {
-                                                        await Clipboard.setData(
-                                                            ClipboardData(
-                                                                text: TppbGroup
-                                                                    .getBillPasswordCall
-                                                                    .username(
-                                                          billPasswordListViewGetBillPasswordResponse
-                                                              .jsonBody,
-                                                        )!));
-                                                      },
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              'rvd246zf' /* Username:  */,
-                                                            ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelLarge
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Noto Sans JP',
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                ),
-                                                          ),
-                                                          Text(
-                                                            valueOrDefault<
-                                                                String>(
-                                                              TppbGroup
-                                                                  .getBillPasswordCall
-                                                                  .username(
-                                                                billPasswordListViewGetBillPasswordResponse
-                                                                    .jsonBody,
-                                                              ),
-                                                              'Loading...',
-                                                            ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyLarge
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Noto Sans JP',
-                                                                  color: TppbGroup
-                                                                              .getLedgerEntryCall
-                                                                              .transactionType(
-                                                                            transactionDetailsGetLedgerEntryResponse.jsonBody,
-                                                                          ) ==
-                                                                          'Debit'
-                                                                      ? FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .error
-                                                                      : const Color(
-                                                                          0xFF072D12),
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .normal,
-                                                                ),
-                                                          ),
-                                                          ToggleIcon(
-                                                            onPressed:
-                                                                () async {
-                                                              setState(() => _model
-                                                                      .copyUserName =
-                                                                  !_model
-                                                                      .copyUserName);
-                                                              await Clipboard.setData(
-                                                                  ClipboardData(
-                                                                      text: TppbGroup
-                                                                          .getBillPasswordCall
-                                                                          .username(
-                                                                billPasswordListViewGetBillPasswordResponse
-                                                                    .jsonBody,
-                                                              )!));
-                                                            },
-                                                            value: _model
-                                                                .copyUserName,
-                                                            onIcon: FaIcon(
-                                                              FontAwesomeIcons
-                                                                  .clipboardCheck,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primary,
-                                                              size: 25.0,
-                                                            ),
-                                                            offIcon: FaIcon(
-                                                              FontAwesomeIcons
-                                                                  .clipboard,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryText,
-                                                              size: 25.0,
-                                                            ),
-                                                          ),
-                                                        ]
-                                                            .divide(const SizedBox(
-                                                                width: 8.0))
-                                                            .around(const SizedBox(
-                                                                width: 8.0)),
-                                                      ),
-                                                    ),
-                                                  ),
                                                   if ((widget.type == 'bill') &&
-                                                      (TppbGroup
-                                                              .getBillPasswordCall
-                                                              .password(
+                                                      billPasswordListViewGetBillPasswordResponse
+                                                          .succeeded)
+                                                    Semantics(
+                                                      label:
+                                                          'Click to Copy User Name',
+                                                      child: InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          await Clipboard.setData(
+                                                              ClipboardData(
+                                                                  text: TppbGroup
+                                                                      .getBillPasswordCall
+                                                                      .username(
                                                             billPasswordListViewGetBillPasswordResponse
                                                                 .jsonBody,
-                                                          ) !=
-                                                          'Loading...'))
+                                                          )!));
+                                                        },
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                'rvd246zf' /* Username:  */,
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelLarge
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Noto Sans JP',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                  ),
+                                                            ),
+                                                            Text(
+                                                              valueOrDefault<
+                                                                  String>(
+                                                                TppbGroup
+                                                                    .getBillPasswordCall
+                                                                    .username(
+                                                                  billPasswordListViewGetBillPasswordResponse
+                                                                      .jsonBody,
+                                                                ),
+                                                                'None Provided',
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyLarge
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Noto Sans JP',
+                                                                    color: TppbGroup.getLedgerEntryCall
+                                                                                .transactionType(
+                                                                              transactionDetailsGetLedgerEntryResponse.jsonBody,
+                                                                            ) ==
+                                                                            'Debit'
+                                                                        ? FlutterFlowTheme.of(context)
+                                                                            .error
+                                                                        : const Color(
+                                                                            0xFF072D12),
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .normal,
+                                                                  ),
+                                                            ),
+                                                            ToggleIcon(
+                                                              onPressed:
+                                                                  () async {
+                                                                setState(() => _model
+                                                                        .copyUserName =
+                                                                    !_model
+                                                                        .copyUserName);
+                                                                await Clipboard.setData(
+                                                                    ClipboardData(
+                                                                        text: TppbGroup
+                                                                            .getBillPasswordCall
+                                                                            .username(
+                                                                  billPasswordListViewGetBillPasswordResponse
+                                                                      .jsonBody,
+                                                                )!));
+                                                              },
+                                                              value: _model
+                                                                  .copyUserName,
+                                                              onIcon: FaIcon(
+                                                                FontAwesomeIcons
+                                                                    .clipboardCheck,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                                size: 25.0,
+                                                              ),
+                                                              offIcon: FaIcon(
+                                                                FontAwesomeIcons
+                                                                    .clipboard,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                size: 25.0,
+                                                              ),
+                                                            ),
+                                                          ]
+                                                              .divide(const SizedBox(
+                                                                  width: 8.0))
+                                                              .around(const SizedBox(
+                                                                  width: 8.0)),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  if ((widget.type == 'bill') &&
+                                                      billPasswordListViewGetBillPasswordResponse
+                                                          .succeeded)
                                                     Semantics(
                                                       label:
                                                           'Click to copy password',
@@ -1214,65 +1222,72 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                             shrinkWrap: true,
                                             scrollDirection: Axis.vertical,
                                             children: [
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      'gix7vahj' /* Frequency:  */,
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .labelLarge
-                                                        .override(
-                                                          fontFamily:
-                                                              'Noto Sans JP',
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
-                                                  ),
-                                                  Text(
-                                                    valueOrDefault<String>(
-                                                      TppbGroup.getIncomeCall
-                                                          .frequency(
-                                                        listViewGetIncomeResponse
-                                                            .jsonBody,
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 8.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'gix7vahj' /* Frequency:  */,
                                                       ),
-                                                      'Loading...',
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelLarge
+                                                          .override(
+                                                            fontFamily:
+                                                                'Noto Sans JP',
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                          ),
                                                     ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyLarge
-                                                        .override(
-                                                          fontFamily:
-                                                              'Noto Sans JP',
-                                                          color: TppbGroup
-                                                                      .getLedgerEntryCall
-                                                                      .transactionType(
-                                                                    transactionDetailsGetLedgerEntryResponse
-                                                                        .jsonBody,
-                                                                  ) ==
-                                                                  'Debit'
-                                                              ? FlutterFlowTheme
-                                                                      .of(
-                                                                          context)
-                                                                  .error
-                                                              : const Color(
-                                                                  0xFF072D12),
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.normal,
+                                                    Text(
+                                                      valueOrDefault<String>(
+                                                        TppbGroup.getIncomeCall
+                                                            .frequency(
+                                                          listViewGetIncomeResponse
+                                                              .jsonBody,
                                                         ),
-                                                  ),
-                                                ]
-                                                    .divide(
-                                                        const SizedBox(width: 8.0))
-                                                    .around(
-                                                        const SizedBox(width: 8.0)),
+                                                        'Loading...',
+                                                      ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyLarge
+                                                          .override(
+                                                            fontFamily:
+                                                                'Noto Sans JP',
+                                                            color: TppbGroup
+                                                                        .getLedgerEntryCall
+                                                                        .transactionType(
+                                                                      transactionDetailsGetLedgerEntryResponse
+                                                                          .jsonBody,
+                                                                    ) ==
+                                                                    'Debit'
+                                                                ? FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .error
+                                                                : const Color(
+                                                                    0xFF072D12),
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .normal,
+                                                          ),
+                                                    ),
+                                                  ]
+                                                      .divide(
+                                                          const SizedBox(width: 8.0))
+                                                      .around(
+                                                          const SizedBox(width: 8.0)),
+                                                ),
                                               ),
                                               Row(
                                                 mainAxisSize: MainAxisSize.max,

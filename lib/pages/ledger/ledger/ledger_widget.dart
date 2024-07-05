@@ -1425,16 +1425,8 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                                   return AlertDialog(
                                                                     title: const Text(
                                                                         'Information'),
-                                                                    content: Text(
-                                                                        'Safe To Spend  is the amount that is safe to spend without going over between now and ${valueOrDefault<String>(
-                                                                      TppbGroup
-                                                                          .getSafeToSpendCall
-                                                                          .nextPayday(
-                                                                        rowGetSafeToSpendResponse
-                                                                            .jsonBody,
-                                                                      ),
-                                                                      'Loading...',
-                                                                    )} (your next pay day).  Disclaimer, this is only as accurate as the information you provide the application and only applies to the default payment source (wallet).'),
+                                                                    content: const Text(
+                                                                        'Safe To Spend  is the amount that is \"safe to spend\" without breaking the bank between now and  your next pay day.  Disclaimer, this is only as accurate as the information you provide the application and only applies to the default wallet.'),
                                                                     actions: [
                                                                       TextButton(
                                                                         onPressed:

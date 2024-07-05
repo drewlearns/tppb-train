@@ -85,7 +85,7 @@ class _OnboardingAddWallet2WidgetState
                 flexibleSpace: FlexibleSpaceBar(
                   title: Text(
                     FFLocalizations.of(context).getText(
-                      'atbcpma2' /* Onboarding */,
+                      'i0hgnoed' /* Onboarding */,
                     ),
                     style: FlutterFlowTheme.of(context).headlineLarge.override(
                           fontFamily: 'Noto Sans JP',
@@ -117,7 +117,7 @@ class _OnboardingAddWallet2WidgetState
                           children: [
                             Text(
                               FFLocalizations.of(context).getText(
-                                'wrvol93v' /* Name your first wallet - this ... */,
+                                'znr0o0mo' /* Name your first wallet - this ... */,
                               ),
                               textAlign: TextAlign.center,
                               style: FlutterFlowTheme.of(context)
@@ -138,7 +138,7 @@ class _OnboardingAddWallet2WidgetState
                                 decoration: InputDecoration(
                                   labelText:
                                       FFLocalizations.of(context).getText(
-                                    '51ocynbu' /* Name your first Wallet* */,
+                                    'qy94d516' /* Name your first Wallet* */,
                                   ),
                                   labelStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
@@ -147,7 +147,7 @@ class _OnboardingAddWallet2WidgetState
                                         letterSpacing: 0.0,
                                       ),
                                   hintText: FFLocalizations.of(context).getText(
-                                    'lveyyni4' /* Ally Bank */,
+                                    'jupqzpma' /* Ally Bank */,
                                   ),
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
@@ -213,7 +213,7 @@ class _OnboardingAddWallet2WidgetState
                                 decoration: InputDecoration(
                                   labelText:
                                       FFLocalizations.of(context).getText(
-                                    'idjzcv2j' /* Starting Balance */,
+                                    'j56xm0ha' /* Starting Balance */,
                                   ),
                                   labelStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
@@ -222,7 +222,7 @@ class _OnboardingAddWallet2WidgetState
                                         letterSpacing: 0.0,
                                       ),
                                   hintText: FFLocalizations.of(context).getText(
-                                    'o5xqdxm9' /* 0.00 */,
+                                    'wt3rwgkd' /* 0.00 */,
                                   ),
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
@@ -288,24 +288,24 @@ class _OnboardingAddWallet2WidgetState
                                     FormFieldController<String>(
                                   _model.dropDownValue ??=
                                       FFLocalizations.of(context).getText(
-                                    '1lyx9wva' /* Checking Account */,
+                                    'fvlldmzu' /* Checking Account */,
                                   ),
                                 ),
                                 options: [
                                   FFLocalizations.of(context).getText(
-                                    'yrcqoq2o' /* Checking Account */,
+                                    '4czhc87q' /* Checking Account */,
                                   ),
                                   FFLocalizations.of(context).getText(
-                                    'pxb8wof5' /* Savings Account */,
+                                    '2nk3wxnc' /* Savings Account */,
                                   ),
                                   FFLocalizations.of(context).getText(
-                                    '6wkpa4ky' /* Credit Card */,
+                                    '35bgc4kq' /* Credit Card */,
                                   ),
                                   FFLocalizations.of(context).getText(
-                                    '74h71bid' /* Savings Account */,
+                                    '8i7dgga9' /* Savings Account */,
                                   ),
                                   FFLocalizations.of(context).getText(
-                                    'bhsmprdx' /* Other... */,
+                                    '37tr0xwb' /* Other... */,
                                   )
                                 ],
                                 onChanged: (val) =>
@@ -319,7 +319,7 @@ class _OnboardingAddWallet2WidgetState
                                       letterSpacing: 0.0,
                                     ),
                                 hintText: FFLocalizations.of(context).getText(
-                                  '0nc3b3nx' /* Name your first Wallet* */,
+                                  '0kjar9yt' /* Name your first Wallet* */,
                                 ),
                                 icon: Icon(
                                   Icons.keyboard_arrow_down_rounded,
@@ -341,7 +341,7 @@ class _OnboardingAddWallet2WidgetState
                                 isSearchable: false,
                                 isMultiSelect: false,
                                 labelText: FFLocalizations.of(context).getText(
-                                  '54kbxcch' /* Select Account Type */,
+                                  'nh4r6uhn' /* Select Account Type */,
                                 ),
                                 labelTextStyle: FlutterFlowTheme.of(context)
                                     .labelMedium
@@ -386,6 +386,18 @@ class _OnboardingAddWallet2WidgetState
                                         .toString(),
                                   );
 
+                                  await TppbGroup.setDefaultPaymentSourceCall
+                                      .call(
+                                    authenticationToken: currentJwtToken,
+                                    paymentSourceIdGlobal: TppbGroup
+                                        .addPaymentSourceCall
+                                        .paymentSourceId(
+                                          (_model.addPaymentSource?.jsonBody ??
+                                              ''),
+                                        )
+                                        .toString(),
+                                  );
+
                                   context.pushNamed(
                                     'OnboardingAddIncome3',
                                     queryParameters: {
@@ -409,7 +421,7 @@ class _OnboardingAddWallet2WidgetState
                                   setState(() {});
                                 },
                                 text: FFLocalizations.of(context).getText(
-                                  '0k3pjzfr' /* Continue */,
+                                  'h5zlhj5k' /* Continue */,
                                 ),
                                 options: FFButtonOptions(
                                   width: 360.0,
@@ -445,7 +457,7 @@ class _OnboardingAddWallet2WidgetState
                   const Spacer(),
                   Text(
                     FFLocalizations.of(context).getText(
-                      'nqeu0fkr' /* 2/4 */,
+                      'bl1zyn5y' /* 2/4 */,
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Noto Sans JP',

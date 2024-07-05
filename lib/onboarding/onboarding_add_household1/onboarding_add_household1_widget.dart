@@ -75,7 +75,7 @@ class _OnboardingAddHousehold1WidgetState
                 flexibleSpace: FlexibleSpaceBar(
                   title: Text(
                     FFLocalizations.of(context).getText(
-                      '7qgwez0t' /* Onboarding */,
+                      'pn0o5qxt' /* Onboarding */,
                     ),
                     style: FlutterFlowTheme.of(context).headlineLarge.override(
                           fontFamily: 'Noto Sans JP',
@@ -107,7 +107,7 @@ class _OnboardingAddHousehold1WidgetState
                           children: [
                             Text(
                               FFLocalizations.of(context).getText(
-                                'z0hecvlb' /* Since you can have potentially... */,
+                                'r5qsy223' /* Since you can have potentially... */,
                               ),
                               textAlign: TextAlign.center,
                               style: FlutterFlowTheme.of(context)
@@ -128,7 +128,7 @@ class _OnboardingAddHousehold1WidgetState
                                 decoration: InputDecoration(
                                   labelText:
                                       FFLocalizations.of(context).getText(
-                                    'ucomp27d' /* Name your first Budget* */,
+                                    '4bqleebs' /* Name your first Budget* */,
                                   ),
                                   labelStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
@@ -137,7 +137,7 @@ class _OnboardingAddHousehold1WidgetState
                                         letterSpacing: 0.0,
                                       ),
                                   hintText: FFLocalizations.of(context).getText(
-                                    'li2awnbq' /* Smith Household */,
+                                    'uxd6soy0' /* Smith Household */,
                                   ),
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
@@ -243,7 +243,7 @@ class _OnboardingAddHousehold1WidgetState
                                   setState(() {});
                                 },
                                 text: FFLocalizations.of(context).getText(
-                                  'vs10ydua' /* Continue */,
+                                  '14ljqpkk' /* Continue */,
                                 ),
                                 options: FFButtonOptions(
                                   width: 360.0,
@@ -277,7 +277,7 @@ class _OnboardingAddHousehold1WidgetState
                   const Spacer(),
                   Text(
                     FFLocalizations.of(context).getText(
-                      'hwgr02ng' /* 1/4 */,
+                      'xsn73iw5' /* 1/4 */,
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Noto Sans JP',

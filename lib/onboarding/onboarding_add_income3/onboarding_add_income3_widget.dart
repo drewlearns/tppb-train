@@ -88,7 +88,7 @@ class _OnboardingAddIncome3WidgetState
                 flexibleSpace: FlexibleSpaceBar(
                   title: Text(
                     FFLocalizations.of(context).getText(
-                      '347qjlos' /* Onboarding */,
+                      'u7i58bky' /* Onboarding */,
                     ),
                     style: FlutterFlowTheme.of(context).headlineLarge.override(
                           fontFamily: 'Noto Sans JP',
@@ -120,7 +120,7 @@ class _OnboardingAddIncome3WidgetState
                           children: [
                             Text(
                               FFLocalizations.of(context).getText(
-                                'hj74brep' /* Create Your First Income
+                                '2swdax3t' /* Create Your First Income
  */
                                 ,
                               ),
@@ -1322,7 +1322,7 @@ class _OnboardingAddIncome3WidgetState
                   const Spacer(),
                   Text(
                     FFLocalizations.of(context).getText(
-                      'zah7sou8' /* 3/4 */,
+                      '3uygpu5g' /* 3/4 */,
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Noto Sans JP',

@@ -3650,15 +3650,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '钱包名称',
       'zh_Hant': '錢包名稱',
     },
-    'rk328yam': {
-      'en': 'Transaction Type',
-      'es': 'tipo de transacción',
-      'fr': 'Type de transaction',
-      'ru': 'Тип операции',
-      'tl': 'Uri ng Transaksyon',
-      'zh_Hans': '交易类型',
-      'zh_Hant': '交易類型',
-    },
     'bm1nz2z4': {
       'en': 'Status:',
       'es': 'Estado:',
@@ -5215,6 +5206,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '帮助和支持',
       'zh_Hant': '幫助和支持',
     },
+    '7kfu6jxt': {
+      'en': 'Start Walkthrough',
+      'es': 'Iniciar recorrido',
+      'fr': 'Démarrer la procédure pas à pas',
+      'ru': 'Начать прохождение',
+      'tl': 'Simulan ang Walkthrough',
+      'zh_Hans': '开始演练',
+      'zh_Hant': '開始演練',
+    },
     'n7o598t7': {
       'en': 'Purchase or Redeem',
       'es': 'Comprar o canjear',
@@ -5241,15 +5241,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'tl': 'Dark Mode',
       'zh_Hans': '暗黑模式',
       'zh_Hant': '深色模式',
-    },
-    '7kfu6jxt': {
-      'en': 'Start Walkthrough',
-      'es': 'Iniciar recorrido',
-      'fr': 'Démarrer la procédure pas à pas',
-      'ru': 'Начать прохождение',
-      'tl': 'Simulan ang Walkthrough',
-      'zh_Hans': '开始演练',
-      'zh_Hant': '開始演練',
     },
     '6c3wp5t0': {
       'en': 'Account',
@@ -6594,7 +6585,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // OnboardingAddHousehold1
   {
-    'z0hecvlb': {
+    'r5qsy223': {
       'en':
           'Since you can have potentially unlimited budgets,\nwe want to name them so we don\'t get confused.\n',
       'es': '',
@@ -6604,7 +6595,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'ucomp27d': {
+    '4bqleebs': {
       'en': 'Name your first Budget*',
       'es': '',
       'fr': '',
@@ -6613,7 +6604,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'li2awnbq': {
+    'uxd6soy0': {
       'en': 'Smith Household',
       'es': '',
       'fr': '',
@@ -6622,7 +6613,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'vs10ydua': {
+    '14ljqpkk': {
       'en': 'Continue',
       'es': '',
       'fr': '',
@@ -6631,7 +6622,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'hwgr02ng': {
+    'xsn73iw5': {
       'en': '1/4',
       'es': '',
       'fr': '',
@@ -6640,7 +6631,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    '7qgwez0t': {
+    'pn0o5qxt': {
       'en': 'Onboarding',
       'es': '',
       'fr': '',
@@ -6651,19 +6642,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'eah8h4rx': {
       'en': 'Home',
-      'es': '',
-      'fr': '',
-      'ru': '',
-      'tl': '',
-      'zh_Hans': '',
-      'zh_Hant': '',
+      'es': 'Hogar',
+      'fr': 'Maison',
+      'ru': 'Дом',
+      'tl': 'Bahay',
+      'zh_Hans': '家',
+      'zh_Hant': '家',
     },
   },
   // OnboardingAddWallet2
   {
-    'wrvol93v': {
+    'znr0o0mo': {
       'en':
-          'Name your first wallet - this is a payment souce such as a bank account or credit card.\n',
+          'Name your first wallet - this is a payment source such as a bank account or credit card. \nThis will be your default Payment Source.\n',
       'es': '',
       'fr': '',
       'ru': '',
@@ -6671,7 +6662,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    '51ocynbu': {
+    'qy94d516': {
       'en': 'Name your first Wallet*',
       'es': '',
       'fr': '',
@@ -6680,7 +6671,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'lveyyni4': {
+    'jupqzpma': {
       'en': 'Ally Bank',
       'es': '',
       'fr': '',
@@ -6689,7 +6680,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'idjzcv2j': {
+    'j56xm0ha': {
       'en': 'Starting Balance',
       'es': '',
       'fr': '',
@@ -6698,7 +6689,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'o5xqdxm9': {
+    'wt3rwgkd': {
       'en': '0.00',
       'es': '',
       'fr': '',
@@ -6707,7 +6698,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    '1lyx9wva': {
+    'fvlldmzu': {
       'en': 'Checking Account',
       'es': '',
       'fr': '',
@@ -6716,7 +6707,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'yrcqoq2o': {
+    '4czhc87q': {
       'en': 'Checking Account',
       'es': '',
       'fr': '',
@@ -6725,7 +6716,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'pxb8wof5': {
+    '2nk3wxnc': {
       'en': 'Savings Account',
       'es': '',
       'fr': '',
@@ -6734,7 +6725,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    '6wkpa4ky': {
+    '35bgc4kq': {
       'en': 'Credit Card',
       'es': '',
       'fr': '',
@@ -6743,7 +6734,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    '74h71bid': {
+    '8i7dgga9': {
       'en': 'Savings Account',
       'es': '',
       'fr': '',
@@ -6752,7 +6743,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'bhsmprdx': {
+    '37tr0xwb': {
       'en': 'Other...',
       'es': '',
       'fr': '',
@@ -6761,7 +6752,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    '0nc3b3nx': {
+    '0kjar9yt': {
       'en': 'Name your first Wallet*',
       'es': '',
       'fr': '',
@@ -6770,7 +6761,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'uxileswl': {
+    'diodc3zz': {
       'en': 'Search for an item...',
       'es': '',
       'fr': '',
@@ -6779,7 +6770,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    '54kbxcch': {
+    'nh4r6uhn': {
       'en': 'Select Account Type',
       'es': '',
       'fr': '',
@@ -6788,7 +6779,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    '0k3pjzfr': {
+    'h5zlhj5k': {
       'en': 'Continue',
       'es': '',
       'fr': '',
@@ -6797,7 +6788,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'nqeu0fkr': {
+    'bl1zyn5y': {
       'en': '2/4',
       'es': '',
       'fr': '',
@@ -6806,7 +6797,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'atbcpma2': {
+    'i0hgnoed': {
       'en': 'Onboarding',
       'es': '',
       'fr': '',
@@ -6815,7 +6806,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'af3b4dqe': {
+    'c7kofstc': {
       'en': 'Home',
       'es': '',
       'fr': '',
@@ -6827,7 +6818,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // OnboardingAddIncome3
   {
-    'hj74brep': {
+    '2swdax3t': {
       'en': 'Create Your First Income\n',
       'es': '',
       'fr': '',
@@ -6962,7 +6953,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '继续',
       'zh_Hant': '繼續',
     },
-    'zah7sou8': {
+    '3uygpu5g': {
       'en': '3/4',
       'es': '',
       'fr': '',
@@ -6971,7 +6962,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    '347qjlos': {
+    'u7i58bky': {
       'en': 'Onboarding',
       'es': '',
       'fr': '',
@@ -6980,7 +6971,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    'b77i2xx1': {
+    'j73xa72j': {
       'en': 'Home',
       'es': '',
       'fr': '',
@@ -6992,7 +6983,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // OnboardingAddBill4
   {
-    'mr9nx1sj': {
+    'k50qdfzp': {
       'en': 'Add Your First Bill',
       'es': '',
       'fr': '',
@@ -7190,7 +7181,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '继续',
       'zh_Hant': '繼續',
     },
-    '6weeu193': {
+    'xbkbypdc': {
       'en': '4/4',
       'es': '',
       'fr': '',
@@ -7199,7 +7190,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    '7zgcmudi': {
+    'bcijvy9x': {
       'en': 'Onboarding',
       'es': '',
       'fr': '',
@@ -7208,7 +7199,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '',
       'zh_Hant': '',
     },
-    '0n51hsgb': {
+    'jqs8pytj': {
       'en': 'Home',
       'es': '',
       'fr': '',

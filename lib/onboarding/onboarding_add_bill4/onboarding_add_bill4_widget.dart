@@ -101,7 +101,7 @@ class _OnboardingAddBill4WidgetState extends State<OnboardingAddBill4Widget> {
                 flexibleSpace: FlexibleSpaceBar(
                   title: Text(
                     FFLocalizations.of(context).getText(
-                      '7zgcmudi' /* Onboarding */,
+                      'bcijvy9x' /* Onboarding */,
                     ),
                     style: FlutterFlowTheme.of(context).headlineLarge.override(
                           fontFamily: 'Noto Sans JP',
@@ -134,7 +134,7 @@ class _OnboardingAddBill4WidgetState extends State<OnboardingAddBill4Widget> {
                             children: [
                               Text(
                                 FFLocalizations.of(context).getText(
-                                  'mr9nx1sj' /* Add Your First Bill */,
+                                  'k50qdfzp' /* Add Your First Bill */,
                                 ),
                                 textAlign: TextAlign.center,
                                 style: FlutterFlowTheme.of(context)
@@ -2006,7 +2006,7 @@ class _OnboardingAddBill4WidgetState extends State<OnboardingAddBill4Widget> {
                     ),
                     Text(
                       FFLocalizations.of(context).getText(
-                        '6weeu193' /* 4/4 */,
+                        'xbkbypdc' /* 4/4 */,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Noto Sans JP',
