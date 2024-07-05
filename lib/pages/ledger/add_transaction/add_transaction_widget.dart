@@ -1245,16 +1245,6 @@ class _AddTransactionWidgetState extends State<AddTransactionWidget> {
                                             if ((_model.addTransactionOutput
                                                     ?.succeeded ??
                                                 true)) {
-                                              setState(() {
-                                                _model.amountTextController
-                                                    ?.clear();
-                                                _model.descriptionTextController
-                                                    ?.clear();
-                                                _model.categoryTextController
-                                                    ?.clear();
-                                                _model.tagsTextController
-                                                    ?.clear();
-                                              });
                                               await showDialog(
                                                 context: context,
                                                 builder: (alertDialogContext) {
@@ -1273,6 +1263,8 @@ class _AddTransactionWidgetState extends State<AddTransactionWidget> {
                                                   );
                                                 },
                                               );
+
+                                              context.pushNamed('Ledger');
                                             } else {
                                               await showDialog(
                                                 context: context,

@@ -710,7 +710,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                           setState(() {});
                                           await authManager.deleteUser(context);
 
-                                          context.pushNamed('Onboarding');
+                                          context.pushNamed('EntryPage');
                                         } else {
                                           await showDialog(
                                             context: context,
@@ -731,7 +731,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                             },
                                           );
 
-                                          context.pushNamed('Onboarding');
+                                          context.pushNamed('EntryPage');
                                         }
                                       } else {
                                         await showDialog(

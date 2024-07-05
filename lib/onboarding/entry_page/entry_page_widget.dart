@@ -4,19 +4,19 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'onboarding_model.dart';
-export 'onboarding_model.dart';
+import 'entry_page_model.dart';
+export 'entry_page_model.dart';
 
-class OnboardingWidget extends StatefulWidget {
-  const OnboardingWidget({super.key});
+class EntryPageWidget extends StatefulWidget {
+  const EntryPageWidget({super.key});
 
   @override
-  State<OnboardingWidget> createState() => _OnboardingWidgetState();
+  State<EntryPageWidget> createState() => _EntryPageWidgetState();
 }
 
-class _OnboardingWidgetState extends State<OnboardingWidget>
+class _EntryPageWidgetState extends State<EntryPageWidget>
     with TickerProviderStateMixin {
-  late OnboardingModel _model;
+  late EntryPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -25,7 +25,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => OnboardingModel());
+    _model = createModel(context, () => EntryPageModel());
 
     animationsMap.addAll({
       'containerOnPageLoadAnimation1': AnimationInfo(
@@ -143,7 +143,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
   @override
   Widget build(BuildContext context) {
     return Title(
-        title: 'Onboarding',
+        title: 'EntryPage',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () => _model.unfocusNode.canRequestFocus
@@ -193,8 +193,8 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                           Container(
                             width: 120.0,
                             height: 120.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).accent4,
+                            decoration: const BoxDecoration(
+                              color: Colors.white,
                               shape: BoxShape.circle,
                             ),
                             child: Padding(

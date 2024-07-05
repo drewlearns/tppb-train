@@ -1288,13 +1288,8 @@ class _AddIncomeWidgetState extends State<AddIncomeWidget> {
                                                       );
                                                     },
                                                   );
-                                                  setState(() {
-                                                    _model
-                                                        .incomeNameTextController
-                                                        ?.clear();
-                                                    _model.amountTextController
-                                                        ?.clear();
-                                                  });
+
+                                                  context.pushNamed('Incomes');
                                                 } else {
                                                   await showDialog(
                                                     context: context,

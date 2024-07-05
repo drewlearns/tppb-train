@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
-import '/pages/walkthroughs/walkthrough_card/walkthrough_card_widget.dart';
+import '/onboarding/walkthroughs/walkthrough_card/walkthrough_card_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 // Focus widget keys for this walkthrough
@@ -91,7 +91,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
             align: ContentAlign.bottom,
             builder: (context, __) => const WalkthroughCardWidget(
               description:
-                  'This is a ledger Entry. It will tell you important details about the ledger entry.  You can click it for more details.',
+                  'This is a ledger Entry. It will tell you important details about a transaction.  You can click it for more details.',
               header: 'Ledger Entry',
             ),
           ),
@@ -110,7 +110,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
             align: ContentAlign.bottom,
             builder: (context, __) => const WalkthroughCardWidget(
               description:
-                  'You can toggle the status of the entry as paid or unpaid by clicking the check mark.',
+                  'Click to set the status of the transaction to Cleared or Pending.',
               header: 'Status',
             ),
           ),

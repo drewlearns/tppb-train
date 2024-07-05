@@ -1,12 +1,12 @@
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
-import 'incomes_waklthrough_widget.dart' show IncomesWaklthroughWidget;
+import 'incomes_walkthrough_widget.dart' show IncomesWalkthroughWidget;
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
 import 'package:flutter/material.dart';
 
-class IncomesWaklthroughModel
-    extends FlutterFlowModel<IncomesWaklthroughWidget> {
+class IncomesWalkthroughModel
+    extends FlutterFlowModel<IncomesWalkthroughWidget> {
   ///  State fields for stateful widgets in this page.
 
   TutorialCoachMark? incomesWalkthroughController;

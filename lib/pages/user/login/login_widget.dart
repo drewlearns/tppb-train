@@ -199,7 +199,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                                               context)
                                                           .getText(
                                                         'tlf7yiuz' /* Welcome,
-Sign up below to star... */
+Sign up Below to begi... */
                                                         ,
                                                       ),
                                                       textAlign:
@@ -1011,7 +1011,7 @@ Sign up below to star... */
                                                         .sendEmailVerification();
 
                                                     context.pushNamedAuth(
-                                                        'LedgerWalkThrough',
+                                                        'OnboardingAddHousehold1',
                                                         context.mounted);
                                                   } else {
                                                     await showDialog(

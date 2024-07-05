@@ -209,7 +209,7 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                 body: SafeArea(
                   top: true,
                   child: Visibility(
-                    visible: billDetailsGetBillResponse.succeeded == false,
+                    visible: billDetailsGetBillResponse.succeeded,
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,

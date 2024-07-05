@@ -1823,7 +1823,7 @@ class _LedgerWalkThroughWidgetState extends State<LedgerWalkThroughWidget>
         onFinish: () async {
           safeSetState(() => _model.ledgerWalkthroughController = null);
 
-          context.goNamed('IncomesWaklthrough');
+          context.goNamed('IncomesWalkthrough');
         },
         onSkip: () {
           () async {

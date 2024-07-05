@@ -121,7 +121,7 @@ class _AccountWidgetState extends State<AccountWidget>
                             await authManager.signOut();
                             GoRouter.of(context).clearRedirectLocation();
 
-                            context.goNamedAuth('Onboarding', context.mounted);
+                            context.goNamedAuth('EntryPage', context.mounted);
                           },
                         ),
                       ),

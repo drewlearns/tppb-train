@@ -781,7 +781,6 @@ Sign up below to star... */
                                 ),
                                 FFButtonWidget(
                                   onPressed: () async {
-                                    Function() navigate = () {};
                                     GoRouter.of(context).prepareAuthEvent();
                                     if (_model.newPasswordTextController.text !=
                                         _model.confirmPasswordTextController
@@ -807,8 +806,6 @@ Sign up below to star... */
                                       return;
                                     }
 
-                                    navigate = () => context.goNamedAuth(
-                                        'Home', context.mounted);
                                     FFAppState().FullName =
                                         '${_model.firstNameTextController.text} ${_model.lastNameTextController.text}';
                                     _model.acceptInviteOutput =
@@ -864,6 +861,10 @@ Sign up below to star... */
                                       );
 
                                       await authManager.sendEmailVerification();
+
+                                      context.pushNamedAuth(
+                                          'OnboardingAddHousehold1',
+                                          context.mounted);
                                     } else {
                                       await showDialog(
                                         context: context,
@@ -886,8 +887,6 @@ Sign up below to star... */
                                         },
                                       );
                                     }
-
-                                    navigate();
 
                                     setState(() {});
                                   },

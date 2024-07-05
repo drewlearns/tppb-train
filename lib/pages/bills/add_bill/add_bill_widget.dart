@@ -208,7 +208,7 @@ class _AddBillWidgetState extends State<AddBillWidget> {
                                         isMultiSelect: false,
                                         labelText:
                                             FFLocalizations.of(context).getText(
-                                          'ayjha8wg' /* Household */,
+                                          'ayjha8wg' /* Budget* */,
                                         ),
                                         labelTextStyle:
                                             FlutterFlowTheme.of(context)
@@ -1774,21 +1774,8 @@ class _AddBillWidgetState extends State<AddBillWidget> {
                                                 );
                                               },
                                             );
-                                            setState(() {
-                                              _model.billNameTextController
-                                                  ?.clear();
-                                              _model.amountTextController
-                                                  ?.clear();
-                                              _model.categoryTextController
-                                                  ?.clear();
-                                              _model.descriptionTextController
-                                                  ?.clear();
-                                              _model.urlTextController?.clear();
-                                              _model.usernameTextController
-                                                  ?.clear();
-                                              _model.passwordTextController
-                                                  ?.clear();
-                                            });
+
+                                            context.pushNamed('Bills');
                                           } else {
                                             await showDialog(
                                               context: context,

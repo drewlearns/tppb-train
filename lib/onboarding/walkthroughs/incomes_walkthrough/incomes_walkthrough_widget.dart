@@ -9,26 +9,26 @@ import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'incomes_waklthrough_model.dart';
-export 'incomes_waklthrough_model.dart';
+import 'incomes_walkthrough_model.dart';
+export 'incomes_walkthrough_model.dart';
 
-class IncomesWaklthroughWidget extends StatefulWidget {
-  const IncomesWaklthroughWidget({super.key});
+class IncomesWalkthroughWidget extends StatefulWidget {
+  const IncomesWalkthroughWidget({super.key});
 
   @override
-  State<IncomesWaklthroughWidget> createState() =>
-      _IncomesWaklthroughWidgetState();
+  State<IncomesWalkthroughWidget> createState() =>
+      _IncomesWalkthroughWidgetState();
 }
 
-class _IncomesWaklthroughWidgetState extends State<IncomesWaklthroughWidget> {
-  late IncomesWaklthroughModel _model;
+class _IncomesWalkthroughWidgetState extends State<IncomesWalkthroughWidget> {
+  late IncomesWalkthroughModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => IncomesWaklthroughModel());
+    _model = createModel(context, () => IncomesWalkthroughModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
@@ -82,6 +82,9 @@ class _IncomesWaklthroughWidgetState extends State<IncomesWaklthroughWidget> {
                       onPressed: () {
                         print('IconButton pressed ...');
                       },
+                    ).addWalkthrough(
+                      iconButtonXdwex3dt,
+                      _model.incomesWalkthroughController,
                     ),
                   ),
                 ],

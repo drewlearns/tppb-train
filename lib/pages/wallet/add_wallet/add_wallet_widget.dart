@@ -321,7 +321,8 @@ class _AddWalletWidgetState extends State<AddWalletWidget> {
                                 );
                               },
                             );
-                            context.safePop();
+
+                            context.pushNamed('Wallets');
                           } else {
                             await showDialog(
                               context: context,
@@ -347,7 +348,7 @@ class _AddWalletWidgetState extends State<AddWalletWidget> {
                           setState(() {});
                         },
                         text: FFLocalizations.of(context).getText(
-                          'nzc9rvmd' /* Add Wallet */,
+                          'nzc9rvmd' /* Continue */,
                         ),
                         options: FFButtonOptions(
                           width: 380.0,

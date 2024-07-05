@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
-import '/pages/walkthroughs/walkthrough_card/walkthrough_card_widget.dart';
+import '/onboarding/walkthroughs/walkthrough_card/walkthrough_card_widget.dart';
 
 // Focus widget keys for this walkthrough
 final row69y6ly9q = GlobalKey();
@@ -44,7 +44,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
             align: ContentAlign.bottom,
             builder: (context, __) => const WalkthroughCardWidget(
               description:
-                  'You can view Bills by Due, Paid, or Future due by selecting the applicable tab.',
+                  'Get started by adding bills here. You can view Bills by Due, Paid, or Future due by selecting the applicable tab. ',
               header: 'Tab Selection',
             ),
           ),

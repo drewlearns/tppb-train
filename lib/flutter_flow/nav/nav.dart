@@ -80,7 +80,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       errorBuilder: (context, state) => _RouteErrorBuilder(
         state: state,
         child: RootPageContext.wrap(
-          appStateNotifier.loggedIn ? const NavBarPage() : const OnboardingWidget(),
+          appStateNotifier.loggedIn ? const NavBarPage() : const EntryPageWidget(),
           errorRoute: state.uri.toString(),
         ),
       ),
@@ -89,7 +89,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: '_initialize',
           path: '/',
           builder: (context, _) => RootPageContext.wrap(
-            appStateNotifier.loggedIn ? const NavBarPage() : const OnboardingWidget(),
+            appStateNotifier.loggedIn ? const NavBarPage() : const EntryPageWidget(),
           ),
         ),
         FFRoute(
@@ -441,10 +441,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const BillsWalkthroughWidget(),
         ),
         FFRoute(
-          name: 'IncomesWaklthrough',
-          path: '/incomesWaklthrough',
+          name: 'IncomesWalkthrough',
+          path: '/incomesWalkthrough',
           requireAuth: true,
-          builder: (context, params) => const IncomesWaklthroughWidget(),
+          builder: (context, params) => const IncomesWalkthroughWidget(),
         ),
         FFRoute(
           name: 'WalletWalkthrough',
@@ -453,9 +453,52 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const WalletWalkthroughWidget(),
         ),
         FFRoute(
-          name: 'Onboarding',
-          path: '/onboarding',
-          builder: (context, params) => const OnboardingWidget(),
+          name: 'EntryPage',
+          path: '/entryPage',
+          builder: (context, params) => const EntryPageWidget(),
+        ),
+        FFRoute(
+          name: 'OnboardingAddHousehold1',
+          path: '/onboardingAddHousehold1',
+          builder: (context, params) => const OnboardingAddHousehold1Widget(),
+        ),
+        FFRoute(
+          name: 'OnboardingAddWallet2',
+          path: '/onboardingAddWallet2',
+          builder: (context, params) => OnboardingAddWallet2Widget(
+            householdId: params.getParam(
+              'householdId',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'OnboardingAddIncome3',
+          path: '/onboardingAddIncome3',
+          builder: (context, params) => OnboardingAddIncome3Widget(
+            paymentSourceId: params.getParam(
+              'paymentSourceId',
+              ParamType.String,
+            ),
+            householdId: params.getParam(
+              'householdId',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'OnboardingAddBill4',
+          path: '/onboardingAddBill4',
+          builder: (context, params) => OnboardingAddBill4Widget(
+            householdId: params.getParam(
+              'householdId',
+              ParamType.String,
+            ),
+            paymentSourceId: params.getParam(
+              'paymentSourceId',
+              ParamType.String,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -626,7 +669,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/onboarding';
+            return '/entryPage';
           }
           return null;
         },

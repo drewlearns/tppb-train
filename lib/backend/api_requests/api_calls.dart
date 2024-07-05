@@ -1801,6 +1801,10 @@ class AddHouseholdCall {
         response,
         r'''$.householdName''',
       ));
+  dynamic householdId(dynamic response) => getJsonField(
+        response,
+        r'''$.householdId''',
+      );
 }
 
 class EditHouseholdCall {
@@ -2464,6 +2468,11 @@ class AddPaymentSourceCall {
     );
     return ApiCallResponse.fromCloudCallResponse(response);
   }
+
+  dynamic paymentSourceId(dynamic response) => getJsonField(
+        response,
+        r'''$.paymentSourceId''',
+      );
 }
 
 class EditPaymentSourceCall {

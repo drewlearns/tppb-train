@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
-import '/pages/walkthroughs/walkthrough_card/walkthrough_card_widget.dart';
+import '/onboarding/walkthroughs/walkthrough_card/walkthrough_card_widget.dart';
 
 // Focus widget keys for this walkthrough
 final rowAsmni7oq = GlobalKey();
@@ -62,7 +62,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
             align: ContentAlign.bottom,
             builder: (context, __) => const WalkthroughCardWidget(
               description:
-                  'Click here to set your safe to spend payment source. This is how we calculate your \"Safe To Spend\". By default, when you create an account, a default payment source is made. You can also edit it\'s name here.',
+                  'Click here to set your safe to spend payment source. This is how we calculate your \"Safe To Spend\". By default, when you create an account, a default payment source is made. You can also edit it\'s name here. Get started by editing your wallet\'s name.',
               header: 'Set Safe To Spend Default Wallet',
             ),
           ),

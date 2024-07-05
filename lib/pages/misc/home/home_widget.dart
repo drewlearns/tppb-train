@@ -53,6 +53,23 @@ class _HomeWidgetState extends State<HomeWidget> {
               child: AppBar(
                 backgroundColor: FlutterFlowTheme.of(context).primary,
                 automaticallyImplyLeading: false,
+                leading: FlutterFlowIconButton(
+                  borderRadius: 20.0,
+                  borderWidth: 1.0,
+                  buttonSize: 40.0,
+                  icon: Icon(
+                    Icons.logout_sharp,
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                    size: 24.0,
+                  ),
+                  onPressed: () async {
+                    GoRouter.of(context).prepareAuthEvent();
+                    await authManager.signOut();
+                    GoRouter.of(context).clearRedirectLocation();
+
+                    context.goNamedAuth('EntryPage', context.mounted);
+                  },
+                ),
                 actions: [
                   Padding(
                     padding:

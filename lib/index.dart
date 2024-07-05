@@ -51,12 +51,20 @@ export '/pages/wallet/add_wallet/add_wallet_widget.dart' show AddWalletWidget;
 export '/pages/billing/account/account_widget.dart' show AccountWidget;
 export '/pages/wallet/set_default_wallet/set_default_wallet_widget.dart'
     show SetDefaultWalletWidget;
-export '/pages/walkthroughs/ledger_walk_through/ledger_walk_through_widget.dart'
+export '/onboarding/walkthroughs/ledger_walk_through/ledger_walk_through_widget.dart'
     show LedgerWalkThroughWidget;
-export '/pages/walkthroughs/bills_walkthrough/bills_walkthrough_widget.dart'
+export '/onboarding/walkthroughs/bills_walkthrough/bills_walkthrough_widget.dart'
     show BillsWalkthroughWidget;
-export '/pages/walkthroughs/incomes_waklthrough/incomes_waklthrough_widget.dart'
-    show IncomesWaklthroughWidget;
-export '/pages/walkthroughs/wallet_walkthrough/wallet_walkthrough_widget.dart'
+export '/onboarding/walkthroughs/incomes_walkthrough/incomes_walkthrough_widget.dart'
+    show IncomesWalkthroughWidget;
+export '/onboarding/walkthroughs/wallet_walkthrough/wallet_walkthrough_widget.dart'
     show WalletWalkthroughWidget;
-export '/pages/user/onboarding/onboarding_widget.dart' show OnboardingWidget;
+export '/onboarding/entry_page/entry_page_widget.dart' show EntryPageWidget;
+export '/onboarding/onboarding_add_household1/onboarding_add_household1_widget.dart'
+    show OnboardingAddHousehold1Widget;
+export '/onboarding/onboarding_add_wallet2/onboarding_add_wallet2_widget.dart'
+    show OnboardingAddWallet2Widget;
+export '/onboarding/onboarding_add_income3/onboarding_add_income3_widget.dart'
+    show OnboardingAddIncome3Widget;
+export '/onboarding/onboarding_add_bill4/onboarding_add_bill4_widget.dart'
+    show OnboardingAddBill4Widget;

@@ -382,6 +382,8 @@ class _WalletDetailsWidgetState extends State<WalletDetailsWidget> {
                                 );
                               },
                             );
+
+                            context.pushNamed('Wallets');
                           } else {
                             await showDialog(
                               context: context,
@@ -408,7 +410,7 @@ class _WalletDetailsWidgetState extends State<WalletDetailsWidget> {
                           setState(() {});
                         },
                         text: FFLocalizations.of(context).getText(
-                          'ft23fsr5' /* Edit */,
+                          'ft23fsr5' /* Continue */,
                         ),
                         options: FFButtonOptions(
                           width: 360.0,

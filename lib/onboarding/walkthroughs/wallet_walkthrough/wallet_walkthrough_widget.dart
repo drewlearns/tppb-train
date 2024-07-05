@@ -565,7 +565,7 @@ class _WalletWalkthroughWidgetState extends State<WalletWalkthroughWidget> {
         onFinish: () async {
           safeSetState(() => _model.walletWalkthroughController = null);
 
-          context.pushNamed('Home');
+          context.pushNamed('SalesPage');
         },
         onSkip: () {
           () async {
