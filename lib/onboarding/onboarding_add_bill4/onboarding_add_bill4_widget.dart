@@ -69,7 +69,7 @@ class _OnboardingAddBill4WidgetState extends State<OnboardingAddBill4Widget> {
   @override
   Widget build(BuildContext context) {
     return Title(
-        title: 'OnboardingAddBill4',
+        title: 'Onboarding',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () => _model.unfocusNode.canRequestFocus
@@ -1859,7 +1859,7 @@ class _OnboardingAddBill4WidgetState extends State<OnboardingAddBill4Widget> {
                                                       description: _model
                                                           .descriptionTextController
                                                           .text,
-                                                      url: _model
+                                                      billerUrl: _model
                                                           .urlTextController
                                                           .text,
                                                       user: _model

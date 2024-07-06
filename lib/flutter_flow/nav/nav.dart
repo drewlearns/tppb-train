@@ -432,6 +432,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'LedgerWalkThrough',
           path: '/ledgerWalkThrough',
+          requireAuth: true,
           builder: (context, params) => const LedgerWalkThroughWidget(),
         ),
         FFRoute(
@@ -454,7 +455,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         ),
         FFRoute(
           name: 'EntryPage',
-          path: '/entryPage',
+          path: '/EntryPage',
           builder: (context, params) => const EntryPageWidget(),
         ),
         FFRoute(
@@ -669,7 +670,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/entryPage';
+            return '/EntryPage';
           }
           return null;
         },

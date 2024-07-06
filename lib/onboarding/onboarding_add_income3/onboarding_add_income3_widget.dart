@@ -56,7 +56,7 @@ class _OnboardingAddIncome3WidgetState
   @override
   Widget build(BuildContext context) {
     return Title(
-        title: 'OnboardingAddIncome3',
+        title: 'Onboarding',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () => _model.unfocusNode.canRequestFocus

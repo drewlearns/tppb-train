@@ -53,7 +53,7 @@ class _OnboardingAddWallet2WidgetState
   @override
   Widget build(BuildContext context) {
     return Title(
-        title: 'OnboardingAddWallet2',
+        title: 'Onboarding',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () => _model.unfocusNode.canRequestFocus

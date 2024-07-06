@@ -1397,6 +1397,9 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
                                                           );
                                                         },
                                                       );
+
+                                                      context
+                                                          .pushNamed('Incomes');
                                                     } else {
                                                       await showDialog(
                                                         context: context,
@@ -1429,7 +1432,7 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
                                                   text: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    'pfkvfy9b' /* Edit Income */,
+                                                    'pfkvfy9b' /* Continue */,
                                                   ),
                                                   options: FFButtonOptions(
                                                     width: 360.0,

@@ -143,7 +143,7 @@ class _EntryPageWidgetState extends State<EntryPageWidget>
   @override
   Widget build(BuildContext context) {
     return Title(
-        title: 'EntryPage',
+        title: 'Welcome',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () => _model.unfocusNode.canRequestFocus

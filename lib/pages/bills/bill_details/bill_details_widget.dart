@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import 'dart:async';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -64,12 +63,10 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<ApiCallResponse>(
-      future: (_model.apiRequestCompleter4 ??= Completer<ApiCallResponse>()
-            ..complete(TppbGroup.getBillCall.call(
-              billId: widget.billId,
-              authenticationToken: currentJwtToken,
-            )))
-          .future,
+      future: TppbGroup.getBillCall.call(
+        billId: widget.billId,
+        authenticationToken: currentJwtToken,
+      ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -453,7 +450,8 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                     context: context,
                                                     initialDate:
                                                         getCurrentTimestamp,
-                                                    firstDate: DateTime(1900),
+                                                    firstDate:
+                                                        getCurrentTimestamp,
                                                     lastDate: DateTime(2050),
                                                     builder: (context, child) {
                                                       return wrapInMaterialDatePickerTheme(
@@ -788,17 +786,12 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                           0.0, 4.0, 0.0, 0.0),
                                                   child: FutureBuilder<
                                                       ApiCallResponse>(
-                                                    future: (_model
-                                                                .apiRequestCompleter1 ??=
-                                                            Completer<
-                                                                ApiCallResponse>()
-                                                              ..complete(TppbGroup
-                                                                  .getHouseholdCall
-                                                                  .call(
-                                                                authenticationToken:
-                                                                    currentJwtToken,
-                                                              )))
-                                                        .future,
+                                                    future: TppbGroup
+                                                        .getHouseholdCall
+                                                        .call(
+                                                      authenticationToken:
+                                                          currentJwtToken,
+                                                    ),
                                                     builder:
                                                         (context, snapshot) {
                                                       // Customize what your widget looks like when it's loading.
@@ -942,20 +935,14 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                           0.0, 4.0, 0.0, 0.0),
                                                   child: FutureBuilder<
                                                       ApiCallResponse>(
-                                                    future: (_model
-                                                                .apiRequestCompleter2 ??=
-                                                            Completer<
-                                                                ApiCallResponse>()
-                                                              ..complete(TppbGroup
-                                                                  .getPaymentSourceCall
-                                                                  .call(
-                                                                authenticationToken:
-                                                                    currentJwtToken,
-                                                                householdIdGlobal:
-                                                                    _model
-                                                                        .householdValue,
-                                                              )))
-                                                        .future,
+                                                    future: TppbGroup
+                                                        .getPaymentSourceCall
+                                                        .call(
+                                                      authenticationToken:
+                                                          currentJwtToken,
+                                                      householdIdGlobal:
+                                                          _model.householdValue,
+                                                    ),
                                                     builder:
                                                         (context, snapshot) {
                                                       // Customize what your widget looks like when it's loading.
@@ -1781,17 +1768,12 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                       ),
                                       if (_model.urlTextController.text != '')
                                         FutureBuilder<ApiCallResponse>(
-                                          future: (_model
-                                                      .apiRequestCompleter3 ??=
-                                                  Completer<ApiCallResponse>()
-                                                    ..complete(TppbGroup
-                                                        .getBillPasswordCall
-                                                        .call(
-                                                      billId: widget.billId,
-                                                      authenticationToken:
-                                                          currentJwtToken,
-                                                    )))
-                                              .future,
+                                          future: TppbGroup.getBillPasswordCall
+                                              .call(
+                                            billId: widget.billId,
+                                            authenticationToken:
+                                                currentJwtToken,
+                                          ),
                                           builder: (context, snapshot) {
                                             // Customize what your widget looks like when it's loading.
                                             if (!snapshot.hasData) {
@@ -2254,8 +2236,10 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                   .text,
                                               sourceId: _model.walletValue,
                                               billId: widget.billId,
-                                              url:
-                                                  _model.urlTextController.text,
+                                              billerUrl: valueOrDefault<String>(
+                                                _model.urlTextController.text,
+                                                'https://test.com',
+                                              ),
                                               username: _model
                                                   .usernameTextController.text,
                                               password: _model
@@ -2298,6 +2282,8 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                   );
                                                 },
                                               );
+
+                                              context.pushNamed('Bills');
                                             } else {
                                               await showDialog(
                                                 context: context,
@@ -2323,28 +2309,11 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                               );
                                             }
 
-                                            setState(() => _model
-                                                .apiRequestCompleter4 = null);
-                                            await _model
-                                                .waitForApiRequestCompleted4();
-                                            setState(() => _model
-                                                .apiRequestCompleter1 = null);
-                                            await _model
-                                                .waitForApiRequestCompleted1();
-                                            setState(() => _model
-                                                .apiRequestCompleter2 = null);
-                                            await _model
-                                                .waitForApiRequestCompleted2();
-                                            setState(() => _model
-                                                .apiRequestCompleter3 = null);
-                                            await _model
-                                                .waitForApiRequestCompleted3();
-
                                             setState(() {});
                                           },
                                           text: FFLocalizations.of(context)
                                               .getText(
-                                            'njk36nhn' /* Edit bill */,
+                                            'njk36nhn' /* Edit Bill */,
                                           ),
                                           options: FFButtonOptions(
                                             width: 360.0,

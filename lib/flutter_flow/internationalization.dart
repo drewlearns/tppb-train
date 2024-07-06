@@ -2348,7 +2348,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hant': '密碼（與家人分享）',
     },
     'njk36nhn': {
-      'en': 'Edit bill',
+      'en': 'Edit Bill',
       'es': 'Editar factura',
       'fr': 'Modifier la facture',
       'ru': 'Изменить счет',
@@ -2996,7 +2996,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hant': '數量*',
     },
     'pfkvfy9b': {
-      'en': 'Edit Income',
+      'en': 'Continue',
       'es': 'Editar ingresos',
       'fr': 'Modifier le revenu',
       'ru': 'Изменить доход',

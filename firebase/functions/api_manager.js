@@ -236,7 +236,7 @@ async function _addBillCall(context, ffVariables) {
   var amount = ffVariables["amount"];
   var frequency = ffVariables["frequency"];
   var description = ffVariables["description"];
-  var url = ffVariables["url"];
+  var billerUrl = ffVariables["billerUrl"];
   var user = ffVariables["user"];
   var password = ffVariables["password"];
   var startDate = ffVariables["startDate"];
@@ -265,7 +265,7 @@ async function _addBillCall(context, ffVariables) {
     "endDate": "${endDate}",
     "frequency": "${frequency}",
     "description": "${description}",
-    "url": "${url}",
+    "url": "${billerUrl}",
     "username": "${user}",
     "paymentSourceId": "${paymentSourceIdGlobal}",
     "password": "${password}"
@@ -1063,7 +1063,7 @@ async function _editBillCall(context, ffVariables) {
   var description = ffVariables["description"];
   var sourceId = ffVariables["sourceId"];
   var billId = ffVariables["billId"];
-  var url = ffVariables["url"];
+  var billerUrl = ffVariables["billerUrl"];
   var username = ffVariables["username"];
   var password = ffVariables["password"];
   var frequency = ffVariables["frequency"];
@@ -1091,7 +1091,7 @@ async function _editBillCall(context, ffVariables) {
   "description": "${description}",
   "sourceId": "${sourceId}",
   "billId": "${billId}",
-  "url": "${url}",
+  "url": "${billerUrl}",
   "username": "${username}",
   "password": "${password}",
   "frequency": "${frequency}"
