@@ -112,7 +112,7 @@ class _WalletsWidgetState extends State<WalletsWidget> {
                   ),
                 ],
                 flexibleSpace: FlexibleSpaceBar(
-                  title: Text(
+                  title: AutoSizeText(
                     FFLocalizations.of(context).getText(
                       'uyej0lms' /* Wallet */,
                     ),
@@ -120,7 +120,9 @@ class _WalletsWidgetState extends State<WalletsWidget> {
                           fontFamily: 'Noto Sans JP',
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
+                          fontSize: 28.0,
                           letterSpacing: 0.0,
+                          lineHeight: 2.0,
                         ),
                   ),
                   centerTitle: true,
@@ -375,6 +377,7 @@ class _WalletsWidgetState extends State<WalletsWidget> {
                                                             : FlutterFlowTheme
                                                                     .of(context)
                                                                 .alternate,
+                                                        width: 2.0,
                                                       ),
                                                     ),
                                                     alignment:
@@ -402,28 +405,12 @@ class _WalletsWidgetState extends State<WalletsWidget> {
                                                                   Colors
                                                                       .transparent,
                                                               onTap: () async {
-                                                                if (Navigator.of(
-                                                                        context)
-                                                                    .canPop()) {
-                                                                  context.pop();
-                                                                }
                                                                 context
                                                                     .pushNamed(
                                                                   'WalletDetails',
                                                                   queryParameters:
                                                                       {
                                                                     'paymentSourceId':
-                                                                        serializeParam(
-                                                                      TppbGroup
-                                                                          .getPaymentSourceCall
-                                                                          .paymentSourceId(
-                                                                        listViewGetPaymentSourceResponse
-                                                                            .jsonBody,
-                                                                      )?[walletItemsIndex],
-                                                                      ParamType
-                                                                          .String,
-                                                                    ),
-                                                                    'type':
                                                                         serializeParam(
                                                                       TppbGroup
                                                                           .getPaymentSourceCall

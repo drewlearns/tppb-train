@@ -1,4 +1,4 @@
 NSCameraUsageDescription = "Para tomar una fotografía de un recibo, esta aplicación requiere permisos de acceso a la cámara";
 NSPhotoLibraryUsageDescription = "Para agregar una imagen de un recibo de su biblioteca de fotos, esta aplicación requiere permisos para su biblioteca de fotos.";
-NSMicrophoneUsageDescription = "En realidad, no lo necesitamos, pero un SDK y la tienda Apple requieren que aparezca en la lista. No dudes en negarlo.";
+NSMicrophoneUsageDescription = "En realidad no lo necesitamos, pero un SDK y la tienda Apple requieren que aparezca en la lista. No dudes en negarlo.";
 PermissionGroupNotification = "En realidad no lo necesitamos, pero un SDK y la tienda Apple requieren que aparezca en la lista. No dudes en negarlo.";

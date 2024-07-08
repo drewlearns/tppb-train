@@ -73,6 +73,7 @@ class TppbGroup {
   static DeletePaymentSourceCall deletePaymentSourceCall =
       DeletePaymentSourceCall();
   static DeleteTransactionCall deleteTransactionCall = DeleteTransactionCall();
+  static DeleteLedgerEntryCall deleteLedgerEntryCall = DeleteLedgerEntryCall();
 }
 
 class AddUserCall {
@@ -1104,6 +1105,18 @@ class GetIncomeCall {
         response,
         r'''$.updatedAt''',
       ));
+  String? paymentSourceId(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.paymentSourceId''',
+      ));
+  dynamic startDate(dynamic response) => getJsonField(
+        response,
+        r'''$.startDate''',
+      );
+  dynamic endDate(dynamic response) => getJsonField(
+        response,
+        r'''$.endDate''',
+      );
 }
 
 class GetTransactionCall {
@@ -1181,9 +1194,18 @@ class GetIncomesCall {
     return ApiCallResponse.fromCloudCallResponse(response);
   }
 
-  List<String>? incomeId(dynamic response) => (getJsonField(
+  List<double>? amount(dynamic response) => (getJsonField(
         response,
-        r'''$[:].incomeId''',
+        r'''$[:].amount''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<double>(x))
+          .withoutNulls
+          .toList();
+  List<String>? transactionDate(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].transactionDate''',
         true,
       ) as List?)
           ?.withoutNulls
@@ -1192,20 +1214,20 @@ class GetIncomesCall {
           .toList();
   List<String>? name(dynamic response) => (getJsonField(
         response,
-        r'''$[:].name''',
+        r'''$[:].incomeName''',
         true,
       ) as List?)
           ?.withoutNulls
           .map((x) => castToType<String>(x))
           .withoutNulls
           .toList();
-  List<double>? amount(dynamic response) => (getJsonField(
+  List<String>? incomeId(dynamic response) => (getJsonField(
         response,
-        r'''$[:].amount''',
+        r'''$[:].incomeId''',
         true,
       ) as List?)
           ?.withoutNulls
-          .map((x) => castToType<double>(x))
+          .map((x) => castToType<String>(x))
           .withoutNulls
           .toList();
 }
@@ -2554,6 +2576,34 @@ class DeleteTransactionCall {
         response,
         r'''$.message''',
       ));
+}
+
+class DeleteLedgerEntryCall {
+  Future<ApiCallResponse> call({
+    String? ledgerId = '',
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'DeleteLedgerEntryCall',
+        'variables': {
+          'ledgerId': ledgerId,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
+      },
+    );
+    return ApiCallResponse.fromCloudCallResponse(response);
+  }
+
+  dynamic message(dynamic response) => getJsonField(
+        response,
+        r'''$.message''',
+      );
 }
 
 /// End TPPB Group Code

@@ -169,7 +169,8 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
                                     );
                                   },
                                 );
-                                context.safePop();
+
+                                context.pushNamed('Incomes');
                               } else {
                                 await showDialog(
                                   context: context,
@@ -211,6 +212,7 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
                                   letterSpacing: 0.0,
+                                  lineHeight: 2.0,
                                 ),
                       ),
                       centerTitle: true,
@@ -367,141 +369,128 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
                                                 );
                                               },
                                             ),
-                                            if (_model.householdDropDownValue !=
-                                                    null &&
-                                                _model.householdDropDownValue !=
-                                                    '')
-                                              FutureBuilder<ApiCallResponse>(
-                                                future: TppbGroup
-                                                    .getPaymentSourceCall
-                                                    .call(
-                                                  householdIdGlobal: _model
-                                                      .householdDropDownValue,
-                                                  authenticationToken:
-                                                      currentJwtToken,
-                                                ),
-                                                builder: (context, snapshot) {
-                                                  // Customize what your widget looks like when it's loading.
-                                                  if (!snapshot.hasData) {
-                                                    return Center(
-                                                      child: SizedBox(
-                                                        width: 50.0,
-                                                        height: 50.0,
-                                                        child:
-                                                            CircularProgressIndicator(
-                                                          valueColor:
-                                                              AlwaysStoppedAnimation<
-                                                                  Color>(
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    );
-                                                  }
-                                                  final walletDropDownGetPaymentSourceResponse =
-                                                      snapshot.data!;
-                                                  return FlutterFlowDropDown<
-                                                      String>(
-                                                    controller: _model
-                                                            .walletDropDownValueController ??=
-                                                        FormFieldController<
-                                                            String>(
-                                                      _model.walletDropDownValue ??=
-                                                          valueOrDefault<
-                                                              String>(
-                                                        TppbGroup
-                                                            .getPaymentSourceCall
-                                                            .paymentSourceId(
-                                                              walletDropDownGetPaymentSourceResponse
-                                                                  .jsonBody,
-                                                            )
-                                                            ?.first,
-                                                        'Loading...',
-                                                      ),
-                                                    ),
-                                                    options: List<String>.from(
-                                                        TppbGroup
-                                                            .getPaymentSourceCall
-                                                            .paymentSourceId(
-                                                      walletDropDownGetPaymentSourceResponse
-                                                          .jsonBody,
-                                                    )!),
-                                                    optionLabels: TppbGroup
-                                                        .getPaymentSourceCall
-                                                        .paymentSourceName(
-                                                      walletDropDownGetPaymentSourceResponse
-                                                          .jsonBody,
-                                                    )!,
-                                                    onChanged: (val) async {
-                                                      setState(() => _model
-                                                              .walletDropDownValue =
-                                                          val);
-                                                      setState(() {});
-                                                    },
-                                                    width: 360.0,
-                                                    height: 56.0,
-                                                    textStyle: FlutterFlowTheme
-                                                            .of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Noto Sans JP',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                    hintText:
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                      'aj2m79ln' /* Please select... */,
-                                                    ),
-                                                    icon: Icon(
-                                                      Icons
-                                                          .keyboard_arrow_down_rounded,
-                                                      color:
+                                            FutureBuilder<ApiCallResponse>(
+                                              future: TppbGroup
+                                                  .getPaymentSourceCall
+                                                  .call(
+                                                householdIdGlobal: _model
+                                                    .householdDropDownValue,
+                                                authenticationToken:
+                                                    currentJwtToken,
+                                              ),
+                                              builder: (context, snapshot) {
+                                                // Customize what your widget looks like when it's loading.
+                                                if (!snapshot.hasData) {
+                                                  return Center(
+                                                    child: SizedBox(
+                                                      width: 50.0,
+                                                      height: 50.0,
+                                                      child:
+                                                          CircularProgressIndicator(
+                                                        valueColor:
+                                                            AlwaysStoppedAnimation<
+                                                                Color>(
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .secondaryText,
-                                                      size: 24.0,
+                                                              .primary,
+                                                        ),
+                                                      ),
                                                     ),
-                                                    fillColor: FlutterFlowTheme
-                                                            .of(context)
-                                                        .secondaryBackground,
-                                                    elevation: 2.0,
-                                                    borderColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .alternate,
-                                                    borderWidth: 2.0,
-                                                    borderRadius: 8.0,
-                                                    margin:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(16.0, 0.0,
-                                                                16.0, 0.0),
-                                                    hidesUnderline: true,
-                                                    isOverButton: true,
-                                                    isSearchable: false,
-                                                    isMultiSelect: false,
-                                                    labelText:
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                      'bdfuhtda' /* Wallet* */,
-                                                    ),
-                                                    labelTextStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Noto Sans JP',
-                                                              letterSpacing:
-                                                                  0.0,
-                                                            ),
                                                   );
-                                                },
-                                              ),
+                                                }
+                                                final walletDropDownGetPaymentSourceResponse =
+                                                    snapshot.data!;
+                                                return FlutterFlowDropDown<
+                                                    String>(
+                                                  controller: _model
+                                                          .walletDropDownValueController ??=
+                                                      FormFieldController<
+                                                          String>(
+                                                    _model.walletDropDownValue ??=
+                                                        TppbGroup.getIncomeCall
+                                                            .paymentSourceId(
+                                                      editIncomeGetIncomeResponse
+                                                          .jsonBody,
+                                                    ),
+                                                  ),
+                                                  options: List<String>.from(
+                                                      TppbGroup
+                                                          .getPaymentSourceCall
+                                                          .paymentSourceId(
+                                                    walletDropDownGetPaymentSourceResponse
+                                                        .jsonBody,
+                                                  )!),
+                                                  optionLabels: TppbGroup
+                                                      .getPaymentSourceCall
+                                                      .paymentSourceName(
+                                                    walletDropDownGetPaymentSourceResponse
+                                                        .jsonBody,
+                                                  )!,
+                                                  onChanged: (val) async {
+                                                    setState(() => _model
+                                                            .walletDropDownValue =
+                                                        val);
+                                                    setState(() {});
+                                                  },
+                                                  width: 360.0,
+                                                  height: 56.0,
+                                                  textStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Noto Sans JP',
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                  hintText: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    'aj2m79ln' /* Please select... */,
+                                                  ),
+                                                  icon: Icon(
+                                                    Icons
+                                                        .keyboard_arrow_down_rounded,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    size: 24.0,
+                                                  ),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                  elevation: 2.0,
+                                                  borderColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate,
+                                                  borderWidth: 2.0,
+                                                  borderRadius: 8.0,
+                                                  margin: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          16.0, 0.0, 16.0, 0.0),
+                                                  hidesUnderline: true,
+                                                  isOverButton: true,
+                                                  isSearchable: false,
+                                                  isMultiSelect: false,
+                                                  labelText: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    'bdfuhtda' /* Wallet* */,
+                                                  ),
+                                                  labelTextStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Noto Sans JP',
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                );
+                                              },
+                                            ),
                                             Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
@@ -531,7 +520,8 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
                                                       'bimonthly',
                                                       'quarterly',
                                                       'semiAnnually',
-                                                      'annually'
+                                                      'annually',
+                                                      'semiMonthly'
                                                     ]),
                                                     optionLabels: [
                                                       FFLocalizations.of(
@@ -573,6 +563,11 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
                                                               context)
                                                           .getText(
                                                         'tlx4vnzu' /* Annually ( Yearly) */,
+                                                      ),
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        '6imapvz6' /* Semi-Monthly (1st & 15th) */,
                                                       )
                                                     ],
                                                     onChanged: (val) =>
@@ -644,379 +639,339 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
                                             Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
-                                                  MainAxisAlignment.spaceEvenly,
+                                                  MainAxisAlignment.center,
                                               children: [
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          2.0, 0.0, 0.0, 0.0),
-                                                  child: FFButtonWidget(
-                                                    onPressed: () async {
-                                                      final datePicked1Date =
-                                                          await showDatePicker(
-                                                        context: context,
-                                                        initialDate:
-                                                            getCurrentTimestamp,
-                                                        firstDate:
-                                                            DateTime(1900),
-                                                        lastDate:
-                                                            DateTime(2050),
-                                                        builder:
-                                                            (context, child) {
-                                                          return wrapInMaterialDatePickerTheme(
-                                                            context,
-                                                            child!,
-                                                            headerBackgroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                            headerForegroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .info,
-                                                            headerTextStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineLarge
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Noto Sans JP',
-                                                                      fontSize:
-                                                                          32.0,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                    ),
-                                                            pickerBackgroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
-                                                            pickerForegroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                            selectedDateTimeBackgroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                            selectedDateTimeForegroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .info,
-                                                            actionButtonForegroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                            iconSize: 24.0,
-                                                          );
-                                                        },
-                                                      );
-
-                                                      TimeOfDay?
-                                                          datePicked1Time;
-                                                      if (datePicked1Date !=
-                                                          null) {
-                                                        datePicked1Time =
-                                                            await showTimePicker(
-                                                          context: context,
-                                                          initialTime: TimeOfDay
-                                                              .fromDateTime(
-                                                                  getCurrentTimestamp),
-                                                          builder:
-                                                              (context, child) {
-                                                            return wrapInMaterialTimePickerTheme(
-                                                              context,
-                                                              child!,
-                                                              headerBackgroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                              headerForegroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .info,
-                                                              headerTextStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineLarge
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Noto Sans JP',
-                                                                        fontSize:
-                                                                            32.0,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        fontWeight:
-                                                                            FontWeight.w600,
-                                                                      ),
-                                                              pickerBackgroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground,
-                                                              pickerForegroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryText,
-                                                              selectedDateTimeBackgroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                              selectedDateTimeForegroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .info,
-                                                              actionButtonForegroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryText,
-                                                              iconSize: 24.0,
-                                                            );
-                                                          },
-                                                        );
-                                                      }
-
-                                                      if (datePicked1Date !=
-                                                              null &&
-                                                          datePicked1Time !=
-                                                              null) {
-                                                        safeSetState(() {
-                                                          _model.datePicked1 =
-                                                              DateTime(
-                                                            datePicked1Date
-                                                                .year,
-                                                            datePicked1Date
-                                                                .month,
-                                                            datePicked1Date
-                                                                .day,
-                                                            datePicked1Time!
-                                                                .hour,
-                                                            datePicked1Time
-                                                                .minute,
-                                                          );
-                                                        });
-                                                      }
-                                                    },
-                                                    text:
-                                                        valueOrDefault<String>(
-                                                      _model.datePicked1
-                                                          ?.toString(),
-                                                      'Start Date*',
-                                                    ),
-                                                    icon: Icon(
-                                                      Icons.calendar_month,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                      size: 15.0,
-                                                    ),
-                                                    options: FFButtonOptions(
-                                                      width: 175.0,
-                                                      height: 56.0,
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  24.0,
-                                                                  0.0,
-                                                                  24.0,
-                                                                  0.0),
-                                                      iconPadding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                      textStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleSmall
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Noto Sans JP',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                      elevation: 0.0,
-                                                      borderSide: const BorderSide(
-                                                        color:
-                                                            Colors.transparent,
-                                                        width: 1.0,
+                                                Expanded(
+                                                  child: Form(
+                                                    key: _model.formKey1,
+                                                    autovalidateMode:
+                                                        AutovalidateMode
+                                                            .disabled,
+                                                    child: TextFormField(
+                                                      controller: _model
+                                                              .incomeNameTextController ??=
+                                                          TextEditingController(
+                                                        text: valueOrDefault<
+                                                            String>(
+                                                          TppbGroup
+                                                              .getIncomeCall
+                                                              .name(
+                                                            editIncomeGetIncomeResponse
+                                                                .jsonBody,
+                                                          ),
+                                                          'Loading...',
+                                                        ),
                                                       ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
+                                                      focusNode: _model
+                                                          .incomeNameFocusNode,
+                                                      autofocus: true,
+                                                      textCapitalization:
+                                                          TextCapitalization
+                                                              .words,
+                                                      textInputAction:
+                                                          TextInputAction.next,
+                                                      obscureText: false,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        labelText:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                          'ffswsw3a' /* Income Name* */,
+                                                        ),
+                                                        labelStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Noto Sans JP',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                        hintStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Noto Sans JP',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                        enabledBorder:
+                                                            OutlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .alternate,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      12.0),
+                                                        ),
+                                                        focusedBorder:
+                                                            OutlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      12.0),
+                                                        ),
+                                                        errorBorder:
+                                                            OutlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .error,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      12.0),
+                                                        ),
+                                                        focusedErrorBorder:
+                                                            OutlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .error,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      12.0),
+                                                        ),
+                                                        filled: true,
+                                                        fillColor: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        contentPadding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    16.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                      ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Noto Sans JP',
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                      validator: _model
+                                                          .incomeNameTextControllerValidator
+                                                          .asValidator(context),
                                                     ),
                                                   ),
                                                 ),
-                                                if (_model.frequencyValue !=
-                                                    'once')
-                                                  Padding(
+                                              ],
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Expanded(
+                                                  child: Form(
+                                                    key: _model.formKey2,
+                                                    autovalidateMode:
+                                                        AutovalidateMode
+                                                            .disabled,
+                                                    child: TextFormField(
+                                                      controller: _model
+                                                              .amountTextController ??=
+                                                          TextEditingController(
+                                                        text: valueOrDefault<
+                                                            String>(
+                                                          TppbGroup
+                                                              .getIncomeCall
+                                                              .amount(
+                                                            editIncomeGetIncomeResponse
+                                                                .jsonBody,
+                                                          ),
+                                                          'Loading...',
+                                                        ),
+                                                      ),
+                                                      focusNode: _model
+                                                          .amountFocusNode,
+                                                      autofocus: true,
+                                                      textInputAction:
+                                                          TextInputAction.done,
+                                                      obscureText: false,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        labelText:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                          '1voq7lj0' /* Amount* */,
+                                                        ),
+                                                        labelStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Noto Sans JP',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                        hintStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Noto Sans JP',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                        enabledBorder:
+                                                            OutlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .alternate,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      12.0),
+                                                        ),
+                                                        focusedBorder:
+                                                            OutlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      12.0),
+                                                        ),
+                                                        errorBorder:
+                                                            OutlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .error,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      12.0),
+                                                        ),
+                                                        focusedErrorBorder:
+                                                            OutlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .error,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      12.0),
+                                                        ),
+                                                        filled: true,
+                                                        fillColor: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        contentPadding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    16.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                      ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Noto Sans JP',
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                      keyboardType:
+                                                          const TextInputType
+                                                              .numberWithOptions(
+                                                              decimal: true),
+                                                      validator: _model
+                                                          .amountTextControllerValidator
+                                                          .asValidator(context),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Container(
+                                              decoration: const BoxDecoration(),
+                                            ),
+                                            Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                '4onbne4j' /* To edit Start and End dates, y... */,
+                                              ),
+                                              textAlign: TextAlign.center,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Noto Sans JP',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceEvenly,
+                                              children: [
+                                                Expanded(
+                                                  child: Padding(
                                                     padding:
                                                         const EdgeInsetsDirectional
                                                             .fromSTEB(2.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: FFButtonWidget(
-                                                      onPressed: () async {
-                                                        final datePicked2Date =
-                                                            await showDatePicker(
-                                                          context: context,
-                                                          initialDate:
-                                                              getCurrentTimestamp,
-                                                          firstDate:
-                                                              DateTime(1900),
-                                                          lastDate:
-                                                              DateTime(2050),
-                                                          builder:
-                                                              (context, child) {
-                                                            return wrapInMaterialDatePickerTheme(
-                                                              context,
-                                                              child!,
-                                                              headerBackgroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                              headerForegroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .info,
-                                                              headerTextStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineLarge
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Noto Sans JP',
-                                                                        fontSize:
-                                                                            32.0,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        fontWeight:
-                                                                            FontWeight.w600,
-                                                                      ),
-                                                              pickerBackgroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground,
-                                                              pickerForegroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryText,
-                                                              selectedDateTimeBackgroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                              selectedDateTimeForegroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .info,
-                                                              actionButtonForegroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryText,
-                                                              iconSize: 24.0,
-                                                            );
-                                                          },
-                                                        );
-
-                                                        TimeOfDay?
-                                                            datePicked2Time;
-                                                        if (datePicked2Date !=
-                                                            null) {
-                                                          datePicked2Time =
-                                                              await showTimePicker(
-                                                            context: context,
-                                                            initialTime: TimeOfDay
-                                                                .fromDateTime(
-                                                                    getCurrentTimestamp),
-                                                            builder: (context,
-                                                                child) {
-                                                              return wrapInMaterialTimePickerTheme(
-                                                                context,
-                                                                child!,
-                                                                headerBackgroundColor:
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primary,
-                                                                headerForegroundColor:
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .info,
-                                                                headerTextStyle:
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .headlineLarge
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Noto Sans JP',
-                                                                          fontSize:
-                                                                              32.0,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          fontWeight:
-                                                                              FontWeight.w600,
-                                                                        ),
-                                                                pickerBackgroundColor:
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryBackground,
-                                                                pickerForegroundColor:
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primaryText,
-                                                                selectedDateTimeBackgroundColor:
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primary,
-                                                                selectedDateTimeForegroundColor:
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .info,
-                                                                actionButtonForegroundColor:
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primaryText,
-                                                                iconSize: 24.0,
-                                                              );
-                                                            },
-                                                          );
-                                                        }
-
-                                                        if (datePicked2Date !=
-                                                                null &&
-                                                            datePicked2Time !=
-                                                                null) {
-                                                          safeSetState(() {
-                                                            _model.datePicked2 =
-                                                                DateTime(
-                                                              datePicked2Date
-                                                                  .year,
-                                                              datePicked2Date
-                                                                  .month,
-                                                              datePicked2Date
-                                                                  .day,
-                                                              datePicked2Time!
-                                                                  .hour,
-                                                              datePicked2Time
-                                                                  .minute,
-                                                            );
-                                                          });
-                                                        }
+                                                      onPressed: () {
+                                                        print(
+                                                            'DateField pressed ...');
                                                       },
-                                                      text: valueOrDefault<
-                                                          String>(
-                                                        _model.datePicked2
-                                                            ?.toString(),
-                                                        'End Date*',
-                                                      ),
+                                                      text: TppbGroup
+                                                          .getIncomeCall
+                                                          .startDate(
+                                                            editIncomeGetIncomeResponse
+                                                                .jsonBody,
+                                                          )
+                                                          .toString(),
                                                       icon: Icon(
                                                         Icons.calendar_month,
                                                         color:
@@ -1026,7 +981,96 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
                                                         size: 15.0,
                                                       ),
                                                       options: FFButtonOptions(
-                                                        width: 175.0,
+                                                        width: 165.0,
+                                                        height: 56.0,
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    24.0,
+                                                                    0.0,
+                                                                    24.0,
+                                                                    0.0),
+                                                        iconPadding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        textStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Noto Sans JP',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                        elevation: 0.0,
+                                                        borderSide: const BorderSide(
+                                                          color: Colors
+                                                              .transparent,
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                if (_model.frequencyValue !=
+                                                    'once')
+                                                  Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'npoubtc3' /* To */,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
+                                                if (_model.frequencyValue !=
+                                                    'once')
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(2.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: FFButtonWidget(
+                                                      onPressed: () {
+                                                        print(
+                                                            'DateField pressed ...');
+                                                      },
+                                                      text: TppbGroup
+                                                          .getIncomeCall
+                                                          .endDate(
+                                                            editIncomeGetIncomeResponse
+                                                                .jsonBody,
+                                                          )
+                                                          .toString(),
+                                                      icon: Icon(
+                                                        Icons.calendar_month,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                        size: 15.0,
+                                                      ),
+                                                      options: FFButtonOptions(
+                                                        width: 165.0,
                                                         height: 56.0,
                                                         padding:
                                                             const EdgeInsetsDirectional
@@ -1077,394 +1121,155 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               children: [
-                                                Expanded(
-                                                  child: TextFormField(
-                                                    controller: _model
-                                                            .incomeNameTextController ??=
-                                                        TextEditingController(
-                                                      text: valueOrDefault<
-                                                          String>(
-                                                        TppbGroup.getIncomeCall
-                                                            .name(
-                                                          editIncomeGetIncomeResponse
-                                                              .jsonBody,
-                                                        ),
-                                                        'Loading...',
-                                                      ),
+                                                Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 4.0, 0.0, 0.0),
+                                                  child: FFButtonWidget(
+                                                    onPressed: () async {
+                                                      _model.editIncomeOutput =
+                                                          await TppbGroup
+                                                              .editIncomeCall
+                                                              .call(
+                                                        incomeId:
+                                                            widget.incomeId,
+                                                        name: _model
+                                                            .incomeNameTextController
+                                                            .text,
+                                                        amount: double.tryParse(
+                                                            _model
+                                                                .amountTextController
+                                                                .text),
+                                                        frequency: _model
+                                                            .frequencyValue,
+                                                        authenticationToken:
+                                                            currentJwtToken,
+                                                        householdIdGlobal: _model
+                                                            .householdDropDownValue,
+                                                        paymentSourceIdGlobal:
+                                                            _model
+                                                                .walletDropDownValue,
+                                                        startDate: TppbGroup
+                                                            .getIncomeCall
+                                                            .startDate(
+                                                              editIncomeGetIncomeResponse
+                                                                  .jsonBody,
+                                                            )
+                                                            .toString(),
+                                                        endDate: TppbGroup
+                                                            .getIncomeCall
+                                                            .endDate(
+                                                              editIncomeGetIncomeResponse
+                                                                  .jsonBody,
+                                                            )
+                                                            .toString(),
+                                                      );
+
+                                                      if ((_model
+                                                              .editIncomeOutput
+                                                              ?.succeeded ??
+                                                          true)) {
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: const Text(
+                                                                  'Success'),
+                                                              content: const Text(
+                                                                  'Edited Income.'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: const Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        );
+
+                                                        context.pushNamed(
+                                                            'Incomes');
+                                                      } else {
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title:
+                                                                  const Text('Error'),
+                                                              content: Text((_model
+                                                                          .editIncomeOutput
+                                                                          ?.statusCode ??
+                                                                      200)
+                                                                  .toString()),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: const Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        );
+                                                      }
+
+                                                      setState(() {});
+                                                    },
+                                                    text: FFLocalizations.of(
+                                                            context)
+                                                        .getText(
+                                                      'pfkvfy9b' /* Save Changes */,
                                                     ),
-                                                    focusNode: _model
-                                                        .incomeNameFocusNode,
-                                                    autofocus: true,
-                                                    textCapitalization:
-                                                        TextCapitalization
-                                                            .words,
-                                                    textInputAction:
-                                                        TextInputAction.next,
-                                                    obscureText: false,
-                                                    decoration: InputDecoration(
-                                                      labelText:
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                        'ffswsw3a' /* Income Name* */,
-                                                      ),
-                                                      labelStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Noto Sans JP',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                      hintStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Noto Sans JP',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                      enabledBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .alternate,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12.0),
-                                                      ),
-                                                      focusedBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12.0),
-                                                      ),
-                                                      errorBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .error,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12.0),
-                                                      ),
-                                                      focusedErrorBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .error,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12.0),
-                                                      ),
-                                                      filled: true,
-                                                      fillColor: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                      contentPadding:
+                                                    options: FFButtonOptions(
+                                                      width: 360.0,
+                                                      height: 40.0,
+                                                      padding:
                                                           const EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  16.0,
+                                                                  24.0,
+                                                                  0.0,
+                                                                  24.0,
+                                                                  0.0),
+                                                      iconPadding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
                                                                   0.0,
                                                                   0.0,
                                                                   0.0),
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Noto Sans JP',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                    validator: _model
-                                                        .incomeNameTextControllerValidator
-                                                        .asValidator(context),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Expanded(
-                                                  child: TextFormField(
-                                                    controller: _model
-                                                            .amountTextController ??=
-                                                        TextEditingController(
-                                                      text: valueOrDefault<
-                                                          String>(
-                                                        TppbGroup.getIncomeCall
-                                                            .amount(
-                                                          editIncomeGetIncomeResponse
-                                                              .jsonBody,
-                                                        ),
-                                                        'Loading...',
-                                                      ),
-                                                    ),
-                                                    focusNode:
-                                                        _model.amountFocusNode,
-                                                    autofocus: true,
-                                                    textInputAction:
-                                                        TextInputAction.done,
-                                                    obscureText: false,
-                                                    decoration: InputDecoration(
-                                                      labelText:
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                        '1voq7lj0' /* Amount* */,
-                                                      ),
-                                                      labelStyle:
+                                                      color:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .labelMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Noto Sans JP',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                      hintStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Noto Sans JP',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                      enabledBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .alternate,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12.0),
-                                                      ),
-                                                      focusedBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
                                                               .primary,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12.0),
-                                                      ),
-                                                      errorBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .error,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12.0),
-                                                      ),
-                                                      focusedErrorBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .error,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12.0),
-                                                      ),
-                                                      filled: true,
-                                                      fillColor: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                      contentPadding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  16.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Noto Sans JP',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                    keyboardType:
-                                                        const TextInputType
-                                                            .numberWithOptions(
-                                                            decimal: true),
-                                                    validator: _model
-                                                        .amountTextControllerValidator
-                                                        .asValidator(context),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            Container(
-                                              decoration: const BoxDecoration(),
-                                            ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                FFButtonWidget(
-                                                  onPressed: () async {
-                                                    _model.editIncomeOutput =
-                                                        await TppbGroup
-                                                            .editIncomeCall
-                                                            .call(
-                                                      incomeId: widget.incomeId,
-                                                      name: _model
-                                                          .incomeNameTextController
-                                                          .text,
-                                                      amount: double.tryParse(
-                                                          _model
-                                                              .amountTextController
-                                                              .text),
-                                                      frequency:
-                                                          _model.frequencyValue,
-                                                      authenticationToken:
-                                                          currentJwtToken,
-                                                      householdIdGlobal: _model
-                                                          .householdDropDownValue,
-                                                      paymentSourceIdGlobal: _model
-                                                          .walletDropDownValue,
-                                                      startDate: _model
-                                                          .datePicked1
-                                                          ?.toString(),
-                                                      endDate: _model
-                                                          .datePicked2
-                                                          ?.toString(),
-                                                    );
-
-                                                    if ((_model.editIncomeOutput
-                                                            ?.succeeded ??
-                                                        true)) {
-                                                      await showDialog(
-                                                        context: context,
-                                                        builder:
-                                                            (alertDialogContext) {
-                                                          return AlertDialog(
-                                                            title:
-                                                                const Text('Success'),
-                                                            content: const Text(
-                                                                'Edited Income.'),
-                                                            actions: [
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext),
-                                                                child:
-                                                                    const Text('Ok'),
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Noto Sans JP',
+                                                                color: Colors
+                                                                    .white,
+                                                                letterSpacing:
+                                                                    0.0,
                                                               ),
-                                                            ],
-                                                          );
-                                                        },
-                                                      );
-
-                                                      context
-                                                          .pushNamed('Incomes');
-                                                    } else {
-                                                      await showDialog(
-                                                        context: context,
-                                                        builder:
-                                                            (alertDialogContext) {
-                                                          return AlertDialog(
-                                                            title:
-                                                                const Text('Error'),
-                                                            content: Text((_model
-                                                                        .editIncomeOutput
-                                                                        ?.statusCode ??
-                                                                    200)
-                                                                .toString()),
-                                                            actions: [
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext),
-                                                                child:
-                                                                    const Text('Ok'),
-                                                              ),
-                                                            ],
-                                                          );
-                                                        },
-                                                      );
-                                                    }
-
-                                                    setState(() {});
-                                                  },
-                                                  text: FFLocalizations.of(
-                                                          context)
-                                                      .getText(
-                                                    'pfkvfy9b' /* Continue */,
-                                                  ),
-                                                  options: FFButtonOptions(
-                                                    width: 360.0,
-                                                    height: 40.0,
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(24.0, 0.0,
-                                                                24.0, 0.0),
-                                                    iconPadding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 0.0),
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primary,
-                                                    textStyle: FlutterFlowTheme
-                                                            .of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Noto Sans JP',
-                                                          color: Colors.white,
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                    elevation: 3.0,
-                                                    borderSide: const BorderSide(
-                                                      color: Colors.transparent,
-                                                      width: 1.0,
+                                                      elevation: 3.0,
+                                                      borderSide: const BorderSide(
+                                                        color:
+                                                            Colors.transparent,
+                                                        width: 1.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
                                                     ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
                                                   ),
                                                 ),
                                               ],

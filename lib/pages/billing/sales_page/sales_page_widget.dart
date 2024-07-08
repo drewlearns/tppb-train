@@ -892,7 +892,7 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                                       setState(() {});
                                     },
                                     text: FFLocalizations.of(context).getText(
-                                      'lxushr1a' /* Continue */,
+                                      'lxushr1a' /* Buy Now */,
                                     ),
                                     options: FFButtonOptions(
                                       width: 171.0,
@@ -928,104 +928,108 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                         ),
                       ],
                     ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Semantics(
-                          label: 'View Terms and Conditions',
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              await launchURL(
-                                  'https://thepurplepiggybank.com/legal');
-                            },
-                            text: FFLocalizations.of(context).getText(
-                              'jydlwx7d' /* Legal */,
-                            ),
-                            options: FFButtonOptions(
-                              height: 40.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: Colors.transparent,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Noto Sans JP',
-                                    letterSpacing: 0.0,
-                                  ),
-                              elevation: 0.0,
-                              borderSide: const BorderSide(
-                                color: Colors.transparent,
+                    Container(
+                      width: 380.0,
+                      decoration: const BoxDecoration(),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Semantics(
+                            label: 'View Terms and Conditions',
+                            child: FFButtonWidget(
+                              onPressed: () async {
+                                await launchURL(
+                                    'https://thepurplepiggybank.com/legal');
+                              },
+                              text: FFLocalizations.of(context).getText(
+                                'jydlwx7d' /* Legal */,
                               ),
-                              borderRadius: BorderRadius.circular(8.0),
+                              options: FFButtonOptions(
+                                height: 40.0,
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    24.0, 0.0, 24.0, 0.0),
+                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: Colors.transparent,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Noto Sans JP',
+                                      letterSpacing: 0.0,
+                                    ),
+                                elevation: 0.0,
+                                borderSide: const BorderSide(
+                                  color: Colors.transparent,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
                             ),
                           ),
-                        ),
-                        Semantics(
-                          label: 'View Terms and Conditions',
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              await launchURL(
-                                  'https://thepurplepiggybank.com/terms');
-                            },
-                            text: FFLocalizations.of(context).getText(
-                              'nyyhtd6x' /* Terms */,
-                            ),
-                            options: FFButtonOptions(
-                              height: 40.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: Colors.transparent,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Noto Sans JP',
-                                    letterSpacing: 0.0,
-                                  ),
-                              elevation: 0.0,
-                              borderSide: const BorderSide(
-                                color: Colors.transparent,
+                          Semantics(
+                            label: 'View Terms and Conditions',
+                            child: FFButtonWidget(
+                              onPressed: () async {
+                                await launchURL(
+                                    'https://thepurplepiggybank.com/terms');
+                              },
+                              text: FFLocalizations.of(context).getText(
+                                'nyyhtd6x' /* Terms */,
                               ),
-                              borderRadius: BorderRadius.circular(8.0),
+                              options: FFButtonOptions(
+                                height: 40.0,
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    24.0, 0.0, 24.0, 0.0),
+                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: Colors.transparent,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Noto Sans JP',
+                                      letterSpacing: 0.0,
+                                    ),
+                                elevation: 0.0,
+                                borderSide: const BorderSide(
+                                  color: Colors.transparent,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
                             ),
                           ),
-                        ),
-                        Semantics(
-                          label: 'View Privacy Policy',
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              await launchURL(
-                                  'https://thepurplepiggybank.com/privacy');
-                            },
-                            text: FFLocalizations.of(context).getText(
-                              '1qo0zdkn' /* Privacy */,
-                            ),
-                            options: FFButtonOptions(
-                              height: 40.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: Colors.transparent,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Noto Sans JP',
-                                    letterSpacing: 0.0,
-                                  ),
-                              elevation: 0.0,
-                              borderSide: const BorderSide(
-                                color: Colors.transparent,
+                          Semantics(
+                            label: 'View Privacy Policy',
+                            child: FFButtonWidget(
+                              onPressed: () async {
+                                await launchURL(
+                                    'https://thepurplepiggybank.com/privacy');
+                              },
+                              text: FFLocalizations.of(context).getText(
+                                '1qo0zdkn' /* Privacy */,
                               ),
-                              borderRadius: BorderRadius.circular(8.0),
+                              options: FFButtonOptions(
+                                height: 40.0,
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    24.0, 0.0, 24.0, 0.0),
+                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: Colors.transparent,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Noto Sans JP',
+                                      letterSpacing: 0.0,
+                                    ),
+                                elevation: 0.0,
+                                borderSide: const BorderSide(
+                                  color: Colors.transparent,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ].divide(const SizedBox(height: 4.0)).around(const SizedBox(height: 4.0)),
                 ),

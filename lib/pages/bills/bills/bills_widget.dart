@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'dart:async';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'bills_model.dart';
 export 'bills_model.dart';
@@ -100,7 +101,7 @@ class _BillsWidgetState extends State<BillsWidget>
                     ),
                   ],
                   flexibleSpace: FlexibleSpaceBar(
-                    title: Text(
+                    title: AutoSizeText(
                       FFLocalizations.of(context).getText(
                         'b9xmdza3' /* Bills */,
                       ),
@@ -110,6 +111,7 @@ class _BillsWidgetState extends State<BillsWidget>
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
                                 letterSpacing: 0.0,
+                                lineHeight: 2.0,
                               ),
                     ),
                     centerTitle: true,

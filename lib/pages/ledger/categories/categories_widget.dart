@@ -85,6 +85,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
                                 letterSpacing: 0.0,
+                                lineHeight: 2.0,
                               ),
                     ),
                   ),

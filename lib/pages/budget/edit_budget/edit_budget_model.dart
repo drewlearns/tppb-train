@@ -9,6 +9,7 @@ class EditBudgetModel extends FlutterFlowModel<EditBudgetWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  final formKey = GlobalKey<FormState>();
   // State field(s) for HouseholdDropDown widget.
   String? householdDropDownValue;
   FormFieldController<String>? householdDropDownValueController;
@@ -16,6 +17,25 @@ class EditBudgetModel extends FlutterFlowModel<EditBudgetWidget> {
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
+  String? _textControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'dprbjm1z' /* Field is required */,
+      );
+    }
+
+    if (val.length < 4) {
+      return 'Requires at least 4 characters.';
+    }
+
+    if (!RegExp('/^[a-zA-Z ]+\$/').hasMatch(val)) {
+      return FFLocalizations.of(context).getText(
+        'pasdyy69' /* Letters and spaces only */,
+      );
+    }
+    return null;
+  }
+
   // Stores action output result for [Backend Call - API (deleteHousehold)] action in Button widget.
   ApiCallResponse? apiResulty7e;
   Completer<ApiCallResponse>? apiRequestCompleter;
@@ -23,7 +43,9 @@ class EditBudgetModel extends FlutterFlowModel<EditBudgetWidget> {
   ApiCallResponse? apiResult2qy;
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    textControllerValidator = _textControllerValidator;
+  }
 
   @override
   void dispose() {

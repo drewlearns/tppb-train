@@ -10,6 +10,8 @@ class OnboardingAddIncome3Model
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  final formKey1 = GlobalKey<FormState>();
+  final formKey2 = GlobalKey<FormState>();
   // State field(s) for frequency widget.
   String? frequencyValue;
   FormFieldController<String>? frequencyValueController;
@@ -19,16 +21,50 @@ class OnboardingAddIncome3Model
   FocusNode? incomeNameFocusNode;
   TextEditingController? incomeNameTextController;
   String? Function(BuildContext, String?)? incomeNameTextControllerValidator;
+  String? _incomeNameTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'hbl7nexd' /* Field is required */,
+      );
+    }
+
+    if (!RegExp('/^[a-zA-Z ]+\$/').hasMatch(val)) {
+      return FFLocalizations.of(context).getText(
+        'pls7oi2q' /* Letters and spaces only. */,
+      );
+    }
+    return null;
+  }
+
   // State field(s) for Amount widget.
   FocusNode? amountFocusNode;
   TextEditingController? amountTextController;
   String? Function(BuildContext, String?)? amountTextControllerValidator;
+  String? _amountTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'q3n63g0e' /* Field is required */,
+      );
+    }
+
+    if (!RegExp('/^\\d+(\\.\\d+)?\$/').hasMatch(val)) {
+      return FFLocalizations.of(context).getText(
+        'fmopkyle' /* Digits and periods only */,
+      );
+    }
+    return null;
+  }
+
   // Stores action output result for [Backend Call - API (addIncome)] action in Button widget.
   ApiCallResponse? addIncomeOutput;
   AudioPlayer? soundPlayer;
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    incomeNameTextControllerValidator = _incomeNameTextControllerValidator;
+    amountTextControllerValidator = _amountTextControllerValidator;
+  }
 
   @override
   void dispose() {

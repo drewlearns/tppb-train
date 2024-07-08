@@ -8,12 +8,26 @@ class ProfileModel extends FlutterFlowModel<ProfileWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  final formKey = GlobalKey<FormState>();
   // State field(s) for CheckboxListTile widget.
   bool? checkboxListTileValue;
   // State field(s) for Email widget.
   FocusNode? emailFocusNode;
   TextEditingController? emailTextController;
   String? Function(BuildContext, String?)? emailTextControllerValidator;
+  String? _emailTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'l1hr1i0s' /* Field is required */,
+      );
+    }
+
+    if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
+      return 'Has to be a valid email address.';
+    }
+    return null;
+  }
+
   // Stores action output result for [Backend Call - API (editUser)] action in Button widget.
   ApiCallResponse? editUserOutput;
   Completer<ApiCallResponse>? apiRequestCompleter;
@@ -21,7 +35,9 @@ class ProfileModel extends FlutterFlowModel<ProfileWidget> {
   ApiCallResponse? deleteUserOuput;
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    emailTextControllerValidator = _emailTextControllerValidator;
+  }
 
   @override
   void dispose() {

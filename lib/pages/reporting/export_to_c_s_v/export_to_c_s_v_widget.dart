@@ -85,6 +85,7 @@ class _ExportToCSVWidgetState extends State<ExportToCSVWidget> {
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
                           letterSpacing: 0.0,
+                          lineHeight: 2.0,
                         ),
                   ),
                   centerTitle: true,

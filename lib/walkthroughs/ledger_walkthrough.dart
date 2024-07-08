@@ -5,7 +5,7 @@ import '/onboarding/walkthroughs/walkthrough_card/walkthrough_card_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 // Focus widget keys for this walkthrough
-final columnV9edxhj6 = GlobalKey();
+final containerEtqg3gay = GlobalKey();
 final textUxtutexg = GlobalKey();
 final rowWqe60v8q = GlobalKey();
 final containerLgd8iryk = GlobalKey();
@@ -22,9 +22,9 @@ final iconButtonJtxu4a25 = GlobalKey();
 List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
       /// Step 1
       TargetFocus(
-        keyTarget: columnV9edxhj6,
+        keyTarget: containerEtqg3gay,
         enableOverlayTab: true,
-        alignSkip: Alignment.bottomRight,
+        alignSkip: Alignment.topLeft,
         shape: ShapeLightFocus.RRect,
         color: Colors.black,
         contents: [
@@ -44,7 +44,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
       TargetFocus(
         keyTarget: textUxtutexg,
         enableOverlayTab: true,
-        alignSkip: Alignment.bottomRight,
+        alignSkip: Alignment.topLeft,
         shape: ShapeLightFocus.RRect,
         color: Colors.black,
         contents: [
@@ -63,7 +63,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
       TargetFocus(
         keyTarget: rowWqe60v8q,
         enableOverlayTab: true,
-        alignSkip: Alignment.bottomRight,
+        alignSkip: Alignment.topLeft,
         shape: ShapeLightFocus.RRect,
         color: Colors.black,
         contents: [
@@ -83,7 +83,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
       TargetFocus(
         keyTarget: containerLgd8iryk,
         enableOverlayTab: true,
-        alignSkip: Alignment.bottomRight,
+        alignSkip: Alignment.topLeft,
         shape: ShapeLightFocus.RRect,
         color: Colors.black,
         contents: [
@@ -102,7 +102,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
       TargetFocus(
         keyTarget: iconButtonFsbhy4pj,
         enableOverlayTab: true,
-        alignSkip: Alignment.bottomRight,
+        alignSkip: Alignment.topLeft,
         shape: ShapeLightFocus.Circle,
         color: Colors.black,
         contents: [
@@ -121,7 +121,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
       TargetFocus(
         keyTarget: container87f6towi,
         enableOverlayTab: true,
-        alignSkip: Alignment.bottomRight,
+        alignSkip: Alignment.topLeft,
         shape: ShapeLightFocus.RRect,
         color: Colors.black,
         contents: [
@@ -140,7 +140,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
       TargetFocus(
         keyTarget: iconButton3pzo3nty,
         enableOverlayTab: true,
-        alignSkip: Alignment.bottomRight,
+        alignSkip: Alignment.topRight,
         shape: ShapeLightFocus.Circle,
         color: Colors.black,
         contents: [
@@ -159,7 +159,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
       TargetFocus(
         keyTarget: iconButtonKb97emkm,
         enableOverlayTab: true,
-        alignSkip: Alignment.bottomRight,
+        alignSkip: Alignment.topLeft,
         shape: ShapeLightFocus.Circle,
         color: Colors.black,
         contents: [
@@ -178,7 +178,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
       TargetFocus(
         keyTarget: toggleIconBkq4fego,
         enableOverlayTab: true,
-        alignSkip: Alignment.bottomRight,
+        alignSkip: Alignment.topLeft,
         shape: ShapeLightFocus.Circle,
         color: Colors.black,
         contents: [
@@ -197,7 +197,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
       TargetFocus(
         keyTarget: iconButtonJtxu4a25,
         enableOverlayTab: true,
-        alignSkip: Alignment.bottomRight,
+        alignSkip: Alignment.topLeft,
         shape: ShapeLightFocus.Circle,
         color: Colors.black,
         contents: [

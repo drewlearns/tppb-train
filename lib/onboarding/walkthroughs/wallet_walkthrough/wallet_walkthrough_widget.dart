@@ -112,7 +112,7 @@ class _WalletWalkthroughWidgetState extends State<WalletWalkthroughWidget> {
                   ),
                 ],
                 flexibleSpace: FlexibleSpaceBar(
-                  title: Text(
+                  title: AutoSizeText(
                     FFLocalizations.of(context).getText(
                       'god1udfp' /* Wallet */,
                     ),
@@ -121,6 +121,7 @@ class _WalletWalkthroughWidgetState extends State<WalletWalkthroughWidget> {
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
                           letterSpacing: 0.0,
+                          lineHeight: 2.0,
                         ),
                   ),
                   centerTitle: true,
@@ -167,81 +168,88 @@ class _WalletWalkthroughWidgetState extends State<WalletWalkthroughWidget> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: [
-                                            FlutterFlowDropDown<String>(
-                                              controller: _model
-                                                      .dropDownValueController ??=
-                                                  FormFieldController<String>(
-                                                _model.dropDownValue ??=
+                                            Container(
+                                              decoration: const BoxDecoration(),
+                                              child:
+                                                  FlutterFlowDropDown<String>(
+                                                controller: _model
+                                                        .dropDownValueController ??=
+                                                    FormFieldController<String>(
+                                                  _model.dropDownValue ??=
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                    'jx6la59i' /* Karriker-1234567 */,
+                                                  ),
+                                                ),
+                                                options: [
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'z7wb3uop' /* Karriker-1234567 */,
+                                                  )
+                                                ],
+                                                onChanged: (val) => setState(
+                                                    () => _model.dropDownValue =
+                                                        val),
+                                                width: 300.0,
+                                                height: 56.0,
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                hintText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'jx6la59i' /* Karriker-1234567 */,
+                                                  '5og0ctub' /* Please select... */,
                                                 ),
-                                              ),
-                                              options: [
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'z7wb3uop' /* Karriker-1234567 */,
-                                                )
-                                              ],
-                                              onChanged: (val) => setState(() =>
-                                                  _model.dropDownValue = val),
-                                              width: 300.0,
-                                              height: 56.0,
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Noto Sans JP',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                              hintText:
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                '5og0ctub' /* Please select... */,
-                                              ),
-                                              icon: Icon(
-                                                Icons
-                                                    .keyboard_arrow_down_rounded,
-                                                color:
+                                                icon: Icon(
+                                                  Icons
+                                                      .keyboard_arrow_down_rounded,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  size: 24.0,
+                                                ),
+                                                fillColor:
                                                     FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                                size: 24.0,
+                                                        .secondaryBackground,
+                                                elevation: 5.0,
+                                                borderColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                                borderWidth: 2.0,
+                                                borderRadius: 8.0,
+                                                margin: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        16.0, 0.0, 16.0, 0.0),
+                                                hidesUnderline: true,
+                                                isOverButton: true,
+                                                isSearchable: false,
+                                                isMultiSelect: false,
+                                                labelText:
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                  '644byuok' /* Budget* */,
+                                                ),
+                                                labelTextStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ).addWalkthrough(
+                                                dropDown9e8639mc,
+                                                _model
+                                                    .walletWalkthroughController,
                                               ),
-                                              fillColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              elevation: 5.0,
-                                              borderColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .alternate,
-                                              borderWidth: 2.0,
-                                              borderRadius: 8.0,
-                                              margin: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      16.0, 0.0, 16.0, 0.0),
-                                              hidesUnderline: true,
-                                              isOverButton: true,
-                                              isSearchable: false,
-                                              isMultiSelect: false,
-                                              labelText:
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                '644byuok' /* Budget* */,
-                                              ),
-                                              labelTextStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Noto Sans JP',
-                                                        letterSpacing: 0.0,
-                                                      ),
                                             ),
                                           ],
-                                        ).addWalkthrough(
-                                          rowAsmni7oq,
-                                          _model.walletWalkthroughController,
                                         ),
                                       ),
                                     ],

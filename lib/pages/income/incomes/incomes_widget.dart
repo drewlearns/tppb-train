@@ -76,7 +76,7 @@ class _IncomesWidgetState extends State<IncomesWidget> {
                   ),
                 ],
                 flexibleSpace: FlexibleSpaceBar(
-                  title: Text(
+                  title: AutoSizeText(
                     FFLocalizations.of(context).getText(
                       '40jyp3sn' /* Incomes */,
                     ),
@@ -85,6 +85,7 @@ class _IncomesWidgetState extends State<IncomesWidget> {
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
                           letterSpacing: 0.0,
+                          lineHeight: 2.0,
                         ),
                   ),
                   centerTitle: true,
@@ -445,13 +446,27 @@ class _IncomesWidgetState extends State<IncomesWidget> {
                                                                                       )?[incomesIndex],
                                                                                       'Loading...',
                                                                                     ).maybeHandleOverflow(
-                                                                                      maxChars: 14,
+                                                                                      maxChars: 20,
                                                                                       replacement: '…',
                                                                                     ),
                                                                                     textAlign: TextAlign.start,
                                                                                     style: FlutterFlowTheme.of(context).titleLarge.override(
                                                                                           fontFamily: 'Noto Sans JP',
                                                                                           color: FlutterFlowTheme.of(context).secondary,
+                                                                                          letterSpacing: 0.0,
+                                                                                          fontWeight: FontWeight.bold,
+                                                                                        ),
+                                                                                  ),
+                                                                                  Text(
+                                                                                    valueOrDefault<String>(
+                                                                                      TppbGroup.getIncomesCall.transactionDate(
+                                                                                        listViewGetIncomesResponse.jsonBody,
+                                                                                      )?[incomesIndex],
+                                                                                      'Loading...',
+                                                                                    ).maybeHandleOverflow(maxChars: 10),
+                                                                                    textAlign: TextAlign.start,
+                                                                                    style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                          fontFamily: 'Noto Sans JP',
                                                                                           letterSpacing: 0.0,
                                                                                         ),
                                                                                   ),

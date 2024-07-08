@@ -8,6 +8,8 @@ class EditIncomeModel extends FlutterFlowModel<EditIncomeWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  final formKey1 = GlobalKey<FormState>();
+  final formKey2 = GlobalKey<FormState>();
   // State field(s) for HouseholdDropDown widget.
   String? householdDropDownValue;
   FormFieldController<String>? householdDropDownValueController;
@@ -17,23 +19,55 @@ class EditIncomeModel extends FlutterFlowModel<EditIncomeWidget> {
   // State field(s) for frequency widget.
   String? frequencyValue;
   FormFieldController<String>? frequencyValueController;
-  DateTime? datePicked1;
-  DateTime? datePicked2;
   // State field(s) for IncomeName widget.
   FocusNode? incomeNameFocusNode;
   TextEditingController? incomeNameTextController;
   String? Function(BuildContext, String?)? incomeNameTextControllerValidator;
+  String? _incomeNameTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'jocdc5xa' /* Field is required */,
+      );
+    }
+
+    if (!RegExp('').hasMatch(val)) {
+      return FFLocalizations.of(context).getText(
+        'f3ioycex' /* /^[a-zA-Z ]+$/ */,
+      );
+    }
+    return null;
+  }
+
   // State field(s) for Amount widget.
   FocusNode? amountFocusNode;
   TextEditingController? amountTextController;
   String? Function(BuildContext, String?)? amountTextControllerValidator;
+  String? _amountTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'fwjr59vi' /* Field is required */,
+      );
+    }
+
+    if (!RegExp('/^\\d+(\\.\\d+)?\$/').hasMatch(val)) {
+      return FFLocalizations.of(context).getText(
+        'pdu6fqxa' /* Numbers and periods only */,
+      );
+    }
+    return null;
+  }
+
   // Stores action output result for [Backend Call - API (editIncome)] action in Button widget.
   ApiCallResponse? editIncomeOutput;
   // Stores action output result for [Backend Call - API (deleteIncome)] action in IconButton widget.
   ApiCallResponse? apiResult04o;
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    incomeNameTextControllerValidator = _incomeNameTextControllerValidator;
+    amountTextControllerValidator = _amountTextControllerValidator;
+  }
 
   @override
   void dispose() {

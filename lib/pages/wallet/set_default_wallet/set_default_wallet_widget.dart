@@ -109,6 +109,7 @@ class _SetDefaultWalletWidgetState extends State<SetDefaultWalletWidget> {
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
                                   letterSpacing: 0.0,
+                                  lineHeight: 2.0,
                                 ),
                       ),
                       centerTitle: true,
@@ -273,6 +274,8 @@ class _SetDefaultWalletWidgetState extends State<SetDefaultWalletWidget> {
                                     );
                                   },
                                 );
+
+                                context.pushNamed('Wallets');
                               } else {
                                 await showDialog(
                                   context: context,
@@ -299,7 +302,7 @@ class _SetDefaultWalletWidgetState extends State<SetDefaultWalletWidget> {
                               setState(() {});
                             },
                             text: FFLocalizations.of(context).getText(
-                              'qoombu5y' /* Set Default Payment Source */,
+                              'qoombu5y' /* Save Changes */,
                             ),
                             options: FFButtonOptions(
                               width: 380.0,

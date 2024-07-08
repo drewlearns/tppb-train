@@ -7,6 +7,11 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  final formKey4 = GlobalKey<FormState>();
+  final formKey2 = GlobalKey<FormState>();
+  final formKey5 = GlobalKey<FormState>();
+  final formKey3 = GlobalKey<FormState>();
+  final formKey1 = GlobalKey<FormState>();
   // State field(s) for TabBar widget.
   TabController? tabBarController;
   int get tabBarCurrentIndex =>
@@ -16,19 +21,96 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
   FocusNode? emailFocusNode;
   TextEditingController? emailTextController;
   String? Function(BuildContext, String?)? emailTextControllerValidator;
+  String? _emailTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        '8bq485l4' /* Field is required */,
+      );
+    }
+
+    if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
+      return FFLocalizations.of(context).getText(
+        '5bcg2ple' /* Invalid Email Address */,
+      );
+    }
+    return null;
+  }
+
   // State field(s) for firstName widget.
   FocusNode? firstNameFocusNode;
   TextEditingController? firstNameTextController;
   String? Function(BuildContext, String?)? firstNameTextControllerValidator;
+  String? _firstNameTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'zntao51q' /* Field is required */,
+      );
+    }
+
+    if (val.length < 2) {
+      return 'Requires at least 2 characters.';
+    }
+
+    if (!RegExp('/^[a-zA-Z]+\$/').hasMatch(val)) {
+      return FFLocalizations.of(context).getText(
+        'b0kqouv8' /* Invalid First Name */,
+      );
+    }
+    return null;
+  }
+
   // State field(s) for lastName widget.
   FocusNode? lastNameFocusNode;
   TextEditingController? lastNameTextController;
   String? Function(BuildContext, String?)? lastNameTextControllerValidator;
+  String? _lastNameTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'buhed2fz' /* Field is required */,
+      );
+    }
+
+    if (val.length < 2) {
+      return 'Requires at least 2 characters.';
+    }
+
+    if (!RegExp('/^[a-zA-Z]+\$/').hasMatch(val)) {
+      return FFLocalizations.of(context).getText(
+        '20sdlf8a' /* Invalid Last Name */,
+      );
+    }
+    return null;
+  }
+
   // State field(s) for newPassword widget.
   FocusNode? newPasswordFocusNode;
   TextEditingController? newPasswordTextController;
   late bool newPasswordVisibility;
   String? Function(BuildContext, String?)? newPasswordTextControllerValidator;
+  String? _newPasswordTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'b26444si' /* Field is required */,
+      );
+    }
+
+    if (val.length < 8) {
+      return FFLocalizations.of(context).getText(
+        'p0huck1b' /* Minimum 8 Characters */,
+      );
+    }
+
+    if (!RegExp(
+            '/^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#\$%^&*(),.?\':{}|<>])[A-Za-z\\d!@#\$%^&*(),.?\':{}|<>]{8,}\$/')
+        .hasMatch(val)) {
+      return FFLocalizations.of(context).getText(
+        'l4zryvgb' /* Must contain 8 characters, 1 s... */,
+      );
+    }
+    return null;
+  }
+
   // State field(s) for confirmPassword widget.
   FocusNode? confirmPasswordFocusNode;
   TextEditingController? confirmPasswordTextController;
@@ -45,6 +127,20 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
   FocusNode? emailSignInFocusNode;
   TextEditingController? emailSignInTextController;
   String? Function(BuildContext, String?)? emailSignInTextControllerValidator;
+  String? _emailSignInTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'fp7szej1' /* Field is required */,
+      );
+    }
+
+    if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
+      return 'Has to be a valid email address.';
+    }
+    return null;
+  }
+
   // State field(s) for passwordSignIn widget.
   FocusNode? passwordSignInFocusNode;
   TextEditingController? passwordSignInTextController;
@@ -54,8 +150,13 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
 
   @override
   void initState(BuildContext context) {
+    emailTextControllerValidator = _emailTextControllerValidator;
+    firstNameTextControllerValidator = _firstNameTextControllerValidator;
+    lastNameTextControllerValidator = _lastNameTextControllerValidator;
     newPasswordVisibility = false;
+    newPasswordTextControllerValidator = _newPasswordTextControllerValidator;
     confirmPasswordVisibility = false;
+    emailSignInTextControllerValidator = _emailSignInTextControllerValidator;
     passwordSignInVisibility = false;
   }
 

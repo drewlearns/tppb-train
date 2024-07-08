@@ -8,6 +8,10 @@ class AddBillModel extends FlutterFlowModel<AddBillWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  final formKey1 = GlobalKey<FormState>();
+  final formKey4 = GlobalKey<FormState>();
+  final formKey2 = GlobalKey<FormState>();
+  final formKey3 = GlobalKey<FormState>();
   // State field(s) for HouseholdDropDown widget.
   String? householdDropDownValue;
   FormFieldController<String>? householdDropDownValueController;
@@ -23,14 +27,59 @@ class AddBillModel extends FlutterFlowModel<AddBillWidget> {
   FocusNode? billNameFocusNode;
   TextEditingController? billNameTextController;
   String? Function(BuildContext, String?)? billNameTextControllerValidator;
+  String? _billNameTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        '6a9cr3sv' /* Field is required */,
+      );
+    }
+
+    if (!RegExp('/^[a-zA-Z]+\$/').hasMatch(val)) {
+      return FFLocalizations.of(context).getText(
+        'q7r79n8n' /* Can only be letters */,
+      );
+    }
+    return null;
+  }
+
   // State field(s) for Amount widget.
   FocusNode? amountFocusNode;
   TextEditingController? amountTextController;
   String? Function(BuildContext, String?)? amountTextControllerValidator;
+  String? _amountTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'tlwth8qe' /* Field is required */,
+      );
+    }
+
+    if (!RegExp('/^\\d+(\\.\\d+)?\$/').hasMatch(val)) {
+      return FFLocalizations.of(context).getText(
+        '8jaea9zl' /* Must be a number */,
+      );
+    }
+    return null;
+  }
+
   // State field(s) for category widget.
   FocusNode? categoryFocusNode;
   TextEditingController? categoryTextController;
   String? Function(BuildContext, String?)? categoryTextControllerValidator;
+  String? _categoryTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'ywmsmw2z' /* Field is required */,
+      );
+    }
+
+    if (!RegExp('/^[a-zA-Z]+\$/').hasMatch(val)) {
+      return FFLocalizations.of(context).getText(
+        'aa7zbrxu' /* Can only be letters */,
+      );
+    }
+    return null;
+  }
+
   // State field(s) for description widget.
   FocusNode? descriptionFocusNode;
   TextEditingController? descriptionTextController;
@@ -39,6 +88,21 @@ class AddBillModel extends FlutterFlowModel<AddBillWidget> {
   FocusNode? urlFocusNode;
   TextEditingController? urlTextController;
   String? Function(BuildContext, String?)? urlTextControllerValidator;
+  String? _urlTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'n844qhee' /* Field is required */,
+      );
+    }
+
+    if (!RegExp(kTextValidatorWebsiteRegex).hasMatch(val)) {
+      return FFLocalizations.of(context).getText(
+        '41esu6hb' /* Must include https:// */,
+      );
+    }
+    return null;
+  }
+
   // State field(s) for username widget.
   FocusNode? usernameFocusNode;
   TextEditingController? usernameTextController;
@@ -53,6 +117,10 @@ class AddBillModel extends FlutterFlowModel<AddBillWidget> {
 
   @override
   void initState(BuildContext context) {
+    billNameTextControllerValidator = _billNameTextControllerValidator;
+    amountTextControllerValidator = _amountTextControllerValidator;
+    categoryTextControllerValidator = _categoryTextControllerValidator;
+    urlTextControllerValidator = _urlTextControllerValidator;
     passwordVisibility = false;
   }
 

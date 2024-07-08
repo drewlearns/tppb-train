@@ -306,10 +306,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'paymentSourceId',
               ParamType.String,
             ),
-            type: params.getParam(
-              'type',
-              ParamType.String,
-            ),
             name: params.getParam(
               'name',
               ParamType.String,

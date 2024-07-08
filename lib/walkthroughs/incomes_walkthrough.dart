@@ -5,7 +5,7 @@ import '/onboarding/walkthroughs/walkthrough_card/walkthrough_card_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 // Focus widget keys for this walkthrough
-final rowA7m13dby = GlobalKey();
+final containerZpwe14cv = GlobalKey();
 final columnZdrbjk0v = GlobalKey();
 final rowV9ulecxu = GlobalKey();
 final row2mygxa0h = GlobalKey();
@@ -17,9 +17,9 @@ final iconButtonXdwex3dt = GlobalKey();
 List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
       /// Step 1
       TargetFocus(
-        keyTarget: rowA7m13dby,
+        keyTarget: containerZpwe14cv,
         enableOverlayTab: true,
-        alignSkip: Alignment.bottomRight,
+        alignSkip: Alignment.topLeft,
         shape: ShapeLightFocus.RRect,
         color: Colors.black,
         contents: [
@@ -38,7 +38,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
       TargetFocus(
         keyTarget: columnZdrbjk0v,
         enableOverlayTab: true,
-        alignSkip: Alignment.bottomRight,
+        alignSkip: Alignment.topLeft,
         shape: ShapeLightFocus.RRect,
         color: Colors.black,
         contents: [
@@ -58,7 +58,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
       TargetFocus(
         keyTarget: rowV9ulecxu,
         enableOverlayTab: true,
-        alignSkip: Alignment.bottomRight,
+        alignSkip: Alignment.topLeft,
         shape: ShapeLightFocus.RRect,
         color: Colors.black,
         contents: [
@@ -77,7 +77,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
       TargetFocus(
         keyTarget: row2mygxa0h,
         enableOverlayTab: true,
-        alignSkip: Alignment.bottomRight,
+        alignSkip: Alignment.topLeft,
         shape: ShapeLightFocus.RRect,
         color: Colors.black,
         contents: [
@@ -96,7 +96,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
       TargetFocus(
         keyTarget: iconButtonXdwex3dt,
         enableOverlayTab: true,
-        alignSkip: Alignment.bottomRight,
+        alignSkip: Alignment.topLeft,
         shape: ShapeLightFocus.Circle,
         color: Colors.black,
         contents: [

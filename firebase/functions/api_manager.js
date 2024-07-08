@@ -2164,6 +2164,46 @@ async function _deleteTransactionCall(context, ffVariables) {
   });
 }
 
+async function _deleteLedgerEntryCall(context, ffVariables) {
+  if (!context.auth) {
+    return _unauthenticatedResponse;
+  }
+  var ledgerId = ffVariables["ledgerId"];
+  var authenticationToken = ffVariables["authenticationToken"];
+  var householdIdGlobal = ffVariables["householdIdGlobal"];
+  var paymentSourceIdGlobal = ffVariables["paymentSourceIdGlobal"];
+  const tppbGroup = createTppbGroup(
+    authenticationToken,
+    householdIdGlobal,
+    paymentSourceIdGlobal,
+  );
+
+  var url = `${tppbGroup.baseUrl}/deleteLedgerEntry`;
+  var headers = { "x-api-key": `zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM` };
+  var params = {};
+  var ffApiRequestBody = `
+{
+  "ledgerId": "${ledgerId}",
+  "authToken": "${authenticationToken}",
+  "householdId":"${householdIdGlobal}"
+}`;
+
+  return makeApiRequest({
+    method: "post",
+    url,
+    headers,
+    params,
+    body: createBody({
+      headers,
+      params,
+      body: ffApiRequestBody,
+      bodyType: "JSON",
+    }),
+    returnBody: true,
+    isStreamingApi: false,
+  });
+}
+
 /// End TPPB Group Code
 
 /// Start stripeSubscription Group Code
@@ -2340,6 +2380,7 @@ async function makeApiCall(context, data) {
     EditPaymentSourceCall: _editPaymentSourceCall,
     DeletePaymentSourceCall: _deletePaymentSourceCall,
     DeleteTransactionCall: _deleteTransactionCall,
+    DeleteLedgerEntryCall: _deleteLedgerEntryCall,
     CreateCustomerCall: _createCustomerCall,
     CreateCheckoutSessionCall: _createCheckoutSessionCall,
     GetCustomerPortalSessionCall: _getCustomerPortalSessionCall,

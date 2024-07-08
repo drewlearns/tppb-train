@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:async';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'view_all_bills_model.dart';
 export 'view_all_bills_model.dart';
@@ -73,7 +74,7 @@ class _ViewAllBillsWidgetState extends State<ViewAllBillsWidget> {
                 ),
                 actions: const [],
                 flexibleSpace: FlexibleSpaceBar(
-                  title: Text(
+                  title: AutoSizeText(
                     FFLocalizations.of(context).getText(
                       'jo1bk6zp' /* All Bills */,
                     ),
@@ -82,6 +83,7 @@ class _ViewAllBillsWidgetState extends State<ViewAllBillsWidget> {
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
                           letterSpacing: 0.0,
+                          lineHeight: 2.0,
                         ),
                   ),
                   centerTitle: true,

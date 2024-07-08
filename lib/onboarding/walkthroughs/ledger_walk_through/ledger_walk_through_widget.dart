@@ -181,6 +181,7 @@ class _LedgerWalkThroughWidgetState extends State<LedgerWalkThroughWidget>
                         fontFamily: 'Noto Sans JP',
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                         letterSpacing: 0.0,
+                        lineHeight: 2.0,
                       ),
                 ),
                 centerTitle: true,
@@ -230,94 +231,107 @@ class _LedgerWalkThroughWidgetState extends State<LedgerWalkThroughWidget>
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 8.0, 0.0, 8.0),
-                                                  child: FlutterFlowDropDown<
-                                                      String>(
-                                                    controller: _model
-                                                            .householdDropDownValueController ??=
-                                                        FormFieldController<
-                                                            String>(
-                                                      _model.householdDropDownValue ??=
+                                                Container(
+                                                  decoration: const BoxDecoration(),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 8.0,
+                                                                0.0, 8.0),
+                                                    child: FlutterFlowDropDown<
+                                                        String>(
+                                                      controller: _model
+                                                              .householdDropDownValueController ??=
+                                                          FormFieldController<
+                                                              String>(
+                                                        _model.householdDropDownValue ??=
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                          'rrovg1lu' /* Karriker-1234567 */,
+                                                        ),
+                                                      ),
+                                                      options: [
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                          'cd43kvvv' /* Karriker-1234567 */,
+                                                        )
+                                                      ],
+                                                      onChanged: (val) =>
+                                                          setState(() => _model
+                                                                  .householdDropDownValue =
+                                                              val),
+                                                      width: 300.0,
+                                                      height: 56.0,
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Noto Sans JP',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                      hintText:
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                        'rrovg1lu' /* Karriker-1234567 */,
+                                                        '9u9yfanc' /* Please select... */,
                                                       ),
-                                                    ),
-                                                    options: [
-                                                      FFLocalizations.of(
-                                                              context)
-                                                          .getText(
-                                                        'cd43kvvv' /* Karriker-1234567 */,
-                                                      )
-                                                    ],
-                                                    onChanged: (val) =>
-                                                        setState(() => _model
-                                                                .householdDropDownValue =
-                                                            val),
-                                                    width: 300.0,
-                                                    height: 56.0,
-                                                    textStyle: FlutterFlowTheme
-                                                            .of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Noto Sans JP',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                    hintText:
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                      '9u9yfanc' /* Please select... */,
-                                                    ),
-                                                    icon: Icon(
-                                                      Icons
-                                                          .keyboard_arrow_down_rounded,
-                                                      color:
+                                                      icon: Icon(
+                                                        Icons
+                                                            .keyboard_arrow_down_rounded,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        size: 24.0,
+                                                      ),
+                                                      fillColor: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      elevation: 2.0,
+                                                      borderColor:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .secondaryText,
-                                                      size: 24.0,
-                                                    ),
-                                                    fillColor: FlutterFlowTheme
-                                                            .of(context)
-                                                        .secondaryBackground,
-                                                    elevation: 2.0,
-                                                    borderColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .alternate,
-                                                    borderWidth: 2.0,
-                                                    borderRadius: 8.0,
-                                                    margin:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(16.0, 0.0,
-                                                                16.0, 0.0),
-                                                    hidesUnderline: true,
-                                                    isOverButton: true,
-                                                    isSearchable: false,
-                                                    isMultiSelect: false,
-                                                    labelText:
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                      '42kfe6k6' /* Budget* */,
-                                                    ),
-                                                    labelTextStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Noto Sans JP',
-                                                              letterSpacing:
+                                                              .alternate,
+                                                      borderWidth: 2.0,
+                                                      borderRadius: 8.0,
+                                                      margin:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  16.0,
                                                                   0.0,
-                                                            ),
+                                                                  16.0,
+                                                                  0.0),
+                                                      hidesUnderline: true,
+                                                      isOverButton: true,
+                                                      isSearchable: false,
+                                                      isMultiSelect: false,
+                                                      labelText:
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                        '42kfe6k6' /* Budget* */,
+                                                      ),
+                                                      labelTextStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Noto Sans JP',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                    ),
                                                   ),
+                                                ).addWalkthrough(
+                                                  containerEtqg3gay,
+                                                  _model
+                                                      .ledgerWalkthroughController,
                                                 ),
                                                 if (_model.filterClicked)
                                                   Padding(
@@ -1206,9 +1220,6 @@ class _LedgerWalkThroughWidgetState extends State<LedgerWalkThroughWidget>
                                                   .addToEnd(
                                                       const SizedBox(height: 4.0)),
                                             ),
-                                          ).addWalkthrough(
-                                            columnV9edxhj6,
-                                            _model.ledgerWalkthroughController,
                                           ),
                                         ),
                                       ],

@@ -8,6 +8,7 @@ import '/flutter_flow/form_field_controller.dart';
 import '/walkthroughs/bills_walkthrough.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'bills_walkthrough_model.dart';
@@ -114,7 +115,7 @@ class _BillsWalkthroughWidgetState extends State<BillsWalkthroughWidget>
                     ),
                   ],
                   flexibleSpace: FlexibleSpaceBar(
-                    title: Text(
+                    title: AutoSizeText(
                       FFLocalizations.of(context).getText(
                         '9j69de58' /* Bills */,
                       ),
@@ -124,6 +125,7 @@ class _BillsWalkthroughWidgetState extends State<BillsWalkthroughWidget>
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
                                 letterSpacing: 0.0,
+                                lineHeight: 2.0,
                               ),
                     ),
                     centerTitle: true,
@@ -162,70 +164,76 @@ class _BillsWalkthroughWidgetState extends State<BillsWalkthroughWidget>
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 8.0, 0.0, 8.0),
-                                      child: FlutterFlowDropDown<String>(
-                                        controller: _model
-                                                .householdDropDownValueController ??=
-                                            FormFieldController<String>(
-                                          _model.householdDropDownValue ??=
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                            'ymzq4eqv' /* Karriker 1234567 */,
-                                          ),
-                                        ),
-                                        options: [
-                                          FFLocalizations.of(context).getText(
-                                            '8g9khnqk' /* Karriker 1234567 */,
-                                          )
-                                        ],
-                                        onChanged: (val) => setState(() =>
-                                            _model.householdDropDownValue =
-                                                val),
-                                        width: 300.0,
-                                        height: 56.0,
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Noto Sans JP',
-                                              letterSpacing: 0.0,
+                                    Container(
+                                      decoration: const BoxDecoration(),
+                                      child: Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 8.0, 0.0, 8.0),
+                                        child: FlutterFlowDropDown<String>(
+                                          controller: _model
+                                                  .householdDropDownValueController ??=
+                                              FormFieldController<String>(
+                                            _model.householdDropDownValue ??=
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              'ymzq4eqv' /* Karriker 1234567 */,
                                             ),
-                                        hintText:
+                                          ),
+                                          options: [
                                             FFLocalizations.of(context).getText(
-                                          'hji1lib8' /* Please select... */,
+                                              '8g9khnqk' /* Karriker 1234567 */,
+                                            )
+                                          ],
+                                          onChanged: (val) => setState(() =>
+                                              _model.householdDropDownValue =
+                                                  val),
+                                          width: 300.0,
+                                          height: 56.0,
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Noto Sans JP',
+                                                    letterSpacing: 0.0,
+                                                  ),
+                                          hintText: FFLocalizations.of(context)
+                                              .getText(
+                                            'hji1lib8' /* Please select... */,
+                                          ),
+                                          icon: Icon(
+                                            Icons.keyboard_arrow_down_rounded,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            size: 24.0,
+                                          ),
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                          elevation: 2.0,
+                                          borderColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .alternate,
+                                          borderWidth: 2.0,
+                                          borderRadius: 8.0,
+                                          margin:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 0.0, 16.0, 0.0),
+                                          hidesUnderline: true,
+                                          isOverButton: true,
+                                          isSearchable: false,
+                                          isMultiSelect: false,
+                                          labelText: FFLocalizations.of(context)
+                                              .getText(
+                                            'j7s8jfvz' /* Budget* */,
+                                          ),
+                                          labelTextStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .override(
+                                                    fontFamily: 'Noto Sans JP',
+                                                    letterSpacing: 0.0,
+                                                  ),
                                         ),
-                                        icon: Icon(
-                                          Icons.keyboard_arrow_down_rounded,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          size: 24.0,
-                                        ),
-                                        fillColor: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        elevation: 2.0,
-                                        borderColor:
-                                            FlutterFlowTheme.of(context)
-                                                .alternate,
-                                        borderWidth: 2.0,
-                                        borderRadius: 8.0,
-                                        margin: const EdgeInsetsDirectional.fromSTEB(
-                                            16.0, 0.0, 16.0, 0.0),
-                                        hidesUnderline: true,
-                                        isOverButton: true,
-                                        isSearchable: false,
-                                        isMultiSelect: false,
-                                        labelText:
-                                            FFLocalizations.of(context).getText(
-                                          'j7s8jfvz' /* Budget* */,
-                                        ),
-                                        labelTextStyle:
-                                            FlutterFlowTheme.of(context)
-                                                .labelMedium
-                                                .override(
-                                                  fontFamily: 'Noto Sans JP',
-                                                  letterSpacing: 0.0,
-                                                ),
                                       ),
                                     ),
                                   ],

@@ -89,7 +89,7 @@ class _IncomesWalkthroughWidgetState extends State<IncomesWalkthroughWidget> {
                   ),
                 ],
                 flexibleSpace: FlexibleSpaceBar(
-                  title: Text(
+                  title: AutoSizeText(
                     FFLocalizations.of(context).getText(
                       '4vsfm1pn' /* Incomes */,
                     ),
@@ -98,6 +98,7 @@ class _IncomesWalkthroughWidgetState extends State<IncomesWalkthroughWidget> {
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
                           letterSpacing: 0.0,
+                          lineHeight: 2.0,
                         ),
                   ),
                   centerTitle: true,
@@ -142,72 +143,76 @@ class _IncomesWalkthroughWidgetState extends State<IncomesWalkthroughWidget> {
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 8.0, 0.0, 8.0),
-                                  child: FlutterFlowDropDown<String>(
-                                    controller: _model
-                                            .householdDropDownValueController ??=
-                                        FormFieldController<String>(
-                                      _model.householdDropDownValue ??=
-                                          FFLocalizations.of(context).getText(
-                                        'pmn4wfu5' /* Karriker-1234567 */,
+                                Container(
+                                  decoration: const BoxDecoration(),
+                                  child: Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 8.0, 0.0, 8.0),
+                                    child: FlutterFlowDropDown<String>(
+                                      controller: _model
+                                              .householdDropDownValueController ??=
+                                          FormFieldController<String>(
+                                        _model.householdDropDownValue ??=
+                                            FFLocalizations.of(context).getText(
+                                          'pmn4wfu5' /* Karriker-1234567 */,
+                                        ),
                                       ),
-                                    ),
-                                    options: [
-                                      FFLocalizations.of(context).getText(
-                                        'rr2ft5uj' /* Karriker-1234567 */,
-                                      )
-                                    ],
-                                    onChanged: (val) => setState(() =>
-                                        _model.householdDropDownValue = val),
-                                    width: 300.0,
-                                    height: 56.0,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Noto Sans JP',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    hintText:
+                                      options: [
                                         FFLocalizations.of(context).getText(
-                                      'vrt0w60q' /* Please select... */,
+                                          'rr2ft5uj' /* Karriker-1234567 */,
+                                        )
+                                      ],
+                                      onChanged: (val) => setState(() =>
+                                          _model.householdDropDownValue = val),
+                                      width: 300.0,
+                                      height: 56.0,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Noto Sans JP',
+                                            letterSpacing: 0.0,
+                                          ),
+                                      hintText:
+                                          FFLocalizations.of(context).getText(
+                                        'vrt0w60q' /* Please select... */,
+                                      ),
+                                      icon: Icon(
+                                        Icons.keyboard_arrow_down_rounded,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 24.0,
+                                      ),
+                                      fillColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      elevation: 2.0,
+                                      borderColor: FlutterFlowTheme.of(context)
+                                          .alternate,
+                                      borderWidth: 2.0,
+                                      borderRadius: 8.0,
+                                      margin: const EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 0.0, 16.0, 0.0),
+                                      hidesUnderline: true,
+                                      isOverButton: true,
+                                      isSearchable: false,
+                                      isMultiSelect: false,
+                                      labelText:
+                                          FFLocalizations.of(context).getText(
+                                        'j7anbvf8' /* Budget* */,
+                                      ),
+                                      labelTextStyle:
+                                          FlutterFlowTheme.of(context)
+                                              .labelMedium
+                                              .override(
+                                                fontFamily: 'Noto Sans JP',
+                                                letterSpacing: 0.0,
+                                              ),
                                     ),
-                                    icon: Icon(
-                                      Icons.keyboard_arrow_down_rounded,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 24.0,
-                                    ),
-                                    fillColor: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    elevation: 2.0,
-                                    borderColor:
-                                        FlutterFlowTheme.of(context).alternate,
-                                    borderWidth: 2.0,
-                                    borderRadius: 8.0,
-                                    margin: const EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 0.0, 16.0, 0.0),
-                                    hidesUnderline: true,
-                                    isOverButton: true,
-                                    isSearchable: false,
-                                    isMultiSelect: false,
-                                    labelText:
-                                        FFLocalizations.of(context).getText(
-                                      'j7anbvf8' /* Budget* */,
-                                    ),
-                                    labelTextStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          fontFamily: 'Noto Sans JP',
-                                          letterSpacing: 0.0,
-                                        ),
                                   ),
+                                ).addWalkthrough(
+                                  containerZpwe14cv,
+                                  _model.incomesWalkthroughController,
                                 ),
                               ],
-                            ).addWalkthrough(
-                              rowA7m13dby,
-                              _model.incomesWalkthroughController,
                             ),
                           ),
                         ),

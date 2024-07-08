@@ -9,15 +9,33 @@ class OnboardingAddHousehold1Model
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  final formKey = GlobalKey<FormState>();
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
+  String? _textControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'loxsnt8z' /* Field is required */,
+      );
+    }
+
+    if (!RegExp('/^[a-zA-Z ]+\$/').hasMatch(val)) {
+      return FFLocalizations.of(context).getText(
+        'm0mx4uc8' /* Letters and Spaces Only */,
+      );
+    }
+    return null;
+  }
+
   // Stores action output result for [Backend Call - API (addHousehold)] action in Button widget.
   ApiCallResponse? addBudgetOutput;
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    textControllerValidator = _textControllerValidator;
+  }
 
   @override
   void dispose() {

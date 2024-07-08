@@ -4,7 +4,7 @@ import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 import '/onboarding/walkthroughs/walkthrough_card/walkthrough_card_widget.dart';
 
 // Focus widget keys for this walkthrough
-final rowAsmni7oq = GlobalKey();
+final dropDown9e8639mc = GlobalKey();
 final columnNxx023kx = GlobalKey();
 final iconButtonNewug10l = GlobalKey();
 final iconButton4acayd8r = GlobalKey();
@@ -15,9 +15,9 @@ final iconButton4acayd8r = GlobalKey();
 List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
       /// Step 1
       TargetFocus(
-        keyTarget: rowAsmni7oq,
+        keyTarget: dropDown9e8639mc,
         enableOverlayTab: true,
-        alignSkip: Alignment.bottomRight,
+        alignSkip: Alignment.topLeft,
         shape: ShapeLightFocus.RRect,
         color: Colors.black,
         contents: [
@@ -35,7 +35,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
       TargetFocus(
         keyTarget: columnNxx023kx,
         enableOverlayTab: true,
-        alignSkip: Alignment.bottomRight,
+        alignSkip: Alignment.topLeft,
         shape: ShapeLightFocus.RRect,
         color: Colors.black,
         contents: [
@@ -54,7 +54,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
       TargetFocus(
         keyTarget: iconButtonNewug10l,
         enableOverlayTab: true,
-        alignSkip: Alignment.bottomRight,
+        alignSkip: Alignment.topLeft,
         shape: ShapeLightFocus.Circle,
         color: Colors.black,
         contents: [
@@ -73,7 +73,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
       TargetFocus(
         keyTarget: iconButton4acayd8r,
         enableOverlayTab: true,
-        alignSkip: Alignment.bottomRight,
+        alignSkip: Alignment.topLeft,
         shape: ShapeLightFocus.Circle,
         color: Colors.black,
         contents: [
