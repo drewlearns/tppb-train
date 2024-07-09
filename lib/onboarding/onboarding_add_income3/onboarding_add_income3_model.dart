@@ -25,13 +25,13 @@ class OnboardingAddIncome3Model
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'hbl7nexd' /* Field is required */,
+        'hazxzkc5' /* Field is required */,
       );
     }
 
-    if (!RegExp('/^[a-zA-Z ]+\$/').hasMatch(val)) {
+    if (!RegExp('^[a-zA-Z\\s]+\$').hasMatch(val)) {
       return FFLocalizations.of(context).getText(
-        'pls7oi2q' /* Letters and spaces only. */,
+        'flmi0x8p' /* Letters and spaces only. */,
       );
     }
     return null;
@@ -48,9 +48,9 @@ class OnboardingAddIncome3Model
       );
     }
 
-    if (!RegExp('/^\\d+(\\.\\d+)?\$/').hasMatch(val)) {
+    if (!RegExp('^\\d+(\\.\\d{2})?\$').hasMatch(val)) {
       return FFLocalizations.of(context).getText(
-        'fmopkyle' /* Digits and periods only */,
+        'ayr0hhu8' /* Digits and periods only */,
       );
     }
     return null;

@@ -9,8 +9,9 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
   final unfocusNode = FocusNode();
   final formKey4 = GlobalKey<FormState>();
   final formKey2 = GlobalKey<FormState>();
-  final formKey5 = GlobalKey<FormState>();
+  final formKey6 = GlobalKey<FormState>();
   final formKey3 = GlobalKey<FormState>();
+  final formKey5 = GlobalKey<FormState>();
   final formKey1 = GlobalKey<FormState>();
   // State field(s) for TabBar widget.
   TabController? tabBarController;
@@ -47,14 +48,8 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
       );
     }
 
-    if (val.length < 2) {
-      return 'Requires at least 2 characters.';
-    }
-
-    if (!RegExp('/^[a-zA-Z]+\$/').hasMatch(val)) {
-      return FFLocalizations.of(context).getText(
-        'b0kqouv8' /* Invalid First Name */,
-      );
+    if (!RegExp('^[a-zA-Z\\s]+\$').hasMatch(val)) {
+      return 'Invalid text';
     }
     return null;
   }
@@ -74,7 +69,7 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
       return 'Requires at least 2 characters.';
     }
 
-    if (!RegExp('/^[a-zA-Z]+\$/').hasMatch(val)) {
+    if (!RegExp('^[a-zA-Z\\s]+\$').hasMatch(val)) {
       return FFLocalizations.of(context).getText(
         '20sdlf8a' /* Invalid Last Name */,
       );
@@ -102,10 +97,10 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
     }
 
     if (!RegExp(
-            '/^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#\$%^&*(),.?\':{}|<>])[A-Za-z\\d!@#\$%^&*(),.?\':{}|<>]{8,}\$/')
+            '^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#\$%^&*()_+{}\":;\\\'<>?,.\\[\\]])[A-Za-z\\d!@#\$%^&*()_+{}\":;\\\'<>?,.\\[\\]]{8,}\$')
         .hasMatch(val)) {
       return FFLocalizations.of(context).getText(
-        'l4zryvgb' /* Must contain 8 characters, 1 s... */,
+        'l4zryvgb' /* 1 special character, 1 upper c... */,
       );
     }
     return null;
@@ -117,6 +112,17 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
   late bool confirmPasswordVisibility;
   String? Function(BuildContext, String?)?
       confirmPasswordTextControllerValidator;
+  String? _confirmPasswordTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'fp7szej1' /* Field is required */,
+      );
+    }
+
+    return null;
+  }
+
   // State field(s) for MailOptIn widget.
   bool? mailOptInValue;
   // Stores action output result for [Backend Call - API (create Customer)] action in Button widget.
@@ -131,7 +137,7 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'fp7szej1' /* Field is required */,
+        'qqkh2yte' /* Field is required */,
       );
     }
 
@@ -156,6 +162,8 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
     newPasswordVisibility = false;
     newPasswordTextControllerValidator = _newPasswordTextControllerValidator;
     confirmPasswordVisibility = false;
+    confirmPasswordTextControllerValidator =
+        _confirmPasswordTextControllerValidator;
     emailSignInTextControllerValidator = _emailSignInTextControllerValidator;
     passwordSignInVisibility = false;
   }

@@ -403,7 +403,7 @@ class _EditBudgetWidgetState extends State<EditBudgetWidget> {
                             setState(() {});
                           },
                           text: FFLocalizations.of(context).getText(
-                            '6exdehmp' /* Delete Household */,
+                            '6exdehmp' /* Delete Budget */,
                           ),
                           options: FFButtonOptions(
                             width: 180.0,
@@ -430,6 +430,10 @@ class _EditBudgetWidgetState extends State<EditBudgetWidget> {
                         ),
                         FFButtonWidget(
                           onPressed: () async {
+                            if (_model.formKey.currentState == null ||
+                                !_model.formKey.currentState!.validate()) {
+                              return;
+                            }
                             _model.apiResult2qy =
                                 await TppbGroup.editHouseholdCall.call(
                               householdName: _model.textController.text,

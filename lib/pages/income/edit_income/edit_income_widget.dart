@@ -567,7 +567,7 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
                                                       FFLocalizations.of(
                                                               context)
                                                           .getText(
-                                                        '6imapvz6' /* Semi-Monthly (1st & 15th) */,
+                                                        'bl9bzkmb' /* Semi-Monthly (1st & 15th) */,
                                                       )
                                                     ],
                                                     onChanged: (val) =>
@@ -645,8 +645,7 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
                                                   child: Form(
                                                     key: _model.formKey1,
                                                     autovalidateMode:
-                                                        AutovalidateMode
-                                                            .disabled,
+                                                        AutovalidateMode.always,
                                                     child: TextFormField(
                                                       controller: _model
                                                               .incomeNameTextController ??=
@@ -792,8 +791,7 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
                                                   child: Form(
                                                     key: _model.formKey2,
                                                     autovalidateMode:
-                                                        AutovalidateMode
-                                                            .disabled,
+                                                        AutovalidateMode.always,
                                                     child: TextFormField(
                                                       controller: _model
                                                               .amountTextController ??=
@@ -937,7 +935,7 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
                                             Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                '4onbne4j' /* To edit Start and End dates, y... */,
+                                                'fpgplxu1' /* To edit Start and End dates, y... */,
                                               ),
                                               textAlign: TextAlign.center,
                                               style:
@@ -1031,7 +1029,7 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
                                                   Text(
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                      'npoubtc3' /* To */,
+                                                      'rpw9cc9q' /* To */,
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)

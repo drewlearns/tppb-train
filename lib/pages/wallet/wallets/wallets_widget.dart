@@ -114,7 +114,7 @@ class _WalletsWidgetState extends State<WalletsWidget> {
                 flexibleSpace: FlexibleSpaceBar(
                   title: AutoSizeText(
                     FFLocalizations.of(context).getText(
-                      'uyej0lms' /* Wallet */,
+                      'uyej0lms' /* Wallets */,
                     ),
                     style: FlutterFlowTheme.of(context).headlineLarge.override(
                           fontFamily: 'Noto Sans JP',

@@ -104,7 +104,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                         Expanded(
                           child: Form(
                             key: _model.formKey,
-                            autovalidateMode: AutovalidateMode.disabled,
+                            autovalidateMode: AutovalidateMode.always,
                             child: Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 4.0, 0.0, 0.0),
@@ -214,6 +214,8 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                 email: _model.emailAddressTextController.text,
                                 context: context,
                               );
+
+                              context.pushNamed('EntryPage');
                             },
                             text: FFLocalizations.of(context).getText(
                               '1utz5tgh' /* Continue */,

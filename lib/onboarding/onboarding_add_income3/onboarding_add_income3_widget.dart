@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'onboarding_add_income3_model.dart';
@@ -88,7 +89,7 @@ class _OnboardingAddIncome3WidgetState
                   ),
                   actions: const [],
                   flexibleSpace: FlexibleSpaceBar(
-                    title: Text(
+                    title: AutoSizeText(
                       FFLocalizations.of(context).getText(
                         'u7i58bky' /* Onboarding */,
                       ),
@@ -303,219 +304,230 @@ class _OnboardingAddIncome3WidgetState
                                                     ),
                                                   ],
                                                 ),
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Expanded(
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    2.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: FFButtonWidget(
-                                                          onPressed: () async {
-                                                            final datePicked1Date =
-                                                                await showDatePicker(
-                                                              context: context,
-                                                              initialDate:
-                                                                  getCurrentTimestamp,
-                                                              firstDate:
-                                                                  DateTime(
-                                                                      1900),
-                                                              lastDate:
-                                                                  DateTime(
-                                                                      2050),
-                                                              builder: (context,
-                                                                  child) {
-                                                                return wrapInMaterialDatePickerTheme(
-                                                                  context,
-                                                                  child!,
-                                                                  headerBackgroundColor:
-                                                                      FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
-                                                                  headerForegroundColor:
-                                                                      FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .info,
-                                                                  headerTextStyle: FlutterFlowTheme.of(
+                                                Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 2.0, 0.0, 0.0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Expanded(
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      2.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: FFButtonWidget(
+                                                            onPressed:
+                                                                () async {
+                                                              final datePicked1Date =
+                                                                  await showDatePicker(
+                                                                context:
+                                                                    context,
+                                                                initialDate:
+                                                                    getCurrentTimestamp,
+                                                                firstDate:
+                                                                    DateTime(
+                                                                        1900),
+                                                                lastDate:
+                                                                    DateTime(
+                                                                        2050),
+                                                                builder:
+                                                                    (context,
+                                                                        child) {
+                                                                  return wrapInMaterialDatePickerTheme(
+                                                                    context,
+                                                                    child!,
+                                                                    headerBackgroundColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .primary,
+                                                                    headerForegroundColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .info,
+                                                                    headerTextStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineLarge
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Noto Sans JP',
+                                                                          fontSize:
+                                                                              32.0,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight:
+                                                                              FontWeight.w600,
+                                                                        ),
+                                                                    pickerBackgroundColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .secondaryBackground,
+                                                                    pickerForegroundColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .primaryText,
+                                                                    selectedDateTimeBackgroundColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .primary,
+                                                                    selectedDateTimeForegroundColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .info,
+                                                                    actionButtonForegroundColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .primaryText,
+                                                                    iconSize:
+                                                                        24.0,
+                                                                  );
+                                                                },
+                                                              );
+
+                                                              if (datePicked1Date !=
+                                                                  null) {
+                                                                safeSetState(
+                                                                    () {
+                                                                  _model.datePicked1 =
+                                                                      DateTime(
+                                                                    datePicked1Date
+                                                                        .year,
+                                                                    datePicked1Date
+                                                                        .month,
+                                                                    datePicked1Date
+                                                                        .day,
+                                                                  );
+                                                                });
+                                                              }
+                                                            },
+                                                            text:
+                                                                valueOrDefault<
+                                                                    String>(
+                                                              dateTimeFormat(
+                                                                'yMMMd',
+                                                                _model
+                                                                    .datePicked1,
+                                                                locale: FFLocalizations.of(
+                                                                        context)
+                                                                    .languageCode,
+                                                              ),
+                                                              'Start Date*',
+                                                            ),
+                                                            icon: Icon(
+                                                              Icons
+                                                                  .calendar_month,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primaryText,
+                                                              size: 15.0,
+                                                            ),
+                                                            options:
+                                                                FFButtonOptions(
+                                                              width: 300.0,
+                                                              height: 56.0,
+                                                              padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          24.0,
+                                                                          0.0,
+                                                                          24.0,
+                                                                          0.0),
+                                                              iconPadding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryBackground,
+                                                              textStyle:
+                                                                  FlutterFlowTheme.of(
                                                                           context)
-                                                                      .headlineLarge
+                                                                      .titleSmall
                                                                       .override(
                                                                         fontFamily:
                                                                             'Noto Sans JP',
-                                                                        fontSize:
-                                                                            32.0,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primaryText,
                                                                         letterSpacing:
                                                                             0.0,
-                                                                        fontWeight:
-                                                                            FontWeight.w600,
                                                                       ),
-                                                                  pickerBackgroundColor:
-                                                                      FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryBackground,
-                                                                  pickerForegroundColor:
-                                                                      FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primaryText,
-                                                                  selectedDateTimeBackgroundColor:
-                                                                      FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
-                                                                  selectedDateTimeForegroundColor:
-                                                                      FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .info,
-                                                                  actionButtonForegroundColor:
-                                                                      FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primaryText,
-                                                                  iconSize:
-                                                                      24.0,
-                                                                );
-                                                              },
-                                                            );
-
-                                                            if (datePicked1Date !=
-                                                                null) {
-                                                              safeSetState(() {
-                                                                _model.datePicked1 =
-                                                                    DateTime(
-                                                                  datePicked1Date
-                                                                      .year,
-                                                                  datePicked1Date
-                                                                      .month,
-                                                                  datePicked1Date
-                                                                      .day,
-                                                                );
-                                                              });
-                                                            }
-                                                          },
-                                                          text: valueOrDefault<
-                                                              String>(
-                                                            _model.datePicked1
-                                                                ?.toString(),
-                                                            'Start Date*',
-                                                          ),
-                                                          icon: Icon(
-                                                            Icons
-                                                                .calendar_month,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .primaryText,
-                                                            size: 15.0,
-                                                          ),
-                                                          options:
-                                                              FFButtonOptions(
-                                                            width: 300.0,
-                                                            height: 56.0,
-                                                            padding:
-                                                                const EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        24.0,
-                                                                        0.0,
-                                                                        24.0,
-                                                                        0.0),
-                                                            iconPadding:
-                                                                const EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
-                                                            textStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmall
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Noto Sans JP',
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primaryText,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                    ),
-                                                            elevation: 0.0,
-                                                            borderSide:
-                                                                const BorderSide(
-                                                              color: Colors
-                                                                  .transparent,
-                                                              width: 1.0,
+                                                              elevation: 0.0,
+                                                              borderSide:
+                                                                  const BorderSide(
+                                                                color: Colors
+                                                                    .transparent,
+                                                                width: 1.0,
+                                                              ),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
                                                             ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        8.0),
                                                           ),
                                                         ),
                                                       ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  8.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Semantics(
-                                                        label:
-                                                            'Click for more Information',
-                                                        child: InkWell(
-                                                          splashColor: Colors
-                                                              .transparent,
-                                                          focusColor: Colors
-                                                              .transparent,
-                                                          hoverColor: Colors
-                                                              .transparent,
-                                                          highlightColor: Colors
-                                                              .transparent,
-                                                          onTap: () async {
-                                                            await showDialog(
-                                                              context: context,
-                                                              builder:
-                                                                  (alertDialogContext) {
-                                                                return AlertDialog(
-                                                                  title: const Text(
-                                                                      'Information'),
-                                                                  content: const Text(
-                                                                      'Select the most recent pay date. Suggestion is to make the time early in the day so it comes before bills and expenses.'),
-                                                                  actions: [
-                                                                    TextButton(
-                                                                      onPressed:
-                                                                          () =>
-                                                                              Navigator.pop(alertDialogContext),
-                                                                      child: const Text(
-                                                                          'Ok'),
-                                                                    ),
-                                                                  ],
-                                                                );
-                                                              },
-                                                            );
-                                                          },
-                                                          child: Icon(
-                                                            Icons.info_outline,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryText,
-                                                            size: 24.0,
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    8.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: Semantics(
+                                                          label:
+                                                              'Click for more Information',
+                                                          child: InkWell(
+                                                            splashColor: Colors
+                                                                .transparent,
+                                                            focusColor: Colors
+                                                                .transparent,
+                                                            hoverColor: Colors
+                                                                .transparent,
+                                                            highlightColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            onTap: () async {
+                                                              await showDialog(
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (alertDialogContext) {
+                                                                  return AlertDialog(
+                                                                    title: const Text(
+                                                                        'Information'),
+                                                                    content: const Text(
+                                                                        'Select the most recent pay date. Suggestion is to make the time early in the day so it comes before bills and expenses.'),
+                                                                    actions: [
+                                                                      TextButton(
+                                                                        onPressed:
+                                                                            () =>
+                                                                                Navigator.pop(alertDialogContext),
+                                                                        child: const Text(
+                                                                            'Ok'),
+                                                                      ),
+                                                                    ],
+                                                                  );
+                                                                },
+                                                              );
+                                                            },
+                                                            child: Icon(
+                                                              Icons
+                                                                  .info_outline,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryText,
+                                                              size: 24.0,
+                                                            ),
                                                           ),
                                                         ),
                                                       ),
-                                                    ),
-                                                  ],
+                                                    ],
+                                                  ),
                                                 ),
                                                 if (_model.frequencyValue !=
                                                     'once')
@@ -532,7 +544,7 @@ class _OnboardingAddIncome3WidgetState
                                                               const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       2.0,
-                                                                      0.0,
+                                                                      3.0,
                                                                       0.0,
                                                                       0.0),
                                                           child: FFButtonWidget(
@@ -614,8 +626,14 @@ class _OnboardingAddIncome3WidgetState
                                                             text:
                                                                 valueOrDefault<
                                                                     String>(
-                                                              _model.datePicked2
-                                                                  ?.toString(),
+                                                              dateTimeFormat(
+                                                                'yMMMd',
+                                                                _model
+                                                                    .datePicked2,
+                                                                locale: FFLocalizations.of(
+                                                                        context)
+                                                                    .languageCode,
+                                                              ),
                                                               'End Date*',
                                                             ),
                                                             icon: Icon(
@@ -743,7 +761,7 @@ class _OnboardingAddIncome3WidgetState
                                                         key: _model.formKey1,
                                                         autovalidateMode:
                                                             AutovalidateMode
-                                                                .disabled,
+                                                                .always,
                                                         child: TextFormField(
                                                           controller: _model
                                                               .incomeNameTextController,
@@ -879,7 +897,7 @@ class _OnboardingAddIncome3WidgetState
                                                         key: _model.formKey2,
                                                         autovalidateMode:
                                                             AutovalidateMode
-                                                                .disabled,
+                                                                .always,
                                                         child: TextFormField(
                                                           controller: _model
                                                               .amountTextController,
@@ -1040,10 +1058,12 @@ class _OnboardingAddIncome3WidgetState
                                                               currentJwtToken,
                                                           startDate: _model
                                                               .datePicked1
-                                                              ?.toString(),
+                                                              ?.millisecondsSinceEpoch
+                                                              .toString(),
                                                           endDate: _model
                                                               .datePicked2
-                                                              ?.toString(),
+                                                              ?.millisecondsSinceEpoch
+                                                              .toString(),
                                                         );
 
                                                         if ((_model
@@ -1182,6 +1202,84 @@ class _OnboardingAddIncome3WidgetState
                                                                       'Noto Sans JP',
                                                                   color: Colors
                                                                       .white,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                        elevation: 3.0,
+                                                        borderSide: const BorderSide(
+                                                          color: Colors
+                                                              .transparent,
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    FFButtonWidget(
+                                                      onPressed: () async {
+                                                        context.pushNamed(
+                                                          'OnboardingAddBill4',
+                                                          queryParameters: {
+                                                            'householdId':
+                                                                serializeParam(
+                                                              widget
+                                                                  .householdId,
+                                                              ParamType.String,
+                                                            ),
+                                                            'paymentSourceId':
+                                                                serializeParam(
+                                                              widget
+                                                                  .paymentSourceId,
+                                                              ParamType.String,
+                                                            ),
+                                                          }.withoutNulls,
+                                                        );
+                                                      },
+                                                      text: FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'ez1jb8d8' /* Skip For Now */,
+                                                      ),
+                                                      options: FFButtonOptions(
+                                                        width: 360.0,
+                                                        height: 40.0,
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    24.0,
+                                                                    0.0,
+                                                                    24.0,
+                                                                    0.0),
+                                                        iconPadding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
+                                                        textStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Noto Sans JP',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),

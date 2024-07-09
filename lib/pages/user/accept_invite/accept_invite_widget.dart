@@ -162,90 +162,102 @@ Sign up below to star... */
                                 ),
                                 Align(
                                   alignment: const AlignmentDirectional(0.0, 0.0),
-                                  child: SizedBox(
-                                    width: 350.0,
-                                    child: TextFormField(
-                                      controller:
-                                          _model.inviteCodeTextController,
-                                      focusNode: _model.inviteCodeFocusNode,
-                                      autofocus: true,
-                                      textInputAction: TextInputAction.next,
-                                      obscureText: false,
-                                      decoration: InputDecoration(
-                                        labelText:
-                                            FFLocalizations.of(context).getText(
-                                          'rymctou4' /* Invitation Code* */,
-                                        ),
-                                        labelStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .override(
-                                              fontFamily: 'Noto Sans JP',
+                                  child: Form(
+                                    key: _model.formKey4,
+                                    autovalidateMode: AutovalidateMode.always,
+                                    child: SizedBox(
+                                      width: 350.0,
+                                      child: TextFormField(
+                                        controller:
+                                            _model.inviteCodeTextController,
+                                        focusNode: _model.inviteCodeFocusNode,
+                                        autofocus: true,
+                                        textInputAction: TextInputAction.next,
+                                        obscureText: false,
+                                        decoration: InputDecoration(
+                                          labelText: FFLocalizations.of(context)
+                                              .getText(
+                                            'rymctou4' /* Invitation Code* */,
+                                          ),
+                                          labelStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .labelMedium
+                                              .override(
+                                                fontFamily: 'Noto Sans JP',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                letterSpacing: 0.0,
+                                              ),
+                                          hintStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .labelMedium
+                                              .override(
+                                                fontFamily: 'Noto Sans JP',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                letterSpacing: 0.0,
+                                              ),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              letterSpacing: 0.0,
+                                                      .alternate,
+                                              width: 2.0,
                                             ),
-                                        hintStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .override(
-                                              fontFamily: 'Noto Sans JP',
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryText,
+                                                      .primary,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
+                                          ),
+                                          errorBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
+                                          ),
+                                          focusedErrorBorder:
+                                              OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
+                                          ),
+                                          filled: true,
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                          contentPadding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 0.0, 0.0, 0.0),
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Noto Sans JP',
                                               letterSpacing: 0.0,
                                             ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .alternate,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        errorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        filled: true,
-                                        fillColor: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        contentPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
-                                                16.0, 0.0, 0.0, 0.0),
+                                        validator: _model
+                                            .inviteCodeTextControllerValidator
+                                            .asValidator(context),
                                       ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Noto Sans JP',
-                                            letterSpacing: 0.0,
-                                          ),
-                                      validator: _model
-                                          .inviteCodeTextControllerValidator
-                                          .asValidator(context),
                                     ),
                                   ),
                                 ),
@@ -253,7 +265,7 @@ Sign up below to star... */
                                   alignment: const AlignmentDirectional(0.0, 0.0),
                                   child: Form(
                                     key: _model.formKey3,
-                                    autovalidateMode: AutovalidateMode.disabled,
+                                    autovalidateMode: AutovalidateMode.always,
                                     child: SizedBox(
                                       width: 350.0,
                                       child: TextFormField(
@@ -356,7 +368,7 @@ Sign up below to star... */
                                   alignment: const AlignmentDirectional(0.0, 0.0),
                                   child: Form(
                                     key: _model.formKey2,
-                                    autovalidateMode: AutovalidateMode.disabled,
+                                    autovalidateMode: AutovalidateMode.always,
                                     child: SizedBox(
                                       width: 350.0,
                                       child: TextFormField(
@@ -460,8 +472,8 @@ Sign up below to star... */
                                 Align(
                                   alignment: const AlignmentDirectional(0.0, 0.0),
                                   child: Form(
-                                    key: _model.formKey4,
-                                    autovalidateMode: AutovalidateMode.disabled,
+                                    key: _model.formKey6,
+                                    autovalidateMode: AutovalidateMode.always,
                                     child: SizedBox(
                                       width: 350.0,
                                       child: TextFormField(
@@ -568,7 +580,7 @@ Sign up below to star... */
                                   alignment: const AlignmentDirectional(0.0, 0.0),
                                   child: Form(
                                     key: _model.formKey1,
-                                    autovalidateMode: AutovalidateMode.disabled,
+                                    autovalidateMode: AutovalidateMode.always,
                                     child: SizedBox(
                                       width: 350.0,
                                       child: TextFormField(
@@ -686,107 +698,115 @@ Sign up below to star... */
                                     ),
                                   ),
                                 ),
-                                SizedBox(
-                                  width: 350.0,
-                                  child: TextFormField(
-                                    controller:
-                                        _model.confirmPasswordTextController,
-                                    focusNode: _model.confirmPasswordFocusNode,
-                                    autofocus: true,
-                                    autofillHints: const [AutofillHints.password],
-                                    textInputAction: TextInputAction.done,
-                                    obscureText:
-                                        !_model.confirmPasswordVisibility,
-                                    decoration: InputDecoration(
-                                      labelText:
-                                          FFLocalizations.of(context).getText(
-                                        'ce6lg65e' /* Confirm Password */,
+                                Form(
+                                  key: _model.formKey5,
+                                  autovalidateMode: AutovalidateMode.always,
+                                  child: SizedBox(
+                                    width: 350.0,
+                                    child: TextFormField(
+                                      controller:
+                                          _model.confirmPasswordTextController,
+                                      focusNode:
+                                          _model.confirmPasswordFocusNode,
+                                      autofocus: true,
+                                      autofillHints: const [AutofillHints.password],
+                                      textInputAction: TextInputAction.done,
+                                      obscureText:
+                                          !_model.confirmPasswordVisibility,
+                                      decoration: InputDecoration(
+                                        labelText:
+                                            FFLocalizations.of(context).getText(
+                                          'ce6lg65e' /* Confirm Password */,
+                                        ),
+                                        labelStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .override(
+                                              fontFamily: 'Noto Sans JP',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              letterSpacing: 0.0,
+                                            ),
+                                        hintStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .override(
+                                              fontFamily: 'Noto Sans JP',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              letterSpacing: 0.0,
+                                            ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .alternate,
+                                            width: 2.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(12.0),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            width: 2.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(12.0),
+                                        ),
+                                        errorBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            width: 2.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(12.0),
+                                        ),
+                                        focusedErrorBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            width: 2.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(12.0),
+                                        ),
+                                        filled: true,
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        contentPadding:
+                                            const EdgeInsetsDirectional.fromSTEB(
+                                                16.0, 0.0, 0.0, 0.0),
+                                        suffixIcon: InkWell(
+                                          onTap: () => setState(
+                                            () => _model
+                                                    .confirmPasswordVisibility =
+                                                !_model
+                                                    .confirmPasswordVisibility,
+                                          ),
+                                          focusNode:
+                                              FocusNode(skipTraversal: true),
+                                          child: Icon(
+                                            _model.confirmPasswordVisibility
+                                                ? Icons.visibility_outlined
+                                                : Icons.visibility_off_outlined,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondary,
+                                            size: 24.0,
+                                          ),
+                                        ),
                                       ),
-                                      labelStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
                                           .override(
                                             fontFamily: 'Noto Sans JP',
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
                                             letterSpacing: 0.0,
                                           ),
-                                      hintStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .override(
-                                            fontFamily: 'Noto Sans JP',
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            letterSpacing: 0.0,
-                                          ),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .alternate,
-                                          width: 2.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          width: 2.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                      ),
-                                      errorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                          width: 2.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                      ),
-                                      focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                          width: 2.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                      ),
-                                      filled: true,
-                                      fillColor: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
-                                              16.0, 0.0, 0.0, 0.0),
-                                      suffixIcon: InkWell(
-                                        onTap: () => setState(
-                                          () => _model
-                                                  .confirmPasswordVisibility =
-                                              !_model.confirmPasswordVisibility,
-                                        ),
-                                        focusNode:
-                                            FocusNode(skipTraversal: true),
-                                        child: Icon(
-                                          _model.confirmPasswordVisibility
-                                              ? Icons.visibility_outlined
-                                              : Icons.visibility_off_outlined,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondary,
-                                          size: 24.0,
-                                        ),
-                                      ),
+                                      validator: _model
+                                          .confirmPasswordTextControllerValidator
+                                          .asValidator(context),
                                     ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Noto Sans JP',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    validator: _model
-                                        .confirmPasswordTextControllerValidator
-                                        .asValidator(context),
                                   ),
                                 ),
                                 Container(
@@ -905,7 +925,7 @@ Sign up below to star... */
                                                 },
                                               ) ??
                                               false;
-                                      _model.stripeSubscriptionUserCreationOutput =
+                                      _model.stripeSubscriptionUserCreationOutput2 =
                                           await StripeSubscriptionGroup
                                               .createCustomerCall
                                               .call(
@@ -925,11 +945,8 @@ Sign up below to star... */
                                         builder: (alertDialogContext) {
                                           return AlertDialog(
                                             title: const Text('Error'),
-                                            content: Text((_model
-                                                        .acceptInviteOutput
-                                                        ?.statusCode ??
-                                                    200)
-                                                .toString()),
+                                            content: const Text(
+                                                'Invitation Code is invalid. Creating user anyways.'),
                                             actions: [
                                               TextButton(
                                                 onPressed: () => Navigator.pop(
@@ -940,6 +957,87 @@ Sign up below to star... */
                                           );
                                         },
                                       );
+                                      _model.addUserjs =
+                                          await TppbGroup.addUserCall.call(
+                                        email: _model.emailTextController.text,
+                                        firstName:
+                                            _model.firstNameTextController.text,
+                                        mailOptIn: _model.mailOptInValue,
+                                        lastName: widget.lastname,
+                                        uuid: currentUserUid,
+                                        authenticationToken: currentJwtToken,
+                                      );
+
+                                      if ((_model.addUserjs?.succeeded ??
+                                          true)) {
+                                        var confirmDialogResponse =
+                                            await showDialog<bool>(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return AlertDialog(
+                                                      title: const Text('Thank you!'),
+                                                      content: const Text(
+                                                          'Check your email for a verification link.'),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext,
+                                                                  false),
+                                                          child: const Text('Exit'),
+                                                        ),
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext,
+                                                                  true),
+                                                          child: const Text('Ok'),
+                                                        ),
+                                                      ],
+                                                    );
+                                                  },
+                                                ) ??
+                                                false;
+                                        _model.stripeSubscriptionUserCreationOutput =
+                                            await StripeSubscriptionGroup
+                                                .createCustomerCall
+                                                .call(
+                                          email:
+                                              _model.emailTextController.text,
+                                          id: currentUserUid,
+                                          name: FFAppState().FullName,
+                                        );
+
+                                        await authManager
+                                            .sendEmailVerification();
+
+                                        context.pushNamedAuth(
+                                            'OnboardingAddHousehold1',
+                                            context.mounted);
+                                      } else {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title:
+                                                  const Text('Error Creating User'),
+                                              content: Text((_model.addUserjs
+                                                          ?.statusCode ??
+                                                      200)
+                                                  .toString()),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: const Text('Ok'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                      }
                                     }
 
                                     setState(() {});

@@ -62,19 +62,19 @@ class _LedgerWidgetState extends State<LedgerWidget>
                       TextButton(
                         onPressed: () =>
                             Navigator.pop(alertDialogContext, false),
-                        child: const Text('Buy now'),
+                        child: const Text('Skip For Now'),
                       ),
                       TextButton(
                         onPressed: () =>
                             Navigator.pop(alertDialogContext, true),
-                        child: const Text('Continue'),
+                        child: const Text('Buy Now'),
                       ),
                     ],
                   );
                 },
               ) ??
               false;
-          if (!confirmDialogResponse) {
+          if (confirmDialogResponse) {
             if (Navigator.of(context).canPop()) {
               context.pop();
             }
@@ -187,80 +187,71 @@ class _LedgerWidgetState extends State<LedgerWidget>
               leading: Visibility(
                 visible: _model.householdDropDownValue != null &&
                     _model.householdDropDownValue != '',
-                child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
-                  child: FlutterFlowIconButton(
-                    borderRadius: 20.0,
-                    borderWidth: 1.0,
-                    buttonSize: 40.0,
-                    icon: Icon(
-                      Icons.category_outlined,
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                      size: 24.0,
-                    ),
-                    onPressed: () async {
-                      context.pushNamed(
-                        'Categories',
-                        queryParameters: {
-                          'householdId': serializeParam(
-                            _model.householdDropDownValue,
-                            ParamType.String,
-                          ),
-                        }.withoutNulls,
-                      );
-                    },
+                child: FlutterFlowIconButton(
+                  borderRadius: 20.0,
+                  borderWidth: 1.0,
+                  buttonSize: 40.0,
+                  icon: Icon(
+                    Icons.category_outlined,
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                    size: 24.0,
                   ),
+                  onPressed: () async {
+                    context.pushNamed(
+                      'Categories',
+                      queryParameters: {
+                        'householdId': serializeParam(
+                          _model.householdDropDownValue,
+                          ParamType.String,
+                        ),
+                      }.withoutNulls,
+                    );
+                  },
                 ),
               ),
               actions: [
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
-                  child: FlutterFlowIconButton(
-                    borderRadius: 20.0,
-                    borderWidth: 1.0,
-                    buttonSize: 40.0,
-                    icon: Icon(
-                      Icons.search,
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                      size: 24.0,
-                    ),
-                    onPressed: () async {
-                      setState(() {
-                        _model.householdDropDownValueController?.reset();
-                        _model.monthDropDownValueController?.reset();
-                        _model.yearDropDownValueController?.reset();
-                      });
+                FlutterFlowIconButton(
+                  borderRadius: 20.0,
+                  borderWidth: 1.0,
+                  buttonSize: 40.0,
+                  icon: Icon(
+                    Icons.search,
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                    size: 24.0,
+                  ),
+                  onPressed: () async {
+                    setState(() {
+                      _model.householdDropDownValueController?.reset();
+                      _model.monthDropDownValueController?.reset();
+                      _model.yearDropDownValueController?.reset();
+                    });
 
-                      context.pushNamed('SearchTransactions');
-                    },
+                    context.pushNamed('SearchTransactions');
+                  },
+                ),
+                ToggleIcon(
+                  onPressed: () async {
+                    setState(
+                        () => _model.filterClicked = !_model.filterClicked);
+                    setState(() => _model.apiRequestCompleter = null);
+                    await _model.waitForApiRequestCompleted();
+
+                    setState(() {});
+                  },
+                  value: _model.filterClicked,
+                  onIcon: Icon(
+                    Icons.filter_alt,
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                    size: 25.0,
+                  ),
+                  offIcon: Icon(
+                    Icons.filter_alt_off,
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                    size: 25.0,
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
-                  child: ToggleIcon(
-                    onPressed: () async {
-                      setState(
-                          () => _model.filterClicked = !_model.filterClicked);
-                      setState(() => _model.apiRequestCompleter = null);
-                      await _model.waitForApiRequestCompleted();
-
-                      setState(() {});
-                    },
-                    value: _model.filterClicked,
-                    onIcon: Icon(
-                      Icons.filter_alt,
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                      size: 25.0,
-                    ),
-                    offIcon: Icon(
-                      Icons.filter_alt_off,
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                      size: 25.0,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 8.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
                   child: FlutterFlowIconButton(
                     borderRadius: 20.0,
                     borderWidth: 1.0,
@@ -1967,37 +1958,6 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                                                     ),
                                                                                   ),
                                                                                 ].divide(const SizedBox(width: 0.0)).around(const SizedBox(width: 0.0)),
-                                                                              ),
-                                                                              Row(
-                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                mainAxisAlignment: MainAxisAlignment.end,
-                                                                                children: [
-                                                                                  Padding(
-                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
-                                                                                    child: Text(
-                                                                                      valueOrDefault<String>(
-                                                                                        'Running Total: ${valueOrDefault<String>(
-                                                                                          formatNumber(
-                                                                                            TppbGroup.getLedgerCall.runningTotal(
-                                                                                              listViewGetLedgerResponse.jsonBody,
-                                                                                            )?[ledgerEntriesIndex],
-                                                                                            formatType: FormatType.custom,
-                                                                                            currency: '',
-                                                                                            format: '###,##0.00',
-                                                                                            locale: '',
-                                                                                          ),
-                                                                                          'Loading...',
-                                                                                        )}',
-                                                                                        'Loading...',
-                                                                                      ),
-                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            fontFamily: 'Noto Sans JP',
-                                                                                            fontSize: 13.0,
-                                                                                            letterSpacing: 0.0,
-                                                                                          ),
-                                                                                    ),
-                                                                                  ),
-                                                                                ],
                                                                               ),
                                                                             ],
                                                                           ),

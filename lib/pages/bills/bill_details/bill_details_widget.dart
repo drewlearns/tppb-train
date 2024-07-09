@@ -602,7 +602,7 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                       FFLocalizations.of(
                                                               context)
                                                           .getText(
-                                                        '3el1lm9b' /* Semi-Monthly (1st & 15th) */,
+                                                        'ggkbdnt6' /* Semi-Monthly (1st & 15th) */,
                                                       )
                                                     ],
                                                     onChanged: (val) =>
@@ -652,6 +652,22 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                     isOverButton: true,
                                                     isSearchable: false,
                                                     isMultiSelect: false,
+                                                    labelText:
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                      'ijwsp0iq' /* Frequency* */,
+                                                    ),
+                                                    labelTextStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Noto Sans JP',
+                                                              letterSpacing:
+                                                                  0.0,
+                                                            ),
                                                   ),
                                                 ),
                                               ),
@@ -787,7 +803,7 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                          'ealks1um' /* Household */,
+                                                          'ealks1um' /* Household* */,
                                                         ),
                                                         labelTextStyle:
                                                             FlutterFlowTheme.of(
@@ -938,7 +954,7 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                          'ovqxv27p' /* Wallet */,
+                                                          'ovqxv27p' /* Wallet* */,
                                                         ),
                                                         labelTextStyle:
                                                             FlutterFlowTheme.of(
@@ -1000,7 +1016,7 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                          'uvxopr0k' /* Category */,
+                                                          'uvxopr0k' /* Category* */,
                                                         ),
                                                         labelStyle:
                                                             FlutterFlowTheme.of(
@@ -1143,7 +1159,7 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                          'o0gcll4n' /* Bill Name */,
+                                                          'o0gcll4n' /* Bill Name* */,
                                                         ),
                                                         labelStyle:
                                                             FlutterFlowTheme.of(
@@ -1286,7 +1302,7 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                          'hxcg4uyb' /* Amount */,
+                                                          'hxcg4uyb' /* Amount* */,
                                                         ),
                                                         labelStyle:
                                                             FlutterFlowTheme.of(
@@ -1398,121 +1414,136 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                 MainAxisAlignment.start,
                                             children: [
                                               Expanded(
-                                                child: Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 4.0, 0.0, 0.0),
-                                                  child: TextFormField(
-                                                    controller: _model
-                                                            .descriptionTextController ??=
-                                                        TextEditingController(
-                                                      text: valueOrDefault<
-                                                          String>(
-                                                        TppbGroup.getBillCall
-                                                            .description(
-                                                          billDetailsGetBillResponse
-                                                              .jsonBody,
+                                                child: Form(
+                                                  key: _model.formKey5,
+                                                  autovalidateMode:
+                                                      AutovalidateMode.disabled,
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 4.0,
+                                                                0.0, 0.0),
+                                                    child: TextFormField(
+                                                      controller: _model
+                                                              .descriptionTextController ??=
+                                                          TextEditingController(
+                                                        text: valueOrDefault<
+                                                            String>(
+                                                          TppbGroup.getBillCall
+                                                              .description(
+                                                            billDetailsGetBillResponse
+                                                                .jsonBody,
+                                                          ),
+                                                          'Loading...',
                                                         ),
-                                                        'Loading...',
                                                       ),
-                                                    ),
-                                                    focusNode: _model
-                                                        .descriptionFocusNode,
-                                                    autofocus: true,
-                                                    textInputAction:
-                                                        TextInputAction.next,
-                                                    obscureText: false,
-                                                    decoration: InputDecoration(
-                                                      labelText:
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                        'iy2p2xjl' /* Description */,
-                                                      ),
-                                                      labelStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Noto Sans JP',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                      hintStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Noto Sans JP',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                      enabledBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .alternate,
-                                                          width: 2.0,
+                                                      focusNode: _model
+                                                          .descriptionFocusNode,
+                                                      autofocus: true,
+                                                      textInputAction:
+                                                          TextInputAction.next,
+                                                      obscureText: false,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        labelText:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                          'iy2p2xjl' /* Description* */,
                                                         ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8.0),
-                                                      ),
-                                                      focusedBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                          width: 2.0,
+                                                        labelStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Noto Sans JP',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                        hintStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Noto Sans JP',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                        enabledBorder:
+                                                            OutlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .alternate,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
                                                         ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8.0),
-                                                      ),
-                                                      errorBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .error,
-                                                          width: 2.0,
+                                                        focusedBorder:
+                                                            OutlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
                                                         ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8.0),
-                                                      ),
-                                                      focusedErrorBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .error,
-                                                          width: 2.0,
+                                                        errorBorder:
+                                                            OutlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .error,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
                                                         ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8.0),
+                                                        focusedErrorBorder:
+                                                            OutlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .error,
+                                                            width: 2.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                        ),
+                                                        filled: true,
+                                                        fillColor: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
                                                       ),
-                                                      filled: true,
-                                                      fillColor: FlutterFlowTheme
+                                                      style: FlutterFlowTheme
                                                               .of(context)
-                                                          .secondaryBackground,
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Noto Sans JP',
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                      validator: _model
+                                                          .descriptionTextControllerValidator
+                                                          .asValidator(context),
                                                     ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Noto Sans JP',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                    validator: _model
-                                                        .descriptionTextControllerValidator
-                                                        .asValidator(context),
                                                   ),
                                                 ),
                                               ),
@@ -2168,6 +2199,30 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                             10.0, 0.0, 10.0, 0.0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
+                                            if (_model.formKey4.currentState ==
+                                                    null ||
+                                                !_model.formKey4.currentState!
+                                                    .validate()) {
+                                              return;
+                                            }
+                                            if (_model.formKey1.currentState ==
+                                                    null ||
+                                                !_model.formKey1.currentState!
+                                                    .validate()) {
+                                              return;
+                                            }
+                                            if (_model.formKey3.currentState ==
+                                                    null ||
+                                                !_model.formKey3.currentState!
+                                                    .validate()) {
+                                              return;
+                                            }
+                                            if (_model.formKey2.currentState ==
+                                                    null ||
+                                                !_model.formKey2.currentState!
+                                                    .validate()) {
+                                              return;
+                                            }
                                             _model.editBillOutput =
                                                 await TppbGroup.editBillCall
                                                     .call(
@@ -2196,9 +2251,11 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                               paymentSourceIdGlobal:
                                                   _model.walletValue,
                                               startDate: _model.datePicked1
-                                                  ?.toString(),
+                                                  ?.millisecondsSinceEpoch
+                                                  .toString(),
                                               endDate: _model.datePicked2
-                                                  ?.toString(),
+                                                  ?.millisecondsSinceEpoch
+                                                  .toString(),
                                             );
 
                                             if ((_model.editBillOutput

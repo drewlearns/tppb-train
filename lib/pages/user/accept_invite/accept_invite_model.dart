@@ -7,14 +7,31 @@ class AcceptInviteModel extends FlutterFlowModel<AcceptInviteWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  final formKey4 = GlobalKey<FormState>();
   final formKey3 = GlobalKey<FormState>();
   final formKey2 = GlobalKey<FormState>();
-  final formKey4 = GlobalKey<FormState>();
+  final formKey6 = GlobalKey<FormState>();
   final formKey1 = GlobalKey<FormState>();
+  final formKey5 = GlobalKey<FormState>();
   // State field(s) for inviteCode widget.
   FocusNode? inviteCodeFocusNode;
   TextEditingController? inviteCodeTextController;
   String? Function(BuildContext, String?)? inviteCodeTextControllerValidator;
+  String? _inviteCodeTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'zqq29wzg' /* Field is required */,
+      );
+    }
+
+    if (val.length < 36) {
+      return 'Requires at least 36 characters.';
+    }
+
+    return null;
+  }
+
   // State field(s) for Email widget.
   FocusNode? emailFocusNode;
   TextEditingController? emailTextController;
@@ -47,7 +64,7 @@ class AcceptInviteModel extends FlutterFlowModel<AcceptInviteWidget> {
       return 'Requires at least 2 characters.';
     }
 
-    if (!RegExp('/^[a-zA-Z ]+\$/').hasMatch(val)) {
+    if (!RegExp('^[a-zA-Z\\s]+\$').hasMatch(val)) {
       return FFLocalizations.of(context).getText(
         '30vrpm3d' /* Letters and spaces only */,
       );
@@ -70,7 +87,7 @@ class AcceptInviteModel extends FlutterFlowModel<AcceptInviteWidget> {
       return 'Requires at least 2 characters.';
     }
 
-    if (!RegExp('/^[a-zA-Z ]+\$/').hasMatch(val)) {
+    if (!RegExp('^[a-zA-Z\\s]+\$').hasMatch(val)) {
       return 'Invalid text';
     }
     return null;
@@ -90,16 +107,11 @@ class AcceptInviteModel extends FlutterFlowModel<AcceptInviteWidget> {
     }
 
     if (val.length < 8) {
-      return 'Requires at least 8 characters.';
-    }
-
-    if (!RegExp(
-            '/^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#\$%^&*(),.?\':{}|<>])[A-Za-z\\d!@#\$%^&*(),.?\':{}|<>]{8,}\$/')
-        .hasMatch(val)) {
       return FFLocalizations.of(context).getText(
-        'li3iztdb' /* Must contain 8 characters, 1 s... */,
+        '1turu4te' /* ^(?=.*[a-z])(?=.*[A-Z])(?=.*[!... */,
       );
     }
+
     return null;
   }
 
@@ -109,21 +121,43 @@ class AcceptInviteModel extends FlutterFlowModel<AcceptInviteWidget> {
   late bool confirmPasswordVisibility;
   String? Function(BuildContext, String?)?
       confirmPasswordTextControllerValidator;
+  String? _confirmPasswordTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'tz94pq72' /* Field is required */,
+      );
+    }
+
+    if (val.length < 8) {
+      return 'Requires at least 8 characters.';
+    }
+
+    return null;
+  }
+
   // State field(s) for MailOptIn widget.
   bool? mailOptInValue;
   // Stores action output result for [Backend Call - API (acceptInvite)] action in Button widget.
   ApiCallResponse? acceptInviteOutput;
   // Stores action output result for [Backend Call - API (create Customer)] action in Button widget.
+  ApiCallResponse? stripeSubscriptionUserCreationOutput2;
+  // Stores action output result for [Backend Call - API (addUser)] action in Button widget.
+  ApiCallResponse? addUserjs;
+  // Stores action output result for [Backend Call - API (create Customer)] action in Button widget.
   ApiCallResponse? stripeSubscriptionUserCreationOutput;
 
   @override
   void initState(BuildContext context) {
+    inviteCodeTextControllerValidator = _inviteCodeTextControllerValidator;
     emailTextControllerValidator = _emailTextControllerValidator;
     firstNameTextControllerValidator = _firstNameTextControllerValidator;
     lastNameTextControllerValidator = _lastNameTextControllerValidator;
     newPasswordVisibility = false;
     newPasswordTextControllerValidator = _newPasswordTextControllerValidator;
     confirmPasswordVisibility = false;
+    confirmPasswordTextControllerValidator =
+        _confirmPasswordTextControllerValidator;
   }
 
   @override

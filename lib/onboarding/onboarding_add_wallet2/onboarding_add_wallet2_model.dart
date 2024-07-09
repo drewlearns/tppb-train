@@ -17,13 +17,13 @@ class OnboardingAddWallet2Model
   String? _textController1Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'uubgdi51' /* Field is required */,
+        'z21h951a' /* Field is required */,
       );
     }
 
-    if (!RegExp('/^[a-zA-Z ]+\$/').hasMatch(val)) {
+    if (!RegExp('^[a-zA-Z\\s]+\$').hasMatch(val)) {
       return FFLocalizations.of(context).getText(
-        '8u4n5359' /* Letters and Spaces Only */,
+        'ydwscj6n' /* Letters and Spaces Only */,
       );
     }
     return null;
@@ -36,13 +36,13 @@ class OnboardingAddWallet2Model
   String? _textController2Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'hqq4kwfk' /* Field is required */,
+        'hbl7nexd' /* Field is required */,
       );
     }
 
-    if (!RegExp('/^\\d+(\\.\\d+)?\$/').hasMatch(val)) {
+    if (!RegExp('^\\d+(\\.\\d{2})?\$').hasMatch(val)) {
       return FFLocalizations.of(context).getText(
-        'alooxxhm' /* Digits and periods only */,
+        'jj9n8mlx' /* Digits and periods only */,
       );
     }
     return null;

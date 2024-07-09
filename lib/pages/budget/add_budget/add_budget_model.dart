@@ -25,7 +25,7 @@ class AddBudgetModel extends FlutterFlowModel<AddBudgetWidget> {
       );
     }
 
-    if (!RegExp('/^[a-zA-Z ]+\$/').hasMatch(val)) {
+    if (!RegExp('^[a-zA-Z\\s]+\$').hasMatch(val)) {
       return FFLocalizations.of(context).getText(
         'e9bnxnm4' /* Letters and spaces only */,
       );

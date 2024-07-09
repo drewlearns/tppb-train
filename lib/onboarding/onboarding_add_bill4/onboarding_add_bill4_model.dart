@@ -13,6 +13,7 @@ class OnboardingAddBill4Model
   final formKey3 = GlobalKey<FormState>();
   final formKey2 = GlobalKey<FormState>();
   final formKey4 = GlobalKey<FormState>();
+  final formKey5 = GlobalKey<FormState>();
   // State field(s) for frequency widget.
   String? frequencyValue;
   FormFieldController<String>? frequencyValueController;
@@ -29,10 +30,8 @@ class OnboardingAddBill4Model
       );
     }
 
-    if (!RegExp('/^[a-zA-Z ]+\$/').hasMatch(val)) {
-      return FFLocalizations.of(context).getText(
-        'xmx7j0lm' /* Letters and spaces only */,
-      );
+    if (!RegExp('^[a-zA-Z\\s]+\$').hasMatch(val)) {
+      return 'Invalid text';
     }
     return null;
   }
@@ -54,7 +53,7 @@ class OnboardingAddBill4Model
       );
     }
 
-    if (!RegExp('/^\\d+(\\.\\d+)?\$/').hasMatch(val)) {
+    if (!RegExp('^\\d+(\\.\\d{2})?\$').hasMatch(val)) {
       return FFLocalizations.of(context).getText(
         'uc89dqwn' /* Only digits */,
       );
@@ -77,6 +76,9 @@ class OnboardingAddBill4Model
       return 'Requires at least 2 characters.';
     }
 
+    if (!RegExp('').hasMatch(val)) {
+      return 'Invalid text';
+    }
     return null;
   }
 
@@ -84,23 +86,21 @@ class OnboardingAddBill4Model
   FocusNode? descriptionFocusNode;
   TextEditingController? descriptionTextController;
   String? Function(BuildContext, String?)? descriptionTextControllerValidator;
+  String? _descriptionTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        '914zt6qq' /* Field is required */,
+      );
+    }
+
+    return null;
+  }
+
   // State field(s) for url widget.
   FocusNode? urlFocusNode;
   TextEditingController? urlTextController;
   String? Function(BuildContext, String?)? urlTextControllerValidator;
-  String? _urlTextControllerValidator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        '3tjn0x5h' /* Field is required */,
-      );
-    }
-
-    if (!RegExp(kTextValidatorWebsiteRegex).hasMatch(val)) {
-      return 'Has to be a valid website.';
-    }
-    return null;
-  }
-
   // State field(s) for username widget.
   FocusNode? usernameFocusNode;
   TextEditingController? usernameTextController;
@@ -112,15 +112,13 @@ class OnboardingAddBill4Model
   String? Function(BuildContext, String?)? passwordTextControllerValidator;
   // Stores action output result for [Backend Call - API (addBill)] action in Button widget.
   ApiCallResponse? addBillOutput;
-  // Stores action output result for [Backend Call - API (addBill)] action in Button widget.
-  ApiCallResponse? addBillOutputSkip;
 
   @override
   void initState(BuildContext context) {
     billNameTextControllerValidator = _billNameTextControllerValidator;
     amountTextControllerValidator = _amountTextControllerValidator;
     categoryTextControllerValidator = _categoryTextControllerValidator;
-    urlTextControllerValidator = _urlTextControllerValidator;
+    descriptionTextControllerValidator = _descriptionTextControllerValidator;
     passwordVisibility = false;
   }
 

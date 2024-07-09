@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'onboarding_add_wallet2_model.dart';
 export 'onboarding_add_wallet2_model.dart';
@@ -83,7 +84,7 @@ class _OnboardingAddWallet2WidgetState
                   ),
                   actions: const [],
                   flexibleSpace: FlexibleSpaceBar(
-                    title: Text(
+                    title: AutoSizeText(
                       FFLocalizations.of(context).getText(
                         'i0hgnoed' /* Onboarding */,
                       ),
@@ -391,7 +392,8 @@ This i... */
                                       .titleSmall
                                       .override(
                                         fontFamily: 'Noto Sans JP',
-                                        color: Colors.white,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         letterSpacing: 0.0,
                                       ),
                                   elevation: 3.0,

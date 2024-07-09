@@ -38,7 +38,7 @@ class AddIncomeModel extends FlutterFlowModel<AddIncomeWidget> {
       return 'Requires at least 4 characters.';
     }
 
-    if (!RegExp('/^[a-zA-Z ]+\$/').hasMatch(val)) {
+    if (!RegExp('^[a-zA-Z\\s]+\$').hasMatch(val)) {
       return FFLocalizations.of(context).getText(
         'd3me51pi' /* Only letters are allowed */,
       );
@@ -57,7 +57,7 @@ class AddIncomeModel extends FlutterFlowModel<AddIncomeWidget> {
       );
     }
 
-    if (!RegExp('').hasMatch(val)) {
+    if (!RegExp('^\\d+(\\.\\d{2})?\$').hasMatch(val)) {
       return 'Invalid text';
     }
     return null;

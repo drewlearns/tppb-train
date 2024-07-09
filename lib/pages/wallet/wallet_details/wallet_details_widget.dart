@@ -200,7 +200,7 @@ class _WalletDetailsWidgetState extends State<WalletDetailsWidget> {
                         decoration: const BoxDecoration(),
                         child: Form(
                           key: _model.formKey,
-                          autovalidateMode: AutovalidateMode.disabled,
+                          autovalidateMode: AutovalidateMode.always,
                           child: Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 8.0, 4.0, 8.0, 0.0),

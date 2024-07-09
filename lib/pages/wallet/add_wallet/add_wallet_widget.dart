@@ -117,7 +117,7 @@ class _AddWalletWidgetState extends State<AddWalletWidget> {
                                 Expanded(
                                   child: Form(
                                     key: _model.formKey,
-                                    autovalidateMode: AutovalidateMode.disabled,
+                                    autovalidateMode: AutovalidateMode.always,
                                     child: Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 4.0, 0.0, 0.0),

@@ -28,7 +28,7 @@ class EditBudgetModel extends FlutterFlowModel<EditBudgetWidget> {
       return 'Requires at least 4 characters.';
     }
 
-    if (!RegExp('/^[a-zA-Z ]+\$/').hasMatch(val)) {
+    if (!RegExp('^[a-zA-Z\\s]+\$').hasMatch(val)) {
       return FFLocalizations.of(context).getText(
         'pasdyy69' /* Letters and spaces only */,
       );

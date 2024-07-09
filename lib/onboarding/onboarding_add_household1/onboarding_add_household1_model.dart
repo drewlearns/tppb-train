@@ -17,13 +17,13 @@ class OnboardingAddHousehold1Model
   String? _textControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'loxsnt8z' /* Field is required */,
+        'o9dun1qd' /* Field is required */,
       );
     }
 
-    if (!RegExp('/^[a-zA-Z ]+\$/').hasMatch(val)) {
+    if (!RegExp('^[a-zA-Z\\s]+\$').hasMatch(val)) {
       return FFLocalizations.of(context).getText(
-        'm0mx4uc8' /* Letters and Spaces Only */,
+        '1p80z1kc' /* Letters and Spaces Only */,
       );
     }
     return null;

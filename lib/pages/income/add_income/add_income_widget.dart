@@ -399,7 +399,7 @@ class _AddIncomeWidgetState extends State<AddIncomeWidget> {
                                                   ),
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                    'ushurznq' /* Semi-Monthly (1st & 15th) */,
+                                                    '29zm4klb' /* Semi-Monthly (1st & 15th) */,
                                                   )
                                                 ],
                                                 onChanged: (val) => setState(
@@ -546,8 +546,14 @@ class _AddIncomeWidgetState extends State<AddIncomeWidget> {
                                                     }
                                                   },
                                                   text: valueOrDefault<String>(
-                                                    _model.datePicked1
-                                                        ?.toString(),
+                                                    dateTimeFormat(
+                                                      'yMMMd',
+                                                      _model.datePicked1,
+                                                      locale:
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .languageCode,
+                                                    ),
                                                     'Start Date*',
                                                   ),
                                                   icon: Icon(
@@ -735,8 +741,14 @@ class _AddIncomeWidgetState extends State<AddIncomeWidget> {
                                                     },
                                                     text:
                                                         valueOrDefault<String>(
-                                                      _model.datePicked2
-                                                          ?.toString(),
+                                                      dateTimeFormat(
+                                                        'yMMMd',
+                                                        _model.datePicked2,
+                                                        locale:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .languageCode,
+                                                      ),
                                                       'End Date*',
                                                     ),
                                                     icon: Icon(
@@ -1095,6 +1107,22 @@ class _AddIncomeWidgetState extends State<AddIncomeWidget> {
                                           children: [
                                             FFButtonWidget(
                                               onPressed: () async {
+                                                if (_model.formKey2
+                                                            .currentState ==
+                                                        null ||
+                                                    !_model
+                                                        .formKey2.currentState!
+                                                        .validate()) {
+                                                  return;
+                                                }
+                                                if (_model.formKey1
+                                                            .currentState ==
+                                                        null ||
+                                                    !_model
+                                                        .formKey1.currentState!
+                                                        .validate()) {
+                                                  return;
+                                                }
                                                 _model.addIncomeOutput =
                                                     await TppbGroup
                                                         .addIncomeCall
@@ -1115,9 +1143,11 @@ class _AddIncomeWidgetState extends State<AddIncomeWidget> {
                                                   authenticationToken:
                                                       currentJwtToken,
                                                   startDate: _model.datePicked1
-                                                      ?.toString(),
+                                                      ?.millisecondsSinceEpoch
+                                                      .toString(),
                                                   endDate: _model.datePicked2
-                                                      ?.toString(),
+                                                      ?.millisecondsSinceEpoch
+                                                      .toString(),
                                                 );
 
                                                 if ((_model.addIncomeOutput

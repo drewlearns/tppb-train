@@ -59,7 +59,7 @@ export '/onboarding/walkthroughs/incomes_walkthrough/incomes_walkthrough_widget.
     show IncomesWalkthroughWidget;
 export '/onboarding/walkthroughs/wallet_walkthrough/wallet_walkthrough_widget.dart'
     show WalletWalkthroughWidget;
-export '/onboarding/entry_page/entry_page_widget.dart' show EntryPageWidget;
+export '/pages/misc/entry_page/entry_page_widget.dart' show EntryPageWidget;
 export '/onboarding/onboarding_add_household1/onboarding_add_household1_widget.dart'
     show OnboardingAddHousehold1Widget;
 export '/onboarding/onboarding_add_wallet2/onboarding_add_wallet2_widget.dart'

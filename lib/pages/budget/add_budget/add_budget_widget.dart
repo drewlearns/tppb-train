@@ -133,7 +133,7 @@ class _AddBudgetWidgetState extends State<AddBudgetWidget> {
                                 Expanded(
                                   child: Form(
                                     key: _model.formKey,
-                                    autovalidateMode: AutovalidateMode.disabled,
+                                    autovalidateMode: AutovalidateMode.always,
                                     child: SizedBox(
                                       width: 360.0,
                                       child: TextFormField(

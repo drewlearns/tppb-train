@@ -266,92 +266,98 @@ Accept an invite or Sign up... */
                   ).animateOnPageLoad(
                       animationsMap['containerOnPageLoadAnimation1']!),
                 ),
-                Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 44.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Expanded(
-                        child: Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 8.0, 16.0),
-                            child: FFButtonWidget(
-                              onPressed: () async {
-                                context.pushNamed('AcceptInvite');
-                              },
-                              text: FFLocalizations.of(context).getText(
-                                'adxyjltc' /* Accept Invite */,
-                              ),
-                              options: FFButtonOptions(
-                                width: 230.0,
-                                height: 52.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .bodyLarge
-                                    .override(
-                                      fontFamily: 'Noto Sans JP',
-                                      letterSpacing: 0.0,
-                                    ),
-                                elevation: 0.0,
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).alternate,
-                                  width: 2.0,
+                Container(
+                  width: 380.0,
+                  decoration: const BoxDecoration(),
+                  child: Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 44.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Expanded(
+                          child: Align(
+                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 8.0, 16.0),
+                              child: FFButtonWidget(
+                                onPressed: () async {
+                                  context.pushNamed('AcceptInvite');
+                                },
+                                text: FFLocalizations.of(context).getText(
+                                  'adxyjltc' /* Accept Invite */,
                                 ),
-                                borderRadius: BorderRadius.circular(12.0),
+                                options: FFButtonOptions(
+                                  width: 230.0,
+                                  height: 52.0,
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .bodyLarge
+                                      .override(
+                                        fontFamily: 'Noto Sans JP',
+                                        letterSpacing: 0.0,
+                                      ),
+                                  elevation: 0.0,
+                                  borderSide: BorderSide(
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(12.0),
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                      Expanded(
-                        child: Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                8.0, 0.0, 0.0, 16.0),
-                            child: FFButtonWidget(
-                              onPressed: () async {
-                                context.pushNamed('Login');
-                              },
-                              text: FFLocalizations.of(context).getText(
-                                'rlzkjy7m' /* Login or Signup */,
-                              ),
-                              options: FFButtonOptions(
-                                width: 230.0,
-                                height: 52.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).primary,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: 'Noto Sans JP',
-                                      color: Colors.white,
-                                      letterSpacing: 0.0,
-                                    ),
-                                elevation: 3.0,
-                                borderSide: const BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1.0,
+                        Expanded(
+                          child: Align(
+                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  8.0, 0.0, 0.0, 16.0),
+                              child: FFButtonWidget(
+                                onPressed: () async {
+                                  context.pushNamed('Login');
+                                },
+                                text: FFLocalizations.of(context).getText(
+                                  'rlzkjy7m' /* Login or Signup */,
                                 ),
-                                borderRadius: BorderRadius.circular(12.0),
+                                options: FFButtonOptions(
+                                  width: 230.0,
+                                  height: 52.0,
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Noto Sans JP',
+                                        color: Colors.white,
+                                        letterSpacing: 0.0,
+                                      ),
+                                  elevation: 3.0,
+                                  borderSide: const BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(12.0),
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                  ).animateOnPageLoad(animationsMap['rowOnPageLoadAnimation']!),
+                      ],
+                    ).animateOnPageLoad(
+                        animationsMap['rowOnPageLoadAnimation']!),
+                  ),
                 ),
               ],
             ),

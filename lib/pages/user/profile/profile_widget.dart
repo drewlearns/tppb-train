@@ -634,7 +634,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                         },
                                         text:
                                             FFLocalizations.of(context).getText(
-                                          'pzt3bfq7' /* Edit Profile */,
+                                          'pzt3bfq7' /* Save Changes */,
                                         ),
                                         options: FFButtonOptions(
                                           width: 120.0,

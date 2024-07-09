@@ -173,16 +173,20 @@ class _LedgerWalkThroughWidgetState extends State<LedgerWalkThroughWidget>
                 ),
               ],
               flexibleSpace: FlexibleSpaceBar(
-                title: AutoSizeText(
-                  FFLocalizations.of(context).getText(
-                    'jhxyi5rg' /* Ledger */,
+                title: Align(
+                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  child: AutoSizeText(
+                    FFLocalizations.of(context).getText(
+                      'jhxyi5rg' /* Ledger */,
+                    ),
+                    style: FlutterFlowTheme.of(context).headlineLarge.override(
+                          fontFamily: 'Noto Sans JP',
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          letterSpacing: 0.0,
+                          lineHeight: 2.0,
+                        ),
                   ),
-                  style: FlutterFlowTheme.of(context).headlineLarge.override(
-                        fontFamily: 'Noto Sans JP',
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        letterSpacing: 0.0,
-                        lineHeight: 2.0,
-                      ),
                 ),
                 centerTitle: true,
                 expandedTitleScale: 1.0,
@@ -1065,7 +1069,7 @@ class _LedgerWalkThroughWidgetState extends State<LedgerWalkThroughWidget>
                                                           FFLocalizations.of(
                                                                   context)
                                                               .getText(
-                                                            'tkjsx5sr' /* Total Spent this month: $99,99... */,
+                                                            'tkjsx5sr' /* Total Spent this month: $5.99 */,
                                                           ),
                                                           textAlign:
                                                               TextAlign.start,
@@ -1459,14 +1463,14 @@ class _LedgerWalkThroughWidgetState extends State<LedgerWalkThroughWidget>
                                                                                 padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                                                                                 child: AutoSizeText(
                                                                                   FFLocalizations.of(context).getText(
-                                                                                    'ri6l7wo6' /* +1.00 */,
+                                                                                    'ri6l7wo6' /* 60.99 */,
                                                                                   ),
                                                                                   textAlign: TextAlign.end,
                                                                                   maxLines: 1,
                                                                                   style: FlutterFlowTheme.of(context).labelLarge.override(
                                                                                         fontFamily: 'Noto Sans JP',
                                                                                         color: FlutterFlowTheme.of(context).tertiary,
-                                                                                        fontSize: 38.73,
+                                                                                        fontSize: 37.73,
                                                                                         letterSpacing: 0.0,
                                                                                         fontWeight: FontWeight.bold,
                                                                                       ),
@@ -1474,27 +1478,6 @@ class _LedgerWalkThroughWidgetState extends State<LedgerWalkThroughWidget>
                                                                               ),
                                                                             ),
                                                                           ].divide(const SizedBox(width: 0.0)).around(const SizedBox(width: 0.0)),
-                                                                        ),
-                                                                        Row(
-                                                                          mainAxisSize:
-                                                                              MainAxisSize.max,
-                                                                          mainAxisAlignment:
-                                                                              MainAxisAlignment.end,
-                                                                          children: [
-                                                                            Padding(
-                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
-                                                                              child: Text(
-                                                                                FFLocalizations.of(context).getText(
-                                                                                  'pzpopb6d' /* Running Total: $500.99 */,
-                                                                                ),
-                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Noto Sans JP',
-                                                                                      fontSize: 13.0,
-                                                                                      letterSpacing: 0.0,
-                                                                                    ),
-                                                                              ),
-                                                                            ),
-                                                                          ],
                                                                         ),
                                                                       ],
                                                                     ),
@@ -1737,7 +1720,7 @@ class _LedgerWalkThroughWidgetState extends State<LedgerWalkThroughWidget>
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                              '56a848kx' /* -99,999.99 */,
+                                                              '56a848kx' /* -50.99 */,
                                                             ),
                                                             textAlign:
                                                                 TextAlign.end,
@@ -1768,40 +1751,6 @@ class _LedgerWalkThroughWidgetState extends State<LedgerWalkThroughWidget>
                                                         .around(const SizedBox(
                                                             width: 0.0)),
                                                   ),
-                                                  Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.end,
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    8.0),
-                                                        child: Text(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            'Running Total: 499.99',
-                                                            'Loading...',
-                                                          ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Noto Sans JP',
-                                                                fontSize: 13.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
                                                 ],
                                               ),
                                             ),
@@ -1820,6 +1769,245 @@ class _LedgerWalkThroughWidgetState extends State<LedgerWalkThroughWidget>
                         ),
                       ),
                     ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                    child: Semantics(
+                      label: 'Click to view transaction Details',
+                      child: Material(
+                        color: Colors.transparent,
+                        elevation: 5.0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                        child: SafeArea(
+                          child: Container(
+                            width: 368.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              borderRadius: BorderRadius.circular(12.0),
+                              border: Border.all(
+                                color: FlutterFlowTheme.of(context).secondary,
+                                width: 2.0,
+                              ),
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    AutoSizeText(
+                                      FFLocalizations.of(context).getText(
+                                        'eczcy549' /* Refund from Amazon */,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                      maxLines: 1,
+                                      style: FlutterFlowTheme.of(context)
+                                          .labelLarge
+                                          .override(
+                                            fontFamily: 'Noto Sans JP',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            fontSize: 23.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Align(
+                                              alignment: const AlignmentDirectional(
+                                                  0.0, -1.0),
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 24.0),
+                                                child: Semantics(
+                                                  label:
+                                                      'Click to toggle Status',
+                                                  child: FlutterFlowIconButton(
+                                                    borderColor:
+                                                        Colors.transparent,
+                                                    borderRadius: 20.0,
+                                                    borderWidth: 1.0,
+                                                    buttonSize: 40.0,
+                                                    icon: Icon(
+                                                      Icons.check_circle,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondary,
+                                                      size: 24.0,
+                                                    ),
+                                                    showLoadingIndicator: true,
+                                                    onPressed: () {
+                                                      print(
+                                                          'IconButton pressed ...');
+                                                    },
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Expanded(
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  AutoSizeText(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'ji130zga' /* Wallet: Bank of America */,
+                                                    ),
+                                                    maxLines: 1,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  AutoSizeText(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      's17sp4rg' /* Category: Refunds */,
+                                                    ),
+                                                    maxLines: 1,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
+                                                ],
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 8.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    AutoSizeText(
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'qizeo16q' /* 07-23-2024 */,
+                                                      ),
+                                                      maxLines: 1,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Noto Sans JP',
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.end,
+                                                children: [
+                                                  Expanded(
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  4.0,
+                                                                  0.0),
+                                                      child: AutoSizeText(
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                          '9i52ry00' /* +500.00 */,
+                                                        ),
+                                                        textAlign:
+                                                            TextAlign.end,
+                                                        maxLines: 1,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelLarge
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Noto Sans JP',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .tertiary,
+                                                                  fontSize:
+                                                                      37.73,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ]
+                                                    .divide(
+                                                        const SizedBox(width: 0.0))
+                                                    .around(
+                                                        const SizedBox(width: 0.0)),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ).addWalkthrough(
+                      containerRczxaqzz,
+                      _model.ledgerWalkthroughController,
+                    ),
                   ),
                 ],
               ),

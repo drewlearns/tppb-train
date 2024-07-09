@@ -26,7 +26,7 @@ class EditNotificationModel extends FlutterFlowModel<EditNotificationWidget> {
       return 'Requires at least 4 characters.';
     }
 
-    if (!RegExp('/^[a-zA-Z ]+\$/').hasMatch(val)) {
+    if (!RegExp('^[a-zA-Z\\s]+\$').hasMatch(val)) {
       return FFLocalizations.of(context).getText(
         'hgzl1cjz' /* Letters and spaces only */,
       );
@@ -34,10 +34,10 @@ class EditNotificationModel extends FlutterFlowModel<EditNotificationWidget> {
     return null;
   }
 
-  // State field(s) for Amount widget.
-  FocusNode? amountFocusNode;
-  TextEditingController? amountTextController;
-  String? Function(BuildContext, String?)? amountTextControllerValidator;
+  // State field(s) for message widget.
+  FocusNode? messageFocusNode;
+  TextEditingController? messageTextController;
+  String? Function(BuildContext, String?)? messageTextControllerValidator;
   // State field(s) for Amount widget.
   String? amountValue1;
   FormFieldController<String>? amountValueController1;
@@ -58,7 +58,7 @@ class EditNotificationModel extends FlutterFlowModel<EditNotificationWidget> {
     billNameFocusNode?.dispose();
     billNameTextController?.dispose();
 
-    amountFocusNode?.dispose();
-    amountTextController?.dispose();
+    messageFocusNode?.dispose();
+    messageTextController?.dispose();
   }
 }

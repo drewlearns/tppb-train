@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'onboarding_add_household1_model.dart';
 export 'onboarding_add_household1_model.dart';
@@ -75,7 +76,7 @@ class _OnboardingAddHousehold1WidgetState
                   ),
                   actions: const [],
                   flexibleSpace: FlexibleSpaceBar(
-                    title: Text(
+                    title: AutoSizeText(
                       FFLocalizations.of(context).getText(
                         'pn0o5qxt' /* Onboarding */,
                       ),
@@ -124,7 +125,7 @@ class _OnboardingAddHousehold1WidgetState
                               ),
                               Form(
                                 key: _model.formKey,
-                                autovalidateMode: AutovalidateMode.disabled,
+                                autovalidateMode: AutovalidateMode.always,
                                 child: Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       8.0, 0.0, 8.0, 0.0),

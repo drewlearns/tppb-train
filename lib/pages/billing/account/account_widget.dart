@@ -103,46 +103,52 @@ class _AccountWidgetState extends State<AccountWidget>
                     backgroundColor: FlutterFlowTheme.of(context).primary,
                     automaticallyImplyLeading: false,
                     actions: [
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
-                        child: FlutterFlowIconButton(
-                          borderRadius: 20.0,
-                          borderWidth: 1.0,
-                          buttonSize: 40.0,
-                          icon: Icon(
-                            Icons.login_outlined,
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            size: 24.0,
-                          ),
-                          onPressed: () async {
-                            GoRouter.of(context).prepareAuthEvent();
-                            await authManager.signOut();
-                            GoRouter.of(context).clearRedirectLocation();
+                      Align(
+                        alignment: const AlignmentDirectional(1.0, 0.0),
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 16.0, 0.0),
+                          child: FlutterFlowIconButton(
+                            borderRadius: 20.0,
+                            borderWidth: 1.0,
+                            buttonSize: 40.0,
+                            icon: Icon(
+                              Icons.login_outlined,
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              size: 24.0,
+                            ),
+                            onPressed: () async {
+                              GoRouter.of(context).prepareAuthEvent();
+                              await authManager.signOut();
+                              GoRouter.of(context).clearRedirectLocation();
 
-                            context.goNamedAuth('EntryPage', context.mounted);
-                          },
+                              context.goNamedAuth('EntryPage', context.mounted);
+                            },
+                          ),
                         ),
                       ),
                     ],
                     flexibleSpace: FlexibleSpaceBar(
-                      title: Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
-                        child: AutoSizeText(
-                          FFLocalizations.of(context).getText(
-                            '8fxcf5er' /* Account Details */,
+                      title: Align(
+                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 4.0),
+                          child: AutoSizeText(
+                            FFLocalizations.of(context).getText(
+                              '8fxcf5er' /* Account */,
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .headlineLarge
+                                .override(
+                                  fontFamily: 'Noto Sans JP',
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  letterSpacing: 0.0,
+                                  lineHeight: 2.0,
+                                ),
                           ),
-                          style: FlutterFlowTheme.of(context)
-                              .headlineLarge
-                              .override(
-                                fontFamily: 'Noto Sans JP',
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                letterSpacing: 0.0,
-                                lineHeight: 2.0,
-                              ),
                         ),
                       ),
                       centerTitle: true,

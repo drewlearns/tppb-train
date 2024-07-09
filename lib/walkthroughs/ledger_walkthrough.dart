@@ -11,6 +11,7 @@ final rowWqe60v8q = GlobalKey();
 final containerLgd8iryk = GlobalKey();
 final iconButtonFsbhy4pj = GlobalKey();
 final container87f6towi = GlobalKey();
+final containerRczxaqzz = GlobalKey();
 final iconButton3pzo3nty = GlobalKey();
 final iconButtonKb97emkm = GlobalKey();
 final toggleIconBkq4fego = GlobalKey();
@@ -129,14 +130,35 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
             align: ContentAlign.top,
             builder: (context, __) => const WalkthroughCardWidget(
               description:
-                  'When an entry is paid (check box toggled), it will make a \"KA-CHING\" sound and will be outlined in purple - this is how you will know whats been paid or not.  Also note, that when ever you are below a default threshold of \$500.00, it will be highlighted in red.',
-              header: 'Below threshold Entry that is paid.',
+                  'When an enrtry\'s running total is below a default \$500.00, you will see it highlighted in red. You can adjust the threshold in the filters.',
+              header:
+                  'This is an Entry that is paid and has a running total below \$500.00',
             ),
           ),
         ],
       ),
 
       /// Step 7
+      TargetFocus(
+        keyTarget: containerRczxaqzz,
+        enableOverlayTab: true,
+        alignSkip: Alignment.bottomRight,
+        shape: ShapeLightFocus.RRect,
+        color: Colors.black,
+        contents: [
+          TargetContent(
+            align: ContentAlign.top,
+            builder: (context, __) => WalkthroughCardWidget(
+              description: FFLocalizations.of(context).getText(
+                'ss8ke6jt' /* You know its paid because the ... */,
+              ),
+              header: 'This is a paid Entry',
+            ),
+          ),
+        ],
+      ),
+
+      /// Step 8
       TargetFocus(
         keyTarget: iconButton3pzo3nty,
         enableOverlayTab: true,
@@ -155,7 +177,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         ],
       ),
 
-      /// Step 8
+      /// Step 9
       TargetFocus(
         keyTarget: iconButtonKb97emkm,
         enableOverlayTab: true,
@@ -174,7 +196,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         ],
       ),
 
-      /// Step 9
+      /// Step 10
       TargetFocus(
         keyTarget: toggleIconBkq4fego,
         enableOverlayTab: true,
@@ -193,7 +215,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         ],
       ),
 
-      /// Step 10
+      /// Step 11
       TargetFocus(
         keyTarget: iconButtonJtxu4a25,
         enableOverlayTab: true,

@@ -350,7 +350,7 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                                         ),
                                                         'Loading...',
                                                       )}',
-                                                      '-\$99,999.99',
+                                                      '-\$39.99',
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -394,6 +394,64 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                                   Text(
                                                     FFLocalizations.of(context)
                                                         .getText(
+                                                      'fwdvjscy' /* Running Total */,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                  ),
+                                                  Text(
+                                                    valueOrDefault<String>(
+                                                      formatNumber(
+                                                        TppbGroup
+                                                            .getLedgerEntryCall
+                                                            .runningTotal(
+                                                          transactionDetailsGetLedgerEntryResponse
+                                                              .jsonBody,
+                                                        ),
+                                                        formatType:
+                                                            FormatType.custom,
+                                                        format:
+                                                            '###,###,##0.00',
+                                                        locale: '',
+                                                      ),
+                                                      'Could not load',
+                                                    ).maybeHandleOverflow(
+                                                        maxChars: 20),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
+                                                ]
+                                                    .divide(
+                                                        const SizedBox(width: 8.0))
+                                                    .around(
+                                                        const SizedBox(width: 8.0)),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 8.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
                                                       'kdijiniz' /* Date:  */,
                                                     ),
                                                     style: FlutterFlowTheme.of(
@@ -416,7 +474,8 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                                             .jsonBody,
                                                       ),
                                                       'Loading...',
-                                                    ),
+                                                    ).maybeHandleOverflow(
+                                                        maxChars: 16),
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyLarge
@@ -849,6 +908,10 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                                                       .jsonBody,
                                                                 ),
                                                                 'None Provided',
+                                                              ).maybeHandleOverflow(
+                                                                maxChars: 30,
+                                                                replacement:
+                                                                    '…',
                                                               ),
                                                               style: FlutterFlowTheme
                                                                       .of(context)

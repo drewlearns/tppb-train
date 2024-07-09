@@ -219,8 +219,7 @@ class _AddInviteWidgetState extends State<AddInviteWidget> {
                                   Expanded(
                                     child: Form(
                                       key: _model.formKey,
-                                      autovalidateMode:
-                                          AutovalidateMode.disabled,
+                                      autovalidateMode: AutovalidateMode.always,
                                       child: TextFormField(
                                         controller: _model.textController,
                                         focusNode: _model.textFieldFocusNode,

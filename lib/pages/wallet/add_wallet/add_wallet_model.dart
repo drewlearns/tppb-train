@@ -19,7 +19,7 @@ class AddWalletModel extends FlutterFlowModel<AddWalletWidget> {
       );
     }
 
-    if (!RegExp('/^[a-zA-Z ]+\$/').hasMatch(val)) {
+    if (!RegExp(kTextValidatorUsernameRegex).hasMatch(val)) {
       return FFLocalizations.of(context).getText(
         '7rr5a64h' /* Letters and spaces only */,
       );

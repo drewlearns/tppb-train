@@ -39,7 +39,7 @@ class _EditNotificationWidgetState extends State<EditNotificationWidget> {
 
     _model.billNameFocusNode ??= FocusNode();
 
-    _model.amountFocusNode ??= FocusNode();
+    _model.messageFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -280,7 +280,7 @@ class _EditNotificationWidgetState extends State<EditNotificationWidget> {
                                             child: Form(
                                               key: _model.formKey,
                                               autovalidateMode:
-                                                  AutovalidateMode.disabled,
+                                                  AutovalidateMode.always,
                                               child: TextFormField(
                                                 controller: _model
                                                         .billNameTextController ??=
@@ -410,7 +410,7 @@ class _EditNotificationWidgetState extends State<EditNotificationWidget> {
                                           Expanded(
                                             child: TextFormField(
                                               controller: _model
-                                                      .amountTextController ??=
+                                                      .messageTextController ??=
                                                   TextEditingController(
                                                 text: TppbGroup
                                                     .getNotificationCall
@@ -419,7 +419,8 @@ class _EditNotificationWidgetState extends State<EditNotificationWidget> {
                                                       .jsonBody,
                                                 ),
                                               ),
-                                              focusNode: _model.amountFocusNode,
+                                              focusNode:
+                                                  _model.messageFocusNode,
                                               autofocus: true,
                                               textCapitalization:
                                                   TextCapitalization.sentences,
@@ -513,7 +514,7 @@ class _EditNotificationWidgetState extends State<EditNotificationWidget> {
                                                         letterSpacing: 0.0,
                                                       ),
                                               validator: _model
-                                                  .amountTextControllerValidator
+                                                  .messageTextControllerValidator
                                                   .asValidator(context),
                                             ),
                                           ),
@@ -632,7 +633,7 @@ class _EditNotificationWidgetState extends State<EditNotificationWidget> {
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                              '60512bna' /* Semi-Monthly (1st & 15th) */,
+                                                              'pysyhy9b' /* Semi-Monthly (1st & 15th) */,
                                                             )
                                                           ],
                                                           onChanged: (val) =>
@@ -1086,7 +1087,7 @@ class _EditNotificationWidgetState extends State<EditNotificationWidget> {
                                                     .billNameTextController
                                                     .text,
                                                 message: _model
-                                                    .amountTextController.text,
+                                                    .messageTextController.text,
                                               );
 
                                               if ((_model.editNotificationOutput

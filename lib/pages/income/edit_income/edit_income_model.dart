@@ -31,9 +31,9 @@ class EditIncomeModel extends FlutterFlowModel<EditIncomeWidget> {
       );
     }
 
-    if (!RegExp('').hasMatch(val)) {
+    if (!RegExp(kTextValidatorUsernameRegex).hasMatch(val)) {
       return FFLocalizations.of(context).getText(
-        'f3ioycex' /* /^[a-zA-Z ]+$/ */,
+        '94oe5oq3' /* ^[a-zA-Z\s]+$ */,
       );
     }
     return null;
@@ -50,7 +50,11 @@ class EditIncomeModel extends FlutterFlowModel<EditIncomeWidget> {
       );
     }
 
-    if (!RegExp('/^\\d+(\\.\\d+)?\$/').hasMatch(val)) {
+    if (val.isEmpty) {
+      return 'Requires at least 1 characters.';
+    }
+
+    if (!RegExp('^\\d+(\\.\\d{2})?\$').hasMatch(val)) {
       return FFLocalizations.of(context).getText(
         'pdu6fqxa' /* Numbers and periods only */,
       );

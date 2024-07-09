@@ -9,8 +9,10 @@ class EditTransactionModel extends FlutterFlowModel<EditTransactionWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  final formKey3 = GlobalKey<FormState>();
+  final formKey5 = GlobalKey<FormState>();
+  final formKey4 = GlobalKey<FormState>();
   final formKey1 = GlobalKey<FormState>();
+  final formKey3 = GlobalKey<FormState>();
   final formKey2 = GlobalKey<FormState>();
   // Stores action output result for [Backend Call - API (deleteTransaction)] action in IconButton widget.
   ApiCallResponse? apiResultoeb;
@@ -25,17 +27,10 @@ class EditTransactionModel extends FlutterFlowModel<EditTransactionWidget> {
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'kgs2p7jr' /* Field is required */,
+        'hqq4kwfk' /* Field is required */,
       );
     }
 
-    if (!RegExp(
-            '/^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]) ([01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d\$/')
-        .hasMatch(val)) {
-      return FFLocalizations.of(context).getText(
-        'rcz3lbim' /* Invalid Date */,
-      );
-    }
     return null;
   }
 
@@ -44,6 +39,21 @@ class EditTransactionModel extends FlutterFlowModel<EditTransactionWidget> {
   FocusNode? descriptionFocusNode;
   TextEditingController? descriptionTextController;
   String? Function(BuildContext, String?)? descriptionTextControllerValidator;
+  String? _descriptionTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'fsuyozb6' /* Field is required */,
+      );
+    }
+
+    if (val.length < 2) {
+      return 'Requires at least 2 characters.';
+    }
+
+    return null;
+  }
+
   // State field(s) for amount widget.
   FocusNode? amountFocusNode;
   TextEditingController? amountTextController;
@@ -55,7 +65,7 @@ class EditTransactionModel extends FlutterFlowModel<EditTransactionWidget> {
       );
     }
 
-    if (!RegExp('/^\\d+(\\.\\d+)?\$/').hasMatch(val)) {
+    if (!RegExp('^\\d+(\\.\\d{2})?\$').hasMatch(val)) {
       return FFLocalizations.of(context).getText(
         '4bi5x0xz' /* Digits and period only */,
       );
@@ -67,6 +77,19 @@ class EditTransactionModel extends FlutterFlowModel<EditTransactionWidget> {
   FocusNode? categoryFocusNode;
   TextEditingController? categoryTextController;
   String? Function(BuildContext, String?)? categoryTextControllerValidator;
+  String? _categoryTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        '35mvas96' /* Field is required */,
+      );
+    }
+
+    if (!RegExp('^[a-zA-Z\\s]+\$').hasMatch(val)) {
+      return 'Invalid text';
+    }
+    return null;
+  }
+
   // State field(s) for tags widget.
   FocusNode? tagsFocusNode;
   TextEditingController? tagsTextController;
@@ -78,7 +101,7 @@ class EditTransactionModel extends FlutterFlowModel<EditTransactionWidget> {
       );
     }
 
-    if (!RegExp('/^[a-zA-Z]+(,[a-zA-Z]+)*\$/').hasMatch(val)) {
+    if (!RegExp('^[a-zA-Z]+(,[a-zA-Z]+)*\$').hasMatch(val)) {
       return FFLocalizations.of(context).getText(
         'b39jigcg' /* Comma separated list only */,
       );
@@ -115,7 +138,9 @@ class EditTransactionModel extends FlutterFlowModel<EditTransactionWidget> {
   void initState(BuildContext context) {
     transactionDateTextControllerValidator =
         _transactionDateTextControllerValidator;
+    descriptionTextControllerValidator = _descriptionTextControllerValidator;
     amountTextControllerValidator = _amountTextControllerValidator;
+    categoryTextControllerValidator = _categoryTextControllerValidator;
     tagsTextControllerValidator = _tagsTextControllerValidator;
   }
 

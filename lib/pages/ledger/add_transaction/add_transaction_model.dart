@@ -10,6 +10,7 @@ class AddTransactionModel extends FlutterFlowModel<AddTransactionWidget> {
   final unfocusNode = FocusNode();
   final formKey1 = GlobalKey<FormState>();
   final formKey3 = GlobalKey<FormState>();
+  final formKey4 = GlobalKey<FormState>();
   final formKey2 = GlobalKey<FormState>();
   // State field(s) for HouseholdDropDown widget.
   String? householdDropDownValue;
@@ -31,7 +32,7 @@ class AddTransactionModel extends FlutterFlowModel<AddTransactionWidget> {
       );
     }
 
-    if (!RegExp('/^\\d+(\\.\\d+)?\$/').hasMatch(val)) {
+    if (!RegExp('^\\d+(\\.\\d{2})?\$').hasMatch(val)) {
       return FFLocalizations.of(context).getText(
         'xfet0b5p' /* Digits and period only */,
       );
@@ -44,6 +45,20 @@ class AddTransactionModel extends FlutterFlowModel<AddTransactionWidget> {
   FocusNode? descriptionFocusNode;
   TextEditingController? descriptionTextController;
   String? Function(BuildContext, String?)? descriptionTextControllerValidator;
+  String? _descriptionTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'uubgdi51' /* Field is required */,
+      );
+    }
+
+    if (!RegExp('^[a-zA-Z\\s]+\$').hasMatch(val)) {
+      return 'Invalid text';
+    }
+    return null;
+  }
+
   // State field(s) for category widget.
   FocusNode? categoryFocusNode;
   TextEditingController? categoryTextController;
@@ -55,7 +70,7 @@ class AddTransactionModel extends FlutterFlowModel<AddTransactionWidget> {
       );
     }
 
-    if (!RegExp('/^[a-zA-Z ]+\$/').hasMatch(val)) {
+    if (!RegExp('^[a-zA-Z\\s]+\$').hasMatch(val)) {
       return FFLocalizations.of(context).getText(
         'z067l4k5' /* Letters and spaces only */,
       );
@@ -70,13 +85,13 @@ class AddTransactionModel extends FlutterFlowModel<AddTransactionWidget> {
   String? _tagsTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'qqkh2yte' /* Field is required */,
+        '3fnmum57' /* Field is required */,
       );
     }
 
-    if (!RegExp('/^[a-zA-Z]+(,[a-zA-Z]+)*\$/').hasMatch(val)) {
+    if (!RegExp('^[a-zA-Z]+(,[a-zA-Z]+)*\$').hasMatch(val)) {
       return FFLocalizations.of(context).getText(
-        'wp9bm5gd' /* Comma Separated List only */,
+        'zgb4bdwq' /* Comma Separated List only */,
       );
     }
     return null;
@@ -96,6 +111,7 @@ class AddTransactionModel extends FlutterFlowModel<AddTransactionWidget> {
   @override
   void initState(BuildContext context) {
     amountTextControllerValidator = _amountTextControllerValidator;
+    descriptionTextControllerValidator = _descriptionTextControllerValidator;
     categoryTextControllerValidator = _categoryTextControllerValidator;
     tagsTextControllerValidator = _tagsTextControllerValidator;
   }
