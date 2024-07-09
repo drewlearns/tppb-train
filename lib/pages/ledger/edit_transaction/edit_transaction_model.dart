@@ -27,7 +27,7 @@ class EditTransactionModel extends FlutterFlowModel<EditTransactionWidget> {
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'hqq4kwfk' /* Field is required */,
+        'uubgdi51' /* Field is required */,
       );
     }
 

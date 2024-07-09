@@ -36,7 +36,7 @@ class OnboardingAddWallet2Model
   String? _textController2Validator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'hbl7nexd' /* Field is required */,
+        'hqq4kwfk' /* Field is required */,
       );
     }
 

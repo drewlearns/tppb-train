@@ -582,50 +582,6 @@ class _AddBillWidgetState extends State<AddBillWidget> {
                                             ),
                                           ),
                                         ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  8.0, 0.0, 0.0, 0.0),
-                                          child: Semantics(
-                                            label: 'Click for more Information',
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title:
-                                                          const Text('Information'),
-                                                      content: const Text(
-                                                          'Select the most recent pay date. Suggestion is to make the time early in the day so it comes before bills and expenses.'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: const Text('Ok'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                );
-                                              },
-                                              child: Icon(
-                                                Icons.info_outline,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                                size: 24.0,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
                                       ],
                                     ),
                                     if (_model.frequencyValue != 'once')
@@ -788,7 +744,7 @@ class _AddBillWidgetState extends State<AddBillWidget> {
                                                         title:
                                                             const Text('Information'),
                                                         content: const Text(
-                                                            'Select the most recent pay date. Suggestion is to make the time early in the day so it comes before bills and expenses.'),
+                                                            'It is recommended to go 1 year out for most bills.'),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>

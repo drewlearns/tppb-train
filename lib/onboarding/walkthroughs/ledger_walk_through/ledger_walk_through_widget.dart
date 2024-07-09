@@ -1528,7 +1528,7 @@ class _LedgerWalkThroughWidgetState extends State<LedgerWalkThroughWidget>
                               child: Container(
                                 width: 368.0,
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context).error,
+                                  color: FlutterFlowTheme.of(context).warning,
                                   borderRadius: BorderRadius.circular(12.0),
                                   border: Border.all(
                                     color:

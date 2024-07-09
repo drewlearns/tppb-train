@@ -220,7 +220,7 @@ Sign up below to begi... */
                                                 alignment: const AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Form(
-                                                  key: _model.formKey4,
+                                                  key: _model.formKey3,
                                                   autovalidateMode:
                                                       AutovalidateMode.disabled,
                                                   child: SizedBox(
@@ -361,7 +361,7 @@ Sign up below to begi... */
                                                 alignment: const AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Form(
-                                                  key: _model.formKey2,
+                                                  key: _model.formKey1,
                                                   autovalidateMode:
                                                       AutovalidateMode.disabled,
                                                   child: SizedBox(
@@ -504,7 +504,7 @@ Sign up below to begi... */
                                                 alignment: const AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Form(
-                                                  key: _model.formKey6,
+                                                  key: _model.formKey5,
                                                   autovalidateMode:
                                                       AutovalidateMode.disabled,
                                                   child: SizedBox(
@@ -644,7 +644,7 @@ Sign up below to begi... */
                                                 ),
                                               ),
                                               Form(
-                                                key: _model.formKey3,
+                                                key: _model.formKey2,
                                                 autovalidateMode:
                                                     AutovalidateMode.disabled,
                                                 child: Align(
@@ -806,7 +806,7 @@ Sign up below to begi... */
                                                 ),
                                               ),
                                               Form(
-                                                key: _model.formKey5,
+                                                key: _model.formKey4,
                                                 autovalidateMode:
                                                     AutovalidateMode.disabled,
                                                 child: SizedBox(
@@ -1014,34 +1014,18 @@ Sign up below to begi... */
                                               ),
                                               FFButtonWidget(
                                                 onPressed: () async {
-                                                  if (_model.formKey4
-                                                              .currentState ==
-                                                          null ||
-                                                      !_model.formKey4
-                                                          .currentState!
-                                                          .validate()) {
-                                                    return;
-                                                  }
-                                                  if (_model.formKey2
-                                                              .currentState ==
-                                                          null ||
-                                                      !_model.formKey2
-                                                          .currentState!
-                                                          .validate()) {
-                                                    return;
-                                                  }
-                                                  if (_model.formKey6
-                                                              .currentState ==
-                                                          null ||
-                                                      !_model.formKey6
-                                                          .currentState!
-                                                          .validate()) {
-                                                    return;
-                                                  }
                                                   if (_model.formKey3
                                                               .currentState ==
                                                           null ||
                                                       !_model.formKey3
+                                                          .currentState!
+                                                          .validate()) {
+                                                    return;
+                                                  }
+                                                  if (_model.formKey1
+                                                              .currentState ==
+                                                          null ||
+                                                      !_model.formKey1
                                                           .currentState!
                                                           .validate()) {
                                                     return;
@@ -1054,10 +1038,18 @@ Sign up below to begi... */
                                                           .validate()) {
                                                     return;
                                                   }
-                                                  if (_model.formKey1
+                                                  if (_model.formKey2
                                                               .currentState ==
                                                           null ||
-                                                      !_model.formKey1
+                                                      !_model.formKey2
+                                                          .currentState!
+                                                          .validate()) {
+                                                    return;
+                                                  }
+                                                  if (_model.formKey4
+                                                              .currentState ==
+                                                          null ||
+                                                      !_model.formKey4
                                                           .currentState!
                                                           .validate()) {
                                                     return;
@@ -1442,135 +1434,125 @@ Sign In below t... */
                                                 ),
                                               ],
                                             ),
-                                            Align(
-                                              alignment: const AlignmentDirectional(
-                                                  0.0, 0.0),
-                                              child: Form(
-                                                key: _model.formKey1,
-                                                autovalidateMode:
-                                                    AutovalidateMode.disabled,
-                                                child: SizedBox(
-                                                  width: 350.0,
-                                                  child: TextFormField(
-                                                    controller: _model
-                                                        .emailSignInTextController,
-                                                    focusNode: _model
-                                                        .emailSignInFocusNode,
-                                                    autofocus: true,
-                                                    autofillHints: const [
-                                                      AutofillHints.email
-                                                    ],
-                                                    textInputAction:
-                                                        TextInputAction.next,
-                                                    obscureText: false,
-                                                    decoration: InputDecoration(
-                                                      labelText:
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                        '6nskejwt' /* Email Address* */,
+                                            SizedBox(
+                                              width: 350.0,
+                                              child: TextFormField(
+                                                controller: _model
+                                                    .emailSignInTextController,
+                                                focusNode:
+                                                    _model.emailSignInFocusNode,
+                                                autofocus: true,
+                                                autofillHints: const [
+                                                  AutofillHints.email
+                                                ],
+                                                textInputAction:
+                                                    TextInputAction.next,
+                                                obscureText: false,
+                                                decoration: InputDecoration(
+                                                  labelText: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    '6nskejwt' /* Email Address* */,
+                                                  ),
+                                                  labelStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Noto Sans JP',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                        letterSpacing: 0.0,
                                                       ),
-                                                      labelStyle:
+                                                  hintStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Noto Sans JP',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .labelMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Noto Sans JP',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                      hintStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Noto Sans JP',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                      enabledBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
                                                               .alternate,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12.0),
-                                                      ),
-                                                      focusedBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12.0),
-                                                      ),
-                                                      errorBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .error,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12.0),
-                                                      ),
-                                                      focusedErrorBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .error,
-                                                          width: 2.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12.0),
-                                                      ),
-                                                      filled: true,
-                                                      fillColor: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                      contentPadding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  16.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
+                                                      width: 2.0,
                                                     ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            12.0),
+                                                  ),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      width: 2.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            12.0),
+                                                  ),
+                                                  errorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      width: 2.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            12.0),
+                                                  ),
+                                                  focusedErrorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      width: 2.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            12.0),
+                                                  ),
+                                                  filled: true,
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                  contentPadding:
+                                                      const EdgeInsetsDirectional
+                                                          .fromSTEB(16.0, 0.0,
+                                                              0.0, 0.0),
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily:
                                                               'Noto Sans JP',
                                                           letterSpacing: 0.0,
                                                         ),
-                                                    keyboardType: TextInputType
-                                                        .emailAddress,
-                                                    validator: _model
-                                                        .emailSignInTextControllerValidator
-                                                        .asValidator(context),
-                                                  ),
-                                                ),
+                                                keyboardType:
+                                                    TextInputType.emailAddress,
+                                                validator: _model
+                                                    .emailSignInTextControllerValidator
+                                                    .asValidator(context),
                                               ),
                                             ),
                                             Align(

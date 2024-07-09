@@ -7,12 +7,11 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  final formKey4 = GlobalKey<FormState>();
-  final formKey2 = GlobalKey<FormState>();
-  final formKey6 = GlobalKey<FormState>();
   final formKey3 = GlobalKey<FormState>();
-  final formKey5 = GlobalKey<FormState>();
   final formKey1 = GlobalKey<FormState>();
+  final formKey5 = GlobalKey<FormState>();
+  final formKey2 = GlobalKey<FormState>();
+  final formKey4 = GlobalKey<FormState>();
   // State field(s) for TabBar widget.
   TabController? tabBarController;
   int get tabBarCurrentIndex =>
@@ -133,20 +132,6 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
   FocusNode? emailSignInFocusNode;
   TextEditingController? emailSignInTextController;
   String? Function(BuildContext, String?)? emailSignInTextControllerValidator;
-  String? _emailSignInTextControllerValidator(
-      BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'qqkh2yte' /* Field is required */,
-      );
-    }
-
-    if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
-      return 'Has to be a valid email address.';
-    }
-    return null;
-  }
-
   // State field(s) for passwordSignIn widget.
   FocusNode? passwordSignInFocusNode;
   TextEditingController? passwordSignInTextController;
@@ -164,7 +149,6 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
     confirmPasswordVisibility = false;
     confirmPasswordTextControllerValidator =
         _confirmPasswordTextControllerValidator;
-    emailSignInTextControllerValidator = _emailSignInTextControllerValidator;
     passwordSignInVisibility = false;
   }
 

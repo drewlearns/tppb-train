@@ -89,7 +89,7 @@ class AddBillModel extends FlutterFlowModel<AddBillWidget> {
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'kgs2p7jr' /* Field is required */,
+        'qqkh2yte' /* Field is required */,
       );
     }
 

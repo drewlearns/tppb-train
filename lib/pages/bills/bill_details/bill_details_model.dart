@@ -113,7 +113,7 @@ class BillDetailsModel extends FlutterFlowModel<BillDetailsWidget> {
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'loxsnt8z' /* Field is required */,
+        'kgs2p7jr' /* Field is required */,
       );
     }
 

@@ -49,7 +49,7 @@ class AddTransactionModel extends FlutterFlowModel<AddTransactionWidget> {
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'uubgdi51' /* Field is required */,
+        'loxsnt8z' /* Field is required */,
       );
     }
 

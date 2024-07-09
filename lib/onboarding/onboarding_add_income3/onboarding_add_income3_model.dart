@@ -44,7 +44,7 @@ class OnboardingAddIncome3Model
   String? _amountTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'q3n63g0e' /* Field is required */,
+        'hbl7nexd' /* Field is required */,
       );
     }
 

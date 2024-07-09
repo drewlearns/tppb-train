@@ -411,24 +411,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '电子邮件地址*',
       'zh_Hant': '電子郵件地址*',
     },
-    'qqkh2yte': {
-      'en': 'Field is required',
-      'es': 'Se requiere campo',
-      'fr': 'Champ requis',
-      'ru': 'Поле, обязательное для заполнения',
-      'tl': 'Kinakailangan ang field',
-      'zh_Hans': '必填字段',
-      'zh_Hant': '欄位為必填項',
-    },
-    'yycaa1ok': {
-      'en': 'Please choose an option from the dropdown',
-      'es': 'Por favor elija una opción del menú desplegable',
-      'fr': 'Veuillez choisir une option dans la liste déroulante',
-      'ru': 'Пожалуйста, выберите вариант из раскрывающегося списка',
-      'tl': 'Mangyaring pumili ng opsyon mula sa dropdown',
-      'zh_Hans': '请从下拉列表中选择一个选项',
-      'zh_Hant': '請從下拉清單中選擇一個選項',
-    },
     'ms6j5kyn': {
       'en': 'Password*',
       'es': 'Contraseña*',
@@ -1740,7 +1722,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '描述*',
       'zh_Hant': '描述*',
     },
-    'kgs2p7jr': {
+    'qqkh2yte': {
       'en': 'Field is required',
       'es': 'Se requiere campo',
       'fr': 'Champ requis',
@@ -1749,7 +1731,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '必填字段',
       'zh_Hant': '欄位為必填項',
     },
-    'dxjfuyvh': {
+    'yycaa1ok': {
       'en': 'Please choose an option from the dropdown',
       'es': 'Por favor elija una opción del menú desplegable',
       'fr': 'Veuillez choisir une option dans la liste déroulante',
@@ -2707,7 +2689,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '描述*',
       'zh_Hant': '描述*',
     },
-    'loxsnt8z': {
+    'kgs2p7jr': {
       'en': 'Field is required',
       'es': 'Se requiere campo',
       'fr': 'Champ requis',
@@ -2716,7 +2698,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '必填字段',
       'zh_Hant': '欄位為必填項',
     },
-    '1yak7os2': {
+    'dxjfuyvh': {
       'en': 'Please choose an option from the dropdown',
       'es': 'Por favor elija una opción del menú desplegable',
       'fr': 'Veuillez choisir une option dans la liste déroulante',
@@ -3822,7 +3804,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '描述*',
       'zh_Hant': '描述*',
     },
-    'uubgdi51': {
+    'loxsnt8z': {
       'en': 'Field is required',
       'es': 'Se requiere campo',
       'fr': 'Champ requis',
@@ -3831,7 +3813,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '必填字段',
       'zh_Hant': '欄位為必填項',
     },
-    'p9gl52h7': {
+    '1yak7os2': {
       'en': 'Please choose an option from the dropdown',
       'es': 'Por favor elija una opción del menú desplegable',
       'fr': 'Veuillez choisir une option dans la liste déroulante',
@@ -4044,7 +4026,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '交易日期*',
       'zh_Hant': '交易日期*',
     },
-    'hqq4kwfk': {
+    'uubgdi51': {
       'en': 'Field is required',
       'es': 'Se requiere campo',
       'fr': 'Champ requis',
@@ -4062,7 +4044,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '失效日期',
       'zh_Hant': '失效日期',
     },
-    '3luxyxld': {
+    'p9gl52h7': {
       'en': 'Please choose an option from the dropdown',
       'es': 'Por favor elija una opción del menú desplegable',
       'fr': 'Veuillez choisir une option dans la liste déroulante',
@@ -6253,6 +6235,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '暗黑模式',
       'zh_Hant': '深色模式',
     },
+    'jz501xwq': {
+      'en': 'Debug',
+      'es': 'Comprar o canjear',
+      'fr': 'Acheter ou échanger',
+      'ru': 'Купите или обменяйте',
+      'tl': 'Bumili o I-redeem',
+      'zh_Hans': '购买或赎回',
+      'zh_Hant': '購買或贖回',
+    },
     '6c3wp5t0': {
       'en': 'Account',
       'es': 'Cuenta',
@@ -7807,7 +7798,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '0.00',
       'zh_Hant': '0.00',
     },
-    'hbl7nexd': {
+    'hqq4kwfk': {
       'en': 'Field is required',
       'es': 'Se requiere campo',
       'fr': 'Champ requis',
@@ -7825,7 +7816,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '仅限数字和句点',
       'zh_Hant': '僅數字和句點',
     },
-    '4w8hetui': {
+    '3luxyxld': {
       'en': 'Please choose an option from the dropdown',
       'es': 'Por favor elija una opción del menú desplegable',
       'fr': 'Veuillez choisir une option dans la liste déroulante',
@@ -8026,7 +8017,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '数量*',
       'zh_Hant': '數量*',
     },
-    'q3n63g0e': {
+    'hbl7nexd': {
       'en': 'Field is required',
       'es': 'Se requiere campo',
       'fr': 'Champ requis',
@@ -8044,7 +8035,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '仅限数字和句点',
       'zh_Hant': '僅數字和句點',
     },
-    'lun7oym3': {
+    '4w8hetui': {
       'en': 'Please choose an option from the dropdown',
       'es': 'Por favor elija una opción del menú desplegable',
       'fr': 'Veuillez choisir une option dans la liste déroulante',
@@ -8227,7 +8218,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '账单名称*',
       'zh_Hant': '帳單名稱*',
     },
-    'moxpih9v': {
+    'q3n63g0e': {
       'en': 'Field is required',
       'es': 'Se requiere campo',
       'fr': 'Champ requis',
@@ -8236,7 +8227,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '必填字段',
       'zh_Hant': '欄位為必填項',
     },
-    '2udra2rf': {
+    'lun7oym3': {
       'en': 'Please choose an option from the dropdown',
       'es': 'Por favor elija una opción del menú desplegable',
       'fr': 'Veuillez choisir une option dans la liste déroulante',
@@ -8299,7 +8290,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '类别*',
       'zh_Hant': '類別*',
     },
-    'tvkcgl66': {
+    'moxpih9v': {
       'en': 'Field is required',
       'es': 'Se requiere campo',
       'fr': 'Champ requis',
@@ -8308,7 +8299,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '必填字段',
       'zh_Hant': '欄位為必填項',
     },
-    'nhizc4xk': {
+    '2udra2rf': {
       'en': 'Please choose an option from the dropdown',
       'es': 'Por favor elija una opción del menú desplegable',
       'fr': 'Veuillez choisir une option dans la liste déroulante',
@@ -8362,7 +8353,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '包括 https://',
       'zh_Hant': '包括 https://',
     },
-    '3tjn0x5h': {
+    'tvkcgl66': {
       'en': 'Field is required',
       'es': 'Se requiere campo',
       'fr': 'Champ requis',
@@ -8371,7 +8362,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '必填字段',
       'zh_Hant': '欄位為必填項',
     },
-    'jonmyk9w': {
+    'nhizc4xk': {
       'en': 'Please choose an option from the dropdown',
       'es': 'Por favor elija una opción del menú desplegable',
       'fr': 'Veuillez choisir une option dans la liste déroulante',

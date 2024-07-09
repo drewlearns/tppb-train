@@ -64,7 +64,6 @@ async function _getLedgerCall(context, ffVariables) {
   if (!context.auth) {
     return _unauthenticatedResponse;
   }
-  var householdId = ffVariables["householdId"];
   var month = ffVariables["month"];
   var year = ffVariables["year"];
   var showCurrentMonthOnly = ffVariables["showCurrentMonthOnly"];

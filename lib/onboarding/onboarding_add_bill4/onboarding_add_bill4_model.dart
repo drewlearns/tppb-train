@@ -26,7 +26,7 @@ class OnboardingAddBill4Model
   String? _billNameTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'moxpih9v' /* Field is required */,
+        'q3n63g0e' /* Field is required */,
       );
     }
 
@@ -68,7 +68,7 @@ class OnboardingAddBill4Model
   String? _categoryTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'tvkcgl66' /* Field is required */,
+        'moxpih9v' /* Field is required */,
       );
     }
 

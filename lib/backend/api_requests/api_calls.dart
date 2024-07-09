@@ -130,7 +130,6 @@ class AddUserCall {
 
 class GetLedgerCall {
   Future<ApiCallResponse> call({
-    String? householdId = '',
     int? month,
     int? year,
     bool? showCurrentMonthOnly,
@@ -146,7 +145,6 @@ class GetLedgerCall {
       {
         'callName': 'GetLedgerCall',
         'variables': {
-          'householdId': householdId,
           'month': month,
           'year': year,
           'showCurrentMonthOnly': showCurrentMonthOnly,

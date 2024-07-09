@@ -1639,7 +1639,7 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                                       ledgerEntriesIndex]
                                                                   ? FlutterFlowTheme.of(
                                                                           context)
-                                                                      .error
+                                                                      .warning
                                                                   : FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryBackground,
@@ -1916,17 +1916,14 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                                                                 ? '-'
                                                                                                 : '+',
                                                                                             '-',
-                                                                                          )}${valueOrDefault<String>(
-                                                                                            formatNumber(
-                                                                                              TppbGroup.getLedgerCall.amount(
-                                                                                                listViewGetLedgerResponse.jsonBody,
-                                                                                              )?[ledgerEntriesIndex],
-                                                                                              formatType: FormatType.custom,
-                                                                                              currency: '',
-                                                                                              format: '###,##0.00',
-                                                                                              locale: '',
-                                                                                            ),
-                                                                                            'true',
+                                                                                          )}${formatNumber(
+                                                                                            TppbGroup.getLedgerCall.amount(
+                                                                                              listViewGetLedgerResponse.jsonBody,
+                                                                                            )?[ledgerEntriesIndex],
+                                                                                            formatType: FormatType.custom,
+                                                                                            currency: '',
+                                                                                            format: '###,##0.00',
+                                                                                            locale: '',
                                                                                           )}',
                                                                                           'Loading...',
                                                                                         ),

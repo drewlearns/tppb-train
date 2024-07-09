@@ -237,9 +237,6 @@ class _AddBudgetWidgetState extends State<AddBudgetWidget> {
 
                                     if ((_model.apiResultuxl?.succeeded ??
                                         true)) {
-                                      setState(() {
-                                        _model.textController?.clear();
-                                      });
                                       await showDialog(
                                         context: context,
                                         builder: (alertDialogContext) {
@@ -257,6 +254,8 @@ class _AddBudgetWidgetState extends State<AddBudgetWidget> {
                                           );
                                         },
                                       );
+
+                                      context.pushNamed('Home');
                                     } else {
                                       await showDialog(
                                         context: context,
