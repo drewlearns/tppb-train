@@ -363,6 +363,7 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                   }
                                                   final householdDropDownGetHouseholdResponse =
                                                       snapshot.data!;
+
                                                   return FlutterFlowDropDown<
                                                       String>(
                                                     controller: _model
@@ -402,6 +403,7 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                         .override(
                                                           fontFamily:
                                                               'Noto Sans JP',
+                                                          fontSize: 12.0,
                                                           letterSpacing: 0.0,
                                                         ),
                                                     hintText:
@@ -1275,6 +1277,7 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                           }
                                                           final textGetTotalSpentResponse =
                                                               snapshot.data!;
+
                                                           return Text(
                                                             valueOrDefault<
                                                                 String>(
@@ -1355,6 +1358,7 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                       }
                                                       final rowGetSafeToSpendResponse =
                                                           snapshot.data!;
+
                                                       return Row(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
@@ -1399,12 +1403,11 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                             borderRadius: 20.0,
                                                             borderWidth: 1.0,
                                                             buttonSize: 40.0,
-                                                            icon: Icon(
+                                                            icon: const Icon(
                                                               Icons
                                                                   .info_outline,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryBackground,
+                                                              color:
+                                                                  Colors.white,
                                                               size: 24.0,
                                                             ),
                                                             onPressed:
@@ -1418,7 +1421,7 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                                                     title: const Text(
                                                                         'Information'),
                                                                     content: const Text(
-                                                                        'Safe To Spend  is the amount that is \"safe to spend\" without breaking the bank between now and  your next pay day.  Disclaimer, this is only as accurate as the information you provide the application and only applies to the default wallet.'),
+                                                                        'Safe To Spend is the amount that is \"safe to spend\" without breaking the bank between now and  your next pay day. DISCLAIMER: this is only as accurate as the information you provide the application and only applies to the default wallet.'),
                                                                     actions: [
                                                                       TextButton(
                                                                         onPressed:
@@ -1496,6 +1499,7 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                     }
                                     final listViewGetLedgerResponse =
                                         snapshot.data!;
+
                                     return Builder(
                                       builder: (context) {
                                         final ledgerEntries =
@@ -1516,6 +1520,7 @@ class _LedgerWidgetState extends State<LedgerWidget>
                                             ),
                                           );
                                         }
+
                                         return ListView.separated(
                                           padding: const EdgeInsets.fromLTRB(
                                             0,

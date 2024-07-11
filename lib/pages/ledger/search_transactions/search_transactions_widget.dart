@@ -258,6 +258,7 @@ class _SearchTransactionsWidgetState extends State<SearchTransactionsWidget> {
                                     }
                                     final listViewSearchTransactionsResponse =
                                         snapshot.data!;
+
                                     return Builder(
                                       builder: (context) {
                                         final searchResults =
@@ -270,6 +271,7 @@ class _SearchTransactionsWidgetState extends State<SearchTransactionsWidget> {
                                                     .toList()
                                                     .toList() ??
                                                 [];
+
                                         return ListView.builder(
                                           padding: EdgeInsets.zero,
                                           primary: false,

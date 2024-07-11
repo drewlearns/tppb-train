@@ -31,10 +31,8 @@ class EditIncomeModel extends FlutterFlowModel<EditIncomeWidget> {
       );
     }
 
-    if (!RegExp(kTextValidatorUsernameRegex).hasMatch(val)) {
-      return FFLocalizations.of(context).getText(
-        '94oe5oq3' /* ^[a-zA-Z\s]+$ */,
-      );
+    if (!RegExp('^[a-zA-Z\\s]+\$').hasMatch(val)) {
+      return 'Invalid text';
     }
     return null;
   }

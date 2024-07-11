@@ -122,6 +122,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           );
                         }
                         final listViewGetUserResponse = snapshot.data!;
+
                         return ListView(
                           padding: EdgeInsets.zero,
                           scrollDirection: Axis.vertical,

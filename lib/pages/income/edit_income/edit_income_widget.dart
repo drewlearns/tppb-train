@@ -73,6 +73,7 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
           );
         }
         final editIncomeGetIncomeResponse = snapshot.data!;
+
         return Title(
             title: 'Edit Income',
             color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
@@ -276,6 +277,7 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
                                                 }
                                                 final householdDropDownGetHouseholdResponse =
                                                     snapshot.data!;
+
                                                 return FlutterFlowDropDown<
                                                     String>(
                                                   controller: _model
@@ -319,6 +321,7 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Noto Sans JP',
+                                                            fontSize: 12.0,
                                                             letterSpacing: 0.0,
                                                           ),
                                                   hintText: FFLocalizations.of(
@@ -400,6 +403,7 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
                                                 }
                                                 final walletDropDownGetPaymentSourceResponse =
                                                     snapshot.data!;
+
                                                 return FlutterFlowDropDown<
                                                     String>(
                                                   controller: _model
@@ -441,6 +445,7 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Noto Sans JP',
+                                                            fontSize: 12.0,
                                                             letterSpacing: 0.0,
                                                           ),
                                                   hintText: FFLocalizations.of(
@@ -581,6 +586,7 @@ class _EditIncomeWidgetState extends State<EditIncomeWidget> {
                                                         .override(
                                                           fontFamily:
                                                               'Noto Sans JP',
+                                                          fontSize: 12.0,
                                                           letterSpacing: 0.0,
                                                         ),
                                                     hintText:

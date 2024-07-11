@@ -275,6 +275,7 @@ class _LedgerWalkThroughWidgetState extends State<LedgerWalkThroughWidget>
                                                               .override(
                                                                 fontFamily:
                                                                     'Noto Sans JP',
+                                                                fontSize: 12.0,
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
@@ -1136,6 +1137,7 @@ class _LedgerWalkThroughWidgetState extends State<LedgerWalkThroughWidget>
                                                           }
                                                           final rowGetSafeToSpendResponse =
                                                               snapshot.data!;
+
                                                           return Row(
                                                             mainAxisSize:
                                                                 MainAxisSize

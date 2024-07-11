@@ -68,6 +68,7 @@ class _SetDefaultWalletWidgetState extends State<SetDefaultWalletWidget> {
           );
         }
         final setDefaultWalletGetDefaultPaymentSourceResponse = snapshot.data!;
+
         return Title(
             title: 'Set Default Wallet',
             color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
@@ -172,6 +173,7 @@ class _SetDefaultWalletWidgetState extends State<SetDefaultWalletWidget> {
                                     }
                                     final dropDownGetPaymentSourceResponse =
                                         snapshot.data!;
+
                                     return FlutterFlowDropDown<String>(
                                       controller:
                                           _model.dropDownValueController ??=
@@ -202,6 +204,7 @@ class _SetDefaultWalletWidgetState extends State<SetDefaultWalletWidget> {
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Noto Sans JP',
+                                            fontSize: 12.0,
                                             letterSpacing: 0.0,
                                           ),
                                       hintText:

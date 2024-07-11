@@ -212,6 +212,7 @@ class _ExportSearchWidgetState extends State<ExportSearchWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Noto Sans JP',
+                                  fontSize: 12.0,
                                   letterSpacing: 0.0,
                                 ),
                             hintText: FFLocalizations.of(context).getText(
@@ -278,9 +279,8 @@ class _ExportSearchWidgetState extends State<ExportSearchWidget> {
                                     );
                                   },
                                 );
-                                setState(() {
-                                  _model.categoryTextController?.clear();
-                                });
+
+                                context.pushNamed('Export');
                               } else {
                                 await showDialog(
                                   context: context,

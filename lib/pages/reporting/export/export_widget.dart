@@ -141,6 +141,7 @@ class _ExportWidgetState extends State<ExportWidget> {
                                       }
                                       final householdIdDropdownGetHouseholdResponse =
                                           snapshot.data!;
+
                                       return FlutterFlowDropDown<String>(
                                         controller: _model
                                                 .householdIdDropdownValueController ??=
@@ -168,6 +169,7 @@ class _ExportWidgetState extends State<ExportWidget> {
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Noto Sans JP',
+                                              fontSize: 12.0,
                                               letterSpacing: 0.0,
                                             ),
                                         hintText:

@@ -1047,6 +1047,14 @@ class GetBillCall {
         response,
         r'''$.ledgers[0].paymentSourceId''',
       ));
+  String? startDate(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.startDate''',
+      ));
+  String? endDate(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.endDate''',
+      ));
 }
 
 class GetIncomeCall {

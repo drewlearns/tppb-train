@@ -400,7 +400,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Добро пожаловать! \nВойдите в систему ниже, чтобы начать',
       'tl': 'Maligayang pagbabalik! \nMag-sign In sa ibaba upang makapagsimula',
       'zh_Hans': '欢迎回来！\n在下面登录即可开始',
-      'zh_Hant': '歡迎回來！ \n在下面登入即可開始',
+      'zh_Hant': '歡迎回來！ \n在下方登入即可開始',
     },
     '6nskejwt': {
       'en': 'Email Address*',
@@ -1045,7 +1045,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '094bqeon': {
       'en': 'Due Today',
       'es': 'Para hoy',
-      'fr': 'À payer aujourd\'hui',
+      'fr': 'À rendre aujourd\'hui',
       'ru': 'Срок оплаты сегодня',
       'tl': 'Dapat Ngayon',
       'zh_Hans': '今天截止',
@@ -1310,7 +1310,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Ne manquez jamais une facture, recevez des rappels de facture !',
       'ru': 'Никогда не пропустите счет, получайте напоминания о счетах!',
       'tl':
-          'Huwag kailanman palampasin ang isang bayarin, Kumuha ng mga paalala sa pagsingil!',
+          'Huwag kailanman palampasin ang isang bill, Kumuha ng mga paalala sa pagsingil!',
       'zh_Hans': '绝不会错过任何账单，获取账单提醒！',
       'zh_Hant': '永遠不會錯過帳單，獲取帳單提醒！',
     },
@@ -1556,7 +1556,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Semestralmente (180 días)',
       'fr': 'Semestriel (180 jours)',
       'ru': 'Раз в полгода (180 дней)',
-      'tl': 'Kalahati-taon ( 180 araw )',
+      'tl': 'Kalahati-Taon ( 180 araw )',
       'zh_Hans': '每半年（180 天）',
       'zh_Hant': '每半年一次（180 天）',
     },
@@ -1852,14 +1852,25 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hant': '帳單詳情',
     },
     'xrlz2qzb': {
-      'en': 'Modify the Bill if you like and click Edit Bill',
-      'es': 'Modifique la factura si lo desea y haga clic en Editar factura',
+      'en': 'Modify the Bill if you like and click \"Save Changes\"',
+      'es':
+          'Modifique la factura si lo desea y haga clic en \"Guardar cambios\"',
       'fr':
-          'Modifiez la facture si vous le souhaitez et cliquez sur Modifier la facture',
-      'ru': 'Измените счет, если хотите, и нажмите «Редактировать счет».',
-      'tl': 'Baguhin ang Bill kung gusto mo at i-click ang I-edit ang Bill',
-      'zh_Hans': '如果需要，可以修改账单，然后单击“编辑账单”',
-      'zh_Hant': '如果您願意，請修改帳單，然後點擊“編輯帳單”',
+          'Modifiez la facture si vous le souhaitez et cliquez sur \"Enregistrer les modifications\".',
+      'ru':
+          'Измените законопроект, если хотите, и нажмите «Сохранить изменения».',
+      'tl': 'Baguhin ang Bill kung gusto mo at i-click ang \"Save Changes\"',
+      'zh_Hans': '如果需要，可以修改账单，然后点击“保存更改”',
+      'zh_Hant': '如果您願意，請修改帳單並點擊“儲存變更”',
+    },
+    'qkohmdoo': {
+      'en': 'To',
+      'es': 'A',
+      'fr': 'À',
+      'ru': 'К',
+      'tl': 'Upang',
+      'zh_Hans': '到',
+      'zh_Hant': '到',
     },
     'cb7hynio': {
       'en': 'Once',
@@ -2063,7 +2074,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '11th',
       'es': '11',
       'fr': '11ème',
-      'ru': '11-е',
+      'ru': '11-е место',
       'tl': 'ika-11',
       'zh_Hans': '第11届',
       'zh_Hant': '11號',
@@ -2081,7 +2092,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '13th',
       'es': '13',
       'fr': '13ème',
-      'ru': '13-е место',
+      'ru': '13-е',
       'tl': 'ika-13',
       'zh_Hans': '第十三',
       'zh_Hant': '13號',
@@ -2102,7 +2113,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': '15-е место',
       'tl': 'ika-15',
       'zh_Hans': '第十五',
-      'zh_Hant': '15日',
+      'zh_Hant': '15號',
     },
     '9ca7e1x4': {
       'en': '16th',
@@ -2360,7 +2371,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '11th',
       'es': '11',
       'fr': '11ème',
-      'ru': '11-е',
+      'ru': '11-е место',
       'tl': 'ika-11',
       'zh_Hans': '第11届',
       'zh_Hant': '11號',
@@ -2378,7 +2389,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '13th',
       'es': '13',
       'fr': '13ème',
-      'ru': '13-е место',
+      'ru': '13-е',
       'tl': 'ika-13',
       'zh_Hans': '第十三',
       'zh_Hant': '13號',
@@ -2399,7 +2410,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': '15-е место',
       'tl': 'ika-15',
       'zh_Hans': '第十五',
-      'zh_Hant': '15日',
+      'zh_Hant': '15號',
     },
     'bdehezfu': {
       'en': '16th',
@@ -3240,7 +3251,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Semestralmente (180 días)',
       'fr': 'Semestriel (180 jours)',
       'ru': 'Раз в полгода (180 дней)',
-      'tl': 'Kalahati-taon ( 180 araw )',
+      'tl': 'Kalahati-Taon ( 180 araw )',
       'zh_Hans': '每半年（180 天）',
       'zh_Hant': '每半年一次（180 天）',
     },
@@ -3553,15 +3564,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '必填字段',
       'zh_Hant': '欄位為必填項',
     },
-    '94oe5oq3': {
-      'en': '^[a-zA-Z\\s]+\$',
-      'es': '^[a-zA-Z\\s]+\$',
-      'fr': '^[a-zA-Z\\s]+\$',
-      'ru': '^[a-zA-Z\\s]+\$',
-      'tl': '^[a-zA-Z\\s]+\$',
-      'zh_Hans': '^[a-zA-Z\\s]+\$',
-      'zh_Hant': '^[a-zA-Z\\s]+\$',
-    },
     's54ean8o': {
       'en': 'Please choose an option from the dropdown',
       'es': 'Por favor elija una opción del menú desplegable',
@@ -3759,41 +3761,41 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '加或减*',
       'zh_Hant': '加或減*',
     },
-    'st2ao9ro': {
+    'uvb26k3e': {
       'en': 'Amount*',
-      'es': 'Cantidad*',
-      'fr': 'Montant*',
-      'ru': 'Количество*',
-      'tl': 'Halaga*',
-      'zh_Hans': '数量*',
-      'zh_Hant': '數量*',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
     },
-    'lr3h0sf2': {
+    '4dyyfwgt': {
       'en': 'Field is required',
-      'es': 'Se requiere campo',
-      'fr': 'Champ requis',
-      'ru': 'Поле, обязательное для заполнения',
-      'tl': 'Kinakailangan ang field',
-      'zh_Hans': '必填字段',
-      'zh_Hant': '欄位為必填項',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
     },
-    'xfet0b5p': {
+    'uro4zex7': {
       'en': 'Digits and period only',
-      'es': 'Sólo dígitos y punto',
-      'fr': 'Chiffres et point uniquement',
-      'ru': 'Только цифры и точка',
-      'tl': 'Mga digit at tuldok lamang',
-      'zh_Hans': '仅限数字和句点',
-      'zh_Hant': '僅數字和句點',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
     },
-    'utb5fhgu': {
+    'rm6nryln': {
       'en': 'Please choose an option from the dropdown',
-      'es': 'Por favor elija una opción del menú desplegable',
-      'fr': 'Veuillez choisir une option dans la liste déroulante',
-      'ru': 'Пожалуйста, выберите вариант из раскрывающегося списка',
-      'tl': 'Mangyaring pumili ng opsyon mula sa dropdown',
-      'zh_Hans': '请从下拉列表中选择一个选项',
-      'zh_Hant': '請從下拉清單中選擇一個選項',
+      'es': '',
+      'fr': '',
+      'ru': '',
+      'tl': '',
+      'zh_Hans': '',
+      'zh_Hant': '',
     },
     'zphsworx': {
       'en': 'Description*',
@@ -3913,7 +3915,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hant': '清除了嗎？',
     },
     'sct8eowz': {
-      'en': 'True or False',
+      'en': '',
       'es': 'Verdadero o falso',
       'fr': 'Vrai ou faux',
       'ru': 'Правда или ложь',
@@ -4193,7 +4195,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Lista separada por comas',
       'fr': 'Liste séparée par des virgules',
       'ru': 'Список, разделенный запятыми',
-      'tl': 'Listahan ng Comma Separated',
+      'tl': 'Comma Separated List',
       'zh_Hans': '逗号分隔列表',
       'zh_Hant': '逗號分隔列表',
     },
@@ -4386,15 +4388,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '钱包*',
       'zh_Hant': '錢包*',
     },
-    '8q480c9w': {
-      'en': 'Click to Upload new photo',
-      'es': 'Haga clic para cargar una nueva foto',
-      'fr': 'Cliquez pour télécharger une nouvelle photo',
-      'ru': 'Нажмите, чтобы загрузить новую фотографию',
-      'tl': 'I-click upang Mag-upload ng bagong larawan',
-      'zh_Hans': '点击上传新照片',
-      'zh_Hant': '點擊上傳新照片',
-    },
     '3w76g4b9': {
       'en': 'Save Changes',
       'es': 'Guardar cambios',
@@ -4403,6 +4396,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'tl': 'I-save ang mga pagbabago',
       'zh_Hans': '保存更改',
       'zh_Hant': '儲存變更',
+    },
+    '8q480c9w': {
+      'en': 'Click to upload a new photo',
+      'es': 'Haz clic para subir una nueva foto.',
+      'fr': 'Cliquez pour télécharger une nouvelle photo',
+      'ru': 'Нажмите, чтобы загрузить новую фотографию',
+      'tl': 'I-click upang mag-upload ng bagong larawan',
+      'zh_Hans': '单击上传新照片',
+      'zh_Hant': '點擊上傳新照片',
     },
     'gc94e1yb': {
       'en': 'Home',
@@ -4868,7 +4870,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '11th',
       'es': '11',
       'fr': '11ème',
-      'ru': '11-е',
+      'ru': '11-е место',
       'tl': 'ika-11',
       'zh_Hans': '第11届',
       'zh_Hant': '11號',
@@ -4886,7 +4888,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '13th',
       'es': '13',
       'fr': '13ème',
-      'ru': '13-е место',
+      'ru': '13-е',
       'tl': 'ika-13',
       'zh_Hans': '第十三',
       'zh_Hant': '13號',
@@ -4907,7 +4909,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': '15-е место',
       'tl': 'ika-15',
       'zh_Hans': '第十五',
-      'zh_Hant': '15日',
+      'zh_Hant': '15號',
     },
     'tgstk6p4': {
       'en': '16th',
@@ -6012,7 +6014,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es':
           'Descargo de responsabilidad: The Purple Piggy Bank LLC no es un banco',
       'fr':
-          'Avis de non-responsabilité : The Purple Piggy Bank LLC n\'est pas une banque',
+          'Avis de non-responsabilité : The Purple Piggy Bank LLC n\'est pas une banque',
       'ru':
           'Отказ от ответственности: ООО «Пурпурная копилка» не является банком',
       'tl': 'Disclaimer: Ang Purple Piggy Bank LLC ay Hindi Isang Bangko',
@@ -6059,7 +6061,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Имя',
       'tl': 'Pangalan',
       'zh_Hans': '姓名',
-      'zh_Hant': '名稱',
+      'zh_Hant': '姓名',
     },
     'kz90srbh': {
       'en': 'Field is required',
@@ -6234,15 +6236,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'tl': 'Dark Mode',
       'zh_Hans': '暗黑模式',
       'zh_Hant': '深色模式',
-    },
-    'jz501xwq': {
-      'en': 'Debug',
-      'es': 'Comprar o canjear',
-      'fr': 'Acheter ou échanger',
-      'ru': 'Купите или обменяйте',
-      'tl': 'Bumili o I-redeem',
-      'zh_Hans': '购买或赎回',
-      'zh_Hant': '購買或贖回',
     },
     '6c3wp5t0': {
       'en': 'Account',
@@ -7117,7 +7110,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'hwto5cb8': {
       'en': 'Due Today',
       'es': 'Para hoy',
-      'fr': 'À payer aujourd\'hui',
+      'fr': 'À rendre aujourd\'hui',
       'ru': 'Срок оплаты сегодня',
       'tl': 'Dapat Ngayon',
       'zh_Hans': '今天截止',
@@ -7208,7 +7201,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '\$24.99',
       'es': '\$24.99',
       'fr': '24,99 \$',
-      'ru': '\$24,99',
+      'ru': '24,99 доллара США',
       'tl': '\$24.99',
       'zh_Hans': '24.99 美元',
       'zh_Hant': '24.99 美元',
@@ -7436,7 +7429,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '2025-01-01',
       'es': '2025-01-01T05:00:00Z',
       'fr': '2025-01-01T05:00:00Z',
-      'ru': '2025-01-01T05:00:00Z',
+      'ru': '2025-01-01T05:00:00З',
       'tl': '2025-01-01T05:00:00Z',
       'zh_Hans': '2025-01-01T05：00：00Z',
       'zh_Hant': '2025-01-01T05:00:00Z',
@@ -7521,7 +7514,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Banco de America',
       'fr': 'Banque d\'Amérique',
       'ru': 'Банк Америки',
-      'tl': 'Bank of America',
+      'tl': 'Bank Of America',
       'zh_Hans': '美国银行',
       'zh_Hant': '美國銀行',
     },
@@ -7634,7 +7627,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
           'Поскольку у вас может быть потенциально неограниченный бюджет,\nмы хотим дать им имена, чтобы не запутаться.',
       'tl':
           'Dahil maaari kang magkaroon ng potensyal na walang limitasyong mga badyet,\ngusto natin silang pangalanan para hindi tayo malito.',
-      'zh_Hans': '由于您的预算可能不受限制，因此，我们想给它们命名，以免造成混淆。',
+      'zh_Hans': '由于您的预算可能不受限制，因此\n我们希望给它们命名，以免造成混淆。',
       'zh_Hant': '由於您可能擁有無限的預算，\n我們想為它們命名，這樣我們就不會感到困惑。',
     },
     '4bqleebs': {
@@ -8426,7 +8419,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
           'Вы можете получить доступ к руководству в любое время со страницы учетной записи.',
       'tl':
           'Maaari mong i-access ang tutorial anumang oras mula sa pahina ng Account.',
-      'zh_Hans': '您可以随时从帐户页面访问本教程。',
+      'zh_Hans': '您可以随时从帐户页面访问教程。',
       'zh_Hant': '您可以隨時從「帳戶」頁面存取該教學。',
     },
     'jqs8pytj': {
@@ -8464,7 +8457,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
           'Чтобы сфотографировать чек, этому приложению требуются разрешения на доступ к камере.',
       'tl':
           'Upang kumuha ng larawan ng isang resibo, ang app na ito ay nangangailangan ng mga pahintulot para sa pag-access sa camera',
-      'zh_Hans': '为了拍摄收据，此应用需要获得相机访问权限',
+      'zh_Hans': '为了拍摄收据的照片，此应用需要获得相机访问权限',
       'zh_Hant': '為了拍攝收據照片，此應用程式需要相機存取權限',
     },
     'l2qb7t33': {
@@ -8503,7 +8496,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr':
           'Nous n\'en avons pas réellement besoin, mais un SDK et l\'Apple Store exigent qu\'il soit répertorié. N\'hésitez pas à le nier.',
       'ru':
-          'На самом деле нам это не нужно, но SDK и магазин Apple требуют, чтобы он был указан. Не стесняйтесь это отрицать.',
+          'На самом деле нам это не нужно, но SDK и магазин Apple требуют, чтобы он был указан в списке. Не стесняйтесь это отрицать.',
       'tl':
           'Hindi talaga namin ito kailangan ngunit kailangan ito ng SDK at Apple store na mailista. Huwag mag-atubiling tanggihan ito.',
       'zh_Hans': '我们实际上并不需要这个，但是 SDK 和 Apple 商店要求列出它。请随意拒绝。',
@@ -8517,7 +8510,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr':
           'Nous n\'en avons pas réellement besoin, mais un SDK et l\'Apple Store exigent qu\'il soit répertorié. N\'hésitez pas à le nier.',
       'ru':
-          'На самом деле нам это не нужно, но SDK и магазин Apple требуют, чтобы он был указан. Не стесняйтесь это отрицать.',
+          'На самом деле нам это не нужно, но SDK и магазин Apple требуют, чтобы он был указан в списке. Не стесняйтесь это отрицать.',
       'tl':
           'Hindi talaga namin ito kailangan ngunit kailangan ito ng SDK at Apple store na mailista. Huwag mag-atubiling tanggihan ito.',
       'zh_Hans': '我们实际上并不需要这个，但是 SDK 和 Apple 商店要求列出它。请随意拒绝。',
@@ -8784,9 +8777,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr':
           'Vous savez que c\'est payant car la coche est violette et la bordure est également violette. Lorsqu\'un statut d\'entrée est modifié (vous cliquez sur la coche), un son \"KA-CHING\" sera émis.',
       'ru':
-          'Вы знаете, что оно оплачено, потому что галочка фиолетового цвета и граница тоже фиолетовая. При изменении статуса записи (вы нажимаете галочку) раздается звук «КА-ЧИНГ».',
+          'Вы знаете, что оно оплачено, потому что галочка фиолетовая и рамка тоже фиолетовая. Когда статус записи изменится (вы нажмете на галочку), она издаст звук «КА-ЧИНГ».',
       'tl':
-          'Alam mo ang bayad nito dahil purple ang check mark at purple din ang border. Kapag ang isang entry ay binago ang status (i-click mo ang check mark), gagawa ito ng \"KA-CHING\" na tunog.',
+          'Alam mo ang bayad nito dahil purple ang check mark at purple din ang border. Kapag binago ang status ng isang entry (i-click mo ang check mark), gagawa ito ng tunog na \"KA-CHING\".',
       'zh_Hans':
           '您知道它已付款，因为复选标记是紫色的，边框也是紫色的。当条目的状态发生变化时（您单击复选标记），它会发出“KA-CHING”的声音。',
       'zh_Hant':

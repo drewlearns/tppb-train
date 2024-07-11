@@ -182,6 +182,7 @@ class _BillsWidgetState extends State<BillsWidget>
                                           }
                                           final householdDropDownGetHouseholdResponse =
                                               snapshot.data!;
+
                                           return FlutterFlowDropDown<String>(
                                             controller: _model
                                                     .householdDropDownValueController ??=
@@ -210,6 +211,7 @@ class _BillsWidgetState extends State<BillsWidget>
                                                     .override(
                                                       fontFamily:
                                                           'Noto Sans JP',
+                                                      fontSize: 12.0,
                                                       letterSpacing: 0.0,
                                                     ),
                                             hintText:
@@ -478,6 +480,7 @@ class _BillsWidgetState extends State<BillsWidget>
                                                       }
                                                       final dueBillsListViewGetBillsResponse =
                                                           snapshot.data!;
+
                                                       return Builder(
                                                         builder: (context) {
                                                           final duelist = TppbGroup
@@ -491,6 +494,7 @@ class _BillsWidgetState extends State<BillsWidget>
                                                                   .toList()
                                                                   .toList() ??
                                                               [];
+
                                                           return ListView
                                                               .builder(
                                                             padding:
@@ -762,6 +766,7 @@ class _BillsWidgetState extends State<BillsWidget>
                                                       }
                                                       final pastDueBillsGetBillsResponse =
                                                           snapshot.data!;
+
                                                       return Builder(
                                                         builder: (context) {
                                                           final pastDueList = TppbGroup
@@ -775,6 +780,7 @@ class _BillsWidgetState extends State<BillsWidget>
                                                                   .toList()
                                                                   .toList() ??
                                                               [];
+
                                                           return ListView
                                                               .builder(
                                                             padding:
@@ -1046,6 +1052,7 @@ class _BillsWidgetState extends State<BillsWidget>
                                                 }
                                                 final paidBillsListViewGetBillsResponse =
                                                     snapshot.data!;
+
                                                 return Builder(
                                                   builder: (context) {
                                                     final paidbills =
@@ -1058,6 +1065,7 @@ class _BillsWidgetState extends State<BillsWidget>
                                                                 .toList()
                                                                 .toList() ??
                                                             [];
+
                                                     return RefreshIndicator(
                                                       color:
                                                           FlutterFlowTheme.of(
@@ -1358,6 +1366,7 @@ class _BillsWidgetState extends State<BillsWidget>
                                                 }
                                                 final futureDueBillsListViewGetBillsResponse =
                                                     snapshot.data!;
+
                                                 return Builder(
                                                   builder: (context) {
                                                     final futureDueBills =
@@ -1370,6 +1379,7 @@ class _BillsWidgetState extends State<BillsWidget>
                                                                 .toList()
                                                                 .toList() ??
                                                             [];
+
                                                     return ListView.builder(
                                                       padding: EdgeInsets.zero,
                                                       primary: false,

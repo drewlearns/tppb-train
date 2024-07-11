@@ -138,6 +138,7 @@ class _ExportToQBOWidgetState extends State<ExportToQBOWidget> {
                                   }
                                   final dropDownGetPaymentSourceResponse =
                                       snapshot.data!;
+
                                   return FlutterFlowDropDown<String>(
                                     controller:
                                         _model.dropDownValueController ??=
@@ -161,6 +162,7 @@ class _ExportToQBOWidgetState extends State<ExportToQBOWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Noto Sans JP',
+                                          fontSize: 12.0,
                                           letterSpacing: 0.0,
                                         ),
                                     hintText:
@@ -237,6 +239,8 @@ class _ExportToQBOWidgetState extends State<ExportToQBOWidget> {
                                         );
                                       },
                                     );
+
+                                    context.pushNamed('Export');
                                   } else {
                                     await showDialog(
                                       context: context,

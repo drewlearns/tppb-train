@@ -170,6 +170,7 @@ class _IncomesWalkthroughWidgetState extends State<IncomesWalkthroughWidget> {
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Noto Sans JP',
+                                            fontSize: 12.0,
                                             letterSpacing: 0.0,
                                           ),
                                       hintText:

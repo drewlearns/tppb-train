@@ -197,6 +197,7 @@ class _EditMembersWidgetState extends State<EditMembersWidget> {
                                         }
                                         final dropDownGetHouseholdResponse =
                                             snapshot.data!;
+
                                         return FlutterFlowDropDown<String>(
                                           controller:
                                               _model.dropDownValueController ??=
@@ -224,6 +225,7 @@ class _EditMembersWidgetState extends State<EditMembersWidget> {
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily: 'Noto Sans JP',
+                                                    fontSize: 12.0,
                                                     letterSpacing: 0.0,
                                                   ),
                                           hintText: FFLocalizations.of(context)
@@ -247,7 +249,7 @@ class _EditMembersWidgetState extends State<EditMembersWidget> {
                                           borderRadius: 8.0,
                                           margin:
                                               const EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 4.0, 16.0, 4.0),
+                                                  16.0, 0.0, 16.0, 0.0),
                                           hidesUnderline: true,
                                           isOverButton: true,
                                           isSearchable: false,
@@ -319,6 +321,7 @@ class _EditMembersWidgetState extends State<EditMembersWidget> {
                                     }
                                     final listViewGetHouseholdMembersResponse =
                                         snapshot.data!;
+
                                     return Builder(
                                       builder: (context) {
                                         final users =
@@ -329,6 +332,7 @@ class _EditMembersWidgetState extends State<EditMembersWidget> {
                                                     )
                                                     ?.toList() ??
                                                 [];
+
                                         return ListView.separated(
                                           padding: const EdgeInsets.symmetric(
                                               vertical: 4.0),

@@ -137,6 +137,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                             );
                           }
                           final containerGetCategoriesResponse = snapshot.data!;
+
                           return Container(
                             width: 380.0,
                             decoration: const BoxDecoration(),
@@ -155,6 +156,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                                 .toList()
                                                 .toList() ??
                                             [];
+
                                     return ListView.separated(
                                       padding:
                                           const EdgeInsets.symmetric(vertical: 4.0),
@@ -337,6 +339,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                             );
                           }
                           final containerGetCategoriesResponse = snapshot.data!;
+
                           return Container(
                             width: 380.0,
                             decoration: const BoxDecoration(),
@@ -355,6 +358,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                                 .toList()
                                                 .toList() ??
                                             [];
+
                                     return ListView.separated(
                                       padding:
                                           const EdgeInsets.symmetric(vertical: 4.0),

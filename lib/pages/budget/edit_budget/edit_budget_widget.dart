@@ -146,6 +146,7 @@ class _EditBudgetWidgetState extends State<EditBudgetWidget> {
                                 }
                                 final householdDropDownGetHouseholdResponse =
                                     snapshot.data!;
+
                                 return FlutterFlowDropDown<String>(
                                   controller: _model
                                           .householdDropDownValueController ??=
@@ -168,6 +169,7 @@ class _EditBudgetWidgetState extends State<EditBudgetWidget> {
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Noto Sans JP',
+                                        fontSize: 12.0,
                                         letterSpacing: 0.0,
                                       ),
                                   hintText: FFLocalizations.of(context).getText(

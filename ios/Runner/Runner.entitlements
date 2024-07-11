@@ -6,9 +6,5 @@
     <array>
       <string>merchant.com.thepurplepiggybank.com</string>
     </array>
-    <key>com.apple.developer.associated-domains</key>
-    <array>
-      <string>applinks:app.thepurplepiggybank.com</string>
-    </array>
 </dict>
 </plist>

@@ -90,6 +90,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
           );
         }
         final editTransactionGetFilePathResponse = snapshot.data!;
+
         return Title(
             title: 'Edit Transaction',
             color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
@@ -294,6 +295,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                         );
                       }
                       final listViewGetLedgerEntryResponse = snapshot.data!;
+
                       return ListView(
                         padding: EdgeInsets.zero,
                         scrollDirection: Axis.vertical,
@@ -530,7 +532,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      8.0),
+                                                                      12.0),
                                                         ),
                                                         focusedBorder:
                                                             OutlineInputBorder(
@@ -544,7 +546,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      8.0),
+                                                                      12.0),
                                                         ),
                                                         errorBorder:
                                                             OutlineInputBorder(
@@ -558,7 +560,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      8.0),
+                                                                      12.0),
                                                         ),
                                                         focusedErrorBorder:
                                                             OutlineInputBorder(
@@ -572,7 +574,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      8.0),
+                                                                      12.0),
                                                         ),
                                                         filled: true,
                                                         fillColor: FlutterFlowTheme
@@ -659,7 +661,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      8.0),
+                                                                      12.0),
                                                         ),
                                                         focusedBorder:
                                                             OutlineInputBorder(
@@ -673,7 +675,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      8.0),
+                                                                      12.0),
                                                         ),
                                                         errorBorder:
                                                             OutlineInputBorder(
@@ -687,7 +689,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      8.0),
+                                                                      12.0),
                                                         ),
                                                         focusedErrorBorder:
                                                             OutlineInputBorder(
@@ -701,7 +703,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      8.0),
+                                                                      12.0),
                                                         ),
                                                         filled: true,
                                                         fillColor: FlutterFlowTheme
@@ -789,7 +791,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      8.0),
+                                                                      12.0),
                                                         ),
                                                         focusedBorder:
                                                             OutlineInputBorder(
@@ -803,7 +805,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      8.0),
+                                                                      12.0),
                                                         ),
                                                         errorBorder:
                                                             OutlineInputBorder(
@@ -817,7 +819,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      8.0),
+                                                                      12.0),
                                                         ),
                                                         focusedErrorBorder:
                                                             OutlineInputBorder(
@@ -831,7 +833,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      8.0),
+                                                                      12.0),
                                                         ),
                                                         filled: true,
                                                         fillColor: FlutterFlowTheme
@@ -922,7 +924,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      8.0),
+                                                                      12.0),
                                                         ),
                                                         focusedBorder:
                                                             OutlineInputBorder(
@@ -936,7 +938,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      8.0),
+                                                                      12.0),
                                                         ),
                                                         errorBorder:
                                                             OutlineInputBorder(
@@ -950,7 +952,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      8.0),
+                                                                      12.0),
                                                         ),
                                                         focusedErrorBorder:
                                                             OutlineInputBorder(
@@ -964,7 +966,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      8.0),
+                                                                      12.0),
                                                         ),
                                                         filled: true,
                                                         fillColor: FlutterFlowTheme
@@ -1057,7 +1059,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      8.0),
+                                                                      12.0),
                                                         ),
                                                         focusedBorder:
                                                             OutlineInputBorder(
@@ -1071,7 +1073,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      8.0),
+                                                                      12.0),
                                                         ),
                                                         errorBorder:
                                                             OutlineInputBorder(
@@ -1085,7 +1087,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      8.0),
+                                                                      12.0),
                                                         ),
                                                         focusedErrorBorder:
                                                             OutlineInputBorder(
@@ -1099,7 +1101,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
-                                                                      8.0),
+                                                                      12.0),
                                                         ),
                                                         filled: true,
                                                         fillColor: FlutterFlowTheme
@@ -1163,6 +1165,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                         .override(
                                                           fontFamily:
                                                               'Noto Sans JP',
+                                                          fontSize: 12.0,
                                                           letterSpacing: 0.0,
                                                         ),
                                                     hintText:
@@ -1189,7 +1192,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                                 context)
                                                             .alternate,
                                                     borderWidth: 2.0,
-                                                    borderRadius: 8.0,
+                                                    borderRadius: 12.0,
                                                     margin:
                                                         const EdgeInsetsDirectional
                                                             .fromSTEB(16.0, 4.0,
@@ -1260,6 +1263,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                         .override(
                                                           fontFamily:
                                                               'Noto Sans JP',
+                                                          fontSize: 12.0,
                                                           letterSpacing: 0.0,
                                                         ),
                                                     hintText:
@@ -1286,7 +1290,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                                 context)
                                                             .alternate,
                                                     borderWidth: 2.0,
-                                                    borderRadius: 8.0,
+                                                    borderRadius: 12.0,
                                                     margin:
                                                         const EdgeInsetsDirectional
                                                             .fromSTEB(16.0, 4.0,
@@ -1308,6 +1312,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                             .override(
                                                               fontFamily:
                                                                   'Noto Sans JP',
+                                                              fontSize: 14.0,
                                                               letterSpacing:
                                                                   0.0,
                                                             ),
@@ -1348,6 +1353,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                       }
                                                       final householdGetHouseholdResponse =
                                                           snapshot.data!;
+
                                                       return FlutterFlowDropDown<
                                                           String>(
                                                         controller: _model
@@ -1389,6 +1395,8 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Noto Sans JP',
+                                                                  fontSize:
+                                                                      12.0,
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
@@ -1415,7 +1423,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                                     context)
                                                                 .alternate,
                                                         borderWidth: 2.0,
-                                                        borderRadius: 8.0,
+                                                        borderRadius: 12.0,
                                                         margin:
                                                             const EdgeInsetsDirectional
                                                                 .fromSTEB(
@@ -1488,6 +1496,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                       }
                                                       final walletGetPaymentSourceResponse =
                                                           snapshot.data!;
+
                                                       return FlutterFlowDropDown<
                                                           String>(
                                                         controller: _model
@@ -1529,6 +1538,8 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Noto Sans JP',
+                                                                  fontSize:
+                                                                      12.0,
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
@@ -1555,7 +1566,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                                     context)
                                                                 .alternate,
                                                         borderWidth: 2.0,
-                                                        borderRadius: 8.0,
+                                                        borderRadius: 12.0,
                                                         margin:
                                                             const EdgeInsetsDirectional
                                                                 .fromSTEB(
@@ -1587,125 +1598,6 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                     },
                                                   ),
                                                 ),
-                                                if (widget.type ==
-                                                    'transaction')
-                                                  Text(
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      '8q480c9w' /* Click to Upload new photo */,
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Noto Sans JP',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                  ),
-                                                if (widget.type ==
-                                                    'transaction')
-                                                  Semantics(
-                                                    label:
-                                                        'Click to add new photo',
-                                                    child: InkWell(
-                                                      splashColor:
-                                                          Colors.transparent,
-                                                      focusColor:
-                                                          Colors.transparent,
-                                                      hoverColor:
-                                                          Colors.transparent,
-                                                      highlightColor:
-                                                          Colors.transparent,
-                                                      onTap: () async {
-                                                        final selectedMedia =
-                                                            await selectMediaWithSourceBottomSheet(
-                                                          context: context,
-                                                          maxWidth: 1500.00,
-                                                          allowPhoto: true,
-                                                        );
-                                                        if (selectedMedia !=
-                                                                null &&
-                                                            selectedMedia.every((m) =>
-                                                                validateFileFormat(
-                                                                    m.storagePath,
-                                                                    context))) {
-                                                          setState(() => _model
-                                                                  .isDataUploading =
-                                                              true);
-                                                          var selectedUploadedFiles =
-                                                              <FFUploadedFile>[];
-
-                                                          try {
-                                                            selectedUploadedFiles =
-                                                                selectedMedia
-                                                                    .map((m) =>
-                                                                        FFUploadedFile(
-                                                                          name: m
-                                                                              .storagePath
-                                                                              .split('/')
-                                                                              .last,
-                                                                          bytes:
-                                                                              m.bytes,
-                                                                          height: m
-                                                                              .dimensions
-                                                                              ?.height,
-                                                                          width: m
-                                                                              .dimensions
-                                                                              ?.width,
-                                                                          blurHash:
-                                                                              m.blurHash,
-                                                                        ))
-                                                                    .toList();
-                                                          } finally {
-                                                            _model.isDataUploading =
-                                                                false;
-                                                          }
-                                                          if (selectedUploadedFiles
-                                                                  .length ==
-                                                              selectedMedia
-                                                                  .length) {
-                                                            setState(() {
-                                                              _model.uploadedLocalFile =
-                                                                  selectedUploadedFiles
-                                                                      .first;
-                                                            });
-                                                          } else {
-                                                            setState(() {});
-                                                            return;
-                                                          }
-                                                        }
-
-                                                        _model.base64Output =
-                                                            await actions
-                                                                .imageToBase64String(
-                                                          _model
-                                                              .uploadedLocalFile,
-                                                        );
-
-                                                        setState(() {});
-                                                      },
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8.0),
-                                                        child: Image.network(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            TppbGroup
-                                                                .getFilePathCall
-                                                                .url(
-                                                              editTransactionGetFilePathResponse
-                                                                  .jsonBody,
-                                                            ),
-                                                            'https://p289.p2.n0.cdn.zight.com/items/E0uegXZx/b9f1dc60-2a4b-4374-acd3-344ed6d73294.png?source=client&v=%221d147bc28ad18d6568afe34c51535eae%22',
-                                                          ),
-                                                          width: 102.0,
-                                                          fit: BoxFit.contain,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
                                                 FFButtonWidget(
                                                   onPressed: () async {
                                                     if (widget.type ==
@@ -1787,6 +1679,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                             );
                                                           },
                                                         );
+                                                        context.safePop();
                                                       } else {
                                                         await showDialog(
                                                           context: context,
@@ -1900,6 +1793,7 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                             );
                                                           },
                                                         );
+                                                        context.safePop();
                                                       } else {
                                                         await showDialog(
                                                           context: context,
@@ -1968,9 +1862,128 @@ class _EditTransactionWidgetState extends State<EditTransactionWidget> {
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
-                                                            8.0),
+                                                            12.0),
                                                   ),
                                                 ),
+                                                if (widget.type ==
+                                                    'transaction')
+                                                  Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      '8q480c9w' /* Click to upload a new photo */,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
+                                                if (widget.type ==
+                                                    'transaction')
+                                                  Semantics(
+                                                    label:
+                                                        'Click to add new photo',
+                                                    child: InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        final selectedMedia =
+                                                            await selectMediaWithSourceBottomSheet(
+                                                          context: context,
+                                                          maxWidth: 1500.00,
+                                                          allowPhoto: true,
+                                                        );
+                                                        if (selectedMedia !=
+                                                                null &&
+                                                            selectedMedia.every((m) =>
+                                                                validateFileFormat(
+                                                                    m.storagePath,
+                                                                    context))) {
+                                                          setState(() => _model
+                                                                  .isDataUploading =
+                                                              true);
+                                                          var selectedUploadedFiles =
+                                                              <FFUploadedFile>[];
+
+                                                          try {
+                                                            selectedUploadedFiles =
+                                                                selectedMedia
+                                                                    .map((m) =>
+                                                                        FFUploadedFile(
+                                                                          name: m
+                                                                              .storagePath
+                                                                              .split('/')
+                                                                              .last,
+                                                                          bytes:
+                                                                              m.bytes,
+                                                                          height: m
+                                                                              .dimensions
+                                                                              ?.height,
+                                                                          width: m
+                                                                              .dimensions
+                                                                              ?.width,
+                                                                          blurHash:
+                                                                              m.blurHash,
+                                                                        ))
+                                                                    .toList();
+                                                          } finally {
+                                                            _model.isDataUploading =
+                                                                false;
+                                                          }
+                                                          if (selectedUploadedFiles
+                                                                  .length ==
+                                                              selectedMedia
+                                                                  .length) {
+                                                            setState(() {
+                                                              _model.uploadedLocalFile =
+                                                                  selectedUploadedFiles
+                                                                      .first;
+                                                            });
+                                                          } else {
+                                                            setState(() {});
+                                                            return;
+                                                          }
+                                                        }
+
+                                                        _model.base64Output =
+                                                            await actions
+                                                                .imageToBase64String(
+                                                          _model
+                                                              .uploadedLocalFile,
+                                                        );
+
+                                                        setState(() {});
+                                                      },
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                        child: Image.network(
+                                                          valueOrDefault<
+                                                              String>(
+                                                            TppbGroup
+                                                                .getFilePathCall
+                                                                .url(
+                                                              editTransactionGetFilePathResponse
+                                                                  .jsonBody,
+                                                            ),
+                                                            'https://images.unsplash.com/photo-1497514440240-3b870f7341f0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwxfHxtaXNzaW5nfGVufDB8fHx8MTcyMDY4NTkxMXww&ixlib=rb-4.0.3&q=80&w=1080',
+                                                          ),
+                                                          width: 102.0,
+                                                          fit: BoxFit.contain,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
                                               ]
                                                   .divide(const SizedBox(height: 4.0))
                                                   .around(

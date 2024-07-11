@@ -160,6 +160,7 @@ class _IncomesWidgetState extends State<IncomesWidget> {
                                       }
                                       final householdDropDownGetHouseholdResponse =
                                           snapshot.data!;
+
                                       return FlutterFlowDropDown<String>(
                                         controller: _model
                                                 .householdDropDownValueController ??=
@@ -184,6 +185,7 @@ class _IncomesWidgetState extends State<IncomesWidget> {
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Noto Sans JP',
+                                              fontSize: 12.0,
                                               letterSpacing: 0.0,
                                             ),
                                         hintText:
@@ -347,6 +349,7 @@ class _IncomesWidgetState extends State<IncomesWidget> {
                                                 }
                                                 final listViewGetIncomesResponse =
                                                     snapshot.data!;
+
                                                 return ListView(
                                                   padding: EdgeInsets.zero,
                                                   primary: false,
@@ -366,6 +369,7 @@ class _IncomesWidgetState extends State<IncomesWidget> {
                                                                 .toList()
                                                                 .toList() ??
                                                             [];
+
                                                         return Semantics(
                                                           label:
                                                               'Click to view income details',
@@ -620,6 +624,7 @@ class _IncomesWidgetState extends State<IncomesWidget> {
                                                                   final textGetCurrentMonthIncomeResponse =
                                                                       snapshot
                                                                           .data!;
+
                                                                   return Text(
                                                                     valueOrDefault<
                                                                         String>(
@@ -740,6 +745,7 @@ class _IncomesWidgetState extends State<IncomesWidget> {
                                                                   final textGetSafeToSpendResponse =
                                                                       snapshot
                                                                           .data!;
+
                                                                   return AutoSizeText(
                                                                     valueOrDefault<
                                                                         String>(

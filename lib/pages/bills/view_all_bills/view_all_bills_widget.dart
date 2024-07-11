@@ -137,6 +137,7 @@ class _ViewAllBillsWidgetState extends State<ViewAllBillsWidget> {
                                     }
                                     final dueBillsListViewGetAllBillsResponse =
                                         snapshot.data!;
+
                                     return Builder(
                                       builder: (context) {
                                         final bills = TppbGroup.getAllBillsCall
@@ -148,6 +149,7 @@ class _ViewAllBillsWidgetState extends State<ViewAllBillsWidget> {
                                                 .toList()
                                                 .toList() ??
                                             [];
+
                                         return RefreshIndicator(
                                           color: FlutterFlowTheme.of(context)
                                               .primary,

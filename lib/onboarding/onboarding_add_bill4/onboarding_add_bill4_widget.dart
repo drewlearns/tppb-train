@@ -263,6 +263,8 @@ class _OnboardingAddBill4WidgetState extends State<OnboardingAddBill4Widget> {
                                                                     .override(
                                                                       fontFamily:
                                                                           'Noto Sans JP',
+                                                                      fontSize:
+                                                                          12.0,
                                                                       letterSpacing:
                                                                           0.0,
                                                                     ),
@@ -289,7 +291,7 @@ class _OnboardingAddBill4WidgetState extends State<OnboardingAddBill4Widget> {
                                                                         context)
                                                                     .alternate,
                                                             borderWidth: 2.0,
-                                                            borderRadius: 8.0,
+                                                            borderRadius: 12.0,
                                                             margin:
                                                                 const EdgeInsetsDirectional
                                                                     .fromSTEB(
@@ -435,7 +437,7 @@ class _OnboardingAddBill4WidgetState extends State<OnboardingAddBill4Widget> {
                                                                     .calendar_month,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primaryText,
+                                                                    .secondaryText,
                                                                 size: 15.0,
                                                               ),
                                                               options:
@@ -466,7 +468,7 @@ class _OnboardingAddBill4WidgetState extends State<OnboardingAddBill4Widget> {
                                                                           'Noto Sans JP',
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .primaryText,
+                                                                          .secondaryText,
                                                                       letterSpacing:
                                                                           0.0,
                                                                     ),
@@ -480,7 +482,7 @@ class _OnboardingAddBill4WidgetState extends State<OnboardingAddBill4Widget> {
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .circular(
-                                                                            8.0),
+                                                                            12.0),
                                                               ),
                                                             ),
                                                           ),
@@ -643,7 +645,7 @@ class _OnboardingAddBill4WidgetState extends State<OnboardingAddBill4Widget> {
                                                                       .calendar_month,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primaryText,
+                                                                      .secondaryText,
                                                                   size: 15.0,
                                                                 ),
                                                                 options:
@@ -672,7 +674,7 @@ class _OnboardingAddBill4WidgetState extends State<OnboardingAddBill4Widget> {
                                                                         fontFamily:
                                                                             'Noto Sans JP',
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .primaryText,
+                                                                            .secondaryText,
                                                                         letterSpacing:
                                                                             0.0,
                                                                       ),
@@ -687,7 +689,7 @@ class _OnboardingAddBill4WidgetState extends State<OnboardingAddBill4Widget> {
                                                                   borderRadius:
                                                                       BorderRadius
                                                                           .circular(
-                                                                              8.0),
+                                                                              12.0),
                                                                 ),
                                                               ),
                                                             ),
@@ -2017,7 +2019,7 @@ class _OnboardingAddBill4WidgetState extends State<OnboardingAddBill4Widget> {
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
-                                                                        8.0),
+                                                                        12.0),
                                                           ),
                                                         ),
                                                       ],
@@ -2077,7 +2079,7 @@ class _OnboardingAddBill4WidgetState extends State<OnboardingAddBill4Widget> {
                                       color: Colors.transparent,
                                       width: 1.0,
                                     ),
-                                    borderRadius: BorderRadius.circular(8.0),
+                                    borderRadius: BorderRadius.circular(12.0),
                                   ),
                                 ),
                               ],

@@ -65,11 +65,6 @@ class EditTransactionModel extends FlutterFlowModel<EditTransactionWidget> {
       );
     }
 
-    if (!RegExp('^\\d+(\\.\\d{2})?\$').hasMatch(val)) {
-      return FFLocalizations.of(context).getText(
-        '4bi5x0xz' /* Digits and period only */,
-      );
-    }
     return null;
   }
 
@@ -121,18 +116,18 @@ class EditTransactionModel extends FlutterFlowModel<EditTransactionWidget> {
   // State field(s) for wallet widget.
   String? walletValue;
   FormFieldController<String>? walletValueController;
-  bool isDataUploading = false;
-  FFUploadedFile uploadedLocalFile =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
-
-  // Stores action output result for [Custom Action - imageToBase64String] action in Image widget.
-  String? base64Output;
   // Stores action output result for [Backend Call - API (editTransaction)] action in Button widget.
   ApiCallResponse? editTransactionOutput;
   AudioPlayer? soundPlayer1;
   // Stores action output result for [Backend Call - API (editLedgerEntry)] action in Button widget.
   ApiCallResponse? editLedgerEntryOutput;
   AudioPlayer? soundPlayer2;
+  bool isDataUploading = false;
+  FFUploadedFile uploadedLocalFile =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+
+  // Stores action output result for [Custom Action - imageToBase64String] action in Image widget.
+  String? base64Output;
 
   @override
   void initState(BuildContext context) {

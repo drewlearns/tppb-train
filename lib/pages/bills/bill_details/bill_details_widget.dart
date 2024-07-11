@@ -86,6 +86,7 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
           );
         }
         final billDetailsGetBillResponse = snapshot.data!;
+
         return Title(
             title: 'Bill Details',
             color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
@@ -216,6 +217,7 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                       children: [
                         Container(
                           width: 380.0,
+                          height: MediaQuery.sizeOf(context).height * 0.9,
                           decoration: BoxDecoration(
                             color:
                                 FlutterFlowTheme.of(context).primaryBackground,
@@ -316,33 +318,95 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                     },
                                                   );
 
+                                                  TimeOfDay? datePicked1Time;
                                                   if (datePicked1Date !=
                                                       null) {
+                                                    datePicked1Time =
+                                                        await showTimePicker(
+                                                      context: context,
+                                                      initialTime: TimeOfDay
+                                                          .fromDateTime(
+                                                              getCurrentTimestamp),
+                                                      builder:
+                                                          (context, child) {
+                                                        return wrapInMaterialTimePickerTheme(
+                                                          context,
+                                                          child!,
+                                                          headerBackgroundColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .primary,
+                                                          headerForegroundColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .info,
+                                                          headerTextStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .headlineLarge
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Noto Sans JP',
+                                                                    fontSize:
+                                                                        32.0,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                  ),
+                                                          pickerBackgroundColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .secondaryBackground,
+                                                          pickerForegroundColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .primaryText,
+                                                          selectedDateTimeBackgroundColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .primary,
+                                                          selectedDateTimeForegroundColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .info,
+                                                          actionButtonForegroundColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .primaryText,
+                                                          iconSize: 24.0,
+                                                        );
+                                                      },
+                                                    );
+                                                  }
+
+                                                  if (datePicked1Date !=
+                                                          null &&
+                                                      datePicked1Time !=
+                                                          null) {
                                                     safeSetState(() {
                                                       _model.datePicked1 =
                                                           DateTime(
                                                         datePicked1Date.year,
                                                         datePicked1Date.month,
                                                         datePicked1Date.day,
+                                                        datePicked1Time!.hour,
+                                                        datePicked1Time.minute,
                                                       );
                                                     });
                                                   }
                                                 },
-                                                text: valueOrDefault<String>(
-                                                  dateTimeFormat(
-                                                    'yMMMd',
-                                                    _model.datePicked1,
-                                                    locale: FFLocalizations.of(
-                                                            context)
-                                                        .languageCode,
-                                                  ),
-                                                  'Start Date*',
-                                                ),
+                                                text: TppbGroup.getBillCall
+                                                    .startDate(
+                                                  billDetailsGetBillResponse
+                                                      .jsonBody,
+                                                )!,
                                                 icon: Icon(
                                                   Icons.calendar_month,
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .primaryText,
+                                                      .secondaryText,
                                                   size: 15.0,
                                                 ),
                                                 options: FFButtonOptions(
@@ -367,7 +431,7 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .primaryText,
+                                                                .secondaryText,
                                                         letterSpacing: 0.0,
                                                       ),
                                                   elevation: 0.0,
@@ -380,6 +444,20 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                           8.0),
                                                 ),
                                               ),
+                                            ),
+                                            Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'qkohmdoo' /* To */,
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Noto Sans JP',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                             ),
                                             Padding(
                                               padding: const EdgeInsetsDirectional
@@ -458,21 +536,16 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                     });
                                                   }
                                                 },
-                                                text: valueOrDefault<String>(
-                                                  dateTimeFormat(
-                                                    'yMMMd',
-                                                    _model.datePicked2,
-                                                    locale: FFLocalizations.of(
-                                                            context)
-                                                        .languageCode,
-                                                  ),
-                                                  'End Date*',
-                                                ),
+                                                text: TppbGroup.getBillCall
+                                                    .endDate(
+                                                  billDetailsGetBillResponse
+                                                      .jsonBody,
+                                                )!,
                                                 icon: Icon(
                                                   Icons.calendar_month,
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .primaryText,
+                                                      .secondaryText,
                                                   size: 15.0,
                                                 ),
                                                 options: FFButtonOptions(
@@ -497,7 +570,7 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .primaryText,
+                                                                .secondaryText,
                                                         letterSpacing: 0.0,
                                                       ),
                                                   elevation: 0.0,
@@ -617,6 +690,7 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                         .override(
                                                           fontFamily:
                                                               'Noto Sans JP',
+                                                          fontSize: 12.0,
                                                           letterSpacing: 0.0,
                                                         ),
                                                     hintText:
@@ -716,6 +790,7 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                       }
                                                       final householdGetHouseholdResponse =
                                                           snapshot.data!;
+
                                                       return FlutterFlowDropDown<
                                                           String>(
                                                         controller: _model
@@ -812,6 +887,8 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Noto Sans JP',
+                                                                  fontSize:
+                                                                      12.0,
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
@@ -867,6 +944,7 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                       }
                                                       final walletGetPaymentSourceResponse =
                                                           snapshot.data!;
+
                                                       return FlutterFlowDropDown<
                                                           String>(
                                                         controller: _model
@@ -963,6 +1041,8 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Noto Sans JP',
+                                                                  fontSize:
+                                                                      12.0,
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
@@ -1771,6 +1851,7 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                             }
                                             final billPasswordListViewGetBillPasswordResponse =
                                                 snapshot.data!;
+
                                             return ListView(
                                               padding: EdgeInsets.zero,
                                               primary: false,

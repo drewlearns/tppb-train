@@ -80,6 +80,7 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
           );
         }
         final transactionDetailsGetLedgerEntryResponse = snapshot.data!;
+
         return Title(
             title: 'Transaction Details',
             color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
@@ -225,6 +226,7 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                     }
                                     final listViewGetIncomeResponse =
                                         snapshot.data!;
+
                                     return ListView(
                                       padding:
                                           const EdgeInsets.symmetric(vertical: 4.0),
@@ -267,6 +269,9 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                                             .jsonBody,
                                                       ),
                                                       'Loading...',
+                                                    ).maybeHandleOverflow(
+                                                      maxChars: 30,
+                                                      replacement: '…',
                                                     ),
                                                     maxLines: 2,
                                                     style: FlutterFlowTheme.of(
@@ -418,6 +423,7 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                                         ),
                                                         formatType:
                                                             FormatType.custom,
+                                                        currency: '',
                                                         format:
                                                             '###,###,##0.00',
                                                         locale: '',
@@ -475,7 +481,7 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                                       ),
                                                       'Loading...',
                                                     ).maybeHandleOverflow(
-                                                        maxChars: 16),
+                                                        maxChars: 10),
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyLarge
@@ -834,6 +840,7 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                               }
                                               final billListViewGetBillResponse =
                                                   snapshot.data!;
+
                                               return ListView(
                                                 padding: EdgeInsets.zero,
                                                 primary: false,
@@ -1016,13 +1023,15 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                               }
                                               final billPasswordListViewGetBillPasswordResponse =
                                                   snapshot.data!;
+
                                               return ListView(
                                                 padding: EdgeInsets.zero,
                                                 primary: false,
                                                 shrinkWrap: true,
                                                 scrollDirection: Axis.vertical,
                                                 children: [
-                                                  if ((widget.type == 'bill') &&
+                                                  if ((widget.type ==
+                                                          'bill') &&
                                                       billPasswordListViewGetBillPasswordResponse
                                                           .succeeded)
                                                     Semantics(
@@ -1149,7 +1158,8 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                                         ),
                                                       ),
                                                     ),
-                                                  if ((widget.type == 'bill') &&
+                                                  if ((widget.type ==
+                                                          'bill') &&
                                                       billPasswordListViewGetBillPasswordResponse
                                                           .succeeded)
                                                     Semantics(
@@ -1418,7 +1428,8 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                         FutureBuilder<ApiCallResponse>(
                                           future:
                                               TppbGroup.getFilePathCall.call(
-                                            transactionId: widget.transactionId,
+                                            transactionId:
+                                                widget.transactionId,
                                             authenticationToken:
                                                 currentJwtToken,
                                           ),
@@ -1444,6 +1455,7 @@ class _TransactionDetailsWidgetState extends State<TransactionDetailsWidget> {
                                             }
                                             final attachmentListViewGetFilePathResponse =
                                                 snapshot.data!;
+
                                             return ListView(
                                               padding: EdgeInsets.zero,
                                               primary: false,

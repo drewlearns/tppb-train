@@ -151,6 +151,7 @@ class _AddIncomeWidgetState extends State<AddIncomeWidget> {
                                             }
                                             final householdDropDownGetHouseholdResponse =
                                                 snapshot.data!;
+
                                             return FlutterFlowDropDown<String>(
                                               controller: _model
                                                       .householdDropDownValueController ??=
@@ -182,6 +183,7 @@ class _AddIncomeWidgetState extends State<AddIncomeWidget> {
                                                       .override(
                                                         fontFamily:
                                                             'Noto Sans JP',
+                                                        fontSize: 12.0,
                                                         letterSpacing: 0.0,
                                                       ),
                                               hintText:
@@ -263,6 +265,7 @@ class _AddIncomeWidgetState extends State<AddIncomeWidget> {
                                               }
                                               final walletDropDownGetPaymentSourceResponse =
                                                   snapshot.data!;
+
                                               return FlutterFlowDropDown<
                                                   String>(
                                                 controller: _model
@@ -296,6 +299,7 @@ class _AddIncomeWidgetState extends State<AddIncomeWidget> {
                                                         .override(
                                                           fontFamily:
                                                               'Noto Sans JP',
+                                                          fontSize: 12.0,
                                                           letterSpacing: 0.0,
                                                         ),
                                                 hintText:
@@ -412,6 +416,7 @@ class _AddIncomeWidgetState extends State<AddIncomeWidget> {
                                                         .override(
                                                           fontFamily:
                                                               'Noto Sans JP',
+                                                          fontSize: 12.0,
                                                           letterSpacing: 0.0,
                                                         ),
                                                 hintText:
@@ -624,7 +629,7 @@ class _AddIncomeWidgetState extends State<AddIncomeWidget> {
                                                           title: const Text(
                                                               'Information'),
                                                           content: const Text(
-                                                              'Select the most recent pay date. Suggestion is to make the time early in the day so it comes before bills and expenses.'),
+                                                              'This is where you want the income to start in your ledger.'),
                                                           actions: [
                                                             TextButton(
                                                               onPressed: () =>
@@ -830,7 +835,7 @@ class _AddIncomeWidgetState extends State<AddIncomeWidget> {
                                                             title: const Text(
                                                                 'Information'),
                                                             content: const Text(
-                                                                'Select when you want the recurring income to stop.'),
+                                                                'Select when you want the recurring income to stop. Recommended doing 1 year out typically.'),
                                                             actions: [
                                                               TextButton(
                                                                 onPressed: () =>

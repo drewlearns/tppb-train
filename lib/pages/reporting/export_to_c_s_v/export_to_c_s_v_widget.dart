@@ -134,6 +134,7 @@ class _ExportToCSVWidgetState extends State<ExportToCSVWidget> {
                                   }
                                   final dropDownGetPaymentSourceResponse =
                                       snapshot.data!;
+
                                   return FlutterFlowDropDown<String>(
                                     controller:
                                         _model.dropDownValueController ??=
@@ -157,6 +158,7 @@ class _ExportToCSVWidgetState extends State<ExportToCSVWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Noto Sans JP',
+                                          fontSize: 12.0,
                                           letterSpacing: 0.0,
                                         ),
                                     hintText:
@@ -234,6 +236,8 @@ class _ExportToCSVWidgetState extends State<ExportToCSVWidget> {
                                         );
                                       },
                                     );
+
+                                    context.pushNamed('Export');
                                   } else {
                                     await showDialog(
                                       context: context,

@@ -246,6 +246,8 @@ class _OnboardingAddIncome3WidgetState
                                                                 .override(
                                                                   fontFamily:
                                                                       'Noto Sans JP',
+                                                                  fontSize:
+                                                                      12.0,
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
@@ -272,7 +274,7 @@ class _OnboardingAddIncome3WidgetState
                                                                     context)
                                                                 .alternate,
                                                         borderWidth: 2.0,
-                                                        borderRadius: 8.0,
+                                                        borderRadius: 12.0,
                                                         margin:
                                                             const EdgeInsetsDirectional
                                                                 .fromSTEB(
@@ -419,7 +421,7 @@ class _OnboardingAddIncome3WidgetState
                                                                   .calendar_month,
                                                               color: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .primaryText,
+                                                                  .secondaryText,
                                                               size: 15.0,
                                                             ),
                                                             options:
@@ -451,7 +453,7 @@ class _OnboardingAddIncome3WidgetState
                                                                         fontFamily:
                                                                             'Noto Sans JP',
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .primaryText,
+                                                                            .secondaryText,
                                                                         letterSpacing:
                                                                             0.0,
                                                                       ),
@@ -465,7 +467,7 @@ class _OnboardingAddIncome3WidgetState
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
-                                                                          8.0),
+                                                                          12.0),
                                                             ),
                                                           ),
                                                         ),
@@ -641,7 +643,7 @@ class _OnboardingAddIncome3WidgetState
                                                                   .calendar_month,
                                                               color: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .primaryText,
+                                                                  .secondaryText,
                                                               size: 15.0,
                                                             ),
                                                             options:
@@ -673,7 +675,7 @@ class _OnboardingAddIncome3WidgetState
                                                                         fontFamily:
                                                                             'Noto Sans JP',
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .primaryText,
+                                                                            .secondaryText,
                                                                         letterSpacing:
                                                                             0.0,
                                                                       ),
@@ -687,7 +689,7 @@ class _OnboardingAddIncome3WidgetState
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
-                                                                          8.0),
+                                                                          12.0),
                                                             ),
                                                           ),
                                                         ),
@@ -1213,7 +1215,7 @@ class _OnboardingAddIncome3WidgetState
                                                         ),
                                                         borderRadius:
                                                             BorderRadius
-                                                                .circular(8.0),
+                                                                .circular(12.0),
                                                       ),
                                                     ),
                                                   ],
@@ -1291,7 +1293,7 @@ class _OnboardingAddIncome3WidgetState
                                                         ),
                                                         borderRadius:
                                                             BorderRadius
-                                                                .circular(8.0),
+                                                                .circular(12.0),
                                                       ),
                                                     ),
                                                   ],

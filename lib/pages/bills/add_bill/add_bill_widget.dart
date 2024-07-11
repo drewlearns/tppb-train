@@ -159,6 +159,7 @@ class _AddBillWidgetState extends State<AddBillWidget> {
                                         }
                                         final householdDropDownGetHouseholdResponse =
                                             snapshot.data!;
+
                                         return FlutterFlowDropDown<String>(
                                           controller: _model
                                                   .householdDropDownValueController ??=
@@ -187,6 +188,7 @@ class _AddBillWidgetState extends State<AddBillWidget> {
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily: 'Noto Sans JP',
+                                                    fontSize: 12.0,
                                                     letterSpacing: 0.0,
                                                   ),
                                           hintText: FFLocalizations.of(context)
@@ -207,7 +209,7 @@ class _AddBillWidgetState extends State<AddBillWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .alternate,
                                           borderWidth: 2.0,
-                                          borderRadius: 8.0,
+                                          borderRadius: 12.0,
                                           margin:
                                               const EdgeInsetsDirectional.fromSTEB(
                                                   16.0, 0.0, 16.0, 0.0),
@@ -259,6 +261,7 @@ class _AddBillWidgetState extends State<AddBillWidget> {
                                           }
                                           final walletDropDownGetPaymentSourceResponse =
                                               snapshot.data!;
+
                                           return FlutterFlowDropDown<String>(
                                             controller: _model
                                                     .walletDropDownValueController ??=
@@ -289,6 +292,7 @@ class _AddBillWidgetState extends State<AddBillWidget> {
                                                     .override(
                                                       fontFamily:
                                                           'Noto Sans JP',
+                                                      fontSize: 12.0,
                                                       letterSpacing: 0.0,
                                                     ),
                                             hintText:
@@ -311,7 +315,7 @@ class _AddBillWidgetState extends State<AddBillWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .alternate,
                                             borderWidth: 2.0,
-                                            borderRadius: 8.0,
+                                            borderRadius: 12.0,
                                             margin:
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 0.0, 16.0, 0.0),
@@ -402,6 +406,7 @@ class _AddBillWidgetState extends State<AddBillWidget> {
                                                     .override(
                                                       fontFamily:
                                                           'Noto Sans JP',
+                                                      fontSize: 12.0,
                                                       letterSpacing: 0.0,
                                                     ),
                                             hintText:
@@ -424,7 +429,7 @@ class _AddBillWidgetState extends State<AddBillWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .alternate,
                                             borderWidth: 2.0,
-                                            borderRadius: 8.0,
+                                            borderRadius: 12.0,
                                             margin:
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 4.0, 16.0, 4.0),
@@ -544,7 +549,7 @@ class _AddBillWidgetState extends State<AddBillWidget> {
                                                 Icons.calendar_month,
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryText,
+                                                        .secondaryText,
                                                 size: 15.0,
                                               ),
                                               options: FFButtonOptions(
@@ -552,7 +557,7 @@ class _AddBillWidgetState extends State<AddBillWidget> {
                                                 height: 56.0,
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        24.0, 0.0, 24.0, 0.0),
+                                                        24.0, 0.0, 60.0, 0.0),
                                                 iconPadding:
                                                     const EdgeInsetsDirectional
                                                         .fromSTEB(
@@ -568,7 +573,7 @@ class _AddBillWidgetState extends State<AddBillWidget> {
                                                               'Noto Sans JP',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .primaryText,
+                                                              .secondaryText,
                                                           letterSpacing: 0.0,
                                                         ),
                                                 elevation: 0.0,
@@ -682,7 +687,7 @@ class _AddBillWidgetState extends State<AddBillWidget> {
                                                   Icons.calendar_month,
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .primaryText,
+                                                      .secondaryText,
                                                   size: 15.0,
                                                 ),
                                                 options: FFButtonOptions(
@@ -707,7 +712,7 @@ class _AddBillWidgetState extends State<AddBillWidget> {
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .primaryText,
+                                                                .secondaryText,
                                                         letterSpacing: 0.0,
                                                       ),
                                                   elevation: 0.0,

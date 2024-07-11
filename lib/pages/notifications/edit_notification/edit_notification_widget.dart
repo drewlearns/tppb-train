@@ -128,6 +128,7 @@ class _EditNotificationWidgetState extends State<EditNotificationWidget> {
                         );
                       }
                       final listViewGetNotificationResponse = snapshot.data!;
+
                       return ListView(
                         padding: EdgeInsets.zero,
                         primary: false,
@@ -240,7 +241,7 @@ class _EditNotificationWidgetState extends State<EditNotificationWidget> {
                                                               'Noto Sans JP',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .primaryText,
+                                                              .secondaryText,
                                                           letterSpacing: 0.0,
                                                         ),
                                                 elevation: 0.0,
@@ -252,22 +253,6 @@ class _EditNotificationWidgetState extends State<EditNotificationWidget> {
                                                     BorderRadius.circular(12.0),
                                               ),
                                             ),
-                                          ),
-                                          Text(
-                                            valueOrDefault<String>(
-                                              TppbGroup.getNotificationCall
-                                                  .dueDate(
-                                                listViewGetNotificationResponse
-                                                    .jsonBody,
-                                              ),
-                                              'Loading...',
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Noto Sans JP',
-                                                  letterSpacing: 0.0,
-                                                ),
                                           ),
                                         ],
                                       ),
@@ -546,6 +531,7 @@ class _EditNotificationWidgetState extends State<EditNotificationWidget> {
                                           }
                                           final listViewGetBillResponse =
                                               snapshot.data!;
+
                                           return ListView(
                                             padding: EdgeInsets.zero,
                                             shrinkWrap: true,

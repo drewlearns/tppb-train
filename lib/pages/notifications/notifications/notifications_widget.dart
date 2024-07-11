@@ -111,6 +111,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                       );
                     }
                     final listViewGetNotificationsResponse = snapshot.data!;
+
                     return Builder(
                       builder: (context) {
                         final list = TppbGroup.getNotificationsCall
@@ -119,6 +120,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                                 )
                                 ?.toList() ??
                             [];
+
                         return ListView.builder(
                           padding: EdgeInsets.zero,
                           shrinkWrap: true,

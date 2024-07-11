@@ -47,10 +47,10 @@
         <key>CFBundleTypeRole</key>
         <string>Editor</string>
         <key>CFBundleURLName</key>
-        <string>the_purple_piggy_bank</string>
+        <string>app.thepurplepiggybank.com</string>
         <key>CFBundleURLSchemes</key>
         <array>
-        <string>com.thepurplepiggybank.app</string>
+        <string>app</string>
         </array>
         </dict>
     </array>

@@ -194,6 +194,7 @@ class _BillsWalkthroughWidgetState extends State<BillsWalkthroughWidget>
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily: 'Noto Sans JP',
+                                                    fontSize: 12.0,
                                                     letterSpacing: 0.0,
                                                   ),
                                           hintText: FFLocalizations.of(context)

@@ -197,6 +197,7 @@ class _WalletsWidgetState extends State<WalletsWidget> {
                                                 }
                                                 final dropDownGetHouseholdResponse =
                                                     snapshot.data!;
+
                                                 return FlutterFlowDropDown<
                                                     String>(
                                                   controller: _model
@@ -229,6 +230,7 @@ class _WalletsWidgetState extends State<WalletsWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Noto Sans JP',
+                                                            fontSize: 12.0,
                                                             letterSpacing: 0.0,
                                                           ),
                                                   hintText: FFLocalizations.of(
@@ -320,6 +322,7 @@ class _WalletsWidgetState extends State<WalletsWidget> {
                                       }
                                       final listViewGetPaymentSourceResponse =
                                           snapshot.data!;
+
                                       return Builder(
                                         builder: (context) {
                                           final walletItems =
@@ -330,6 +333,7 @@ class _WalletsWidgetState extends State<WalletsWidget> {
                                                       )
                                                       ?.toList() ??
                                                   [];
+
                                           return ListView.builder(
                                             padding: EdgeInsets.zero,
                                             primary: false,

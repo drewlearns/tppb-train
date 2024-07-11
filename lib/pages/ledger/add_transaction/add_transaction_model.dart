@@ -8,10 +8,10 @@ class AddTransactionModel extends FlutterFlowModel<AddTransactionWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  final formKey1 = GlobalKey<FormState>();
+  final formKey2 = GlobalKey<FormState>();
   final formKey3 = GlobalKey<FormState>();
   final formKey4 = GlobalKey<FormState>();
-  final formKey2 = GlobalKey<FormState>();
+  final formKey1 = GlobalKey<FormState>();
   // State field(s) for HouseholdDropDown widget.
   String? householdDropDownValue;
   FormFieldController<String>? householdDropDownValueController;
@@ -28,13 +28,13 @@ class AddTransactionModel extends FlutterFlowModel<AddTransactionWidget> {
   String? _amountTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'lr3h0sf2' /* Field is required */,
+        '4dyyfwgt' /* Field is required */,
       );
     }
 
     if (!RegExp('^\\d+(\\.\\d{2})?\$').hasMatch(val)) {
       return FFLocalizations.of(context).getText(
-        'xfet0b5p' /* Digits and period only */,
+        'uro4zex7' /* Digits and period only */,
       );
     }
     return null;
@@ -82,21 +82,6 @@ class AddTransactionModel extends FlutterFlowModel<AddTransactionWidget> {
   FocusNode? tagsFocusNode;
   TextEditingController? tagsTextController;
   String? Function(BuildContext, String?)? tagsTextControllerValidator;
-  String? _tagsTextControllerValidator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        '3fnmum57' /* Field is required */,
-      );
-    }
-
-    if (!RegExp('^[a-zA-Z]+(,[a-zA-Z]+)*\$').hasMatch(val)) {
-      return FFLocalizations.of(context).getText(
-        'zgb4bdwq' /* Comma Separated List only */,
-      );
-    }
-    return null;
-  }
-
   // State field(s) for status widget.
   bool? statusValue;
   bool isDataUploading = false;
@@ -113,7 +98,6 @@ class AddTransactionModel extends FlutterFlowModel<AddTransactionWidget> {
     amountTextControllerValidator = _amountTextControllerValidator;
     descriptionTextControllerValidator = _descriptionTextControllerValidator;
     categoryTextControllerValidator = _categoryTextControllerValidator;
-    tagsTextControllerValidator = _tagsTextControllerValidator;
   }
 
   @override

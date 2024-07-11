@@ -138,6 +138,7 @@ class _AddInviteWidgetState extends State<AddInviteWidget> {
                                         }
                                         final dropDownGetHouseholdResponse =
                                             snapshot.data!;
+
                                         return FlutterFlowDropDown<String>(
                                           controller:
                                               _model.dropDownValueController ??=
@@ -165,6 +166,7 @@ class _AddInviteWidgetState extends State<AddInviteWidget> {
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily: 'Noto Sans JP',
+                                                    fontSize: 12.0,
                                                     letterSpacing: 0.0,
                                                   ),
                                           hintText: FFLocalizations.of(context)

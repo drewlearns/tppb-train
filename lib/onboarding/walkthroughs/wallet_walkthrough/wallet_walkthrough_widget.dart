@@ -199,6 +199,7 @@ class _WalletWalkthroughWidgetState extends State<WalletWalkthroughWidget> {
                                                         .override(
                                                           fontFamily:
                                                               'Noto Sans JP',
+                                                          fontSize: 12.0,
                                                           letterSpacing: 0.0,
                                                         ),
                                                 hintText:
