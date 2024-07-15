@@ -85,17 +85,21 @@ class _AddTransactionWidgetState extends State<AddTransactionWidget> {
                 ),
                 actions: const [],
                 flexibleSpace: FlexibleSpaceBar(
-                  title: AutoSizeText(
-                    FFLocalizations.of(context).getText(
-                      'aqme8uhg' /* Add Transaction */,
+                  title: Align(
+                    alignment: const AlignmentDirectional(0.0, 1.0),
+                    child: AutoSizeText(
+                      FFLocalizations.of(context).getText(
+                        'aqme8uhg' /* Add Transaction */,
+                      ),
+                      style:
+                          FlutterFlowTheme.of(context).headlineLarge.override(
+                                fontFamily: 'Noto Sans JP',
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                letterSpacing: 0.0,
+                                lineHeight: 2.0,
+                              ),
                     ),
-                    style: FlutterFlowTheme.of(context).headlineLarge.override(
-                          fontFamily: 'Noto Sans JP',
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          letterSpacing: 0.0,
-                          lineHeight: 2.0,
-                        ),
                   ),
                   centerTitle: true,
                   expandedTitleScale: 1.0,
@@ -127,11 +131,7 @@ class _AddTransactionWidgetState extends State<AddTransactionWidget> {
                                     children: [
                                       FutureBuilder<ApiCallResponse>(
                                         future: TppbGroup.getHouseholdCall.call(
-                                          authenticationToken:
-                                              valueOrDefault<String>(
-                                            currentJwtToken,
-                                            'Loading...',
-                                          ),
+                                          authenticationToken: currentJwtToken,
                                         ),
                                         builder: (context, snapshot) {
                                           // Customize what your widget looks like when it's loading.
@@ -152,199 +152,93 @@ class _AddTransactionWidgetState extends State<AddTransactionWidget> {
                                               ),
                                             );
                                           }
-                                          final householdDropDownGetHouseholdResponse =
+                                          final rowGetHouseholdResponse =
                                               snapshot.data!;
 
-                                          return FlutterFlowDropDown<String>(
-                                            controller: _model
-                                                    .householdDropDownValueController ??=
-                                                FormFieldController<String>(
-                                                    null),
-                                            options: List<String>.from(TppbGroup
-                                                .getHouseholdCall
-                                                .householdIds(
-                                              householdDropDownGetHouseholdResponse
-                                                  .jsonBody,
-                                            )!),
-                                            optionLabels: TppbGroup
-                                                .getHouseholdCall
-                                                .householdNames(
-                                              householdDropDownGetHouseholdResponse
-                                                  .jsonBody,
-                                            )!,
-                                            onChanged: (val) async {
-                                              setState(() => _model
-                                                      .householdDropDownValue =
-                                                  val);
-                                              setState(() {});
-                                            },
-                                            width: 360.0,
-                                            height: 56.0,
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      fontFamily:
-                                                          'Noto Sans JP',
-                                                      fontSize: 12.0,
-                                                      letterSpacing: 0.0,
-                                                    ),
-                                            hintText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              'edmtzvd8' /* Please select... */,
-                                            ),
-                                            icon: Icon(
-                                              Icons.keyboard_arrow_down_rounded,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
+                                          return Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              FlutterFlowDropDown<String>(
+                                                controller: _model
+                                                        .householdDropDownValueController ??=
+                                                    FormFieldController<String>(
+                                                        null),
+                                                options: List<String>.from(
+                                                    TppbGroup.getHouseholdCall
+                                                        .householdIds(
+                                                  rowGetHouseholdResponse
+                                                      .jsonBody,
+                                                )!),
+                                                optionLabels: TppbGroup
+                                                    .getHouseholdCall
+                                                    .householdNames(
+                                                  rowGetHouseholdResponse
+                                                      .jsonBody,
+                                                )!,
+                                                onChanged: (val) async {
+                                                  setState(() => _model
+                                                          .householdDropDownValue =
+                                                      val);
+                                                  setState(() {});
+                                                },
+                                                width: 360.0,
+                                                height: 56.0,
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          fontSize: 12.0,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                hintText:
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                  'edmtzvd8' /* Please select... */,
+                                                ),
+                                                icon: Icon(
+                                                  Icons
+                                                      .keyboard_arrow_down_rounded,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
                                                       .secondaryText,
-                                              size: 24.0,
-                                            ),
-                                            fillColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
-                                            elevation: 2.0,
-                                            borderColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .alternate,
-                                            borderWidth: 2.0,
-                                            borderRadius: 12.0,
-                                            margin:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    16.0, 0.0, 16.0, 0.0),
-                                            hidesUnderline: true,
-                                            isOverButton: true,
-                                            isSearchable: false,
-                                            isMultiSelect: false,
-                                            labelText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              'dmhivq7s' /* Budget */,
-                                            ),
-                                            labelTextStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .override(
-                                                      fontFamily:
-                                                          'Noto Sans JP',
-                                                      letterSpacing: 0.0,
-                                                    ),
+                                                  size: 24.0,
+                                                ),
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                elevation: 2.0,
+                                                borderColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                                borderWidth: 2.0,
+                                                borderRadius: 12.0,
+                                                margin: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        16.0, 0.0, 16.0, 0.0),
+                                                hidesUnderline: true,
+                                                isOverButton: true,
+                                                isSearchable: false,
+                                                isMultiSelect: false,
+                                                labelText:
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                  'dmhivq7s' /* Budget* */,
+                                                ),
+                                                labelTextStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                            ],
                                           );
                                         },
                                       ),
-                                      if (_model.householdDropDownValue !=
-                                              null &&
-                                          _model.householdDropDownValue != '')
-                                        FutureBuilder<ApiCallResponse>(
-                                          future: TppbGroup.getPaymentSourceCall
-                                              .call(
-                                            householdIdGlobal:
-                                                _model.householdDropDownValue,
-                                            authenticationToken:
-                                                currentJwtToken,
-                                          ),
-                                          builder: (context, snapshot) {
-                                            // Customize what your widget looks like when it's loading.
-                                            if (!snapshot.hasData) {
-                                              return Center(
-                                                child: SizedBox(
-                                                  width: 50.0,
-                                                  height: 50.0,
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                    valueColor:
-                                                        AlwaysStoppedAnimation<
-                                                            Color>(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary,
-                                                    ),
-                                                  ),
-                                                ),
-                                              );
-                                            }
-                                            final walletDropDownGetPaymentSourceResponse =
-                                                snapshot.data!;
-
-                                            return FlutterFlowDropDown<String>(
-                                              controller: _model
-                                                      .walletDropDownValueController ??=
-                                                  FormFieldController<String>(
-                                                      null),
-                                              options: List<String>.from(
-                                                  TppbGroup.getPaymentSourceCall
-                                                      .paymentSourceId(
-                                                walletDropDownGetPaymentSourceResponse
-                                                    .jsonBody,
-                                              )!),
-                                              optionLabels: TppbGroup
-                                                  .getPaymentSourceCall
-                                                  .paymentSourceName(
-                                                walletDropDownGetPaymentSourceResponse
-                                                    .jsonBody,
-                                              )!,
-                                              onChanged: (val) async {
-                                                setState(() => _model
-                                                    .walletDropDownValue = val);
-                                                setState(() {});
-                                              },
-                                              width: 360.0,
-                                              height: 56.0,
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Noto Sans JP',
-                                                        fontSize: 12.0,
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                              hintText:
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                'oeiciiyx' /* Please select... */,
-                                              ),
-                                              icon: Icon(
-                                                Icons
-                                                    .keyboard_arrow_down_rounded,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                                size: 24.0,
-                                              ),
-                                              fillColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              elevation: 2.0,
-                                              borderColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .alternate,
-                                              borderWidth: 2.0,
-                                              borderRadius: 12.0,
-                                              margin: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      16.0, 0.0, 16.0, 0.0),
-                                              hidesUnderline: true,
-                                              isOverButton: true,
-                                              isSearchable: false,
-                                              isMultiSelect: false,
-                                              labelText:
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                '72fnrx0t' /* Wallet* */,
-                                              ),
-                                              labelTextStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Noto Sans JP',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                            );
-                                          },
-                                        ),
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
@@ -381,6 +275,7 @@ class _AddTransactionWidgetState extends State<AddTransactionWidget> {
                                                       .override(
                                                         fontFamily:
                                                             'Noto Sans JP',
+                                                        fontSize: 12.0,
                                                         letterSpacing: 0.0,
                                                       ),
                                               hintText:
@@ -437,7 +332,7 @@ class _AddTransactionWidgetState extends State<AddTransactionWidget> {
                                         children: [
                                           Expanded(
                                             child: Form(
-                                              key: _model.formKey2,
+                                              key: _model.formKey3,
                                               autovalidateMode:
                                                   AutovalidateMode.disabled,
                                               child: Align(
@@ -723,7 +618,7 @@ class _AddTransactionWidgetState extends State<AddTransactionWidget> {
                                                   size: 15.0,
                                                 ),
                                                 options: FFButtonOptions(
-                                                  width: 300.0,
+                                                  width: 360.0,
                                                   height: 44.0,
                                                   padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
@@ -754,7 +649,7 @@ class _AddTransactionWidgetState extends State<AddTransactionWidget> {
                                                   ),
                                                   borderRadius:
                                                       BorderRadius.circular(
-                                                          8.0),
+                                                          12.0),
                                                 ),
                                               ),
                                             ),
@@ -773,7 +668,7 @@ class _AddTransactionWidgetState extends State<AddTransactionWidget> {
                                               children: [
                                                 Expanded(
                                                   child: Form(
-                                                    key: _model.formKey3,
+                                                    key: _model.formKey4,
                                                     autovalidateMode:
                                                         AutovalidateMode
                                                             .disabled,
@@ -908,7 +803,7 @@ class _AddTransactionWidgetState extends State<AddTransactionWidget> {
                                               children: [
                                                 Expanded(
                                                   child: Form(
-                                                    key: _model.formKey4,
+                                                    key: _model.formKey5,
                                                     autovalidateMode:
                                                         AutovalidateMode
                                                             .disabled,
@@ -1177,6 +1072,161 @@ class _AddTransactionWidgetState extends State<AddTransactionWidget> {
                                                 ),
                                               ],
                                             ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Form(
+                                                  key: _model.formKey2,
+                                                  autovalidateMode:
+                                                      AutovalidateMode.always,
+                                                  child: Visibility(
+                                                    visible: _model
+                                                                .householdDropDownValue !=
+                                                            null &&
+                                                        _model.householdDropDownValue !=
+                                                            '',
+                                                    child: FutureBuilder<
+                                                        ApiCallResponse>(
+                                                      future: TppbGroup
+                                                          .getPaymentSourceCall
+                                                          .call(
+                                                        householdIdGlobal: _model
+                                                            .householdDropDownValue,
+                                                        authenticationToken:
+                                                            currentJwtToken,
+                                                      ),
+                                                      builder:
+                                                          (context, snapshot) {
+                                                        // Customize what your widget looks like when it's loading.
+                                                        if (!snapshot.hasData) {
+                                                          return Center(
+                                                            child: SizedBox(
+                                                              width: 50.0,
+                                                              height: 50.0,
+                                                              child:
+                                                                  CircularProgressIndicator(
+                                                                valueColor:
+                                                                    AlwaysStoppedAnimation<
+                                                                        Color>(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          );
+                                                        }
+                                                        final walletDropDownGetPaymentSourceResponse =
+                                                            snapshot.data!;
+
+                                                        return FlutterFlowDropDown<
+                                                            String>(
+                                                          controller: _model
+                                                                  .walletDropDownValueController ??=
+                                                              FormFieldController<
+                                                                  String>(
+                                                            _model.walletDropDownValue ??=
+                                                                TppbGroup
+                                                                    .getPaymentSourceCall
+                                                                    .paymentSourceId(
+                                                                      walletDropDownGetPaymentSourceResponse
+                                                                          .jsonBody,
+                                                                    )
+                                                                    ?.first,
+                                                          ),
+                                                          options: List<
+                                                                  String>.from(
+                                                              TppbGroup
+                                                                  .getPaymentSourceCall
+                                                                  .paymentSourceId(
+                                                            walletDropDownGetPaymentSourceResponse
+                                                                .jsonBody,
+                                                          )!),
+                                                          optionLabels: TppbGroup
+                                                              .getPaymentSourceCall
+                                                              .paymentSourceName(
+                                                            walletDropDownGetPaymentSourceResponse
+                                                                .jsonBody,
+                                                          )!,
+                                                          onChanged:
+                                                              (val) async {
+                                                            setState(() => _model
+                                                                    .walletDropDownValue =
+                                                                val);
+                                                            setState(() {});
+                                                          },
+                                                          width: 360.0,
+                                                          height: 56.0,
+                                                          textStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Noto Sans JP',
+                                                                    fontSize:
+                                                                        12.0,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                          hintText:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                            'oeiciiyx' /* Please select... */,
+                                                          ),
+                                                          icon: Icon(
+                                                            Icons
+                                                                .keyboard_arrow_down_rounded,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryText,
+                                                            size: 24.0,
+                                                          ),
+                                                          fillColor: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          elevation: 2.0,
+                                                          borderColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .alternate,
+                                                          borderWidth: 2.0,
+                                                          borderRadius: 12.0,
+                                                          margin:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      16.0,
+                                                                      0.0,
+                                                                      16.0,
+                                                                      0.0),
+                                                          hidesUnderline: true,
+                                                          isOverButton: true,
+                                                          isSearchable: false,
+                                                          isMultiSelect: false,
+                                                          labelText:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                            '72fnrx0t' /* Wallet* */,
+                                                          ),
+                                                          labelTextStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Noto Sans JP',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                        );
+                                                      },
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
                                             SwitchListTile.adaptive(
                                               value: _model.statusValue ??=
                                                   true,
@@ -1212,6 +1262,111 @@ class _AddTransactionWidgetState extends State<AddTransactionWidget> {
                                                   ListTileControlAffinity
                                                       .trailing,
                                             ),
+                                            FFButtonWidget(
+                                              onPressed: () async {
+                                                final selectedMedia =
+                                                    await selectMediaWithSourceBottomSheet(
+                                                  context: context,
+                                                  allowPhoto: true,
+                                                );
+                                                if (selectedMedia != null &&
+                                                    selectedMedia.every((m) =>
+                                                        validateFileFormat(
+                                                            m.storagePath,
+                                                            context))) {
+                                                  setState(() => _model
+                                                      .isDataUploading = true);
+                                                  var selectedUploadedFiles =
+                                                      <FFUploadedFile>[];
+
+                                                  try {
+                                                    selectedUploadedFiles =
+                                                        selectedMedia
+                                                            .map((m) =>
+                                                                FFUploadedFile(
+                                                                  name: m
+                                                                      .storagePath
+                                                                      .split(
+                                                                          '/')
+                                                                      .last,
+                                                                  bytes:
+                                                                      m.bytes,
+                                                                  height: m
+                                                                      .dimensions
+                                                                      ?.height,
+                                                                  width: m
+                                                                      .dimensions
+                                                                      ?.width,
+                                                                  blurHash: m
+                                                                      .blurHash,
+                                                                ))
+                                                            .toList();
+                                                  } finally {
+                                                    _model.isDataUploading =
+                                                        false;
+                                                  }
+                                                  if (selectedUploadedFiles
+                                                          .length ==
+                                                      selectedMedia.length) {
+                                                    setState(() {
+                                                      _model.uploadedLocalFile =
+                                                          selectedUploadedFiles
+                                                              .first;
+                                                    });
+                                                  } else {
+                                                    setState(() {});
+                                                    return;
+                                                  }
+                                                }
+
+                                                _model.base64ImageString =
+                                                    await actions
+                                                        .imageToBase64String(
+                                                  _model.uploadedLocalFile,
+                                                );
+
+                                                setState(() {});
+                                              },
+                                              text: FFLocalizations.of(context)
+                                                  .getText(
+                                                'oe5w1lwd' /* Upload Receipt */,
+                                              ),
+                                              options: FFButtonOptions(
+                                                width: 360.0,
+                                                height: 40.0,
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 0.0),
+                                                iconPadding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Noto Sans JP',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                elevation: 3.0,
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .alternate,
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(12.0),
+                                              ),
+                                            ),
                                           ]
                                               .divide(const SizedBox(height: 4.0))
                                               .addToEnd(const SizedBox(height: 4.0)),
@@ -1224,113 +1379,6 @@ class _AddTransactionWidgetState extends State<AddTransactionWidget> {
                                         children: [
                                           FFButtonWidget(
                                             onPressed: () async {
-                                              final selectedMedia =
-                                                  await selectMediaWithSourceBottomSheet(
-                                                context: context,
-                                                maxWidth: 1500.00,
-                                                allowPhoto: true,
-                                              );
-                                              if (selectedMedia != null &&
-                                                  selectedMedia.every((m) =>
-                                                      validateFileFormat(
-                                                          m.storagePath,
-                                                          context))) {
-                                                setState(() => _model
-                                                    .isDataUploading = true);
-                                                var selectedUploadedFiles =
-                                                    <FFUploadedFile>[];
-
-                                                try {
-                                                  selectedUploadedFiles =
-                                                      selectedMedia
-                                                          .map((m) =>
-                                                              FFUploadedFile(
-                                                                name: m
-                                                                    .storagePath
-                                                                    .split('/')
-                                                                    .last,
-                                                                bytes: m.bytes,
-                                                                height: m
-                                                                    .dimensions
-                                                                    ?.height,
-                                                                width: m
-                                                                    .dimensions
-                                                                    ?.width,
-                                                                blurHash:
-                                                                    m.blurHash,
-                                                              ))
-                                                          .toList();
-                                                } finally {
-                                                  _model.isDataUploading =
-                                                      false;
-                                                }
-                                                if (selectedUploadedFiles
-                                                        .length ==
-                                                    selectedMedia.length) {
-                                                  setState(() {
-                                                    _model.uploadedLocalFile =
-                                                        selectedUploadedFiles
-                                                            .first;
-                                                  });
-                                                } else {
-                                                  setState(() {});
-                                                  return;
-                                                }
-                                              }
-
-                                              _model.base64ImageString =
-                                                  await actions
-                                                      .imageToBase64String(
-                                                _model.uploadedLocalFile,
-                                              );
-
-                                              setState(() {});
-                                            },
-                                            text: FFLocalizations.of(context)
-                                                .getText(
-                                              'oe5w1lwd' /* Upload Receipt */,
-                                            ),
-                                            options: FFButtonOptions(
-                                              width: 176.0,
-                                              height: 40.0,
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              iconPadding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .alternate,
-                                              textStyle: FlutterFlowTheme.of(
-                                                      context)
-                                                  .titleSmall
-                                                  .override(
-                                                    fontFamily: 'Noto Sans JP',
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
-                                                    fontSize: 12.0,
-                                                    letterSpacing: 0.0,
-                                                  ),
-                                              elevation: 3.0,
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .alternate,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                          ),
-                                          FFButtonWidget(
-                                            onPressed: () async {
-                                              if (_model.formKey2
-                                                          .currentState ==
-                                                      null ||
-                                                  !_model.formKey2.currentState!
-                                                      .validate()) {
-                                                return;
-                                              }
                                               if (_model.formKey3
                                                           .currentState ==
                                                       null ||
@@ -1342,6 +1390,13 @@ class _AddTransactionWidgetState extends State<AddTransactionWidget> {
                                                           .currentState ==
                                                       null ||
                                                   !_model.formKey4.currentState!
+                                                      .validate()) {
+                                                return;
+                                              }
+                                              if (_model.formKey5
+                                                          .currentState ==
+                                                      null ||
+                                                  !_model.formKey5.currentState!
                                                       .validate()) {
                                                 return;
                                               }
@@ -1397,8 +1452,11 @@ class _AddTransactionWidgetState extends State<AddTransactionWidget> {
                                                     );
                                                   },
                                                 );
-
-                                                context.pushNamed('Ledger');
+                                                if (Navigator.of(context)
+                                                    .canPop()) {
+                                                  context.pop();
+                                                }
+                                                context.pushNamed('Home');
                                               } else {
                                                 await showDialog(
                                                   context: context,
@@ -1433,7 +1491,7 @@ class _AddTransactionWidgetState extends State<AddTransactionWidget> {
                                               'ki0vetmr' /* Save Changes */,
                                             ),
                                             options: FFButtonOptions(
-                                              width: 176.0,
+                                              width: 360.0,
                                               height: 40.0,
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
@@ -1458,7 +1516,7 @@ class _AddTransactionWidgetState extends State<AddTransactionWidget> {
                                                 width: 1.0,
                                               ),
                                               borderRadius:
-                                                  BorderRadius.circular(8.0),
+                                                  BorderRadius.circular(12.0),
                                             ),
                                           ),
                                         ].divide(const SizedBox(width: 4.0)),

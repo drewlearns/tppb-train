@@ -8,16 +8,14 @@ class AddTransactionModel extends FlutterFlowModel<AddTransactionWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  final formKey2 = GlobalKey<FormState>();
   final formKey3 = GlobalKey<FormState>();
   final formKey4 = GlobalKey<FormState>();
+  final formKey5 = GlobalKey<FormState>();
   final formKey1 = GlobalKey<FormState>();
+  final formKey2 = GlobalKey<FormState>();
   // State field(s) for HouseholdDropDown widget.
   String? householdDropDownValue;
   FormFieldController<String>? householdDropDownValueController;
-  // State field(s) for walletDropDown widget.
-  String? walletDropDownValue;
-  FormFieldController<String>? walletDropDownValueController;
   // State field(s) for transactionType widget.
   String? transactionTypeValue;
   FormFieldController<String>? transactionTypeValueController;
@@ -82,6 +80,9 @@ class AddTransactionModel extends FlutterFlowModel<AddTransactionWidget> {
   FocusNode? tagsFocusNode;
   TextEditingController? tagsTextController;
   String? Function(BuildContext, String?)? tagsTextControllerValidator;
+  // State field(s) for walletDropDown widget.
+  String? walletDropDownValue;
+  FormFieldController<String>? walletDropDownValueController;
   // State field(s) for status widget.
   bool? statusValue;
   bool isDataUploading = false;

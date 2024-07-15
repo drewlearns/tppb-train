@@ -2203,6 +2203,88 @@ async function _deleteLedgerEntryCall(context, ffVariables) {
   });
 }
 
+async function _revenuecatCall(context, ffVariables) {
+  if (!context.auth) {
+    return _unauthenticatedResponse;
+  }
+  var uuid = ffVariables["uuid"];
+  var authenticationToken = ffVariables["authenticationToken"];
+  var householdIdGlobal = ffVariables["householdIdGlobal"];
+  var paymentSourceIdGlobal = ffVariables["paymentSourceIdGlobal"];
+  const tppbGroup = createTppbGroup(
+    authenticationToken,
+    householdIdGlobal,
+    paymentSourceIdGlobal,
+  );
+
+  var url = `${tppbGroup.baseUrl}/revenuecat`;
+  var headers = { "x-api-key": `zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM` };
+  var params = {};
+  var ffApiRequestBody = `
+{
+  "uuid": "${uuid}"
+}`;
+
+  return makeApiRequest({
+    method: "post",
+    url,
+    headers,
+    params,
+    body: createBody({
+      headers,
+      params,
+      body: ffApiRequestBody,
+      bodyType: "JSON",
+    }),
+    returnBody: true,
+    isStreamingApi: false,
+  });
+}
+
+async function _applePurchaseEndpointCall(context, ffVariables) {
+  if (!context.auth) {
+    return _unauthenticatedResponse;
+  }
+  var uuid = ffVariables["uuid"];
+  var isMonthly = ffVariables["isMonthly"];
+  var isAnnually = ffVariables["isAnnually"];
+  var isForever = ffVariables["isForever"];
+  var authenticationToken = ffVariables["authenticationToken"];
+  var householdIdGlobal = ffVariables["householdIdGlobal"];
+  var paymentSourceIdGlobal = ffVariables["paymentSourceIdGlobal"];
+  const tppbGroup = createTppbGroup(
+    authenticationToken,
+    householdIdGlobal,
+    paymentSourceIdGlobal,
+  );
+
+  var url = `${tppbGroup.baseUrl}/applePurchaseEndpoint`;
+  var headers = { "x-api-key": `zRkOsRKfGjAxK5aKxXO4gS9HUTIsSzmM` };
+  var params = {};
+  var ffApiRequestBody = `
+{
+  "uuid": "${uuid}",
+  "isMonthly": ${isMonthly},
+  "isAnnually": ${isAnnually},
+  "isForever": ${isForever}
+}`;
+
+  return makeApiRequest({
+    method: "post",
+    url,
+    headers,
+    params,
+    body: createBody({
+      headers,
+      params,
+      body: ffApiRequestBody,
+      bodyType: "JSON",
+    }),
+    returnBody: true,
+    isStreamingApi: false,
+  });
+}
+
 /// End TPPB Group Code
 
 /// Start stripeSubscription Group Code
@@ -2380,6 +2462,8 @@ async function makeApiCall(context, data) {
     DeletePaymentSourceCall: _deletePaymentSourceCall,
     DeleteTransactionCall: _deleteTransactionCall,
     DeleteLedgerEntryCall: _deleteLedgerEntryCall,
+    RevenuecatCall: _revenuecatCall,
+    ApplePurchaseEndpointCall: _applePurchaseEndpointCall,
     CreateCustomerCall: _createCustomerCall,
     CreateCheckoutSessionCall: _createCheckoutSessionCall,
     GetCustomerPortalSessionCall: _getCustomerPortalSessionCall,

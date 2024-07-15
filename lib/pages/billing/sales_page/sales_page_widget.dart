@@ -3,6 +3,7 @@ import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:flutter/material.dart';
 import 'sales_page_model.dart';
 export 'sales_page_model.dart';
@@ -47,7 +48,7 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             appBar: PreferredSize(
-              preferredSize: const Size.fromHeight(200.0),
+              preferredSize: const Size.fromHeight(180.0),
               child: AppBar(
                 backgroundColor: FlutterFlowTheme.of(context).primary,
                 automaticallyImplyLeading: false,
@@ -64,7 +65,7 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                   centerTitle: true,
                   expandedTitleScale: 1.0,
                 ),
-                toolbarHeight: 280.0,
+                toolbarHeight: 260.0,
                 elevation: 0.0,
               ),
             ),
@@ -88,7 +89,7 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                                 alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
-                                    'qqz4s1wh' /* Silly Name, Serious Budgeting */,
+                                    'p6q3itw2' /* Silly Name, Serious Budgeting */,
                                   ),
                                   textAlign: TextAlign.start,
                                   style: FlutterFlowTheme.of(context)
@@ -97,6 +98,7 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                                         fontFamily: 'Noto Sans JP',
                                         color: FlutterFlowTheme.of(context)
                                             .secondary,
+                                        fontSize: 22.0,
                                         letterSpacing: 0.0,
                                       ),
                                 ),
@@ -111,19 +113,20 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                                       Icons.check_sharp,
                                       color:
                                           FlutterFlowTheme.of(context).primary,
-                                      size: 24.0,
+                                      size: 20.0,
                                     ),
                                     Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           8.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          'ide3jysl' /* Share and Collaborate on your ... */,
+                                          'ix5cfi5f' /* Share and Collaborate on your ... */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyLarge
                                             .override(
                                               fontFamily: 'Noto Sans JP',
+                                              fontSize: 14.0,
                                               letterSpacing: 0.0,
                                             ),
                                       ),
@@ -141,19 +144,20 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                                       Icons.check_sharp,
                                       color:
                                           FlutterFlowTheme.of(context).primary,
-                                      size: 24.0,
+                                      size: 20.0,
                                     ),
                                     Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           8.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          's1tjrz0e' /* Export Reports to CSV and QBB */,
+                                          'dgjbqa86' /* Export Reports to CSV and QBB */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyLarge
                                             .override(
                                               fontFamily: 'Noto Sans JP',
+                                              fontSize: 14.0,
                                               letterSpacing: 0.0,
                                             ),
                                       ),
@@ -171,19 +175,20 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                                       Icons.check_sharp,
                                       color:
                                           FlutterFlowTheme.of(context).primary,
-                                      size: 24.0,
+                                      size: 20.0,
                                     ),
                                     Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           8.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          'fez1nrmg' /* Easily keep your ledger up to ... */,
+                                          'z69i8rxd' /* Create Unlimited Number Of Bud... */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyLarge
                                             .override(
                                               fontFamily: 'Noto Sans JP',
+                                              fontSize: 14.0,
                                               letterSpacing: 0.0,
                                             ),
                                       ),
@@ -201,19 +206,20 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                                       Icons.check_sharp,
                                       color:
                                           FlutterFlowTheme.of(context).primary,
-                                      size: 24.0,
+                                      size: 20.0,
                                     ),
                                     Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           8.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          'f1few2ma' /* Never miss a bill, Get bill re... */,
+                                          'a0x5zn9a' /* Never miss a bill, Get bill re... */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyLarge
                                             .override(
                                               fontFamily: 'Noto Sans JP',
+                                              fontSize: 14.0,
                                               letterSpacing: 0.0,
                                             ),
                                       ),
@@ -223,7 +229,7 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                               ),
                               Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 4.0, 0.0, 4.0),
+                                    0.0, 4.0, 0.0, 8.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
@@ -231,49 +237,20 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                                       Icons.check_sharp,
                                       color:
                                           FlutterFlowTheme.of(context).primary,
-                                      size: 24.0,
+                                      size: 20.0,
                                     ),
                                     Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           8.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          'dk1yaqrh' /* Bill Password Manager */,
+                                          'huqujq9l' /* Get The Bill Password Manager */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyLarge
                                             .override(
                                               fontFamily: 'Noto Sans JP',
-                                              letterSpacing: 0.0,
-                                            ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 4.0, 0.0, 4.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Icon(
-                                      Icons.check_sharp,
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      size: 24.0,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          8.0, 0.0, 0.0, 0.0),
-                                      child: Text(
-                                        FFLocalizations.of(context).getText(
-                                          'ydkwt9n6' /* Create Unlimited Number Of Bud... */,
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyLarge
-                                            .override(
-                                              fontFamily: 'Noto Sans JP',
+                                              fontSize: 14.0,
                                               letterSpacing: 0.0,
                                             ),
                                       ),
@@ -299,7 +276,6 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                                     },
                                     child: Container(
                                       width: 350.0,
-                                      height: 70.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
@@ -338,18 +314,6 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                                                   mainAxisSize:
                                                       MainAxisSize.max,
                                                   children: [
-                                                    Icon(
-                                                      Icons.check_circle,
-                                                      color: _model
-                                                              .monthlyClicked
-                                                          ? FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondary
-                                                          : FlutterFlowTheme.of(
-                                                                  context)
-                                                              .alternate,
-                                                      size: 24.0,
-                                                    ),
                                                     Padding(
                                                       padding:
                                                           const EdgeInsetsDirectional
@@ -362,7 +326,50 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                          'cffzoh25' /* Monthly */,
+                                                          '28vxvhsp' /* Monthly - Full App Access (30 ... */,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Noto Sans JP',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        16.0, 8.0, 0.0, 0.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  16.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                          'mncgrenn' /* Auto Renewal every 30 days */,
                                                         ),
                                                         style:
                                                             FlutterFlowTheme.of(
@@ -373,6 +380,9 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                                                                       'Noto Sans JP',
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
                                                                 ),
                                                       ),
                                                     ),
@@ -382,7 +392,7 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        16.0, 0.0, 0.0, 0.0),
+                                                        16.0, 8.0, 0.0, 8.0),
                                                 child: Row(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -391,15 +401,15 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                                                       padding:
                                                           const EdgeInsetsDirectional
                                                               .fromSTEB(
+                                                                  16.0,
                                                                   0.0,
-                                                                  8.0,
                                                                   0.0,
                                                                   0.0),
                                                       child: Text(
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                          'htpc9bto' /* Full Access $2.99/Month */,
+                                                          'dtwae313' /* $2.99 per Month per Account */,
                                                         ),
                                                         style:
                                                             FlutterFlowTheme.of(
@@ -442,7 +452,6 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                                     },
                                     child: Container(
                                       width: 350.0,
-                                      height: 72.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
@@ -470,17 +479,6 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
-                                                  Icon(
-                                                    Icons.check_circle,
-                                                    color: _model.annualClicked
-                                                        ? FlutterFlowTheme.of(
-                                                                context)
-                                                            .secondary
-                                                        : FlutterFlowTheme.of(
-                                                                context)
-                                                            .alternate,
-                                                    size: 24.0,
-                                                  ),
                                                   Padding(
                                                     padding:
                                                         const EdgeInsetsDirectional
@@ -490,7 +488,7 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                                                       FFLocalizations.of(
                                                               context)
                                                           .getText(
-                                                        'w05zpioh' /* Annual */,
+                                                        'cedf7df1' /* Annually - Full App Access (1 ... */,
                                                       ),
                                                       style: FlutterFlowTheme
                                                               .of(context)
@@ -498,7 +496,12 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Noto Sans JP',
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryText,
                                                             letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.bold,
                                                           ),
                                                     ),
                                                   ),
@@ -508,20 +511,54 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      16.0, 0.0, 0.0, 0.0),
+                                                      16.0, 8.0, 0.0, 0.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
                                                   Padding(
                                                     padding:
                                                         const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 8.0,
+                                                            .fromSTEB(16.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
                                                       FFLocalizations.of(
                                                               context)
                                                           .getText(
-                                                        'j69lzulh' /* Full Access $29.99/Year - 2 Mo... */,
+                                                        '1uy7bnkx' /* Auto Renewal every year */,
+                                                      ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Noto Sans JP',
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .normal,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      16.0, 8.0, 0.0, 0.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(16.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: Text(
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'wg7wdmf1' /* $29.99 per Year per Account */,
                                                       ),
                                                       style: FlutterFlowTheme
                                                               .of(context)
@@ -561,7 +598,6 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                                     },
                                     child: Container(
                                       width: 350.0,
-                                      height: 72.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
@@ -589,17 +625,6 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
-                                                  Icon(
-                                                    Icons.check_circle,
-                                                    color: _model.foreverClicked
-                                                        ? FlutterFlowTheme.of(
-                                                                context)
-                                                            .secondary
-                                                        : FlutterFlowTheme.of(
-                                                                context)
-                                                            .alternate,
-                                                    size: 24.0,
-                                                  ),
                                                   Padding(
                                                     padding:
                                                         const EdgeInsetsDirectional
@@ -609,7 +634,7 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                                                       FFLocalizations.of(
                                                               context)
                                                           .getText(
-                                                        'cjbpl603' /* Forever */,
+                                                        'tycjg7cy' /* Forever - Full App Access  */,
                                                       ),
                                                       style: FlutterFlowTheme
                                                               .of(context)
@@ -617,7 +642,12 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Noto Sans JP',
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryText,
                                                             letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.bold,
                                                           ),
                                                     ),
                                                   ),
@@ -627,20 +657,54 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      16.0, 0.0, 0.0, 0.0),
+                                                      16.0, 8.0, 0.0, 0.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
                                                   Padding(
                                                     padding:
                                                         const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 8.0,
+                                                            .fromSTEB(16.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
                                                       FFLocalizations.of(
                                                               context)
                                                           .getText(
-                                                        'bphr994u' /* Full Access $149.99 - Forever */,
+                                                        'yz2dzqjx' /* One time Charge - Never Expire... */,
+                                                      ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Noto Sans JP',
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .normal,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      16.0, 8.0, 0.0, 0.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(16.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: Text(
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'swhk5l9n' /* $149.99 One-time Per Account */,
                                                       ),
                                                       style: FlutterFlowTheme
                                                               .of(context)
@@ -673,7 +737,7 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                                         context.pushNamed('Home');
                                       },
                                       text: FFLocalizations.of(context).getText(
-                                        'c6yc0uex' /* Skip For Now */,
+                                        '93k1v5jx' /* Skip For Now */,
                                       ),
                                       options: FFButtonOptions(
                                         width: 171.0,
@@ -707,155 +771,177 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                                   ),
                                   FFButtonWidget(
                                     onPressed: () async {
-                                      if (_model.monthlyClicked) {
-                                        _model.monthlyCheckOutSessionOutput =
-                                            await StripeSubscriptionGroup
-                                                .createCheckoutSessionCall
-                                                .call(
-                                          priceId: valueOrDefault<String>(
-                                            _model.monthlyProductid,
-                                            'price_1PWwdlJMeGUbw0Woizgfwewb',
-                                          ),
-                                          mode: 'subscription',
-                                          uuid: currentUserUid,
-                                          cancelUrl:
-                                              'https://app.thepurplepiggybank.com',
-                                        );
-
-                                        if ((_model.monthlyCheckOutSessionOutput
-                                                ?.succeeded ??
-                                            true)) {
-                                          await launchURL(
-                                              StripeSubscriptionGroup
+                                      if (isWeb || isAndroid) {
+                                        if (_model.monthlyClicked) {
+                                          _model.monthlyCheckOutSessionOutput =
+                                              await StripeSubscriptionGroup
                                                   .createCheckoutSessionCall
-                                                  .url(
-                                            (_model.monthlyCheckOutSessionOutput
-                                                    ?.jsonBody ??
-                                                ''),
-                                          )!);
-                                        } else {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                title: const Text('Error'),
-                                                content: Text(
-                                                    StripeSubscriptionGroup
-                                                        .createCheckoutSessionCall
-                                                        .error(
-                                                          (_model.monthlyCheckOutSessionOutput
-                                                                  ?.jsonBody ??
-                                                              ''),
-                                                        )
-                                                        .toString()),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: const Text('Ok'),
-                                                  ),
-                                                ],
-                                              );
-                                            },
+                                                  .call(
+                                            priceId: valueOrDefault<String>(
+                                              _model.monthlyProductid,
+                                              'price_1PWwdlJMeGUbw0Woizgfwewb',
+                                            ),
+                                            mode: 'subscription',
+                                            uuid: currentUserUid,
+                                            cancelUrl:
+                                                'https://app.thepurplepiggybank.com',
                                           );
-                                        }
-                                      } else if (_model.annualClicked) {
-                                        _model.annuaCheckOutSessionCreatedOutput =
-                                            await StripeSubscriptionGroup
-                                                .createCheckoutSessionCall
-                                                .call(
-                                          priceId: valueOrDefault<String>(
-                                            _model.annualProductId,
-                                            'price_1PWwdyJMeGUbw0WoOdIpDGOL',
-                                          ),
-                                          mode: 'subscription',
-                                          uuid: currentUserUid,
-                                          cancelUrl:
-                                              'https://app.thepurplepiggybank.com',
-                                        );
 
-                                        if ((_model
-                                                .annuaCheckOutSessionCreatedOutput
-                                                ?.succeeded ??
-                                            true)) {
-                                          await launchURL(
-                                              StripeSubscriptionGroup
+                                          if ((_model
+                                                  .monthlyCheckOutSessionOutput
+                                                  ?.succeeded ??
+                                              true)) {
+                                            await launchURL(
+                                                StripeSubscriptionGroup
+                                                    .createCheckoutSessionCall
+                                                    .url(
+                                              (_model.monthlyCheckOutSessionOutput
+                                                      ?.jsonBody ??
+                                                  ''),
+                                            )!);
+                                          } else {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: const Text('Error'),
+                                                  content: Text(
+                                                      StripeSubscriptionGroup
+                                                          .createCheckoutSessionCall
+                                                          .error(
+                                                            (_model.monthlyCheckOutSessionOutput
+                                                                    ?.jsonBody ??
+                                                                ''),
+                                                          )
+                                                          .toString()),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: const Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          }
+                                        } else if (_model.annualClicked) {
+                                          _model.annuaCheckOutSessionCreatedOutput =
+                                              await StripeSubscriptionGroup
                                                   .createCheckoutSessionCall
-                                                  .url(
-                                            (_model.annuaCheckOutSessionCreatedOutput
-                                                    ?.jsonBody ??
-                                                ''),
-                                          )!);
-                                        } else {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                title: const Text('Error'),
-                                                content: Text(
-                                                    StripeSubscriptionGroup
-                                                        .createCheckoutSessionCall
-                                                        .error(
-                                                          (_model.annuaCheckOutSessionCreatedOutput
-                                                                  ?.jsonBody ??
-                                                              ''),
-                                                        )
-                                                        .toString()),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: const Text('Ok'),
-                                                  ),
-                                                ],
-                                              );
-                                            },
+                                                  .call(
+                                            priceId: valueOrDefault<String>(
+                                              _model.annualProductId,
+                                              'price_1PWwdyJMeGUbw0WoOdIpDGOL',
+                                            ),
+                                            mode: 'subscription',
+                                            uuid: currentUserUid,
+                                            cancelUrl:
+                                                'https://app.thepurplepiggybank.com',
                                           );
-                                        }
-                                      } else if (_model.foreverClicked) {
-                                        _model.foreverCheckOutSessionCreated =
-                                            await StripeSubscriptionGroup
-                                                .createCheckoutSessionCall
-                                                .call(
-                                          priceId: valueOrDefault<String>(
-                                            _model.foreverProductId,
-                                            'price_1PWweBJMeGUbw0Wok4l6BNNc',
-                                          ),
-                                          mode: 'payment',
-                                          uuid: currentUserUid,
-                                          cancelUrl:
-                                              'https://app.thepurplepiggybank.com',
-                                        );
 
-                                        if ((_model
-                                                .foreverCheckOutSessionCreated
-                                                ?.succeeded ??
-                                            true)) {
-                                          await launchURL(
-                                              StripeSubscriptionGroup
+                                          if ((_model
+                                                  .annuaCheckOutSessionCreatedOutput
+                                                  ?.succeeded ??
+                                              true)) {
+                                            await launchURL(
+                                                StripeSubscriptionGroup
+                                                    .createCheckoutSessionCall
+                                                    .url(
+                                              (_model.annuaCheckOutSessionCreatedOutput
+                                                      ?.jsonBody ??
+                                                  ''),
+                                            )!);
+                                          } else {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: const Text('Error'),
+                                                  content: Text(
+                                                      StripeSubscriptionGroup
+                                                          .createCheckoutSessionCall
+                                                          .error(
+                                                            (_model.annuaCheckOutSessionCreatedOutput
+                                                                    ?.jsonBody ??
+                                                                ''),
+                                                          )
+                                                          .toString()),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: const Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          }
+                                        } else if (_model.foreverClicked) {
+                                          _model.foreverCheckOutSessionCreated =
+                                              await StripeSubscriptionGroup
                                                   .createCheckoutSessionCall
-                                                  .url(
-                                            (_model.foreverCheckOutSessionCreated
-                                                    ?.jsonBody ??
-                                                ''),
-                                          )!);
+                                                  .call(
+                                            priceId: valueOrDefault<String>(
+                                              _model.foreverProductId,
+                                              'price_1PWweBJMeGUbw0Wok4l6BNNc',
+                                            ),
+                                            mode: 'payment',
+                                            uuid: currentUserUid,
+                                            cancelUrl:
+                                                'https://app.thepurplepiggybank.com',
+                                          );
+
+                                          if ((_model
+                                                  .foreverCheckOutSessionCreated
+                                                  ?.succeeded ??
+                                              true)) {
+                                            await launchURL(
+                                                StripeSubscriptionGroup
+                                                    .createCheckoutSessionCall
+                                                    .url(
+                                              (_model.foreverCheckOutSessionCreated
+                                                      ?.jsonBody ??
+                                                  ''),
+                                            )!);
+                                          } else {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: const Text('Error'),
+                                                  content: Text(
+                                                      StripeSubscriptionGroup
+                                                          .createCheckoutSessionCall
+                                                          .error(
+                                                            (_model.foreverCheckOutSessionCreated
+                                                                    ?.jsonBody ??
+                                                                ''),
+                                                          )
+                                                          .toString()),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: const Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          }
                                         } else {
                                           await showDialog(
                                             context: context,
                                             builder: (alertDialogContext) {
                                               return AlertDialog(
                                                 title: const Text('Error'),
-                                                content: Text(
-                                                    StripeSubscriptionGroup
-                                                        .createCheckoutSessionCall
-                                                        .error(
-                                                          (_model.foreverCheckOutSessionCreated
-                                                                  ?.jsonBody ??
-                                                              ''),
-                                                        )
-                                                        .toString()),
+                                                content: const Text(
+                                                    'You must select a product to purchase'),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
@@ -869,30 +955,153 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                                           );
                                         }
                                       } else {
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title: const Text('Error'),
-                                              content: const Text(
-                                                  'You must select a product to purchase'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: const Text('Ok'),
-                                                ),
-                                              ],
+                                        if (_model.monthlyClicked) {
+                                          _model.didPurchaseMonthly =
+                                              await revenue_cat.purchasePackage(
+                                                  revenue_cat
+                                                      .offerings!
+                                                      .current!
+                                                      .monthly!
+                                                      .identifier);
+                                          if (_model.didPurchaseMonthly!) {
+                                            _model.monthlyUpdateOutput =
+                                                await TppbGroup
+                                                    .applePurchaseEndpointCall
+                                                    .call(
+                                              uuid: currentUserUid,
+                                              isMonthly: true,
+                                              isAnnually: false,
+                                              isForever: false,
                                             );
-                                          },
-                                        );
+
+                                            context.safePop();
+                                          } else {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: const Text('Error'),
+                                                  content: const Text(
+                                                      'Failed to process. Please contact support'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: const Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          }
+                                        } else if (_model.annualClicked) {
+                                          _model.didPurchaseAnnual =
+                                              await revenue_cat.purchasePackage(
+                                                  revenue_cat
+                                                      .offerings!
+                                                      .current!
+                                                      .annual!
+                                                      .identifier);
+                                          if (_model.didPurchaseAnnual!) {
+                                            _model.annuallyUpdateOutput =
+                                                await TppbGroup
+                                                    .applePurchaseEndpointCall
+                                                    .call(
+                                              uuid: currentUserUid,
+                                              isMonthly: false,
+                                              isAnnually: true,
+                                              isForever: false,
+                                            );
+
+                                            context.safePop();
+                                          } else {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: const Text('Error'),
+                                                  content: const Text(
+                                                      'Failed to process. Please contact support'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: const Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          }
+                                        } else if (_model.foreverClicked) {
+                                          _model.didPurchaseForever =
+                                              await revenue_cat.purchasePackage(
+                                                  revenue_cat
+                                                      .offerings!
+                                                      .current!
+                                                      .lifetime!
+                                                      .identifier);
+                                          if (_model.didPurchaseForever!) {
+                                            _model.foreverUpdateOutput =
+                                                await TppbGroup
+                                                    .applePurchaseEndpointCall
+                                                    .call(
+                                              uuid: currentUserUid,
+                                              isMonthly: false,
+                                              isAnnually: false,
+                                              isForever: true,
+                                            );
+
+                                            context.safePop();
+                                          } else {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: const Text('Error'),
+                                                  content: const Text(
+                                                      'Failed to process. Please contact support'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: const Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          }
+                                        } else {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: const Text(
+                                                    'You must select a plan'),
+                                                content:
+                                                    const Text('No plan selected.'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: const Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                        }
                                       }
 
                                       setState(() {});
                                     },
                                     text: FFLocalizations.of(context).getText(
-                                      'lxushr1a' /* Buy Now */,
+                                      'cipkgiul' /* Buy Now */,
                                     ),
                                     options: FFButtonOptions(
                                       width: 171.0,
@@ -940,10 +1149,10 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                             child: FFButtonWidget(
                               onPressed: () async {
                                 await launchURL(
-                                    'https://thepurplepiggybank.com/legal');
+                                    'https://thepurplepiggybank.com/policies');
                               },
                               text: FFLocalizations.of(context).getText(
-                                'jydlwx7d' /* Legal */,
+                                'f50f5uzf' /* Legal */,
                               ),
                               options: FFButtonOptions(
                                 height: 40.0,
@@ -974,7 +1183,7 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                                     'https://thepurplepiggybank.com/terms');
                               },
                               text: FFLocalizations.of(context).getText(
-                                'nyyhtd6x' /* Terms */,
+                                'lhqfkayb' /* Terms (EULA) */,
                               ),
                               options: FFButtonOptions(
                                 height: 40.0,
@@ -1005,7 +1214,7 @@ class _SalesPageWidgetState extends State<SalesPageWidget> {
                                     'https://thepurplepiggybank.com/privacy');
                               },
                               text: FFLocalizations.of(context).getText(
-                                '1qo0zdkn' /* Privacy */,
+                                'udzh6whv' /* Privacy */,
                               ),
                               options: FFButtonOptions(
                                 height: 40.0,

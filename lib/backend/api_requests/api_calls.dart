@@ -74,6 +74,9 @@ class TppbGroup {
       DeletePaymentSourceCall();
   static DeleteTransactionCall deleteTransactionCall = DeleteTransactionCall();
   static DeleteLedgerEntryCall deleteLedgerEntryCall = DeleteLedgerEntryCall();
+  static RevenuecatCall revenuecatCall = RevenuecatCall();
+  static ApplePurchaseEndpointCall applePurchaseEndpointCall =
+      ApplePurchaseEndpointCall();
 }
 
 class AddUserCall {
@@ -2610,6 +2613,68 @@ class DeleteLedgerEntryCall {
         response,
         r'''$.message''',
       );
+}
+
+class RevenuecatCall {
+  Future<ApiCallResponse> call({
+    String? uuid = '',
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'RevenuecatCall',
+        'variables': {
+          'uuid': uuid,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
+      },
+    );
+    return ApiCallResponse.fromCloudCallResponse(response);
+  }
+
+  String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+}
+
+class ApplePurchaseEndpointCall {
+  Future<ApiCallResponse> call({
+    String? uuid = '',
+    bool? isMonthly,
+    bool? isAnnually,
+    bool? isForever,
+    String? authenticationToken = '',
+    String? householdIdGlobal = '',
+    String? paymentSourceIdGlobal = '',
+  }) async {
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'ApplePurchaseEndpointCall',
+        'variables': {
+          'uuid': uuid,
+          'isMonthly': isMonthly,
+          'isAnnually': isAnnually,
+          'isForever': isForever,
+          'authenticationToken': authenticationToken,
+          'householdIdGlobal': householdIdGlobal,
+          'paymentSourceIdGlobal': paymentSourceIdGlobal,
+        },
+      },
+    );
+    return ApiCallResponse.fromCloudCallResponse(response);
+  }
+
+  String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
 }
 
 /// End TPPB Group Code

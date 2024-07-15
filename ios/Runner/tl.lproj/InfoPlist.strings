@@ -1,4 +1,4 @@
 NSCameraUsageDescription = "Upang kumuha ng larawan ng isang resibo, ang app na ito ay nangangailangan ng mga pahintulot para sa pag-access sa camera";
 NSPhotoLibraryUsageDescription = "Upang magdagdag ng larawan ng isang resibo mula sa iyong library ng larawan, ang app na ito ay nangangailangan ng mga pahintulot sa iyong library ng larawan.";
-NSMicrophoneUsageDescription = "Hindi talaga namin ito kailangan ngunit kailangan ito ng SDK at Apple store na mailista. Huwag mag-atubiling tanggihan ito.";
+NSMicrophoneUsageDescription = "Hindi talaga namin ito kailangan ngunit nangangailangan ito ng SDK at Apple store na mailista. Huwag mag-atubiling tanggihan ito.";
 PermissionGroupNotification = "Hindi talaga namin ito kailangan ngunit kailangan ito ng SDK at Apple store na mailista. Huwag mag-atubiling tanggihan ito.";

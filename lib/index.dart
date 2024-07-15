@@ -4,7 +4,6 @@ export '/pages/ledger/ledger/ledger_widget.dart' show LedgerWidget;
 export '/pages/bills/bills/bills_widget.dart' show BillsWidget;
 export '/pages/income/incomes/incomes_widget.dart' show IncomesWidget;
 export '/pages/misc/home/home_widget.dart' show HomeWidget;
-export '/pages/billing/sales_page/sales_page_widget.dart' show SalesPageWidget;
 export '/pages/bills/add_bill/add_bill_widget.dart' show AddBillWidget;
 export '/pages/bills/bill_details/bill_details_widget.dart'
     show BillDetailsWidget;
@@ -68,3 +67,4 @@ export '/onboarding/onboarding_add_income3/onboarding_add_income3_widget.dart'
     show OnboardingAddIncome3Widget;
 export '/onboarding/onboarding_add_bill4/onboarding_add_bill4_widget.dart'
     show OnboardingAddBill4Widget;
+export '/pages/billing/sales_page/sales_page_widget.dart' show SalesPageWidget;

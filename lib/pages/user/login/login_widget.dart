@@ -1100,6 +1100,13 @@ Sign up below to begi... */
                                                     name: FFAppState().FullName,
                                                   );
 
+                                                  _model.revenueCatCreateUserOutput =
+                                                      await TppbGroup
+                                                          .revenuecatCall
+                                                          .call(
+                                                    uuid: currentUserUid,
+                                                  );
+
                                                   _model.addUserOutput =
                                                       await TppbGroup
                                                           .addUserCall
@@ -1319,7 +1326,7 @@ Sign up below to begi... */
                                                             onPressed:
                                                                 () async {
                                                               await launchURL(
-                                                                  'https://thepurplepiggybank.com/legal');
+                                                                  'https://thepurplepiggybank.com/policies');
                                                             },
                                                             text: FFLocalizations
                                                                     .of(context)
@@ -1928,7 +1935,7 @@ Sign In below t... */
                                                     FFButtonWidget(
                                                       onPressed: () async {
                                                         await launchURL(
-                                                            'https://thepurplepiggybank.com/terms');
+                                                            'https://thepurplepiggybank.com/policies');
                                                       },
                                                       text: FFLocalizations.of(
                                                               context)

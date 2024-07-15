@@ -16,6 +16,18 @@ Future<String> imageToBase64String(FFUploadedFile? imageUploaded) async {
     return "";
   }
 
+  // Check if the file type is JPG or JPEG
+  final String? fileName =
+      imageUploaded.name; // Adjust this if the property name is different
+  if (fileName == null) {
+    return "";
+  }
+
+  final String fileExtension = fileName.split('.').last.toLowerCase();
+  if (fileExtension != 'jpg' && fileExtension != 'jpeg') {
+    return "";
+  }
+
   // Assuming FFUploadedFile has a byte storage or provides access to it
   // Modify this part according to the actual implementation of FFUploadedFile
   final Uint8List? bytes =

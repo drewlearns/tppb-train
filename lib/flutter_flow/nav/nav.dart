@@ -122,12 +122,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               params.isEmpty ? const NavBarPage(initialPage: 'Home') : const HomeWidget(),
         ),
         FFRoute(
-          name: 'SalesPage',
-          path: '/purchase',
-          requireAuth: true,
-          builder: (context, params) => const SalesPageWidget(),
-        ),
-        FFRoute(
           name: 'AddBill',
           path: '/addBill',
           requireAuth: true,
@@ -490,6 +484,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.String,
             ),
           ),
+        ),
+        FFRoute(
+          name: 'SalesPage',
+          path: '/purchase',
+          requireAuth: true,
+          builder: (context, params) => const SalesPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

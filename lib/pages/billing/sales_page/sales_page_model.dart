@@ -27,6 +27,18 @@ class SalesPageModel extends FlutterFlowModel<SalesPageWidget> {
   ApiCallResponse? annuaCheckOutSessionCreatedOutput;
   // Stores action output result for [Backend Call - API (create checkout session)] action in Button widget.
   ApiCallResponse? foreverCheckOutSessionCreated;
+  // Stores action output result for [RevenueCat - Purchase] action in Button widget.
+  bool? didPurchaseMonthly;
+  // Stores action output result for [Backend Call - API (applePurchaseEndpoint)] action in Button widget.
+  ApiCallResponse? monthlyUpdateOutput;
+  // Stores action output result for [RevenueCat - Purchase] action in Button widget.
+  bool? didPurchaseAnnual;
+  // Stores action output result for [Backend Call - API (applePurchaseEndpoint)] action in Button widget.
+  ApiCallResponse? annuallyUpdateOutput;
+  // Stores action output result for [RevenueCat - Purchase] action in Button widget.
+  bool? didPurchaseForever;
+  // Stores action output result for [Backend Call - API (applePurchaseEndpoint)] action in Button widget.
+  ApiCallResponse? foreverUpdateOutput;
 
   @override
   void initState(BuildContext context) {}

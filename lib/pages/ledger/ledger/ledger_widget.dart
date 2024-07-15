@@ -120,7 +120,7 @@ class _LedgerWidgetState extends State<LedgerWidget>
             if (Navigator.of(context).canPop()) {
               context.pop();
             }
-            context.pushNamedAuth('Account', context.mounted);
+            context.pushNamedAuth('SalesPage', context.mounted);
           }
         }
       } else {
